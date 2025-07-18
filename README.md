@@ -1,5 +1,7 @@
 # Reforger
-Catch all for Arma Reforger development projects.
+This is the repository for all 7CAV official mods.
+
+<span style="color:darkred">If a new mod is needed please contact S3 Dev Staff.</span>
 
 ## Mod Organization
 | Mod Name | Description |
