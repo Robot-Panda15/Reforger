@@ -1,0 +1,195 @@
+$grp GenericEntity : "{1391CE8C0E255636}Prefabs/Systems/MilitaryBase/ConflictMilitaryBase.et" {
+ USSR {
+  components {
+   BaseRadioComponent "{5C669673C2A82A2B}" {
+    Transceivers {
+     RelayTransceiver "{5C669673E8C94083}" {
+      "Transmitting Range" 100000
+     }
+    }
+   }
+   SCR_CampaignBuildingProviderComponent "{5CA897160F09AA9F}" {
+    m_fBuildingRadius 15
+   }
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_iRadius 15
+    m_bShowMapIcon 0
+    m_bCanBeHQ 1
+    m_sBaseName "#AR-Campaign_MapLocation_MOB"
+    m_sBaseNameUpper "#AR-Campaign_MapLocation_MOB-UC"
+   }
+   SCR_CampaignSeizingComponent "{5C66967235FBEEA3}" {
+    Enabled 0
+   }
+   SCR_CampaignSuppliesComponent "{5C6696724F524DA2}" {
+    m_iSupplies 3000
+    m_iSuppliesMax 3000
+    m_fOperationalRadius 15
+   }
+   SCR_FactionAffiliationComponent "{5AFC974A2595F05D}" {
+    "faction affiliation" "USSR"
+   }
+  }
+  Flags 524291
+  coords 4161.988 0 -55.653
+  angleY -174.33
+  {
+   GenericEntity {
+    ID "5CCED514A5908822"
+    Flags 2097155
+    coords 8.839 0.008 0.308
+   }
+   SCR_CampaignSpawnPointGroup {
+    ID "5C6696731466AF36"
+    coords 0 0.011 0
+   }
+   $grp SCR_DestructibleBuildingEntity : "{0BDA77618F7586C5}PrefabLibrary/Infrastructure/Naval/PierConcrete_01_flat.et" {
+    {
+     coords -19.296 -3.994 -5.934
+     angleY -5.67
+    }
+    {
+     coords 0.597 -3.994 -3.972
+     angleY -5.67
+    }
+    {
+     coords -9.349 -3.993 -4.922
+     angleY -5.67
+    }
+    {
+     coords 20.492 -3.994 -2.026
+     angleY -5.67
+    }
+    {
+     coords 10.545 -3.992 -2.976
+     angleY -5.67
+    }
+    {
+     coords 19.697 -3.995 5.872
+     angleY -5.67
+    }
+    {
+     coords -20.093 -3.994 1.963
+     angleY -5.67
+    }
+    {
+     coords -10.147 -3.993 2.98
+     angleY -5.67
+    }
+    {
+     coords -0.198 -3.994 3.936
+     angleY -5.67
+    }
+    {
+     coords 9.748 -3.991 4.923
+     angleY -5.67
+    }
+    {
+     coords 29.611 -3.991 6.902
+     angleY -5.67
+    }
+    {
+     coords 30.406 -3.991 -0.993
+     angleY -5.67
+    }
+   }
+   $grp SCR_DestructibleBuildingEntity : "{94636E81E0D938E4}PrefabLibrary/Infrastructure/Naval/PierConcrete_01_20m_T.et" {
+    {
+     coords -0.335 -3.994 11.871
+     angleY 174.33
+    }
+    {
+     coords 1.775 -3.995 -11.828
+     angleY -5.67
+    }
+   }
+   $grp SCR_DestructibleBuildingEntity : "{F09400CC1A27BE39}PrefabLibrary/Infrastructure/Naval/PierConcrete_01_20m.et" {
+    {
+     coords -17.491 -3.994 -13.731
+     angleY -5.67
+    }
+    {
+     coords 21.226 -3.994 -9.9
+     angleY -5.67
+    }
+    {
+     coords -20.779 -3.994 9.91
+     angleY 174.33
+    }
+    {
+     coords 18.954 -3.994 13.778
+     angleY 174.33
+    }
+   }
+  }
+ }
+ ChotainCoast {
+  components {
+   SCR_CampaignMilitaryBaseComponent "{5AFC974A70234D1C}" {
+    m_iRadius 200
+    m_bCanBeHQ 1
+    m_sBaseName "#AR-Campaign_MapLocation_MOB"
+    m_sBaseNameUpper "#AR-Campaign_MapLocation_MOB-UC"
+   }
+   SCR_CampaignSeizingComponent "{5C66967235FBEEA3}" {
+    Enabled 0
+   }
+   SCR_CampaignSuppliesComponent "{5C6696724F524DA2}" {
+    m_iSupplies 3000
+    m_iSuppliesMax 3000
+    m_fOperationalRadius 50
+   }
+   SCR_CoverageRadioComponent "{5C669673C2A82A2B}" {
+    m_bIsSource 1
+   }
+   SCR_FactionAffiliationComponent "{5AFC974A2595F05D}" {
+    "faction affiliation" "US"
+   }
+  }
+  coords 3649.654 190.375 1575.054
+  angleY 247.642
+  {
+   GenericEntity {
+    ID "5CCED514A5908822"
+    Flags 2097155
+   }
+  }
+ }
+}
+Vehicle AH64D_AGM114L_X1 : "{397971C2026D5890}Prefabs/Vehicles/Helicopters/AH64D/AH64D_AGM114L_X2.et" {
+ coords 3665.307 190.468 1452.692
+ angleY -105.704
+}
+$grp Vehicle : "{3A6CFFE6D58C99DD}Prefabs/Vehicles/Wheeled/M1114/GPK/M1114_GPK_Tan.et" {
+ M1114_GPK_Tan1 {
+  coords 3525.497 190.392 1563.362
+  angleY 141.017
+ }
+ M1114_GPK_Tan2 {
+  coords 3517.834 190.392 1561.293
+  angleY 136.988
+ }
+ M1114_GPK_Tan3 {
+  coords 3507.519 190.392 1558.374
+  angleY 131.055
+ }
+}
+Vehicle LAV25_Conflict1 : "{40B400DD2048C9A6}Prefabs/Vehicles/Wheeled/Conflict_Variants/LAV25_Conflict.et" {
+ coords 3529.38 190.392 1542.042
+}
+Vehicle AUS_UH60_armed1 : "{48F288F5BFF10D8D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et" {
+ coords 3657.294 190.466 1488.269
+ angleY -100.192
+}
+Vehicle MH6M1 : "{8ADF3E7C1D5BC6EF}Prefabs/Vehicles/Helicopters/AH6M/MH6M.et" {
+ coords 3675.09 190.375 1423.356
+ angleY -104.832
+}
+Tank M2A3_Desert1 : "{AE422111679BC4A6}Prefabs/Vehicles/Tracked/BFV/M2A3_Desert.et" {
+ coords 3519.938 190.392 1540.336
+ angleY 24.575
+}
+StaticModelEntity : "{CF1FFB7BAA1A0769}Prefabs/Structures/Military/Camps/HelipadImprovised_01/HelipadImprovised_US_01.et" {
+ coords 3674.724 -0.376 1423.69
+ angleY -98.563
+}
