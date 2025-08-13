@@ -12,3 +12,4 @@ This is the repository for all 7CAV official mods.
 | 7CAV Compositions    | Mod containing all compositions to be spawned by a GM. |
 | 7CAV Systems    | Mod containing all changes that alter gameplay or add functionality. |
 | 7CAV Assets    | Mod containing all custom assets. |
+| 7CAV Bootcamp    | Mod containing all files required for RTC's Bootcamp. |
