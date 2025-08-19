@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{A4D204488A4A5C43}Prefabs/Characters/7CAV_Base.et" {
+SCR_ChimeraCharacter : "{A4D204488A4A5C43}Prefabs/Characters/Legacy/7CAV_Base.et" {
  ID "520EC961A090BE1E"
  components {
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
@@ -89,4 +89,10 @@ SCR_ChimeraCharacter : "{A4D204488A4A5C43}Prefabs/Characters/7CAV_Base.et" {
  angleX 0
  angleY -57.445
  angleZ 0
+ {
+  SCR_ChimeraCharacter : "{B880ABE66A835D01}Prefabs/Characters/Cav_Factions/Charlie/CnakedManBase.et" {
+   ID "6626086D5F991D78"
+   coords 0 0 0
+  }
+ }
 }

@@ -46,4 +46,9 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
 }
 SCR_GameModeEditor _Cav_GameMode_Editor_Full1 : "{CC02A0163001967B}Prefabs/MP/Modes/Editor/7Cav_GameMode_Editor_Full.et" {
  coords 2036.774 41.598 2054.484
+ {
+  SCR_LoadoutManager : "{128DC8942345AA18}Configs/Systems/7CavLoadoutManager.et" {
+   coords 0 0 0
+  }
+ }
 }

@@ -1,0 +1,33 @@
+SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ Factions {
+  SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
+   m_bIsPlayable 0
+   m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
+  }
+  SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+   m_bIsPlayable 0
+   m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
+  }
+  SCR_Faction "{56DEAC40D132400B}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
+   m_bIsPlayable 0
+   m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
+  }
+  SCR_Faction "{607AA5C7A94496DA}" : "{3FA20B01D950D31F}Configs/Factions/CIV.conf" {
+  }
+  SCR_Faction "{662B707FA17E6A33}" : "{526B27D70CA18539}Configs/Factions/Charlie/Bandit.conf" {
+  }
+  SCR_Faction "{662B707FAF12B9B7}" : "{48A34A4FDDC91F46}Configs/Factions/Charlie/Gunslinger.conf" {
+  }
+  SCR_Faction "{662B707FAD0103CA}" : "{10B54A86BC7B1D10}Configs/Factions/Charlie/Misfit.conf" {
+  }
+  SCR_Faction "{662B707FAB2E793B}" : "{8B2C5DBE680EB476}Configs/Factions/Charlie/Pioneer.conf" {
+  }
+  SCR_Faction "{662B707F96D739E5}" : "{699DBF8AE07FD2B1}Configs/Factions/Bravo/Helios Platoon.conf" {
+  }
+  SCR_Faction "{662B707F955AB8AD}" : "{9366FB90605C1489}Configs/Factions/Bravo/Viking_Platoon.conf" {
+  }
+  SCR_Faction "{662B707F93B9A2C9}" : "{E27E54BEFFA51B80}Configs/Factions/Alpha/Archangel.conf" {
+  }
+ }
+}

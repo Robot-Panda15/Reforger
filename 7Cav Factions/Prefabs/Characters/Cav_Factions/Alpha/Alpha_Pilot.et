@@ -1,0 +1,24 @@
+SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/AnakedManBase.et" {
+ ID "520EC961A090BBD5"
+ components {
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{E3C280AEAE6A4272}Prefabs/Characters/HeadGear/Helmet_Gentex_HGU56P/Helmet_Gentex_HGU56P_base.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{4E88FFC2F656D730}Prefabs/Characters/Uniforms/AUS_Pilot_US_Modern/AUS_Pilot_US_Modern.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{8E3CB977F5B17184}Prefabs/Characters/Footwear/AUS_AirCrew_Boots_01/AUS_AirCrew_Boots_Bwn.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{12DA4EE2D8B1CF52}Prefabs/Characters/Vests/AUS_Vest_ModernFlight/AUS_Harness_ModernFlight_Outer.et"
+    }
+    LoadoutSlotInfo HandWear {
+     Prefab "{E92C9E74F80B96DF}Prefabs/Characters/Handwear/AUS_Gloves_ModernFlight/AUS_Gloves_ModernFlight.et"
+    }
+   }
+  }
+ }
+}

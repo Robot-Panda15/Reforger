@@ -1,0 +1,42 @@
+SCR_ChimeraCharacter : "{B880ABE66A835D01}Prefabs/Characters/Cav_Factions/Charlie/CnakedManBase.et" {
+ ID "520EC961A090BE1E"
+ components {
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{BA87F78D0E7E3A91}Prefabs/Weapons/MG_M240_Light_MDO.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo ArmoredVest {
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{654B5C9FF8ADFDED}" {
+    }
+    ItemsInitConfigurationItem "{654E14DFCA60FDBC}" {
+     PrefabsToSpawn {
+      "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+     }
+    }
+    ItemsInitConfigurationItem "{654E14D8882B798D}" {
+     PrefabsToSpawn {
+      "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+     }
+    }
+    ItemsInitConfigurationItem "{654E14DA06BBF349}" {
+     PrefabsToSpawn {
+      "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+     }
+    }
+    ItemsInitConfigurationItem "{654E14DA056DC002}" {
+     PrefabsToSpawn {
+      ""
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ angleY -63.5
+}
