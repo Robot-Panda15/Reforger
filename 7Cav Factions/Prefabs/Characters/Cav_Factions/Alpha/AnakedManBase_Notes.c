@@ -1,0 +1,1 @@
+This is the base character for Alpha Company character prefabs.  All changes to this will affect Alpha company prefabs.

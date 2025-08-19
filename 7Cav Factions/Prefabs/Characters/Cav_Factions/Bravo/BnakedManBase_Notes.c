@@ -1,0 +1,1 @@
+This is the base character for Bravo Company character prefabs.  All changes to this will affect Bravo company prefabs.
