@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{74E5776E88937725}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et" {
+SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et" {
  ID "520EC961A090BE1E"
  components {
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {

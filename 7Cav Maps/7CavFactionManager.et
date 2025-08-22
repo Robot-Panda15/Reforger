@@ -3,7 +3,7 @@ SCR_LoadoutManager : "{B54D08AEA74A5354}Prefabs/MP/Managers/Loadouts/LoadoutMana
  m_aPlayerLoadouts {
   SCR_FactionPlayerLoadout "{5596D845DBEEF78C}" {
    m_sLoadoutName "Rifleman"
-   m_sLoadoutResource "{2E6A7178AF4D045E}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et"
+   m_sLoadoutResource "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et"
    m_sAffiliatedFaction "Bandit"
   }
   SCR_FactionPlayerLoadout "{5596D8455CFBE540}" {
@@ -43,7 +43,7 @@ SCR_LoadoutManager : "{B54D08AEA74A5354}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_FactionPlayerLoadout "{61069306CC96B466}" {
    m_sLoadoutName "Pilot"
-   m_sLoadoutResource "{2E6A7178AF4D045E}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et"
+   m_sLoadoutResource "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et"
    m_sAffiliatedFaction "Bandit"
   }
   SCR_PlayerArsenalLoadout "{657C66CEB22F49EA}" {

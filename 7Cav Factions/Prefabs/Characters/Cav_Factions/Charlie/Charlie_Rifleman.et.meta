@@ -1,5 +1,5 @@
 MetaFileClass {
-SCR_ChimeraCharacter : "{59714BDC4D338E0A}Prefabs/Characters/Cav_Factions/Charlie/CnakedManBase.et" {
+ Name "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

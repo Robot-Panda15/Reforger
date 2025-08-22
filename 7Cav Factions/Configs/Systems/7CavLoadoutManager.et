@@ -4,12 +4,12 @@ SCR_LoadoutManager : "{B54D08AEA74A5354}Prefabs/MP/Managers/Loadouts/LoadoutMana
  m_aPlayerLoadouts {
   SCR_FactionPlayerLoadout "{5596D845DBEEF78C}" {
    m_sLoadoutName "Rifleman"
-   m_sLoadoutResource "{74E5776E88937725}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et"
+   m_sLoadoutResource "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et"
    m_sAffiliatedFaction "Bandit"
   }
   SCR_FactionPlayerLoadout "{5596D8455CFBE540}" {
    m_sLoadoutName "Rifleman LAT"
-   m_sLoadoutResource "{D2C5324A1CDC0B20}Prefabs/Characters/Cav_Factions/Charlie/Charlie_RiflemanLightAntiTank.et"
+   m_sLoadoutResource "{D2C5324A1CDC0B20}Prefabs/Characters/Cav_Factions/Delta/Delta_RiflemanLightAntiTank.et"
    m_sAffiliatedFaction "Bandit"
   }
   SCR_FactionPlayerLoadout "{5596D844009597AC}" {

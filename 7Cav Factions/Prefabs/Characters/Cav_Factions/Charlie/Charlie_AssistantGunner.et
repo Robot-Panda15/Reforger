@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{74E5776E88937725}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et" {
+SCR_ChimeraCharacter : "{59714BDC4D338E0A}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et" {
  ID "520EC961A090BE1E"
  components {
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
