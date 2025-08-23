@@ -14,26 +14,19 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
   }
  }
  {
-  SCR_FactionManager "662C23EB2369D735" : "{4A188E44289B9A51}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
-   ID "662B707E2B5938EF"
+  SCR_FactionManager : "{4A188E44289B9A51}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
+   ID "662F03B139AF123F"
    coords 0 0 0
-   Factions {
-    SCR_Faction "{662B707FA17E6A33}" {
-     m_bCreateOnlyPredefinedGroups 1
-    }
-    SCR_Faction "{662B707FAD0103CA}" {
-     m_bCreateOnlyPredefinedGroups 1
-    }
-    SCR_Faction "{662B707FAB2E793B}" {
-     m_bCreateOnlyPredefinedGroups 1
-    }
-   }
   }
   RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
    ID "65A60BDB8E5DF56B"
   }
   ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
    ID "65A60BDB8E5DF575"
+  }
+  SCR_LoadoutManager : "{128DC8942345AA18}Configs/Systems/7CavLoadoutManager.et" {
+   ID "662F03BDB6F31035"
+   coords 0 0 0
   }
   SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
    ID "65A60BDB8E5DD9A4"

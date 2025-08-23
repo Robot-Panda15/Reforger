@@ -9,7 +9,7 @@ SCR_LoadoutManager : "{B54D08AEA74A5354}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_FactionPlayerLoadout "{5596D8455CFBE540}" {
    m_sLoadoutName "Rifleman LAT"
-   m_sLoadoutResource "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et"
+   m_sLoadoutResource "{D2C5324A1CDC0B20}Prefabs/Characters/Cav_Factions/Charlie/Charlie_RiflemanLightAntiTank.et"
    m_sAffiliatedFaction "Bandit"
   }
   SCR_FactionPlayerLoadout "{5596D844009597AC}" {
@@ -24,7 +24,7 @@ SCR_LoadoutManager : "{B54D08AEA74A5354}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_PlayerArsenalLoadout "{568CC9D1B0926B78}" {
    m_sLoadoutName "Machine Gunner"
-   m_sLoadoutResource "{54EA78FAF1244E39}Prefabs/Characters/Cav_Factions/Delta/Delta_MG.et"
+   m_sLoadoutResource "{54EA78FAF1244E39}Prefabs/Characters/Cav_Factions/Charlie/Charlie_MG.et"
    m_sAffiliatedFaction "Bandit"
   }
   SCR_PlayerArsenalLoadout "{568CC9D1B2D77D1F}" {
@@ -51,6 +51,16 @@ SCR_LoadoutManager : "{B54D08AEA74A5354}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sLoadoutName "DMR"
    m_sLoadoutResource "{DA271290E7895745}Prefabs/Characters/Cav_Factions/Charlie/Charlie_DesignatedMarksman.et"
    m_sAffiliatedFaction "Bandit"
+  }
+  SCR_FactionPlayerLoadout "{61069306CC96B466}" {
+   m_sLoadoutName "Crew Chief"
+   m_sLoadoutResource "{9790700770F1DB8B}Prefabs/Characters/Cav_Factions/Alpha/Alpha_Crewchief.et"
+   m_sAffiliatedFaction "Archangel"
+  }
+  SCR_FactionPlayerLoadout "{61069306CC96B466}" {
+   m_sLoadoutName "Crewman"
+   m_sLoadoutResource "{4C480D582A196596}Prefabs/Characters/Cav_Factions/Alpha/Alpha_Crewman.et"
+   m_sAffiliatedFaction "Archangel"
   }
  }
 }
