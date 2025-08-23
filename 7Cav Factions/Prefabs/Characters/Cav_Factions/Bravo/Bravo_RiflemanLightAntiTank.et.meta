@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D2C5324A1CDC0B20}Prefabs/Characters/Cav_Factions/Charlie/Charlie_RiflemanLightAntiTank.et"
+ Name "{EC0163AF7C2E62D4}Prefabs/Characters/Cav_Factions/Bravo/Bravo_RiflemanLightAntiTank.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

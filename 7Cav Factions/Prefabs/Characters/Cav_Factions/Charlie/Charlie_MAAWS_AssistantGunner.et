@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{B880ABE66A835D01}Prefabs/Characters/Cav_Factions/Charlie/CnakedManBase.et" {
+SCR_ChimeraCharacter : "{59714BDC4D338E0A}Prefabs/Characters/Cav_Factions/Charlie/CnakedManBase.et" {
  ID "520EC961A090BE1E"
  components {
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {

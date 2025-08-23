@@ -6,8 +6,10 @@ SCR_ChimeraCharacter : "{ECD07832524366A2}Prefabs/Characters/Cav_Factions/Prefab
     LoadoutSlotInfo Hat {
      Prefab "{E2F3C74458168302}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_ACH_SHROUD_base.et"
     }
-    LoadoutSlotInfo ArmoredVest {
+    LoadoutSlotInfo Jacket {
      Prefab "{51E6ADD2FE1EBFFF}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_MC.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
     }
     LoadoutSlotInfo Pants {
      Prefab "{2FDEBA2FF1B7759F}Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_mc.et"
