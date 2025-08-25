@@ -1,0 +1,27 @@
+SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/AnakedManBase.et" {
+ ID "520EC961A090BBD5"
+ components {
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{E3C280AEAE6A4272}Prefabs/Characters/HeadGear/Helmet_Gentex_HGU56P/Helmet_Gentex_HGU56P_base.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{51E6ADD2FE1EBFFF}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_MC.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{2FDEBA2FF1B7759F}Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_mc.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{3BBDC014AA51663C}Prefabs/Characters/Footwear/Boots_BCT/Footwear_BCT.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{12DA4EE2D8B1CF52}Prefabs/Characters/Vests/AUS_Vest_ModernFlight/AUS_Harness_ModernFlight_Outer.et"
+    }
+    LoadoutSlotInfo HandWear {
+     Prefab "{B9FA26F5990CDEDE}Prefabs/Characters/Handwear/Gloves_MechanixMpact/Gloves_mpack_MC.et"
+    }
+   }
+  }
+ }
+}
