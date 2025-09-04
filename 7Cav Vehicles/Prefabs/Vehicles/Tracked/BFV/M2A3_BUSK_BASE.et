@@ -76,6 +76,19 @@ Tank : "{FA1383EA7F2E8750}Prefabs/Vehicles/Tracked/BFV/M2A2_BUSK_BASE.et" {
     }
    }
   }
+  SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+   MultiSlots {
+    MultiSlotConfiguration "{63136613C980C0F0}" {
+     NumSlots 2
+    }
+    MultiSlotConfiguration "{664973C4BDBCEE74}" {
+     SlotTemplate InventoryStorageSlot Jerrycan {
+      Prefab "{E7B6EE8A99C7F760}Prefabs/Weapons/Ammo/Ammo_Missile_BGM-71_BFV.et"
+     }
+     NumSlots 4
+    }
+   }
+  }
   VehicleWheeledSimulation "{731B26FCA2F19855}" {
    Simulation Wheeled "{4D8B26DEA5F25978}" {
     Engine Engine Engine {
