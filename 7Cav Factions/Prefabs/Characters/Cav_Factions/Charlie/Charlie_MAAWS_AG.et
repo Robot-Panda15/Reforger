@@ -1,0 +1,22 @@
+SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et" {
+ ID "520EC961A090BE1E"
+ components {
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{4A93B3F0B33FF104}Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_MC.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{66492B605B5B10B5}" {
+     TargetStorage "Back/Backpack_511_rush12_MC.et"
+     PrefabsToSpawn {
+      "{93AFBDAB0B0C3E38}Prefabs/Magazine/HEAT551_Magazine.et" "{93AFBDAB0B0C3E38}Prefabs/Magazine/HEAT551_Magazine.et" "{9A87B07B3E3C2964}Prefabs/Magazine/SMOKE469_Magazine.et" "{93AFBDAB0B0C3E38}Prefabs/Magazine/HEAT551_Magazine.et"
+     }
+    }
+   }
+  }
+ }
+}

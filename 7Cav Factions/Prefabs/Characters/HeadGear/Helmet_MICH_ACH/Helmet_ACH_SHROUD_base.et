@@ -34,14 +34,19 @@ GameEntity : "{926F2D2ED4D286EB}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helm
      Prefab "{EB916F0BF524EF25}Prefabs/Characters/HeadGear/Headphones_Peltor/Headphones_Peltor_black.et"
     }
     RHS_LoadoutSlotInfo TopVelcro {
+     PivotID "Head"
+     Offset 0 0.1908 0.0452
+     Angles 75.0884 0 0
+     ChildPivotID "AttachmentPoint"
+     Enabled 1
+     Prefab "{5F7EF7FEBC39B874}Prefabs/Items/Equipment/Nightvision/HelstarStrobe/Helstar.et"
+     AreaType RHS_LoadoutTopVelcroSlotArea "{657D02E3A1B5D6C8}" {
+     }
     }
    }
    WornModel "{942BB93A7E7E4D84}Assets/Characters/HeadGear/Helmet_ACH_MICH/rhs_ach_cov_shroud.xob"
    ItemModel "{24B3272B405FC7B7}Assets/Characters/HeadGear/Helmet_ACH_MICH/rhs_ach_cov_shroud_item.xob"
   }
  }
- coords 0 0 0
- angleX -0.724
- angleY 103.121
- angleZ -10.56
+ coords 1198.946 39 2226.918
 }

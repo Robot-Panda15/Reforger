@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{79FC68437E1BA63B}Prefabs/Characters/Cav_Factions/Charlie/Charlie_MAAWS_AssistantGunner.et"
+ Name "{E4C0D8833DE451A6}Prefabs/Characters/Cav_Factions/Charlie/MAAWS_AG.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
