@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{E546096A2041D19A}Configs/Factions/Charlie/Lists/Groups_EntityCatalog_Charlie.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
