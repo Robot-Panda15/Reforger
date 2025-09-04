@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{CED5771B37DC5CB6}Configs/EntityCatalog/US/InventoryItems_EntityCatalog_Charlie.conf"
+ Name "{2DD7CB4BD8228AC2}Configs/Factions/Charlie/Catalogs/Items_EntityCatalog_Charlie.conf"
  Configurations {
   CONFResourceClass PC {
   }
