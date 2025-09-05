@@ -1,0 +1,15 @@
+GenericEntity : "{6B00933733680922}Prefabs/Props/Military/SupplyBox/SupplyPortableContainers/SupplyPortableContainer_01/SupplyPortableContainers_01_small_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 5
+     m_fResourceValueMax 5
+     m_bEnableResourceDecay 0
+    }
+   }
+  }
+ }
+ coords 1036.109 38.03 2793.658
+}
