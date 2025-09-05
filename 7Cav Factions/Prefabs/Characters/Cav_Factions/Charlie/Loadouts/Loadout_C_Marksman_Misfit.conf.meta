@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{B648F702923BD257}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Marksman_Misfit.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

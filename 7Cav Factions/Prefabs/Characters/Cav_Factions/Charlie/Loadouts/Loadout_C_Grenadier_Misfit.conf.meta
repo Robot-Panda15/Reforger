@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{0E6BEFC3FE55C462}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Grenadier_Misfit.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

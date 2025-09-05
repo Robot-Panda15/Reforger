@@ -1,0 +1,99 @@
+SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutManager_Base.et" {
+ ID "56B2B47708C4F23A"
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{664AFC675DC68D7E}" {
+   m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
+   m_sLoadoutResource "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+   m_sAffiliatedFaction "US"
+  }
+  SCR_FactionPlayerLoadout "{664AFC675DC68D0A}" {
+   m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
+   m_sLoadoutResource "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+   m_sAffiliatedFaction "USSR"
+  }
+  SCR_FactionPlayerLoadout "{664AFC675DC68D08}" {
+   m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
+   m_sLoadoutResource "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+   m_sAffiliatedFaction "FIA"
+  }
+  SCR_PlayerArsenalLoadout "{664AFC675DC68D15}" {
+   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
+   m_sLoadoutResource "{836E7E39AAC5888B}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Base.et"
+   m_sAffiliatedFaction "US"
+  }
+  SCR_PlayerArsenalLoadout "{664AFC675DC68D12}" {
+   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
+   m_sLoadoutResource "{5346CF7E39A65A6B}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Base.et"
+   m_sAffiliatedFaction "USSR"
+  }
+  SCR_PlayerArsenalLoadout "{664AFC675DC68D10}" {
+   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
+   m_sLoadoutResource "{7A9EE19AB67B298B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_base.et"
+   m_sAffiliatedFaction "FIA"
+  }
+  SCR_FactionPlayerLoadout "{664AFC675DC68D1D}" {
+   m_sLoadoutName "#AR-Random_Civilian_Name"
+   m_sLoadoutResource "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et"
+   m_sAffiliatedFaction "CIV"
+  }
+  SCR_PlayerArsenalLoadout "{664AFC675DC68D2F}" {
+   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
+   m_sLoadoutResource "{99F600AD4C6BA6A4}Prefabs/Characters/Factions/CIV/Character_CIV_base.et"
+   m_sAffiliatedFaction "CIV"
+  }
+  SCR_FactionPlayerLoadout "{664B0C91426F9F8D}" : "{A2365F9BF639C9DB}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Rifleman_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9113C42699}" : "{3D87F4F445A019E3}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_AR_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C91107C6B9C}" : "{4CB582924E8F5C55}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Grenadier_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C910DB29D60}" : "{A03B1F4D71FC9564}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_LAT_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9171225874}" : "{F4969A5322E14A60}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Marksman_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C915F1C4A4D}" : "{6EAC9657C6FC16A0}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MG_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C916489345C}" : "{0C53D81319BEF0E0}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MG_AG_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C91743E1B77}" : "{D8D2B5D3A7B4EA0C}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MAAWS_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9177DF248F}" : "{B3DCE309F7D33284}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MAAWS_AS_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9142B90A9C}" : "{FE9944A324C5A534}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Rifleman_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C91120D2AC7}" : "{664007F4BF4BBC2C}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_AR_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C910F48F844}" : "{99F5A8C9503244F0}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Grenadier_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C910C8691D9}" : "{DF11ABD144DB2C60}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_LAT_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C91706A193F}" : "{CFA1B4B141E39468}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Marksman_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C915FA0A0E2}" : "{AAD464741F02D2C5}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MG_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9163F71DE5}" : "{F1680EE4EE0F8645}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MG_AG_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C917352061C}" : "{D394E8BE0778E60F}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MAAWS_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C917603BF86}" : "{0C7DFF41E275D393}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MAAWS_AS_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9141824C31}" : "{E0E832CA46E351EC}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Rifleman_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C911142E8FC}" : "{7F5999A5F57A81D4}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_AR_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C910FA1367C}" : "{0E6BEFC3FE55C462}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Grenadier_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C910B37992B}" : "{E2E5721CC1260D53}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_LAT_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9170BEE3C2}" : "{B648F702923BD257}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_Marksman_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C915E897983}" : "{2C72FB0676268E97}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MG_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9162EA6752}" : "{4E8DB542A96468D7}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MG_AG_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C9173B04130}" : "{9A0CD882176E723B}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MAAWS_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{664B0C917543B4F4}" : "{F1028E584709AAB3}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MAAWS_AS_Misfit.conf" {
+  }
+ }
+}

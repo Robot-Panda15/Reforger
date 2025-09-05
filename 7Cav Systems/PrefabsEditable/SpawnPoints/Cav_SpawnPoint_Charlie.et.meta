@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{128DC8942345AA18}Configs/Systems/7CavLoadoutManager.et"
+ Name "{D6551E36CC9B3F7D}PrefabsEditable/SpawnPoints/Cav_SpawnPoint_Charlie.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

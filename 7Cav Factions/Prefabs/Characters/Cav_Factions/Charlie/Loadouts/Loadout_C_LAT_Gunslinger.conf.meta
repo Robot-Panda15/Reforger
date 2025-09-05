@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{DF11ABD144DB2C60}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_LAT_Gunslinger.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

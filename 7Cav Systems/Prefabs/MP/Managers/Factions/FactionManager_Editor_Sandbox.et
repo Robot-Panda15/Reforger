@@ -15,22 +15,11 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
   }
   SCR_Faction "{607AA5C7A94496DA}" : "{3FA20B01D950D31F}Configs/Factions/CIV.conf" {
   }
-  SCR_Faction "{662B707FA17E6A33}" : "{526B27D70CA18539}Configs/Factions/Charlie/Bandit.conf" {
-   m_bCreateOnlyPredefinedGroups 1
+  SCR_Faction "{664AFA2507C1386C}" : "{374C6DC646EA6CCD}Configs/Factions/Charlie/Charlie_Faction_Bandit.conf" {
   }
-  SCR_Faction "{662B707FAF12B9B7}" : "{48A34A4FDDC91F46}Configs/Factions/Charlie/Gunslinger.conf" {
+  SCR_Faction "{664AFA2506ED6672}" : "{75920097F630F4FA}Configs/Factions/Charlie/Charlie_Faction_Misfit.conf" {
   }
-  SCR_Faction "{662B707FAD0103CA}" : "{10B54A86BC7B1D10}Configs/Factions/Charlie/Misfit.conf" {
-   m_bCreateOnlyPredefinedGroups 1
-  }
-  SCR_Faction "{662B707FAB2E793B}" : "{8B2C5DBE680EB476}Configs/Factions/Delta/Pioneer.conf" {
-   m_bCreateOnlyPredefinedGroups 1
-  }
-  SCR_Faction "{662B707F96D739E5}" : "{699DBF8AE07FD2B1}Configs/Factions/Bravo/Helios Platoon.conf" {
-  }
-  SCR_Faction "{662B707F955AB8AD}" : "{9366FB90605C1489}Configs/Factions/Bravo/Viking_Platoon.conf" {
-  }
-  SCR_Faction "{662B707F93B9A2C9}" : "{E27E54BEFFA51B80}Configs/Factions/Alpha/Archangel.conf" {
+  SCR_Faction "{664AFA2505FE0F6E}" : "{69C80796E3518403}Configs/Factions/Charlie/Charlie_Faction_Gunslinger.conf" {
   }
  }
 }

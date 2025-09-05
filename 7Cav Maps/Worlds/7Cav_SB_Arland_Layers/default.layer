@@ -44,29 +44,24 @@ SCR_AIWorld SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 1461.569 37.974 2930.311
 }
-SCR_GameModeEditor _Cav_GameMode_Editor_Full1 : "{CC02A0163001967B}Prefabs/MP/Modes/Editor/7Cav_GameMode_Editor_Full.et" {
- coords 2036.774 41.598 2054.484
+SCR_GameModeEditor _Cav_GameMode_Editor_Sandbox1 : "{285363A3C06DC821}Prefabs/MP/Modes/Editor/7Cav_GameMode_Editor_Sandbox.et" {
+ components {
+  SCR_FactionAliasComponent "{664AFC662D8B1CB6}" {
+   m_aFactionAliases {
+    SCR_ScenarioFrameworkFactionAliasConfig "{664AFC6621BEBCEB}" {
+     m_sAlias "Bandit"
+     m_sFactionKey "Charlie"
+    }
+   }
+  }
+ }
+ coords 2050.351 44.209 2062.3
  {
-  SCR_FactionManager {
-   ID "662F03B139AF123F"
-   Factions {
-    SCR_Faction "{662B707FA17E6A33}" {
-     m_bIsPlayable 0
-    }
-    SCR_Faction "{662B707FAF12B9B7}" {
-     m_bIsPlayable 0
-    }
-    SCR_Faction "{662B707FAD0103CA}" {
-     m_bIsPlayable 0
-    }
-    SCR_Faction "{662B707F96D739E5}" {
-     m_bIsPlayable 0
-    }
-    SCR_Faction "{662B707F955AB8AD}" {
-     m_bIsPlayable 0
-    }
-    SCR_Faction "{662B707F93B9A2C9}" {
-     m_bIsPlayable 0
+  SCR_LoadoutManager {
+   ID "664AFC66ED99F445"
+   m_aPlayerLoadouts {
+    SCR_FactionPlayerLoadout "{664AFC654E2510CA}" {
+     m_sAffiliatedFaction "Misfit"
     }
    }
   }

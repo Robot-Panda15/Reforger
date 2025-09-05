@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{CAF613054ABA8409}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_Rifleman.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
