@@ -2106,7 +2106,7 @@ $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPat
   coords 6351.402 83.696 6133.765
   {
    SCR_DefendWaypoint : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-    coords 0 0 0
+    coords -36.685 -9.925 10.495
     CompletionRadius 20
    }
   }
@@ -5562,7 +5562,7 @@ $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPat
   coords 5217.607 55.175 8014.508
   {
    SCR_DefendWaypoint : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-    coords 0 0 0
+    coords 0 12 -14.96
     CompletionRadius 5
    }
   }
@@ -5578,8 +5578,8 @@ $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPat
   coords 5211.835 55.175 7987.437
   {
    SCR_DefendWaypoint : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-    coords 0 0 0
-    CompletionRadius 5
+    coords 0 0.831 0
+    CompletionRadius 2.8
    }
   }
  }
@@ -5639,7 +5639,7 @@ $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPat
     m_iGroupMultiplier 3
    }
   }
-  coords 6842.683 92.617 2462.768
+  coords 6842.683 93.587 2462.768
   {
    SCR_DefendWaypoint : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
     coords 0 0 0
@@ -5655,7 +5655,7 @@ $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPat
     m_iGroupMultiplier 3
    }
   }
-  coords 6865.195 104.592 2501.559
+  coords 6865.195 104.918 2501.559
   {
    SCR_DefendWaypoint : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
     coords 0 0 0
@@ -5671,7 +5671,7 @@ $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPat
     m_iGroupMultiplier 3
    }
   }
-  coords 6859.391 104.592 2512.5
+  coords 6859.391 105.278 2512.5
   {
    SCR_DefendWaypoint : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
     coords 0 0 0

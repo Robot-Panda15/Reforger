@@ -33,43 +33,5 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
  coords 4096.367 49.302 4097.605
 }
 SCR_GameModeEditor _Cav_GameMode_Editor_Sandbox1 : "{285363A3C06DC821}Prefabs/MP/Modes/Editor/7Cav_GameMode_Editor_Sandbox.et" {
- coords 6541.257 84.57 2859.932
- {
-  SCR_FactionManager {
-   ID "65A60BDB8E5DF56A"
-   Factions {
-    SCR_Faction "{56DEAC40D2DBC8B1}" {
-     m_aEntityCatalogs {
-      SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" {
-       m_aMultiLists {
-        SCR_EntityCatalogMultiListEntry "{629AC40653B58D69}" {
-         m_aEntities {
-          SCR_EntityCatalogEntry "{629AC406BDB1BE18}" {
-           m_bEnabled 0
-          }
-          SCR_EntityCatalogEntry "{629AC406B89807B8}" {
-           m_bEnabled 0
-          }
-         }
-        }
-       }
-      }
-     }
-    }
-   }
-  }
- }
-}
-$grp GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et" {
- {
-  coords 6606.731 96.719 1200.629
-  angleY -94.876
- }
- {
-  coords 6566.065 96.719 1200.716
-  angleY 85.484
- }
-}
-SCR_SpawnPoint : "{B1248BD4035260A1}Prefabs/MP/Spawning/SpawnPoint_US_CP.et" {
- coords 6586.169 96.837 1187.801
+ coords 6530.215 95.402 1150.809
 }
