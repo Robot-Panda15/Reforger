@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{A3033A752189E172}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_Grenadier.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{1512CA50603780F1}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_Rifleman.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

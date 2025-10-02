@@ -1,0 +1,22 @@
+GameEntity : "{1608873B6690044C}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet_CVC_01.et" {
+ ID "50D485E1435D6C72"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     Prefab "{68C135B5F4F7C759}Prefabs/Items/Equipment/Nightvision/PVS31/PVS31_BLK_MC.et"
+    }
+    RHS_LoadoutSlotInfo TopVelcro {
+     PivotID "Head"
+     Offset 0 0.1908 0.0452
+     Angles 75.0884 0 0
+     ChildPivotID "AttachmentPoint"
+     Enabled 1
+     Prefab "{5F7EF7FEBC39B874}Prefabs/Items/Equipment/Nightvision/HelstarStrobe/Helstar.et"
+     AreaType RHS_LoadoutTopVelcroSlotArea "{657D02E3A1B5D6C8}" {
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{BD1527C96E96D039}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_MG.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
