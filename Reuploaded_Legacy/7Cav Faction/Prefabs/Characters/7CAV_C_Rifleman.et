@@ -6,6 +6,9 @@ SCR_ChimeraCharacter : "{A4D204488A4A5C43}Prefabs/Characters/7CAV_Base.et" {
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{FC3B9607C5987B3B}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_ACH_base.et"
+    }
     LoadoutSlotInfo ArmoredVest {
      Prefab "{4A11957AAD447582}Prefabs/Characters/Vests/Vest_JPC/Vest_JPC_MC.et"
     }

@@ -8,11 +8,10 @@ GenericEntity : "{F7DC8BB193BCAF44}PrefabsEditable/Auto/Compositions/Slotted/Slo
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EA88D643C6F5270}" {
-      m_Value 400
+      m_Value 300
      }
      SCR_EntityBudgetValue "{64DF18C01D8D65B5}" {
-      m_BudgetType RANK_CORPORAL
-      m_Value 2
+      m_Value 1
      }
     }
    }

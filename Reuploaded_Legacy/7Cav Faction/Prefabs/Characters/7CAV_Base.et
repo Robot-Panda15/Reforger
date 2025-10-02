@@ -34,7 +34,7 @@ SCR_ChimeraCharacter : "{918C557BF3506286}Prefabs/Characters/Campaign/Final/Camp
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
-     Prefab "{E2F3C74458168302}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_ACH_SHROUD_base.et"
+     Prefab "{FC3B9607C5987B3B}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_ACH_base.et"
     }
     LoadoutSlotInfo Jacket {
      Prefab "{7BA7FF3E9F68960E}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_MC.et"
