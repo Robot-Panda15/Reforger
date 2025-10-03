@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{3A32641B2481FE2C}Configs/Factions/Bravo/Catalogs/Vehicles_EntityCatalog_Alpha.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

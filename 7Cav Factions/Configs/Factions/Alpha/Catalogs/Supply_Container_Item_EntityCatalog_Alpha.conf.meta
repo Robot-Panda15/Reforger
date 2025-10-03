@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{B6A47B198AFB2EB8}Configs/Factions/Bravo/Catalogs/Supply_Container_Item_EntityCatalog_Alpha.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

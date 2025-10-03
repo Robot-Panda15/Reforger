@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{7B60CDB6206C8899}Prefabs/Characters/Cav_Factions/Alpha/Loadouts/Alpha_Pilot.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
