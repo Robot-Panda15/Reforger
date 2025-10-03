@@ -95,5 +95,29 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_FactionPlayerLoadout "{664B0C917543B4F4}" : "{F1028E584709AAB3}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Loadout_C_MAAWS_AS_Misfit.conf" {
   }
+  SCR_FactionPlayerLoadout "{6686B9CE68AF2921}" : "{74E42F3583732192}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_Rifleman_Helios.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CE5720F49C}" : "{1512CA50603780F1}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_Rifleman_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCE2054C94}" : "{31F06BCB596E1EC6}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_AssistantGunner_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCE1DF3A1D}" : "{04EED5FEB834BB1A}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_AutomaticRifleman_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCE0F403AF}" : "{BAAFBFB629310E41}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_BFV_Crewman_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCDFBE3423}" : "{8BD7A521C2614C50}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_BFV_VC_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCDD313F89}" : "{D807CC45068D958B}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_DesignatedMarksman_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCDCD0AE3F}" : "{A3033A752189E172}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_Grenadier_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCDB8EAF01}" : "{CE9605760067D50A}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_MAAWS_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCDAEF915D}" : "{A88FA7631628A247}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_MAAWSAssistantGunner_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCD70CD170}" : "{BD1527C96E96D039}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_MG_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{6686B9CCD5363F8C}" : "{96AF2430015FC6AD}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Loadout_B_RiflemanLightAntiTank_Viking.conf" {
+  }
  }
 }

@@ -21,5 +21,9 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
   }
   SCR_Faction "{664AFA2505FE0F6E}" : "{69C80796E3518403}Configs/Factions/Charlie/Charlie_Faction_Gunslinger.conf" {
   }
+  SCR_Faction "{6686B9CE2CAF6160}" : "{9366FB90605C1489}Configs/Factions/Bravo/Viking_Platoon.conf" {
+  }
+  SCR_Faction "{6686B9CE283B8ED6}" : "{699DBF8AE07FD2B1}Configs/Factions/Bravo/Helios Platoon.conf" {
+  }
  }
 }

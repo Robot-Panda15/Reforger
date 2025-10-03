@@ -4,7 +4,7 @@ GameEntity : "{1608873B6690044C}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet
   BaseLoadoutClothComponent "{5112706CD4157AF8}" {
    Slots {
     RHS_LoadoutSlotInfo NVG {
-     Prefab "{68C135B5F4F7C759}Prefabs/Items/Equipment/Nightvision/PVS31/PVS31_BLK_MC.et"
+     Offset 0 0.1544 -0.1356
     }
     RHS_LoadoutSlotInfo TopVelcro {
      PivotID "Head"
@@ -12,7 +12,6 @@ GameEntity : "{1608873B6690044C}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet
      Angles 75.0884 0 0
      ChildPivotID "AttachmentPoint"
      Enabled 1
-     Prefab "{5F7EF7FEBC39B874}Prefabs/Items/Equipment/Nightvision/HelstarStrobe/Helstar.et"
      AreaType RHS_LoadoutTopVelcroSlotArea "{657D02E3A1B5D6C8}" {
      }
     }
