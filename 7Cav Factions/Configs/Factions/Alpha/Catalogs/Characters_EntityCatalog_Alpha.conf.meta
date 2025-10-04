@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{0811DF223FC3172C}Configs/Factions/Bravo/Catalogs/Characters_EntityCatalog_Alpha.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
