@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{8712539999C1ED15}Configs/Factions/Charlie/Catalogs/Supply_Container_Item_EntityCatalog_Pioneer.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{4F8F91DF7B1F3830}Configs/Factions/Bravo/Catalogs/Viking/Vehicles_EntityCatalog_Helios.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{E9FA6127D37D948B}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Viking/Loadout_B_Grenadier_Pioneer.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

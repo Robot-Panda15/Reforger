@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{E1B1E41B3D9C07C7}Configs/Factions/Charlie/Catalogs/WeaponTripod_EntityCatalog_Pioneer.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

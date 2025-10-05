@@ -27,5 +27,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
   }
   SCR_Faction "{6686D1A1CE545A11}" : "{E27E54BEFFA51B80}Configs/Factions/Alpha/Archangel.conf" {
   }
+  SCR_Faction "{668B4E33801A1326}" : "{76B105D9D8EF47DC}Configs/Factions/Bravo/Pioneer_Platoon.conf" {
+  }
  }
 }

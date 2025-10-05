@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{7AF6D001C1A032CA}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Viking/Loadout_B_BFV_VC_Pioneer.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
