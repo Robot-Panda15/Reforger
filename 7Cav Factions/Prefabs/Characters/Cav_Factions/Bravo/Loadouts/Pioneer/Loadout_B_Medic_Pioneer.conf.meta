@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{D078BA2E089F6209}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Helios/Loadout_B_Medic_Pioneer.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

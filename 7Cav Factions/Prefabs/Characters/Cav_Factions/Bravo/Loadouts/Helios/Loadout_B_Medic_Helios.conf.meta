@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{9ADB52DA8FE508D4}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Helios/Loadout_B_Medic_Helios.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
