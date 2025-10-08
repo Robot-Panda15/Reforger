@@ -1,0 +1,14 @@
+Projectile : "{EB720F74749D5AC4}Prefabs/Weapons/Ammo/Ammo_Missile_BGM-71.et" {
+ ID "629D11C7F7353F80"
+ components {
+  InventoryItemComponent "{62EB07A083C43139}" {
+   Attributes SCR_ItemAttributeCollection "{62EB07A083C43135}" {
+    ItemDisplayName UIInfo "{62EB07A083C43136}" {
+     Description "BGM-71D TOW ATGM"
+    }
+    CommonItemType "AMMO"
+    m_bDraggable 1
+   }
+  }
+ }
+}

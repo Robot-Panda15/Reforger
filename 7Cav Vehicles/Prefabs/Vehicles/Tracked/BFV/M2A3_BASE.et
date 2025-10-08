@@ -52,6 +52,19 @@ Tank : "{ABCC1FF0D6096E47}Prefabs/Vehicles/Tracked/BFV/M2A2_BASE.et" {
     }
    }
   }
+  SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+   MultiSlots {
+    MultiSlotConfiguration "{63136613C980C0F0}" {
+     NumSlots 2
+    }
+    MultiSlotConfiguration "{664918F1472AE3EB}" {
+     SlotTemplate InventoryStorageSlot Jerrycan {
+      Prefab "{E7B6EE8A99C7F760}Prefabs/Weapons/Ammo/Ammo_Missile_BGM-71_BFV.et"
+     }
+     NumSlots 4
+    }
+   }
+  }
   VehicleWheeledSimulation "{731B26FCA2F19855}" {
    Simulation Wheeled "{4D8B26DEA5F25978}" {
     Engine Engine Engine {
@@ -74,6 +87,9 @@ Tank : "{ABCC1FF0D6096E47}Prefabs/Vehicles/Tracked/BFV/M2A2_BASE.et" {
     }
    }
   }
+  WCS_LockableVehicleComponent "{64ED7DDF3D7A3937}" {
+   Enabled 0
+  }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     RegisteringComponentSlotInfo bucket_seat {
@@ -90,9 +106,10 @@ Tank : "{ABCC1FF0D6096E47}Prefabs/Vehicles/Tracked/BFV/M2A2_BASE.et" {
    ActionContexts {
     UserActionContext "{64742AA7A7FE838F}" {
      Position PointInfo "{64742AA7A7FE8345}" {
-      Offset -0.3039 0.059 -0.2995
+      Offset -0.3039 0.2947 -0.388
      }
-     Radius 0.35
+     Radius 0.45
+     Omnidirectional 1
     }
     UserActionContext "{659B48D03AC9BC98}" {
      ContextName "passenger_cargo_C01"
