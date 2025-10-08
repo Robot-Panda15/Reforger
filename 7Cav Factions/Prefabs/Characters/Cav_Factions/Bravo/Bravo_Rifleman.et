@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
+SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
  ID "520EC961A090BE1E"
  components {
   SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
@@ -91,7 +91,7 @@ SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/
      }
     }
     ItemsInitConfigurationItem "{66260B3A958FB2C3}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_MC.et/Pouch1/Pouch_jpc_placard_MC.et"
+     TargetStorage "Vest/Vest_JPC_okinawa_MC.et/saw/Pouch_PCGEN3_util.et"
      PrefabsToSpawn {
       "{8554ED3F088BADA6}Prefabs/Items/Core/Wirecutters/wirecutters.et"
      }

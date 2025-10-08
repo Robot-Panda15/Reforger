@@ -34,9 +34,9 @@ SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/
      }
     }
     ItemsInitConfigurationItem "{668B761480D2EC63}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/raid/Pouch_Shaw_Raid.et"
+     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/nerd/Pouch_Shaw_Nerd_Big.et"
      PrefabsToSpawn {
-      "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et" "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et" "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
+      "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
      }
     }
     ItemsInitConfigurationItem "{668B7614D0521503}" {
@@ -63,9 +63,15 @@ SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/
       "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
      }
     }
+    ItemsInitConfigurationItem "{66902E95467B184F}" {
+     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/raid/Pouch_Shaw_Raid.et"
+     PrefabsToSpawn {
+      "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
+     }
+    }
    }
   }
  }
  coords 0 0 0
- angleY -69.598
+ angleY -67.385
 }

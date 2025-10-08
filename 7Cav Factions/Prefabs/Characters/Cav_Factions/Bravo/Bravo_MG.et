@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
+SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
  ID "520EC961A090BE1E"
  components {
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
@@ -35,13 +35,13 @@ SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/
      }
     }
     ItemsInitConfigurationItem "{654E14D8882B798D}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_MG.et"
+     TargetStorage "Vest/Vest_JPC_okinawa_Coy_MG.et/M2402/Pouch_PCGEN3_MG.et"
      PrefabsToSpawn {
       "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
      }
     }
     ItemsInitConfigurationItem "{654E14DA06BBF349}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_MG.et"
+     TargetStorage "Vest/Vest_JPC_okinawa_Coy_MG.et/m2401/Pouch_PCGEN3_MG.et"
      PrefabsToSpawn {
       "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
      }
@@ -59,7 +59,7 @@ SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/
      }
     }
     ItemsInitConfigurationItem "{66492B67AD78919F}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_MG.et"
+     TargetStorage "Back/Backpack_511_rush12_MC.et"
      PrefabsToSpawn {
       "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
      }

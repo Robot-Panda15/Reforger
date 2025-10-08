@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
+SCR_ChimeraCharacter : "{29C9C7591C683955}Prefabs/Characters/Cav_Factions/Bravo/Bravo_Rifleman.et" {
  ID "520EC961A090BE1E"
  components {
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {

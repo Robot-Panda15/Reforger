@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
+SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
  ID "520EC961A090BE1E"
  components {
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
@@ -36,9 +36,9 @@ SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/
      }
     }
     ItemsInitConfigurationItem "{654F5A14A23BADD5}" {
-     TargetStorage "Vest/Vest_PCGen_III_nobelt_MG.et/admin/Pouch_Admin.et"
+     TargetStorage "Vest/Vest_PCGen_III_nobelt_MG.et/saw2/Pouch_PCGEN3_MG.et"
      PrefabsToSpawn {
-      "{8FF49793853DB2F9}Prefabs/Weapons/Magazines/m17_magazines/Magazine_9x19_m17_17rnd.et" "{8FF49793853DB2F9}Prefabs/Weapons/Magazines/m17_magazines/Magazine_9x19_m17_17rnd.et"
+      "{8FF49793853DB2F9}Prefabs/Weapons/Magazines/m17_magazines/Magazine_9x19_m17_17rnd_M1152.et" "{8FF49793853DB2F9}Prefabs/Weapons/Magazines/m17_magazines/Magazine_9x19_m17_17rnd_M1152.et"
      }
     }
     ItemsInitConfigurationItem "{654F5A1E884328EE}" {

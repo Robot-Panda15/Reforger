@@ -4,5 +4,12 @@ SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charli
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
    WeaponTemplate "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
   }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{66260B3A958FB2C3}" {
+     TargetStorage "Vest/Vest_JPC_okinawa_MC.et/saw/Pouch_PCGEN3_util.et"
+    }
+   }
+  }
  }
 }

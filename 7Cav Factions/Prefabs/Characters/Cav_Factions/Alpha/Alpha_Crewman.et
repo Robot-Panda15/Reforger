@@ -23,7 +23,7 @@ SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/
      }
     }
     ItemsInitConfigurationItem "{668B76156ADA2E51}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/m18_2/Pouch_Filbe_M18_1.et"
+     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/m18_1/Pouch_Filbe_M18_2.et"
      PrefabsToSpawn {
       "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et"
      }
