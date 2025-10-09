@@ -1,0 +1,22 @@
+SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charlie/Charlie_Rifleman.et" {
+ ID "520EC961A090BE1E"
+ components {
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{4A93B3F0B33FF104}Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_MC.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{66934A1F876EF17C}" {
+     TargetStorage "Back/Backpack_511_rush12_MC.et"
+     PrefabsToSpawn {
+      "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{30CDE9F71FC702E8}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01_Base.et" "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et" "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et" "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et" "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et" "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et" "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et" "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et" "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et" "{58CF3AB87C441295}Prefabs/Items/Medicine/AmmoniumCarbonatePackage/ACE_Medical_AmmoniumCarbonatePackage.et" "{58CF3AB87C441295}Prefabs/Items/Medicine/AmmoniumCarbonatePackage/ACE_Medical_AmmoniumCarbonatePackage.et" "{02DD34077F51F65E}Prefabs/Items/Medicine/NaloxoneInjection/ACE_Medical_NaloxoneInjection.et" "{00E36F41CA310E2A}Prefabs/Items/Medicine/SalineBag_01/SalineBag_US_01.et"
+     }
+    }
+   }
+  }
+ }
+}

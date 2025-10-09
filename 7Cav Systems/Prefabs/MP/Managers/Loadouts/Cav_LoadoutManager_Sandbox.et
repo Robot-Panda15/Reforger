@@ -143,17 +143,29 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_FactionPlayerLoadout "{668B4E33422D27A5}" : "{071EBCAF45807C93}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Pioneer/Loadout_B_MAAWSAssistantGunner_Pioneer.conf" {
   }
-  SCR_FactionPlayerLoadout "{668D60EA92F015C4}" : "{9ADB52DA8FE508D4}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Helios/Loadout_B_Medic_Helios.conf" {
+  SCR_FactionPlayerLoadout "{668D60EA92F015C4}" : "{9ADB52DA8FE508D4}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Helios/Loadout_B_Platoon_Medic_Helios.conf" {
   }
-  SCR_FactionPlayerLoadout "{668D60EAFF1BFA7B}" : "{D078BA2E089F6209}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Pioneer/Loadout_B_Medic_Pioneer.conf" {
+  SCR_FactionPlayerLoadout "{668D60EAFF1BFA7B}" : "{D078BA2E089F6209}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Pioneer/Loadout_B_Platoon_Medic_Pioneer.conf" {
   }
-  SCR_FactionPlayerLoadout "{668D60EAF82C7A61}" : "{0987B2F190B64911}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Viking/Loadout_B_Medic_Viking.conf" {
+  SCR_FactionPlayerLoadout "{668D60EAF82C7A61}" : "{0987B2F190B64911}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Viking/Loadout_B_Platoon_Medic_Viking.conf" {
   }
   SCR_FactionPlayerLoadout "{668D60EAEA3228A9}" : "{F646ECD059E4DD62}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Bandit/Loadout_C_Platoon_Medic_Bandit.conf" {
   }
   SCR_FactionPlayerLoadout "{668D60EAE7AB2CB5}" : "{1A221AB67556521C}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Gunslinger/Loadout_C_Platoon_Medic_Gunslinger.conf" {
   }
   SCR_FactionPlayerLoadout "{668D60EAE13EADCD}" : "{B4988181E93E4555}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Misfit/Loadout_C_Platoon_Medic_Misfit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{66934A1DAB89EDEE}" : "{83CE2EBBD2C36642}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Helios/Loadout_B_CLS_Helios.conf" {
+  }
+  SCR_FactionPlayerLoadout "{66934A1DA7A24425}" : "{73AF8EED0B7F9ECB}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Pioneer/Loadout_B_CLS_Pioneer.conf" {
+  }
+  SCR_FactionPlayerLoadout "{66934A1DA1528BD2}" : "{1092CE90CD902787}Prefabs/Characters/Cav_Factions/Bravo/Loadouts/Viking/Loadout_B_CLS_Viking.conf" {
+  }
+  SCR_FactionPlayerLoadout "{66934A1D9BEF15ED}" : "{C691A629EB73093A}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Bandit/Loadout_C_CLS_Bandit.conf" {
+  }
+  SCR_FactionPlayerLoadout "{66934A1D9631D8AB}" : "{2AB683A3C739676A}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Gunslinger/Loadout_C_CLS_Gunslinger.conf" {
+  }
+  SCR_FactionPlayerLoadout "{66934A1D928D9F21}" : "{844FCB785BA9910D}Prefabs/Characters/Cav_Factions/Charlie/Loadouts/Misfit/Loadout_C_CLS_Misfit.conf" {
   }
  }
 }
