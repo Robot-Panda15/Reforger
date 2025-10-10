@@ -41,13 +41,6 @@ Turret : "{4462D57DD5C424C3}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/BFV_Tur
    TurretEnabledStabilization DirectionTarget
    UseWeaponSights 1
   }
-  WCS_Armament_LoadoutComponent "{62EF3AD14CD98BAA}" {
-   m_ArmamentGroups {
-    WCS_ArmamentWeaponGroup "{62EF3AD1A218B9F6}" {
-     prefab "{C9230D7AE3E5C84B}Prefabs/Weapons/AircraftWeapons/MissilePods/Pod_XM65_2x_BFV_Test.et"
-    }
-   }
-  }
   WCS_Armament_TurretStabilizationComponent "{62EF3AD12B498A0C}" {
    m_fHorizontalStabilizationSpeed 360
    m_fVerticalStabilizationSpeed 360
@@ -58,30 +51,22 @@ Turret : "{4462D57DD5C424C3}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/BFV_Tur
     }
     UserActionContext "{5E4A2EC55AA3DF18}" {
     }
-    UserActionContext "{65BB78A3DD6A193A}" {
-     Position PointInfo "{58F8DC79D5A23FBE}" {
-      Offset -0.0731 1.2152 0.7796
-     }
-     Radius 0.5
-    }
     UserActionContext "{65DA210783C5F741}" {
      ContextName "TOW"
      Position PointInfo "{65DA21076FB6D4DF}" {
       PivotID "TOW_rack"
       Offset 0.3702 0 -0.4297
      }
-     Radius 0.75
+     Radius 0.67
     }
    }
    additionalActions {
-    WCS_RearmPodAtRepairStationAction "{65DA2107FA95803E}" {
-     UIInfo SCR_ActionContextUIInfo "{664918F7E71BC835}" {
-      m_sIconName "Rearm TOW"
-     }
+    WCS_Armament_RearmFromVehicleAction "{65DA2107FA95803E}" {
+     ActionTitle "Rearm TOW"
      Duration 10
-     "Inventory action" 1
-     m_eShownInVehicleState IN_VEHICLE_ANY
-     m_sProjectileToRearm "{E7B6EE8A99C7F760}Prefabs/Weapons/Ammo/Ammo_Missile_BGM-71_BFV.et"
+     m_sCompatibleProjectiles {
+      "{E7B6EE8A99C7F760}Prefabs/Weapons/Ammo/Ammo_Missile_BGM-71_BFV.et"
+     }
     }
    }
   }
