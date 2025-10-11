@@ -1,0 +1,21 @@
+GenericEntity : "{4E866C1E6F114AB4}Prefabs/Props/Military/SupplyBox/SupplyPortableContainers/SupplyPortableContainer_01/SupplyPortableContainers_01_large_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  InventoryItemComponent "{5D84C32907D36CA7}" {
+   Attributes SCR_ItemAttributeCollection "{5D84C329099A4890}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{5D84C329725C53B7}" {
+     Weight 10
+    }
+   }
+  }
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 40
+     m_fResourceValueMax 40
+    }
+   }
+  }
+ }
+ coords 1037.65 38.003 2794.168
+}
