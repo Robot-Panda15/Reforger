@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{76B105D9D8EF47DC}Configs/Factions/Bravo/Pioneer_Platoon.conf"
+ Name "{9366FB90605C1489}Configs/Factions/Viking_Platoon.conf"
  Configurations {
   CONFResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   CONFResourceClass PS5 : PC {
   }
   CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
   }
  }
 }
