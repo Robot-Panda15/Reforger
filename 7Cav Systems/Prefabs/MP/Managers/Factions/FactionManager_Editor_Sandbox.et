@@ -43,6 +43,9 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
   SCR_Faction "{66960A2D877808FA}" : "{F33C7BF22CBF3A8A}Configs/Factions/RHS_US_USMC.conf" {
    m_bIsPlayable 0
    m_bShowInWelcomeScreenIfNonPlayable 0
+   m_aFriendlyFactionsIds + {
+    "Archangel" "Helios" "Pioneer" "Viking" "Bandit" "Misfit" "Gunslinger"
+   }
   }
  }
 }
