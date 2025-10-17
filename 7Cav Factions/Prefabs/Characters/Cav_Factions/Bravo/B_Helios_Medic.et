@@ -1,6 +1,15 @@
-SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
+SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
  ID "520EC961A090BBD5"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Icon "{F3FCC3B9732551D9}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Medic.edds"
+    m_Image "{8D3E9B959DCE2B60}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Medic.edds"
+    m_aAutoLabels + {
+     44
+    }
+   }
+  }
   CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {
    WeaponType SmokeGrenade
   }
@@ -23,7 +32,7 @@ SCR_ChimeraCharacter : "{050B0AF92926378C}Prefabs/Characters/Cav_Factions/Bravo/
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
     ItemsInitConfigurationItem "{66491388B9C310FA}" {
-     PrefabsToSpawn + {
+     PrefabsToSpawn {
       "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et"
      }
     }

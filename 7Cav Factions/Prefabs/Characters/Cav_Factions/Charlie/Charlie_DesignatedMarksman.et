@@ -1,6 +1,15 @@
 SCR_ChimeraCharacter : "{C50E0F5F10D146B2}Prefabs/Characters/Cav_Factions/Charlie/CnakedManBase.et" {
  ID "520EC961A090BE1E"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Icon "{0A78405E73C36477}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Sharpshooter.edds"
+    m_Image "{1F01D611EE8329E0}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/US_Army/GreenBerets/Supressed/Character_US_SF_Sharpshooter_S.edds"
+    m_aAutoLabels + {
+     47
+    }
+   }
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    SignalsSourceAccess SignalsSourceAccessClass "{654F5A129F56F1C8}" {
    }

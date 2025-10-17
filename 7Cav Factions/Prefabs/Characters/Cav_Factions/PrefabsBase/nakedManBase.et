@@ -10,6 +10,13 @@ SCR_ChimeraCharacter : "{836E7E39AAC5888B}Prefabs/Characters/Factions/BLUFOR/US_
   }
   SCR_CampaignBuildingComponent "{66235EBBDC51A330}" {
   }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_aAutoLabels {
+     122
+    }
+   }
+  }
   SCR_MapDescriptorComponent "{66235EBBDC51A302}" {
    VisibleOnMap 0
    MainType Unit

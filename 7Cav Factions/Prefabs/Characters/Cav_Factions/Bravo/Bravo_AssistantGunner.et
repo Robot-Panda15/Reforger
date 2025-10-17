@@ -1,6 +1,15 @@
 SCR_ChimeraCharacter : "{29C9C7591C683955}Prefabs/Characters/Cav_Factions/Bravo/Bravo_Rifleman.et" {
  ID "520EC961A090BE1E"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Icon "{FB48FAD32DA8BC91}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_AmmoBearer.edds"
+    m_Image "{2FC02D4957E7A86E}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_AMG.edds"
+    m_aAutoLabels + {
+     48
+    }
+   }
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo ArmoredVest {

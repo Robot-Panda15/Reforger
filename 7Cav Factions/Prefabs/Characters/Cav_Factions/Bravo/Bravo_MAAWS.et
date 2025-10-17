@@ -1,6 +1,15 @@
 SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/BnakedManBase.et" {
  ID "520EC961A090BE1E"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Icon "{00B30C29FAF85E1C}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_AntiTank.edds"
+    m_Image "{278C426C1D3B4C27}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_LAT.edds"
+    m_aAutoLabels + {
+     40
+    }
+   }
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponType Rifle
    WeaponTemplate "{31070CB2D8A07679}Prefabs/Weapons/Rifle_M4A1.et"
