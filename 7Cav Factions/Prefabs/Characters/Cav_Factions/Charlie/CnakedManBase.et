@@ -51,4 +51,6 @@ SCR_ChimeraCharacter : "{ECD07832524366A2}Prefabs/Characters/Cav_Factions/Prefab
    }
   }
  }
+ coords 0 0 0
+ angleY 0.5
 }
