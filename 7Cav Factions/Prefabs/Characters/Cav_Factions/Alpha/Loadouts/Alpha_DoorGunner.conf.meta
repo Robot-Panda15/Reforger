@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{392DEAEE6473F271}Prefabs/Characters/Cav_Factions/Alpha/Loadouts/Alpha_DoorGunner.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

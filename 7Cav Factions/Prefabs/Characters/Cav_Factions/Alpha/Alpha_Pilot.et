@@ -1,6 +1,12 @@
 SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/AnakedManBase.et" {
  ID "520EC961A090BBD5"
  components {
+  CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {
+   WeaponTemplate "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+  }
+  CharacterGrenadeSlotComponent "{5A6CDA0CCF43068E}" {
+   WeaponTemplate "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et"
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponTemplate "{31070CB2D8A07679}Prefabs/Weapons/Rifle_M4A1.et"
   }
@@ -12,66 +18,74 @@ SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/
     LoadoutSlotInfo Boots {
      Prefab "{8E3CB977F5B17184}Prefabs/Characters/Footwear/AUS_AirCrew_Boots_01/AUS_AirCrew_Boots_Bwn.et"
     }
+    LoadoutSlotInfo Vest {
+     Prefab "{66FE99EB54983C85}Prefabs/Characters/Vests/Vest_ALSE/variants/Vest_ALSE_Crew.et"
+    }
    }
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
     ItemsInitConfigurationItem "{66495389F6486813}" {
-     TargetStorage "Jacket/AUS_Pilot_US_Modern.et"
      PrefabsToSpawn +{
      }
     }
     ItemsInitConfigurationItem "{6649599F02AB45F0}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/pistol/Pouch_Highspeed_Pistol.et"
+     TargetStorage "Vest/Vest_ALSE_Crew.et/pistol/Pouch_Highspeed_Pistol_MC.et"
      PrefabsToSpawn {
-      "{A62799F16443E356}Prefabs/Weapons/Magazines/m17_magazines/Magazine_9x19_m17_17rnd_M882.et"
+      "{6BF76E1E3BDC44F0}Prefabs/Weapons/Magazines/m17_magazines/Magazine_9x19_m17_17rnd_M1153.et"
      }
     }
     ItemsInitConfigurationItem "{668B7615EFBC8659}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/pistol2/Pouch_Highspeed_Pistol.et"
+     TargetStorage "Vest/Vest_ALSE_Crew.et/pistol2/Pouch_Highspeed_Pistol_MC.et"
      PrefabsToSpawn {
-      "{A62799F16443E356}Prefabs/Weapons/Magazines/m17_magazines/Magazine_9x19_m17_17rnd_M882.et"
-     }
-    }
-    ItemsInitConfigurationItem "{668B761480D2EC63}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/nerd/Pouch_Shaw_Nerd_Big.et"
-     PrefabsToSpawn {
-      "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
+      "{6BF76E1E3BDC44F0}Prefabs/Weapons/Magazines/m17_magazines/Magazine_9x19_m17_17rnd_M1153.et"
      }
     }
     ItemsInitConfigurationItem "{668B7614D0521503}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/m18_2/Pouch_Filbe_M18_1.et"
+     TargetStorage "Vest/Vest_ALSE_Crew.et/nerd/Pouch_KBS_Admin_base.et"
      PrefabsToSpawn {
-      "{9BBDEE253A16CC66}Prefabs/Weapons/Grenades/M18/Smoke_M18_Yellow.et"
+      "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
+     }
+    }
+    ItemsInitConfigurationItem "{66AF5ABC0F61E8D3}" {
+     TargetStorage "Vest/Vest_ALSE_Crew.et/HSGI/Pouch_Shaw_Nerd_Mini_MC.et"
+     PrefabsToSpawn {
+      "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et"
+     }
+    }
+    ItemsInitConfigurationItem "{66AF5ABBE7FE8490}" {
+     TargetStorage "Vest/Vest_ALSE_Crew.et/nerd/Pouch_KBS_Admin_base.et"
+     PrefabsToSpawn {
+      "{8554ED3F088BADA6}Prefabs/Items/Core/Wirecutters/wirecutters.et"
      }
     }
     ItemsInitConfigurationItem "{668B7615CCCAE960}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/m18_1/Pouch_Filbe_M18_2.et"
+     TargetStorage "Vest/Vest_ALSE_Crew.et/radio/Pouch_AVS_MBITR_Radio_Coy.et"
      PrefabsToSpawn {
-      "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et"
+      "{D69684663E89D6EA}Prefabs/Items/Equipment/Radios/Radio_ANPRC152A_OLD.et"
      }
     }
     ItemsInitConfigurationItem "{668B76151CD8760C}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/pistolpouch2/Pouch_Filbe_M67_Base.et"
+     TargetStorage "Vest/Vest_ALSE_Crew.et/magpouch2/Pouch_FILBE_doubleM4_3.et"
      PrefabsToSpawn {
-      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+      "{DEDC311A2B0F9235}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855A1_Last_5Tracer.et" "{DEDC311A2B0F9235}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855A1_Last_5Tracer.et"
      }
     }
     ItemsInitConfigurationItem "{668B76151CB807D0}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/m67/Pouch_Filbe_M67_2.et"
+     TargetStorage "Vest/Vest_ALSE_Crew.et/flex/Pouch_FILBE_doubleM4_1.et"
      PrefabsToSpawn {
-      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+      "{DEDC311A2B0F9235}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855A1_Last_5Tracer.et" "{DEDC311A2B0F9235}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855A1_Last_5Tracer.et"
      }
     }
     ItemsInitConfigurationItem "{66902E95467B184F}" {
-     TargetStorage "Vest/Vest_JPC_okinawa_Coy_sniper.et/raid/Pouch_Shaw_Raid.et"
+     TargetStorage "Vest/Vest_ALSE_Crew.et/m18_2/Pouch_Shaw_Flex.et"
      PrefabsToSpawn {
-      "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
+      "{DEDC311A2B0F9235}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855A1_Last_5Tracer.et"
      }
     }
    }
   }
  }
  coords 0 0 0
- angleY -67.385
+ angleY 175.5
 }

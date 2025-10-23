@@ -21,7 +21,6 @@ GameEntity : "{926F2D2ED4D286EB}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helm
      Prefab "{D4ABE8F396146587}Prefabs/Characters/Eyewear/crossbow/Eyewear_ess_crossbow_clr.et"
     }
     RHS_LoadoutSlotInfo Masks {
-     Prefab "{F666F01271F1BCC3}Prefabs/Characters/HeadGear/Balaclavas/Balaclava_v1/Balaclava_v1_Multicam.et"
     }
     RHS_LoadoutSlotInfo BackVelcro {
     }
