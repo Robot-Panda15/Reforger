@@ -1,0 +1,19 @@
+GenericEntity : "{D4FEF8D7D7A0A5F5}Prefabs/Weapons/Rifle_M4A1_M203.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{629ADD50107BFFEA}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD500DE777C8}" {
+      Prefab "{A7C848BABE4F4577}Prefabs/Weapons/Attachments/Lasers/psq23/LaserRangefinder_PSQ23_base.et"
+     }
+    }
+    AttachmentSlotComponent "{629ADD528EE856C1}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD52ACAC8DC6}" {
+      Prefab "{1D1792BE5A3BB831}Prefabs/Weapons/Attachments/Misc/KacRailCover/KacRailCover_grip_tan.et"
+     }
+    }
+   }
+  }
+ }
+}
