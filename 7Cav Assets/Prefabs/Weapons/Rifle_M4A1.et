@@ -3,9 +3,25 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
  components {
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
+    AttachmentSlotComponent "{5E0EEDA70372C8BA}" {
+     AttachmentSlot InventoryStorageSlot Barrel {
+      Prefab "{76B3DF0E04D44214}Prefabs/Weapons/Rifles/M4A1/base_parts/RHS_M4_BARREL_14_5.et"
+     }
+    }
     AttachmentSlotComponent "{5E0EEDB0BD59EE7D}" {
      AttachmentSlot RHS_SlidingInventoryStorageSlot Optics {
-      Prefab "{CBEB551860024355}Prefabs/5ABD0CB57F7E9EB1/Optics/Optic_XPS3_Magnified_Green.et"
+      Prefab "{D0453107F44917CF}Prefabs/Weapons/Attachments/Optics/exps/Optic_su231A_black.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{5EA2BE9573F14F0C}" {
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE953838E77C}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE95244FA719}" {
+      Angles 0 0 0
+      Prefab "{0F46DA93CB81F141}Prefabs/Weapons/Attachments/Grips/Grip_KAC_Vertical/RHS_KacVertical_base.et"
      }
     }
     AttachmentSlotComponent "{5EA2BE95B630A07A}" {
@@ -14,6 +30,7 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
     }
     AttachmentSlotComponent "{609EE5047488AAA1}" {
      AttachmentSlot InventoryStorageSlot REAR_IRONSIGHT {
+      Prefab "{1CB9CFD1DAD5478B}Prefabs/Weapons/Attachments/Optics/matech/matech.et"
      }
     }
     AttachmentSlotComponent "{61749A66C4BA094E}" {
@@ -22,11 +39,12 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
     }
     AttachmentSlotComponent "{629ADD50107BFFEA}" {
      AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD500DE777C8}" {
+      Prefab "{1D1792BE5A3BB831}Prefabs/Weapons/Attachments/Misc/KacRailCover/KacRailCover_grip_tan.et"
      }
     }
     AttachmentSlotComponent "{629ADD528EE856C1}" {
      AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD52ACAC8DC6}" {
-      Prefab "{5AE8F3A22BDB534F}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_black.et"
+      Prefab "{1D1792BE5A3BB831}Prefabs/Weapons/Attachments/Misc/KacRailCover/KacRailCover_grip_tan.et"
      }
     }
     AttachmentSlotComponent "{647D57A4E99CBFA3}" {
@@ -34,11 +52,11 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
      }
     }
     MuzzleComponent "{CA6BE4D6B867541F}" {
-     MagazineTemplate "{A0554460C6C95EA8}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_HP_B_30rnd_M855A1_last5tracer.et"
+     MagazineTemplate "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
     }
    }
   }
  }
- coords 0 0 0
- angleY 37.615
+ coords -0.319 0 0
+ angles 0 45 0
 }
