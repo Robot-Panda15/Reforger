@@ -3,6 +3,32 @@ SCR_MapEntity MapEntity : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
  "Map Geometry Data" "{EEC7451151D03A5F}WorthyIslands/WorthyIslands.topo"
  "Satellite background image" "{9741531155FAA228}Worlds/WorthyIslands_GameMaster.edds"
 }
+SCR_AIWorld SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{66CF45EEC54448B2}" {
+     NavmeshFile "{370F51829BDF553B}Navmesh/WorthyIslands_Navmesh_GM.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{8C1833B210FB6A23}Navmesh/WorthyIslands_Navmesh_BTRLike_GM.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{9DDE08103170279B}Navmesh/WorthyIslands_Navmesh_LOWRES_GM.nmn"
+    }
+   }
+  }
+ }
+ coords 1583.432 3.735 1628.281
+}
 PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 1601.251 -0.026 3595.884
 }
