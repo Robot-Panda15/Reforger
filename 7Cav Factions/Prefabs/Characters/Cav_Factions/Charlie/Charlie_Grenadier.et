@@ -6,13 +6,13 @@ SCR_ChimeraCharacter : "{C50E0F5F10D146B2}Prefabs/Characters/Cav_Factions/Charli
     Icon "{DDAEEF112BEBCF94}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Grenadier.edds"
     m_Image "{11E3141951F5389D}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/US_Army/GreenBerets/Character_US_SF_GL.edds"
     m_aAutoLabels + {
-     41
+     ROLE_GRENADIER
     }
    }
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponType Rifle
-   WeaponTemplate "{040637109D616F8B}Prefabs/Weapons/Rifle_M4A1_M203.et"
+   WeaponTemplate "{FB4152EFFB18C025}Prefabs/Weapons/Rifle_M4A1_M203_RAS_Cav.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
@@ -104,5 +104,5 @@ SCR_ChimeraCharacter : "{C50E0F5F10D146B2}Prefabs/Characters/Cav_Factions/Charli
   }
  }
  coords 0 0 0.345
- angleY 11.987
+ angles 0 11.987 0
 }

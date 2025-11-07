@@ -6,17 +6,17 @@ SCR_ChimeraCharacter : "{C50E0F5F10D146B2}Prefabs/Characters/Cav_Factions/Charli
     Icon "{00B30C29FAF85E1C}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_AntiTank.edds"
     m_Image "{278C426C1D3B4C27}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_LAT.edds"
     m_aAutoLabels + {
-     40
+     ROLE_ANTITANK
     }
    }
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponType Rifle
-   WeaponTemplate "{31070CB2D8A07679}Prefabs/Weapons/Rifle_M4A1.et"
+   WeaponTemplate "{67F95B374867C366}Prefabs/Weapons/Rifle_M4A1_RAS_Cav.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
    WeaponType RocketLauncher
-   WeaponTemplate "{A437BC86D2CF75C1}Prefabs/Weapons/MAAWS.et"
+   WeaponTemplate "{2E48D901860855B6}Prefabs/Weapons/MAAWS_Cav.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
@@ -93,5 +93,5 @@ SCR_ChimeraCharacter : "{C50E0F5F10D146B2}Prefabs/Characters/Cav_Factions/Charli
   }
  }
  coords 0 0 0
- angleY 154
+ angles 0 154 0
 }

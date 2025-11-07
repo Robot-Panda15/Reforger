@@ -5,10 +5,14 @@ SCR_ChimeraCharacter : "{C810B8F6F7127CC6}Prefabs/Characters/Cav_Factions/Bravo/
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Icon "{F3FCC3B9732551D9}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Medic.edds"
     m_Image "{03A6B2D50E67D92F}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/US_Army/GreenBerets/Supressed/Character_US_SF_Medic_S.edds"
-    m_aAutoLabels {
-     122 44
+    m_aAutoLabels +{
     }
    }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   AttachType InventoryStorageSlot "{0C3DA650B52E120B}" {
+   }
+   WeaponTemplate "{67F95B374867C366}Prefabs/Weapons/Rifle_M4A1_RAS_Cav.et"
   }
  }
 }

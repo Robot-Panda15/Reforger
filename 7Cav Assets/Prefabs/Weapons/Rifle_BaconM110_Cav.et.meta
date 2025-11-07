@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{BA87F78D0E7E3A91}Prefabs/Weapons/MachineGuns/M240/MG_M240_Light_MDO.et"
+ Name "{2EC788B173162F0D}Prefabs/Weapons/Rifles/BaconM110/Rifle_BaconM110_Cav.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

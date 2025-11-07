@@ -5,7 +5,7 @@ SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charli
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Icon "{9A61AD7EADB131FD}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Spotter.edds"
     m_aAutoLabels {
-     122 49
+     SIZE_M ROLE_SCOUT
     }
    }
   }
@@ -16,7 +16,10 @@ SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charli
    WeaponTemplate "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{040637109D616F8B}Prefabs/Weapons/Rifle_M4A1_M203.et"
+   AttachType InventoryStorageSlot "{0C3DA650B52E120B}" {
+    Prefab "{F80CC6FE79A03F0E}Prefabs/Weapons/Rifle_M4A1_M203_RAS_PSQ_Cav.et"
+   }
+   WeaponTemplate "{F80CC6FE79A03F0E}Prefabs/Weapons/Rifle_M4A1_M203_RAS_PSQ_Cav.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponTemplate "{8069A3DF6410FDDF}Prefabs/Weapons/Handguns/M17/Handgun_M17.et"

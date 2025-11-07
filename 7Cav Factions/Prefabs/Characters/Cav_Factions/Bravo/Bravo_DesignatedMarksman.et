@@ -6,7 +6,7 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
     Icon "{0A78405E73C36477}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Sharpshooter.edds"
     m_Image "{13AC78F098028758}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Sniper.edds"
     m_aAutoLabels + {
-     47
+     ROLE_SHARPSHOOTER
     }
    }
   }
@@ -14,7 +14,7 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
    SignalsSourceAccess SignalsSourceAccessClass "{654F5A129F56F1C8}" {
    }
    WeaponType Rifle
-   WeaponTemplate "{2535B4B691E676DB}Prefabs/Weapons/Rifles/BaconM110/Rifle_BaconM110.et"
+   WeaponTemplate "{2EC788B173162F0D}Prefabs/Weapons/Rifle_BaconM110_Cav.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponType Handgun
@@ -60,5 +60,5 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
   }
  }
  coords -0.733 0.619 0
- angleY -21.5
+ angles 0 -21.5 0
 }
