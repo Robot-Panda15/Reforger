@@ -1,0 +1,22 @@
+GenericEntity : "{2535B4B691E676DB}Prefabs/Weapons/Rifles/BaconM110/Rifle_BaconM110.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5CA4C3854FE291B7}" {
+     AttachmentSlot InventoryStorageSlot Attachment {
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+    AttachmentSlotComponent "{5CA4C3855715E82B}" {
+     AttachmentSlot InventoryStorageSlot Optics {
+      Prefab "{ACC9B43941CE5EA6}Prefabs/Weapons/Attachments/Optics/Optic_leupoldMK4/Optic_leupoldMK4.et"
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "M110 SDM Cav Issued"
+   }
+  }
+ }
+}

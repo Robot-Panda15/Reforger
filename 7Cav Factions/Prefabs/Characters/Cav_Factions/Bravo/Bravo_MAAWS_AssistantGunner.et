@@ -6,9 +6,12 @@ SCR_ChimeraCharacter : "{29C9C7591C683955}Prefabs/Characters/Cav_Factions/Bravo/
     Icon "{FB48FAD32DA8BC91}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_AmmoBearer.edds"
     m_Image "{2B0877799B9B6C66}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Rifleman.edds"
     m_aAutoLabels + {
-     48
+     ROLE_AMMOBEARER
     }
    }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{67F95B374867C366}Prefabs/Weapons/Rifle_M4A1_RAS_Cav.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {

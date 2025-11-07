@@ -11,8 +11,9 @@ SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    AttachType InventoryStorageSlot "{0C3DA650B52E120B}" {
+    Prefab "{FB4152EFFB18C025}Prefabs/Weapons/Rifle_M4A1_M203_RAS_Cav.et"
    }
-   WeaponTemplate "{040637109D616F8B}Prefabs/Weapons/Rifle_M4A1_M203.et"
+   WeaponTemplate "{FB4152EFFB18C025}Prefabs/Weapons/Rifle_M4A1_M203_RAS_Cav.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponTemplate "{8069A3DF6410FDDF}Prefabs/Weapons/Handguns/M17/Handgun_M17.et"
@@ -87,5 +88,5 @@ SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/
   }
  }
  coords 0 0 0
- angleY 18
+ angles 0 18 0
 }

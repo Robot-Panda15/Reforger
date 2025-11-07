@@ -6,12 +6,12 @@ SCR_ChimeraCharacter : "{C50E0F5F10D146B2}Prefabs/Characters/Cav_Factions/Charli
     Icon "{EF1F445746A3391A}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_MachineGunner.edds"
     m_Image "{D68798DF09F5BE8E}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_MG.edds"
     m_aAutoLabels + {
-     43
+     ROLE_MACHINEGUNNER
     }
    }
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{BA87F78D0E7E3A91}Prefabs/Weapons/MG_M240_Light_MDO.et"
+   WeaponTemplate "{BA87F78D0E7E3A90}Prefabs/Weapons/MachineGuns/M240/MG_M240_Light_MDO.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponTemplate "{8069A3DF6410FDDF}Prefabs/Weapons/Handguns/M17/Handgun_M17.et"
@@ -89,5 +89,5 @@ SCR_ChimeraCharacter : "{C50E0F5F10D146B2}Prefabs/Characters/Cav_Factions/Charli
   }
  }
  coords 0 0 0
- angleY -63.5
+ angles 0 -63.5 0
 }

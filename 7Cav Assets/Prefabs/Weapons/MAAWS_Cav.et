@@ -1,0 +1,17 @@
+GenericEntity : "{4D02E8D5E58AB005}Prefabs/Weapons/M4_MAAWS/M18_CarlyG.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{B502E4DC8A9E835E}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      Prefab "{1D363F51564D1CF7}Prefabs/Attachments/FCS600/MAAWS_FCS600_551.et"
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "M4 MAAWS Cav Issued"
+   }
+  }
+ }
+}

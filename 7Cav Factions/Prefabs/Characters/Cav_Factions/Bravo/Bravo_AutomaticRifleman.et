@@ -6,13 +6,13 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
     Icon "{EF1F445746A3391A}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_MachineGunner.edds"
     m_Image "{43EA535E240F0B17}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_AR.edds"
     m_aAutoLabels + {
-     43
+     ROLE_MACHINEGUNNER
     }
    }
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponType MachineGun
-   WeaponTemplate "{D96BF821125E194B}Prefabs/Weapons/Bacon_MG_M249_Rails.et"
+   WeaponTemplate "{394F170E2EA60842}Prefabs/Weapons/Bacon_MG_M249_Rails_Cav.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponType Handgun

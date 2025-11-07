@@ -8,7 +8,10 @@ SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/
    WeaponTemplate "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{D96BF821125E194B}Prefabs/Weapons/Bacon_MG_M249_Rails.et"
+   AttachType InventoryStorageSlot "{0C3DA650B52E120B}" {
+    Prefab "{394F170E2EA60842}Prefabs/Weapons/Bacon_MG_M249_Rails_Cav.et"
+   }
+   WeaponTemplate "{394F170E2EA60842}Prefabs/Weapons/Bacon_MG_M249_Rails_Cav.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponTemplate "{8069A3DF6410FDDF}Prefabs/Weapons/Handguns/M17/Handgun_M17.et"
@@ -77,5 +80,5 @@ SCR_ChimeraCharacter : "{816708334423BE88}Prefabs/Characters/Cav_Factions/Alpha/
   }
  }
  coords 0 0 0
- angleY -99.861
+ angles 0 -99.861 0
 }

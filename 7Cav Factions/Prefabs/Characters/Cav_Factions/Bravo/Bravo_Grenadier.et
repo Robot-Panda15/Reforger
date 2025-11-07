@@ -12,7 +12,7 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponType Rifle
-   WeaponTemplate "{6CDD943426BE0F49}Prefabs/Weapons/Rifle_M4A1_M203_PSQ23.et"
+   WeaponTemplate "{F80CC6FE79A03F0E}Prefabs/Weapons/Rifle_M4A1_M203_RAS_PSQ_Cav.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {

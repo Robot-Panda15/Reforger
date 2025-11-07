@@ -1,4 +1,4 @@
-GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.et" {
+GenericEntity : "{C834F1F810DDF0A1}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_RAS.et" {
  ID "CFBAA4B725411E45"
  components {
   WeaponComponent "{CFBAA4B706BA66E8}" {
@@ -13,33 +13,19 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
       Prefab "{D0453107F44917CF}Prefabs/Weapons/Attachments/Optics/exps/Optic_su231A_black.et"
      }
     }
-    AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
-     AttachmentSlot RHS_SlidingInventoryStorageSlot "{5EA2BE9573F14F0C}" {
-      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
-     }
-    }
-    AttachmentSlotComponent "{5EA2BE953838E77C}" {
-     AttachmentSlot InventoryStorageSlot "{5EA2BE95244FA719}" {
-      Angles 0 0 0
-      Prefab "{0F46DA93CB81F141}Prefabs/Weapons/Attachments/Grips/Grip_KAC_Vertical/RHS_KacVertical_base.et"
-     }
-    }
     AttachmentSlotComponent "{5EA2BE95B630A07A}" {
      AttachmentSlot InventoryStorageSlot "{5EA2BE95B7F1B3D5}" {
+      Prefab ""
      }
     }
     AttachmentSlotComponent "{609EE5047488AAA1}" {
      AttachmentSlot InventoryStorageSlot REAR_IRONSIGHT {
-      Prefab "{1CB9CFD1DAD5478B}Prefabs/Weapons/Attachments/Optics/matech/matech.et"
-     }
-    }
-    AttachmentSlotComponent "{61749A66C4BA094E}" {
-     AttachmentSlot InventoryStorageSlot bayonet {
+      Prefab "{41F3C10C4FEBC1FF}Prefabs/Weapons/Attachments/Optics/kac_folding_sights_600/kac_folding_sight_600_rear.et"
      }
     }
     AttachmentSlotComponent "{629ADD50107BFFEA}" {
      AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD500DE777C8}" {
-      Prefab "{1D1792BE5A3BB831}Prefabs/Weapons/Attachments/Misc/KacRailCover/KacRailCover_grip_tan.et"
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
      }
     }
     AttachmentSlotComponent "{629ADD528EE856C1}" {
@@ -47,16 +33,13 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
       Prefab "{1D1792BE5A3BB831}Prefabs/Weapons/Attachments/Misc/KacRailCover/KacRailCover_grip_tan.et"
      }
     }
-    AttachmentSlotComponent "{647D57A4E99CBFA3}" {
-     AttachmentSlot InventoryStorageSlot "{647D57BB184D5F9B}" {
-     }
-    }
     MuzzleComponent "{CA6BE4D6B867541F}" {
      MagazineTemplate "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
     }
    }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "M4A1 M203 PEQ Cav Issued"
+   }
   }
  }
- coords -0.319 0 0
- angles 0 45 0
 }
