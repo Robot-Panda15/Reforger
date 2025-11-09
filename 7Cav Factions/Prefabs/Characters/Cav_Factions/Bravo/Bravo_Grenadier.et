@@ -31,7 +31,7 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
     ItemsInitConfigurationItem "{654E14D356AA8057}" {
      TargetStorage "Vest/Vest_JPC_MC_UBGL.et/saw/Pouch_AVS_MBITR_Radio_MC.et"
      PrefabsToSpawn {
-      "{D69684663E89D6EA}Prefabs/Items/Equipment/Radios/Radio_ANPRC152A_OLD.et"
+      "{D69684663E89D6EC}Prefabs/Items/Equipment/Radios/Radio_ANPRC152A_OLD.et"
      }
     }
     ItemsInitConfigurationItem "{654E14D3554A296F}" {
