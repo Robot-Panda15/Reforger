@@ -10,7 +10,7 @@ GenericEntity : "{2535B4B691E676DB}Prefabs/Weapons/Rifles/BaconM110/Rifle_BaconM
     }
     AttachmentSlotComponent "{5CA4C3855715E82B}" {
      AttachmentSlot InventoryStorageSlot Optics {
-      Prefab "{ACC9B43941CE5EA6}Prefabs/Weapons/Attachments/Optics/Optic_leupoldMK4/Optic_leupoldMK4.et"
+      Prefab "{7FC82F39B98AF906}Prefabs/Weapons/Attachments/Optics/ts30a2/optic_ts30a2_no_covers.et"
      }
     }
    }
