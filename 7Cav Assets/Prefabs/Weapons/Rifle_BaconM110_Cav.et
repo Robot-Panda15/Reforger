@@ -1,6 +1,14 @@
 GenericEntity : "{2535B4B691E676DB}Prefabs/Weapons/Rifles/BaconM110/Rifle_BaconM110.et" {
  ID "CFBAA4B725411E45"
  components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "M110 SDMR Cav Issued"
+     Description "M110 Squad Designated Marksman Rifle From the 1st Cavalry Division Armory. Modified by 1st Battalion's Armorers for increased accuracy over high round counts. Typically seen in tan, these are a limited run in black that we've inherited from SOCOM."
+    }
+   }
+  }
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     AttachmentSlotComponent "{5CA4C3854FE291B7}" {

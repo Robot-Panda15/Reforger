@@ -1,6 +1,14 @@
-GenericEntity : "{FB4152EFFB18C025}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_RAS_Cav.et" {
+GenericEntity : "{FB4152EFFB18C025}Prefabs/Weapons/Rifle_M4A1_M203_RAS_Cav.et" {
  ID "CFBAA4B725411E45"
  components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "M4A1 M203 LRF Cav Issued"
+     Description "M4A1 From the 1st Cavalry Division Armory. Equipped with an M203 40mm Grenade Launcher and a PSQ-23 Laser Range Finder. Modified by 1st Battalion's Armorers for increased durability and accuracy over higher round counts."
+    }
+   }
+  }
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     AttachmentSlotComponent "{629ADD50107BFFEA}" {

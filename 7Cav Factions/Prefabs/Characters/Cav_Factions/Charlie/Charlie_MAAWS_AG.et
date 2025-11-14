@@ -6,7 +6,7 @@ SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charli
     Icon "{00B30C29FAF85E1C}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_AntiTank.edds"
     m_Image "{888803DCB7A3A81C}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_MortarAG.edds"
     m_aAutoLabels {
-     122 48
+     SIZE_M ROLE_AMMOBEARER
     }
    }
   }
@@ -22,7 +22,7 @@ SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charli
     ItemsInitConfigurationItem "{66492B605B5B10B5}" {
      TargetStorage "Back/Backpack_511_rush12_MC.et"
      PrefabsToSpawn {
-      "{93AFBDAB0B0C3E38}Prefabs/Magazine/HEAT551_Magazine.et" "{93AFBDAB0B0C3E38}Prefabs/Magazine/HEAT551_Magazine.et" "{9A87B07B3E3C2964}Prefabs/Magazine/SMOKE469_Magazine.et" "{93AFBDAB0B0C3E38}Prefabs/Magazine/HEAT551_Magazine.et"
+      "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et" "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et" "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et" "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et"
      }
     }
    }
