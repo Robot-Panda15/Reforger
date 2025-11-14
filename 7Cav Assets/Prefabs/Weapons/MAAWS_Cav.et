@@ -1,6 +1,14 @@
 GenericEntity : "{4D02E8D5E58AB005}Prefabs/Weapons/M4_MAAWS/M18_CarlyG.et" {
  ID "CFBAA4B725411E45"
  components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB047B845168}" {
+     Name "M3A1 MAAWS Cav Issued"
+     Description "M3A1 Multi-Role Anti-Armor Anti-Personnel Weapon System From the 1st Cavalry Division Armory. These came straight from US Army Ranger Battalion Armories and were swiftly acquired by 1st Battalion, with Troopers reporting achieving 80% Hit Rates out to 900 meters."
+    }
+   }
+  }
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     AttachmentSlotComponent "{B502E4DC8A9E835E}" {

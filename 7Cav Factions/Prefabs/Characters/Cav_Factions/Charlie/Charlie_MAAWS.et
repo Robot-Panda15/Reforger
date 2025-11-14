@@ -86,7 +86,7 @@ SCR_ChimeraCharacter : "{C50E0F5F10D146B2}Prefabs/Characters/Cav_Factions/Charli
     ItemsInitConfigurationItem "{654F5A0395F62FF4}" {
      TargetStorage "Back/Backpack_511_rush12_MC.et"
      PrefabsToSpawn {
-      "{93AFBDAB0B0C3E38}Prefabs/Magazine/HEAT551_Magazine.et" "{93AFBDAB0B0C3E38}Prefabs/Magazine/HEAT551_Magazine.et"
+      "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et" "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et"
      }
     }
    }

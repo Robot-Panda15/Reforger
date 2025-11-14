@@ -1,6 +1,14 @@
 GenericEntity : "{068C2EB42635973F}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_RAS.et" {
  ID "CFBAA4B725411E45"
  components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "M4A1 Cav Issued"
+     Description "M4A1 From the 1st Cavalry Division Armory. Modified by 1st Battalion's Armorers for increased durability and accuracy over higher round counts."
+    }
+   }
+  }
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     AttachmentSlotComponent "{5E0EEDA70372C8BA}" {
