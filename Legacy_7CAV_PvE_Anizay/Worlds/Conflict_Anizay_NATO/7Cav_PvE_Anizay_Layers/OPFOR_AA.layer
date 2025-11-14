@@ -1,11 +1,11 @@
 $grp Tank : "{28AACA9B9F572749}Prefabs/Vehicles/Tracked/ZSU-23-4/ZSU-23-4_Radar.et" {
  ZSU_23_4_Radar7 {
   coords 4239.591 137.594 6205.291
-  angleY 164.373
+  angles 0 164.373 0
  }
  ZSU_23_4_Radar8 {
   coords 3347.616 145.714 8862.218
-  angleY -162.52
+  angles 0 -162.52 0
  }
 }
 $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_USSR.et" {
@@ -13,10 +13,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
   components {
    SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
     m_aIncludedEditableEntityLabels {
-     52
+     VEHICLE_AIRPLANE
     }
     m_aExcludedEditableEntityLabels {
-     51 50
+     VEHICLE_HELICOPTER
+     VEHICLE_CAR
     }
     m_bIsVehiclePatrol 1
    }
@@ -27,11 +28,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
    }
   }
   coords 4809.188 255.804 896.287
-  angleY -126.946
+  angles 0 -126.946 0
   {
    Tank ZSU_23_4_Radar1 : "{28AACA9B9F572749}Prefabs/Vehicles/Tracked/ZSU-23-4/ZSU-23-4_Radar.et" {
     coords -4.156 0.04 -2.892
-    angleY -180
+    angles 0 -180 0
    }
    GenericEntity AmbientPatrol12 : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
     components {
@@ -43,20 +44,20 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
      }
     }
     coords -2.517 -0.181 15.124
-    angleY 175.428
+    angles 0 175.428 0
     {
      $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
       {
        coords 1622.936 50.604 -935.011
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 197.413 8.036 -413.085
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 1.446 0.128 11.276
-       angleY -85.601
+       angles 0 -85.601 0
       }
      }
     }
@@ -67,10 +68,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
   components {
    SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
     m_aIncludedEditableEntityLabels {
-     52
+     VEHICLE_AIRPLANE
     }
     m_aExcludedEditableEntityLabels {
-     51 50
+     VEHICLE_HELICOPTER
+     VEHICLE_CAR
     }
     m_bIsVehiclePatrol 1
    }
@@ -81,11 +83,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
    }
   }
   coords 2474.056 147.498 2610.658
-  angleY -126.946
+  angles 0 -126.946 0
   {
    Tank ZSU_23_4_Radar3 : "{28AACA9B9F572749}Prefabs/Vehicles/Tracked/ZSU-23-4/ZSU-23-4_Radar.et" {
     coords 1606.703 -17.895 -287.503
-    angleY -68.59
+    angles 0 -68.59 0
    }
    GenericEntity AmbientPatrol13 : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
     components {
@@ -97,20 +99,20 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
      }
     }
     coords -2.517 -0.181 15.124
-    angleY 175.428
+    angles 0 175.428 0
     {
      $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
       {
        coords 1622.936 50.604 -935.011
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 197.413 8.036 -413.085
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 1.446 0.128 11.276
-       angleY -85.601
+       angles 0 -85.601 0
       }
      }
     }
@@ -121,10 +123,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
   components {
    SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
     m_aIncludedEditableEntityLabels {
-     52
+     VEHICLE_AIRPLANE
     }
     m_aExcludedEditableEntityLabels {
-     51 50
+     VEHICLE_HELICOPTER
+     VEHICLE_CAR
     }
     m_bIsVehiclePatrol 1
    }
@@ -135,11 +138,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
    }
   }
   coords 1735.972 129.961 4075.755
-  angleY -126.946
+  angles 0 -126.946 0
   {
    Tank ZSU_23_4_Radar2 : "{28AACA9B9F572749}Prefabs/Vehicles/Tracked/ZSU-23-4/ZSU-23-4_Radar.et" {
     coords -1627.577 16.86 293.992
-    angleY -73.532
+    angles 0 -73.532 0
    }
    GenericEntity AmbientPatrol14 : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
     components {
@@ -151,20 +154,20 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
      }
     }
     coords -2.517 -0.181 15.124
-    angleY 175.428
+    angles 0 175.428 0
     {
      $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
       {
        coords 1622.936 50.604 -935.011
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 197.413 8.036 -413.085
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 1.446 0.128 11.276
-       angleY -85.601
+       angles 0 -85.601 0
       }
      }
     }
@@ -175,10 +178,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
   components {
    SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
     m_aIncludedEditableEntityLabels {
-     52
+     VEHICLE_AIRPLANE
     }
     m_aExcludedEditableEntityLabels {
-     51 50
+     VEHICLE_HELICOPTER
+     VEHICLE_CAR
     }
     m_bIsVehiclePatrol 1
    }
@@ -189,11 +193,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
    }
   }
   coords 4441.137 134.531 5896.313
-  angleY -126.946
+  angles 0 -126.946 0
   {
    Tank ZSU_23_4_Radar4 : "{28AACA9B9F572749}Prefabs/Vehicles/Tracked/ZSU-23-4/ZSU-23-4_Radar.et" {
     coords 5.83 -0.263 5.595
-    angleY 36.47
+    angles 0 36.47 0
    }
    GenericEntity AmbientPatrol15 : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
     components {
@@ -205,20 +209,20 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
      }
     }
     coords -2.517 -0.181 15.124
-    angleY 175.428
+    angles 0 175.428 0
     {
      $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
       {
        coords 1622.936 50.604 -935.011
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 197.413 8.036 -413.085
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 1.446 0.128 11.276
-       angleY -85.601
+       angles 0 -85.601 0
       }
      }
     }
@@ -229,10 +233,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
   components {
    SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
     m_aIncludedEditableEntityLabels {
-     52
+     VEHICLE_AIRPLANE
     }
     m_aExcludedEditableEntityLabels {
-     51 50
+     VEHICLE_HELICOPTER
+     VEHICLE_CAR
     }
     m_bIsVehiclePatrol 1
    }
@@ -243,11 +248,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
    }
   }
   coords 3906.399 139.219 7080.872
-  angleY -126.946
+  angles 0 -126.946 0
   {
    Tank ZSU_23_4_Radar5 : "{28AACA9B9F572749}Prefabs/Vehicles/Tracked/ZSU-23-4/ZSU-23-4_Radar.et" {
     coords 10.807 0.094 3.608
-    angleY 85.838
+    angles 0 85.838 0
    }
    GenericEntity AmbientPatrol16 : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
     components {
@@ -259,20 +264,20 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
      }
     }
     coords -2.517 -0.98 15.124
-    angleY 175.428
+    angles 0 175.428 0
     {
      $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
       {
        coords 1622.936 50.604 -935.011
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 197.413 8.036 -413.085
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 1.446 0.98 11.275
-       angleY -85.601
+       angles 0 -85.601 0
       }
      }
     }
@@ -283,10 +288,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
   components {
    SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
     m_aIncludedEditableEntityLabels {
-     52
+     VEHICLE_AIRPLANE
     }
     m_aExcludedEditableEntityLabels {
-     51 50
+     VEHICLE_HELICOPTER
+     VEHICLE_CAR
     }
     m_bIsVehiclePatrol 1
    }
@@ -297,11 +303,11 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
    }
   }
   coords 3350.883 175.086 3177.045
-  angleY -126.946
+  angles 0 -126.946 0
   {
    Tank ZSU_23_4_Radar6 : "{28AACA9B9F572749}Prefabs/Vehicles/Tracked/ZSU-23-4/ZSU-23-4_Radar.et" {
     coords 3.31 0.297 1.94
-    angleY 126.946
+    angles 0 126.946 0
    }
    GenericEntity AmbientPatrol17 : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
     components {
@@ -313,20 +319,20 @@ $grp GenericEntity : "{644AEC5C537E03F0}Prefabs/Systems/AmbientVehicles/AmbientV
      }
     }
     coords -2.517 -0.326 15.125
-    angleY 175.428
+    angles 0 175.428 0
     {
      $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
       {
        coords -410.191 -14.796 -67.768
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 197.413 8.036 -413.085
-       angleY -85.601
+       angles 0 -85.601 0
       }
       {
        coords 1.446 -0.163 11.276
-       angleY -85.601
+       angles 0 -85.601 0
       }
      }
     }
@@ -345,20 +351,20 @@ $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPat
    }
   }
   coords 4238.557 137.54 6213.382
-  angleY 175.428
+  angles 0 175.428 0
   {
    $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
     {
      coords 1622.936 50.604 -935.011
-     angleY -85.601
+     angles 0 -85.601 0
     }
     {
      coords 197.413 8.036 -413.085
-     angleY -85.601
+     angles 0 -85.601 0
     }
     {
      coords 1.446 0.128 11.276
-     angleY -85.601
+     angles 0 -85.601 0
     }
    }
   }
@@ -373,1185 +379,22 @@ $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPat
    }
   }
   coords 3350.541 145.444 8869.547
-  angleY 175.428
+  angles 0 175.428 0
   {
    $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
     {
      coords 1622.936 50.604 -935.011
-     angleY -85.601
+     angles 0 -85.601 0
     }
     {
      coords 197.413 8.036 -413.085
-     angleY -85.601
+     angles 0 -85.601 0
     }
     {
      coords 1.446 0.128 11.276
-     angleY -85.601
+     angles 0 -85.601 0
     }
    }
   }
  }
-}
-$grp GenericEntity : "{AF7BAAB01C6C85AF}Prefabs/Compositions/Slotted/SlotFlatSmall/ZU23Emplacement_S_USSR_01.et" {
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 1750.035 142.079 3498.407
-  angleY 107.456
-  {
-   GameEntity {
-    ID "65B41E2866307D7B"
-    coords 2.96 -0.567 -4.114
-   }
-   GenericEntity {
-    ID "65B41E2866307D78"
-    coords 1.159 -0.084 1.528
-    angleY 79.393
-   }
-   GenericEntity {
-    ID "65B41E286630B98B"
-    coords -1.787 0.239 0.709
-    angleY 37.989
-   }
-   GenericEntity {
-    ID "65B41E286630B988"
-    coords 3.002 -0.577 -4.451
-    angleY -62.495
-    {
-     GenericEntity {
-      ID "56B6871A4F48B395"
-      coords 0 0 0
-     }
-    }
-   }
-   GenericEntity {
-    ID "65B41E286630B989"
-    coords 2.65 -0.508 -4.618
-    angleY -119.332
-   }
-   GenericEntity {
-    ID "65B41E286630A440"
-    coords -4.36 0.504 1.819
-    angleY 104.357
-   }
-   GenericEntity {
-    ID "65B41E286630B98F"
-    coords -3.761 0.51 3.455
-    angleY 113.058
-   }
-   GenericEntity {
-    ID "65B41E286631246D"
-    coords -4.276 0.415 -1.37
-    angleY 72.181
-   }
-   GenericEntity {
-    ID "65B41E2866313AB4"
-    coords 4.535 -0.865 0.317
-    angleY -90.536
-   }
-   GenericEntity {
-    ID "65B41E2866313AB7"
-    coords -3.562 0.334 -2.888
-    angleY 58.15
-   }
-   GenericEntity {
-    ID "65B41E28663188B0"
-    coords 3.58 -0.497 3.38
-    angleY -121.553
-   }
-   GenericEntity {
-    ID "65B41E286631EDD0"
-    coords -4.534 0.47 0.17
-    angleY 89.167
-   }
-   GenericEntity {
-    ID "65B41E28663E3080"
-    coords 4.353 -0.873 -1.331
-    angleY -75.345
-   }
-   GenericEntity {
-    ID "65B41E28663E3081"
-    coords 3.746 -0.73 -2.964
-    angleY -66.645
-   }
-   GenericEntity {
-    ID "65B41E28663EEFEF"
-    coords 4.285 -0.726 1.858
-    angleY -107.521
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F59"
-    coords 4.514 -0.887 -0.228
-    angleY 96.325
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F5A"
-    coords 4.307 -0.868 -2.502
-    angleY 109.593
-   }
-   StaticModelEntity {
-    ID "65B41E28663069C5"
-    coords 3.933 -0.622 2.433
-    angleY 63.771
-   }
-   StaticModelEntity {
-    ID "65B41E2866306A1A"
-    coords -4.791 0.488 0.418
-    angleY -92.585
-   }
-   StaticModelEntity {
-    ID "65B41E2866306A1E"
-    coords -4.332 0.411 -2.129
-    angleY -113.609
-   }
-   StaticModelEntity {
-    ID "65B41E2866307D45"
-    coords -4.256 0.53 2.998
-    angleY -68.08
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F56"
-    coords 1.829 -0.366 -4.184
-    angleY -115.595
-   }
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 -0.491 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 2550.351 197.675 3494.822
-  angleY 107.456
-  {
-   GameEntity {
-    ID "65B41E2866307D7B"
-    coords 2.96 0.585 -4.114
-   }
-   GenericEntity {
-    ID "65B41E2866307D78"
-    coords 1.159 -0.17 1.527
-    angleY 79.393
-   }
-   GenericEntity {
-    ID "65B41E286630B98B"
-    coords -1.787 -0.12 0.708
-    angleY 37.989
-   }
-   GenericEntity {
-    ID "65B41E286630B988"
-    coords 3.002 0.633 -4.451
-    angleY -62.495
-    {
-     GenericEntity {
-      ID "56B6871A4F48B395"
-      coords 0 0 0
-     }
-    }
-   }
-   GenericEntity {
-    ID "65B41E286630B989"
-    coords 2.65 0.21 -4.618
-    angleY -119.332
-   }
-   GenericEntity {
-    ID "65B41E286630A440"
-    coords -4.36 -0.356 1.819
-    angleY 104.357
-   }
-   GenericEntity {
-    ID "65B41E286630B98F"
-    coords -3.76 -0.49 3.455
-    angleY 113.058
-   }
-   GenericEntity {
-    ID "65B41E286631246D"
-    coords -4.276 0.055 -1.37
-    angleY 72.181
-   }
-   GenericEntity {
-    ID "65B41E2866313AB4"
-    coords 4.535 -0.037 0.318
-    angleY -90.536
-   }
-   GenericEntity {
-    ID "65B41E2866313AB7"
-    coords -3.562 0.301 -2.889
-    angleY 58.15
-   }
-   GenericEntity {
-    ID "65B41E28663188B0"
-    coords 3.58 -0.366 3.38
-    angleY -121.553
-   }
-   GenericEntity {
-    ID "65B41E286631EDD0"
-    coords -4.534 -0.172 0.17
-    angleY 89.167
-   }
-   GenericEntity {
-    ID "65B41E28663E3080"
-    coords 4.353 0.188 -1.331
-    angleY -75.345
-   }
-   GenericEntity {
-    ID "65B41E28663E3081"
-    coords 3.746 0.43 -2.965
-    angleY -66.645
-   }
-   GenericEntity {
-    ID "65B41E28663EEFEF"
-    coords 4.285 -0.214 1.858
-    angleY -107.521
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F59"
-    coords 4.514 0.036 -0.228
-    angleY 96.325
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F5A"
-    coords 4.307 0.362 -2.502
-    angleY 109.593
-   }
-   StaticModelEntity {
-    ID "65B41E28663069C5"
-    coords 3.933 -0.267 2.432
-    angleY 63.771
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F56"
-    coords 1.831 0.586 -4.184
-    angleY -115.595
-   }
-   StaticModelEntity {
-    ID "65B41E2866306A1A"
-    coords -4.791 -0.218 0.418
-    angleY -92.585
-   }
-   StaticModelEntity {
-    ID "65B41E2866306A1E"
-    coords -4.332 0.16 -2.13
-    angleY -113.609
-   }
-   StaticModelEntity {
-    ID "65B41E2866307D45"
-    coords -4.256 -0.477 2.998
-    angleY -68.08
-   }
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0.017 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 2305.481 126.656 5138.517
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 4679.021 134.003 5819.808
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 3109.164 144.218 8490.935
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 2523.557 142.629 8438.777
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 5130.098 207.219 1804.952
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 5198.411 207.219 1661.561
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 4851.201 236.799 3542.676
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 8290.684 218.062 8800.568
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 8440.752 111.532 7176.867
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 8546.994 111.53 6779.974
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 8640.725 111.841 6122.275
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 7609.29 110.671 6765.939
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 7143.673 339.531 3566.7
-  angleY 107.456
-  {
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 1612.882 153.479 1747.677
-  angleY 107.456
-  {
-   GameEntity {
-    ID "65B41E2866307D7B"
-    coords 2.96 -0.012 -4.114
-   }
-   GenericEntity {
-    ID "65B41E2866307D78"
-    coords 1.159 0.049 1.528
-    angleY 79.393
-   }
-   GenericEntity {
-    ID "65B41E286630B98B"
-    coords -1.787 -0.046 0.709
-    angleY 37.989
-   }
-   GenericEntity {
-    ID "65B41E286630B988"
-    coords 3.002 -0.019 -4.451
-    angleY -62.495
-    {
-     GenericEntity {
-      ID "56B6871A4F48B395"
-      coords 0 0 0
-     }
-    }
-   }
-   GenericEntity {
-    ID "65B41E286630B989"
-    coords 2.65 -0.032 -4.618
-    angleY -119.332
-   }
-   GenericEntity {
-    ID "65B41E286630A440"
-    coords -4.36 -0.113 1.819
-    angleY 104.357
-   }
-   GenericEntity {
-    ID "65B41E286630B98F"
-    coords -3.761 -0.1 3.455
-    angleY 113.058
-   }
-   GenericEntity {
-    ID "65B41E286631246D"
-    coords -4.276 -0.141 -1.37
-    angleY 72.181
-   }
-   GenericEntity {
-    ID "65B41E2866313AB4"
-    coords 4.535 0.179 0.317
-    angleY -90.536
-   }
-   GenericEntity {
-    ID "65B41E2866313AB7"
-    coords -3.562 -0.146 -2.888
-    angleY 58.15
-   }
-   GenericEntity {
-    ID "65B41E28663188B0"
-    coords 3.58 0.193 3.38
-    angleY -121.553
-   }
-   GenericEntity {
-    ID "65B41E286631EDD0"
-    coords -4.534 -0.134 0.17
-    angleY 89.167
-   }
-   GenericEntity {
-    ID "65B41E28663E3080"
-    coords 4.353 0.124 -1.331
-    angleY -75.345
-   }
-   GenericEntity {
-    ID "65B41E28663E3081"
-    coords 3.746 0.052 -2.964
-    angleY -66.645
-   }
-   GenericEntity {
-    ID "65B41E28663EEFEF"
-    coords 4.285 0.206 1.858
-    angleY -107.521
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F59"
-    coords 4.514 0.162 -0.228
-    angleY 96.325
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F5A"
-    coords 4.307 0.088 -2.502
-    angleY 109.593
-   }
-   StaticModelEntity {
-    ID "65B41E28663069C5"
-    coords 3.933 0.196 2.433
-    angleY 63.771
-   }
-   StaticModelEntity {
-    ID "65B41E2866306A1A"
-    coords -4.791 -0.138 0.418
-    angleY -92.585
-   }
-   StaticModelEntity {
-    ID "65B41E2866306A1E"
-    coords -4.332 -0.149 -2.129
-    angleY -113.609
-   }
-   StaticModelEntity {
-    ID "65B41E2866307D45"
-    coords -4.256 -0.116 2.998
-    angleY -68.08
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F56"
-    coords 1.829 -0.042 -4.184
-    angleY -115.595
-   }
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.997 0.107 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
- {
-  components {
-   FactionAffiliationComponent "{65B41E28663EEFF3}" {
-    "faction affiliation" "FIA"
-   }
-  }
-  coords 2727.44 163.651 4529.597
-  angleY 107.456
-  {
-   GameEntity {
-    ID "65B41E2866307D7B"
-    coords 2.959 -0.551 -4.114
-   }
-   GenericEntity {
-    ID "65B41E2866307D78"
-    coords 1.158 0.106 1.528
-    angleY 79.393
-   }
-   GenericEntity {
-    ID "65B41E286630B98B"
-    coords -1.788 0.184 0.709
-    angleY 37.989
-   }
-   GenericEntity {
-    ID "65B41E286630B988"
-    coords 3.001 -0.586 -4.451
-    angleY -62.495
-    {
-     GenericEntity {
-      ID "56B6871A4F48B395"
-      coords 0 0 0
-     }
-    }
-   }
-   GenericEntity {
-    ID "65B41E286630B989"
-    coords 2.65 -0.508 -4.618
-    angleY -119.332
-   }
-   GenericEntity {
-    ID "65B41E286630A440"
-    coords -4.361 0.458 1.819
-    angleY 104.357
-   }
-   GenericEntity {
-    ID "65B41E286630B98F"
-    coords -3.761 0.56 3.455
-    angleY 113.058
-   }
-   GenericEntity {
-    ID "65B41E286631246D"
-    coords -4.277 0.165 -1.37
-    angleY 72.181
-   }
-   GenericEntity {
-    ID "65B41E2866313AB4"
-    coords 4.535 -0.159 0.317
-    angleY -90.536
-   }
-   GenericEntity {
-    ID "65B41E2866313AB7"
-    coords -3.563 -0.028 -2.888
-    angleY 58.15
-   }
-   GenericEntity {
-    ID "65B41E28663188B0"
-    coords 3.58 0.223 3.38
-    angleY -121.553
-   }
-   GenericEntity {
-    ID "65B41E286631EDD0"
-    coords -4.535 0.323 0.17
-    angleY 89.167
-   }
-   GenericEntity {
-    ID "65B41E28663E3080"
-    coords 4.353 -0.336 -1.331
-    angleY -75.345
-   }
-   GenericEntity {
-    ID "65B41E28663E3081"
-    coords 3.746 -0.474 -2.964
-    angleY -66.645
-   }
-   GenericEntity {
-    ID "65B41E28663EEFEF"
-    coords 4.284 0.027 1.858
-    angleY -107.521
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F59"
-    coords 4.513 -0.218 -0.228
-    angleY 96.325
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F5A"
-    coords 4.306 -0.454 -2.502
-    angleY 109.593
-   }
-   StaticModelEntity {
-    ID "65B41E28663069C5"
-    coords 3.933 0.109 2.433
-    angleY 63.771
-   }
-   StaticModelEntity {
-    ID "65B41E2866306A1A"
-    coords -4.792 0.366 0.418
-    angleY -92.585
-   }
-   StaticModelEntity {
-    ID "65B41E2866306A1E"
-    coords -4.333 0.1 -2.129
-    angleY -113.609
-   }
-   StaticModelEntity {
-    ID "65B41E2866307D45"
-    coords -4.257 0.558 2.998
-    angleY -68.08
-   }
-   StaticModelEntity {
-    ID "65B41E2866300F56"
-    coords 1.829 -0.504 -4.184
-    angleY -115.595
-   }
-   Turret {
-    ID "65B41E2866307D79"
-    coords 0 0 0
-   }
-   GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
-    components {
-     SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-      m_sCycleWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-      m_eGroupType TEAM_SENTRY
-      m_bIsVehicleGroup 1
-     }
-    }
-    coords 2.996 -0.134 0
-    {
-     $grp SCR_AIWaypoint : "{FBA8DC8FDA0E770D}Prefabs/AI/Waypoints/AIWaypoint_Patrol_Hierarchy.et" {
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-      {
-       coords 0 0 0
-       AIBehaviorTreeMoveTo "{55C11C7187131760}AI/BehaviorTrees/Waypoints/WP_GetInNearest.bt"
-      }
-     }
-    }
-   }
-  }
- }
-}
-Vehicle AH64D_Base4 : "{BB59AEDD187EAEB6}Prefabs/Vehicles/Helicopters/AH64D/AH64D_Base.et" {
- coords 3083.817 144.312 8423.025
- angleY -4.447
 }
