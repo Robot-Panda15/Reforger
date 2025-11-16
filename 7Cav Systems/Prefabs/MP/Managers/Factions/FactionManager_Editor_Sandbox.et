@@ -48,5 +48,9 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
     "Archangel" "Helios" "Pioneer" "Viking" "Bandit" "Misfit" "Gunslinger"
    }
   }
+  SCR_Faction "{66E0E828C184C449}" : "{830970F42196ADAF}Configs/Factions/MEI.conf" {
+  }
+  SCR_Faction "{66E0E829241BB5C6}" : "{078966960951BF1E}Configs/Factions/MEC.conf" {
+  }
  }
 }
