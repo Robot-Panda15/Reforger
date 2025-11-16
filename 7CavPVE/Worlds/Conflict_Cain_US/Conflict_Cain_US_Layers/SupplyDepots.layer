@@ -1,0 +1,231 @@
+$grp GenericEntity : "{27941CDF3E7E1A5F}Prefabs/MP/Campaign/CampaignRemnantsSupplyDepot.et" {
+ GoluboyGlazSupply {
+  coords 5440.263 441.39 6012.751
+  angles 4.398 -31.517 -4.777
+  {
+   $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType FIRETEAM
+       m_fAILimitThreshold 0.66
+      }
+     }
+     coords 7.139 -0.108 -9.157
+     angles -5.082 85.849 -4.041
+    }
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType TEAM_COUNTER_SPETZ
+       m_iRespawnPeriod 600
+       m_fAILimitThreshold 0.66
+       m_iRespawnWaves -1
+       m_bIsCounterGroup 1
+       m_iGroupMultiplier 3
+      }
+     }
+     coords 307.123 -1.113 183.2
+     angles -3.656 -178.483 -5.403
+     {
+      SCR_DefendWaypoint : "{2A81753527971941}Prefabs/AI/Waypoints/AIWaypoint_Defend_CP.et" {
+       components {
+        Hierarchy "{5CD0765889102122}" {
+        }
+       }
+       coords 295.336 -15.381 189.46
+       angles 0 -54.336 0
+       AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+       CompletionRadius 40
+      }
+     }
+    }
+   }
+  }
+ }
+ PebbleBaySupply {
+  coords 5975.924 9.305 3115.556
+  angles 4.398 -31.517 -4.777
+  {
+   $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType FIRETEAM
+       m_fAILimitThreshold 0.66
+      }
+     }
+     coords 7.139 -0.108 -9.157
+     angles -5.082 85.849 -4.041
+    }
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType TEAM_COUNTER_SPETZ
+       m_iRespawnPeriod 600
+       m_fAILimitThreshold 0.66
+       m_iRespawnWaves -1
+       m_bIsCounterGroup 1
+       m_iGroupMultiplier 3
+      }
+     }
+     coords 306.947 -20.583 249.954
+     angles -3.656 -178.483 -5.403
+     {
+      SCR_DefendWaypoint : "{2A81753527971941}Prefabs/AI/Waypoints/AIWaypoint_Defend_CP.et" {
+       components {
+        Hierarchy "{5CD0765889102122}" {
+        }
+       }
+       coords 300.629 7.608 249.331
+       angles 0 -54.336 0
+       AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+       CompletionRadius 65
+      }
+     }
+    }
+   }
+  }
+ }
+ BareRidgeSupply {
+  coords 8027.133 182.72 7758.172
+  angles 4.398 -31.517 -4.777
+  {
+   $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType FIRETEAM
+       m_fAILimitThreshold 0.66
+      }
+     }
+     coords 35.677 -3.982 12.528
+     angles -4.081 98.435 -5.05
+    }
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType TEAM_COUNTER_SPETZ
+       m_iRespawnPeriod 600
+       m_fAILimitThreshold 0.66
+       m_iRespawnWaves -1
+       m_bIsCounterGroup 1
+       m_iGroupMultiplier 3
+      }
+     }
+     coords 422.935 -67.019 288.684
+     angles -3.656 -178.483 -5.403
+     {
+      SCR_DefendWaypoint : "{2A81753527971941}Prefabs/AI/Waypoints/AIWaypoint_Defend_CP.et" {
+       components {
+        Hierarchy "{5CD0765889102122}" {
+        }
+       }
+       coords 436.481 46.675 296.909
+       angles 0 -54.336 0
+       AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+       CompletionRadius 80
+      }
+     }
+    }
+   }
+  }
+ }
+ ZenitMineSupply {
+  coords 3643.887 3.037 7870.226
+  angles 4.398 -31.517 -4.777
+  {
+   $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType TEAM_SF_ASSAULT
+       m_fAILimitThreshold 0.66
+      }
+     }
+     coords 85.419 -11.576 51.886
+     angles -5.082 85.849 -4.041
+    }
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType TEAM_COUNTER_SPETZ
+       m_iRespawnPeriod 600
+       m_fAILimitThreshold 0.66
+       m_iRespawnWaves -1
+       m_bIsCounterGroup 1
+       m_iGroupMultiplier 3
+      }
+     }
+     coords 225.693 98.002 -302.669
+     angles -3.656 -178.483 -5.403
+     {
+      SCR_DefendWaypoint : "{2A81753527971941}Prefabs/AI/Waypoints/AIWaypoint_Defend_CP.et" {
+       components {
+        Hierarchy "{5CD0765889102122}" {
+        }
+       }
+       coords 204.977 -145.651 -333.012
+       angles 0 -54.336 0
+       AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+       CompletionRadius 120
+      }
+     }
+    }
+   }
+  }
+ }
+ RowanRidgeSupply {
+  coords 10821.815 111.472 10422.752
+  angles 4.398 -31.517 -4.777
+  {
+   $grp GenericEntity : "{9273AB931008C271}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_FIA.et" {
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType FIRETEAM
+       m_fAILimitThreshold 0.66
+      }
+     }
+     coords 35.455 -6.628 12.323
+     angles -4.081 98.435 -5.05
+    }
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType TEAM_COUNTER_SPETZ
+       m_iRespawnPeriod 600
+       m_fAILimitThreshold 0.66
+       m_iRespawnWaves -1
+       m_bIsCounterGroup 1
+       m_iGroupMultiplier 3
+      }
+     }
+     coords 309.514 -29.974 -103.741
+     angles -3.656 -178.483 -5.403
+     {
+      SCR_DefendWaypoint : "{2A81753527971941}Prefabs/AI/Waypoints/AIWaypoint_Defend_CP.et" {
+       components {
+        Hierarchy "{5CD0765889102122}" {
+        }
+       }
+       coords 312.707 -4.859 -88.876
+       angles 0 -54.336 0
+       AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+       CompletionRadius 40
+      }
+     }
+    }
+    {
+     components {
+      SCR_AmbientPatrolSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+       m_eGroupType TEAM_AT
+      }
+     }
+     coords 26.498 -3.215 1.065
+     angles -6.239 31.236 1.79
+    }
+   }
+  }
+ }
+}

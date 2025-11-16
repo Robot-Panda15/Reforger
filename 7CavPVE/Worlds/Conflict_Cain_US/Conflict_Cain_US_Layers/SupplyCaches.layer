@@ -1,0 +1,698 @@
+$grp GenericEntity : "{1FE6CA907FA552E7}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_04.et" {
+ GoluboyGlazSupplies01 {
+  coords 5444.571 441.535 6024.208
+  angles -4.443 -131.274 0
+  {
+   GenericEntity {
+    ID "5D1ED92353BB9FF4"
+    coords 3.511 -0.138 -2.944
+    angles 0 0.819 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F82"
+    coords 3.198 -0.226 1.629
+    angles 0 -90 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F95"
+    coords 3.297 -0.195 0.133
+    angles 0 -88.159 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9FE3"
+    coords 3.358 -0.091 -1.784
+    angles 0 176.173 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9E3E"
+    coords 5.031 -0.478 0.146
+    angles 0 4.513 0
+   }
+   GenericEntity {
+    ID "5D453938FA2CE085"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ PebbleBaySupplies01 {
+  coords 5951.303 9.312 3106.863
+  angles 4.051 73.009 1.826
+  {
+   GenericEntity {
+    ID "5D1ED92353BB9FF4"
+    coords 3.511 -0.138 -2.944
+    angles 0 0.819 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F82"
+    coords 3.198 -0.226 1.629
+    angles 0 -90 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F95"
+    coords 3.297 -0.195 0.133
+    angles 0 -88.159 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9FE3"
+    coords 3.358 -0.091 -1.784
+    angles 0 176.173 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9E3E"
+    coords 5.031 -0.478 0.146
+    angles 0 4.513 0
+   }
+   GenericEntity {
+    ID "5D453938FA2CE085"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ PebbleBaySupplies05 {
+  coords 5979.847 9.413 3133.275
+  angles -2.026 165.816 3.955
+  {
+   GenericEntity {
+    ID "5D1ED92353BB9FF4"
+    coords 3.511 -0.138 -2.944
+    angles 0 0.819 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F82"
+    coords 3.198 -0.226 1.629
+    angles 0 -90 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F95"
+    coords 3.297 -0.195 0.133
+    angles 0 -88.159 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9FE3"
+    coords 3.358 -0.091 -1.784
+    angles 0 176.173 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9E3E"
+    coords 5.031 -0.478 0.146
+    angles 0 4.513 0
+   }
+   GenericEntity {
+    ID "5D453938FA2CE085"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ BareRidgeSupplies01 {
+  coords 8049.415 182.697 7734.351
+  angles 0.568 -33.942 -4.407
+  {
+   GenericEntity {
+    ID "5D1ED92353BB9FF4"
+    coords 3.511 -0.138 -2.944
+    angles 0 0.819 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F82"
+    coords 3.198 -0.226 1.629
+    angles 0 -90 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F95"
+    coords 3.297 -0.195 0.133
+    angles 0 -88.159 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9FE3"
+    coords 3.358 -0.091 -1.784
+    angles 0 176.173 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9E3E"
+    coords 5.031 -0.478 0.146
+    angles 0 4.513 0
+   }
+   GenericEntity {
+    ID "5D453938FA2CE085"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ ZenitMineSupplies03 {
+  coords 3617.447 1.625 7931.01
+  angles -2.386 171.161 0.913
+  {
+   GenericEntity {
+    ID "5D1ED92353BB9FF4"
+    coords 3.511 -0.138 -2.944
+    angles 0 0.819 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F82"
+    coords 3.198 -0.226 1.629
+    angles 0 -90 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F95"
+    coords 3.297 -0.195 0.133
+    angles 0 -88.159 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9FE3"
+    coords 3.358 -0.091 -1.784
+    angles 0 176.173 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9E3E"
+    coords 5.031 -0.478 0.146
+    angles 0 4.513 0
+   }
+   GenericEntity {
+    ID "5D453938FA2CE085"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ RowanRidgeSupplies02 {
+  coords 10842.163 110.793 10429.408
+  angles 1.522 -111.661 -1.846
+  {
+   GenericEntity {
+    ID "5D1ED92353BB9FF4"
+    coords 3.511 -0.138 -2.944
+    angles 0 0.819 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F82"
+    coords 3.198 -0.226 1.629
+    angles 0 -90 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9F95"
+    coords 3.297 -0.195 0.133
+    angles 0 -88.159 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9FE3"
+    coords 3.358 -0.091 -1.784
+    angles 0 176.173 0
+   }
+   GenericEntity {
+    ID "5D1ED92353BB9E3E"
+    coords 5.031 -0.478 0.146
+    angles 0 4.513 0
+   }
+   GenericEntity {
+    ID "5D453938FA2CE085"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ GoluboyGlazSupplies02 {
+  coords 5450.472 441.312 6015.896
+  angles -0.984 -131.75 0.011
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ PebbleBaySupplies02 {
+  coords 5951.738 9.338 3123.342
+  angles -0.4 162.9 0.899
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ PebbleBaySupplies06 {
+  coords 5995.712 9.338 3133.624
+  angles -0.983 -134.193 0.053
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ BareRidgeSupplies02 {
+  coords 8002.632 182.687 7741.414
+  angles 0.666 1.508 -0.724
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ ZenitMineSupplies02 {
+  coords 3628.297 1.625 7933.626
+  angles -0.52 170.817 0.835
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ RowanRidgeSupplies03 {
+  coords 10833.141 111.201 10435.976
+  angles 1.503 153.981 -1.408
+  {
+   GenericEntity {
+    ID "5D45393876460D01"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{962EB289CF844AA2}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_06.et" {
+ GoluboyGlazSupplies03 {
+  coords 5433.555 441.372 6022.633
+  angles 0.564 54.559 -2.304
+  {
+   GenericEntity {
+    ID "5D1ED92199D182E9"
+    coords 3.053 -0.061 -4.188
+    angles 0 -10.521 0
+   }
+   GenericEntity {
+    ID "5D1ED92199D182F7"
+    coords 3.072 -0.05 -4.996
+    angles 0 -57.298 0
+   }
+   GenericEntity {
+    ID "5D45393949376AB5"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "5D1ED92199D18266"
+    coords 3.236 -0.06 -6.077
+   }
+  }
+ }
+ PebbleBaySupplies03 {
+  coords 5995.013 9.281 3119.536
+  angles -1.28 -106.559 1.997
+  {
+   GenericEntity {
+    ID "5D1ED92199D182E9"
+    coords 3.053 -0.061 -4.188
+    angles 0 -10.521 0
+   }
+   GenericEntity {
+    ID "5D1ED92199D182F7"
+    coords 3.072 -0.05 -4.996
+    angles 0 -57.298 0
+   }
+   GenericEntity {
+    ID "5D45393949376AB5"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "5D1ED92199D18266"
+    coords 3.236 -0.06 -6.077
+   }
+  }
+ }
+ BareRidgeSupplies03 {
+  coords 8024.981 182.719 7752.821
+  angles 0.981 65.239 -2.159
+  {
+   GenericEntity {
+    ID "5D1ED92199D182E9"
+    coords 3.053 -0.061 -4.188
+    angles 0 -10.521 0
+   }
+   GenericEntity {
+    ID "5D1ED92199D182F7"
+    coords 3.072 -0.05 -4.996
+    angles 0 -57.298 0
+   }
+   GenericEntity {
+    ID "5D45393949376AB5"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "5D1ED92199D18266"
+    coords 3.236 -0.06 -6.077
+   }
+  }
+ }
+ BareRidgeSupplies05 {
+  coords 8035.337 182.663 7759.738
+  angles -1.208 -108.589 2.042
+  {
+   GenericEntity {
+    ID "5D1ED92199D182E9"
+    coords 3.053 -0.061 -4.188
+    angles 0 -10.521 0
+   }
+   GenericEntity {
+    ID "5D1ED92199D182F7"
+    coords 3.072 -0.05 -4.996
+    angles 0 -57.298 0
+   }
+   GenericEntity {
+    ID "5D45393949376AB5"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "5D1ED92199D18266"
+    coords 3.236 -0.06 -6.077
+   }
+  }
+ }
+ ZenitMineSupplies01 {
+  coords 3639.148 1.625 7932.19
+  angles 0 170.701 0
+  {
+   GenericEntity {
+    ID "5D1ED92199D182E9"
+    coords 3.053 -0.061 -4.188
+    angles 0 -10.521 0
+   }
+   GenericEntity {
+    ID "5D1ED92199D182F7"
+    coords 3.072 -0.05 -4.996
+    angles 0 -57.298 0
+   }
+   GenericEntity {
+    ID "5D45393949376AB5"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "5D1ED92199D18266"
+    coords 3.236 -0.06 -6.077
+   }
+  }
+ }
+ RowanRidgeSupplies04 {
+  coords 10821.279 111.48 10422.557
+  angles 2.09 159.037 1.122
+  {
+   GenericEntity {
+    ID "5D1ED92199D182E9"
+    coords 3.053 -0.061 -4.188
+    angles 0 -10.521 0
+   }
+   GenericEntity {
+    ID "5D1ED92199D182F7"
+    coords 3.072 -0.05 -4.996
+    angles 0 -57.298 0
+   }
+   GenericEntity {
+    ID "5D45393949376AB5"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+   StaticModelEntity {
+    ID "5D1ED92199D18266"
+    coords 3.236 -0.06 -6.077
+   }
+  }
+ }
+}
+$grp GenericEntity : "{FA7A86697340C58C}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_05.et" {
+ GoluboyGlazSupplies04 {
+  coords 5426.624 441.558 6029.612
+  angles 0 137.005 0
+  {
+   GenericEntity {
+    ID "5D4539393E1536C3"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ PebbleBaySupplies04 {
+  coords 5965.798 9.372 3129.071
+  angles 0 162.942 0
+  {
+   GenericEntity {
+    ID "5D4539393E1536C3"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ BareRidgeSupplies04 {
+  coords 8005.701 182.719 7781.835
+  angles 0 89.71 0
+  {
+   GenericEntity {
+    ID "5D4539393E1536C3"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ ZenitMineSupplies04 {
+  coords 3603.228 1.917 7930.551
+  angles 0 -98.518 -6.294
+  {
+   GenericEntity {
+    ID "5D4539393E1536C3"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ ZenitMineSupplies05 {
+  coords 3665.219 79.223 7712.072
+  angles 0 169.243 0
+  {
+   GenericEntity {
+    ID "5D4539393E1536C3"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ RowanRidgeSupplies01 {
+  coords 10800.753 112.151 10411.779
+  angles -1.257 67.669 -2.573
+  {
+   GenericEntity {
+    ID "5D4539393E1536C3"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_bEnableResourceGain 1
+        m_fResourceGainTickrate 2400
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

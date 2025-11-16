@@ -1,0 +1,32 @@
+$grp GenericEntity : "{16148BF23770F1D3}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_02.et" {
+ GoluboyGlazMgNest {
+  coords 5444.342 441.522 5996.412
+  angles 0 109.468 0
+  {
+   GenericEntity {
+    ID "5CCCBEE55EFE2BFE"
+    coords 0.098 0.487 0.084
+   }
+  }
+ }
+ RowanRidgeMgNest2 {
+  coords 10853.229 110.187 10434.621
+  angles 0 83.996 0
+  {
+   GenericEntity {
+    ID "5CCCBEE55EFE2BFE"
+    coords 0.098 0.487 0.084
+   }
+  }
+ }
+ RowanRidgeMgNest1 {
+  coords 10810.049 111.47 10385.462
+  angles 0 -92.773 0
+  {
+   GenericEntity {
+    ID "5CCCBEE55EFE2BFE"
+    coords 0.098 0.487 0.084
+   }
+  }
+ }
+}

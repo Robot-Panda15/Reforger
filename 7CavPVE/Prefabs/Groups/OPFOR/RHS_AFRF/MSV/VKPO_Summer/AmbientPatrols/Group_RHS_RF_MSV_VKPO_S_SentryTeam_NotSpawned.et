@@ -1,0 +1,13 @@
+SCR_AIGroup : "{85591815191600FC}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_SentryTeam.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    m_aAuthoredLabels {
+     ENTITYTYPE_GROUP TYPE_RHS_AFRF_REGULAR CAMO_RHS_EMR WEAR_RHS_SUMMER ERA_RHS_MODERN
+    }
+   }
+  }
+ }
+ m_faction "FIA"
+}

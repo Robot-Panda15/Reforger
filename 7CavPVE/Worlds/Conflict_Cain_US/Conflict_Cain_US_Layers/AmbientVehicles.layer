@@ -1,0 +1,98 @@
+$grp GenericEntity : "{D4A604DD154470CD}Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_FIA.et" {
+ AirfieldHelicopter {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     VEHICLE_HELICOPTER
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+  }
+  coords 2637.252 24.218 5521.041
+  angles 0 34.527 0
+ }
+ AirfieldAmphibious {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_AMPHIBIOUS
+     TRAIT_ARMED
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+  }
+  coords 2720.666 24.592 5470.705
+  angles 0 -58.275 0
+ }
+ UgoldarMilitaryAmphibious {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_AMPHIBIOUS
+     TRAIT_ARMED
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+  }
+  coords 7662.306 23.073 5056.945
+  angles 0 4.954 0
+ }
+ KomsomolskMilitaryArmed {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_ARMED
+    }
+    m_aExcludedEditableEntityLabels {
+     TRAIT_AMPHIBIOUS
+    }
+   }
+  }
+  coords 8559.502 96.006 9373.854
+  angles 0 133.311 0
+ }
+ WestCapeHelicopter {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     VEHICLE_HELICOPTER
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+  }
+  coords 2022.063 129.469 7327.957
+  angles 0 -50.511 0
+ }
+ GreenHillMilitaryArmed {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_ARMED
+    }
+    m_aExcludedEditableEntityLabels {
+     TRAIT_AMPHIBIOUS
+    }
+   }
+  }
+  coords 6895.404 436.988 6718.054
+  angles 0 73.726 0
+ }
+ WestCapeMilitaryArmed {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_ARMED
+    }
+    m_aExcludedEditableEntityLabels {
+     TRAIT_AMPHIBIOUS
+    }
+   }
+  }
+  coords 2227.78 126.125 7355.022
+  angles 0 -99.235 0
+ }
+}

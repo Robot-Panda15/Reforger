@@ -1,0 +1,274 @@
+$grp GenericEntity : "{D4A604DD154470CD}Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_FIA.et" {
+ MichurinoVehicleSmall {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_SMALL
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 3804.185 4.881 3733.01
+  angles 0 -133.201 0
+ }
+ UdarnikVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 4642.266 40.154 3507.923
+  angles 0 -83.648 0
+ }
+ PebbleBaySupplyVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 5967.929 9.313 3111.492
+  angles 0 96.183 0
+ }
+ UgoldarVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 6484.381 24.359 3870.64
+  angles 0 109.121 0
+ }
+ UgoldarVehicleSmall {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_SMALL
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 6788.478 27.846 4022.886
+  angles 0 -40.901 0
+ }
+ GorshkovoVehicleSmall {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_SMALL
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 8450.205 21.612 6455.365
+  angles 0 -71.949 0
+ }
+ KamenskVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 11980.275 7.5 10529.135
+  angles 0 -6.172 0
+ }
+ KamenskVehicleSmall {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_SMALL
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 11814.802 12.58 10626.444
+  angles 0 -109.211 0
+ }
+ RowanRidgeVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 10811.067 111.83 10418.371
+  angles 0 66.052 0
+ }
+ KomsomolskVehicleSmall {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_SMALL
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 8608.625 3.825 10185.722
+  angles 0 175.022 0
+ }
+ BareRidgeSupplyVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 8050.777 182.719 7784.378
+  angles 0 -141.294 0
+ }
+ MineralyVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 6316.352 37.35 8008.677
+  angles 0 65.392 0
+ }
+ MineralyVehicleSmall {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_SMALL
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 6153.9 38.03 7996.044
+  angles 0 -163.759 0
+ }
+ GoluboyGlazSupplyVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 5435.88 441.42 6009.101
+  angles 0 141.472 0
+ }
+ ZenitMineSupplyVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 3674.131 1.658 7932.55
+  angles 0 -119.393 0
+ }
+ SosnovyMysVehicleSmall {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_SMALL
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 4403.128 2.454 8148.473
+  angles 0 -104.317 0
+ }
+ StakhanovMineVehicleLarge {
+  components {
+   SCR_AmbientVehicleSpawnPointComponent "{5D5E85F932F777FA}" {
+    m_aIncludedEditableEntityLabels {
+     TRAIT_PASSENGERS_LARGE
+    }
+    m_aExcludedEditableEntityLabels {
+    }
+   }
+   SCR_FactionAffiliationComponent "{5D5E85F93E96E088}" {
+    "faction affiliation" "CIV"
+   }
+  }
+  coords 6122.661 172.844 4540.638
+  angles 0 12.833 0
+ }
+}

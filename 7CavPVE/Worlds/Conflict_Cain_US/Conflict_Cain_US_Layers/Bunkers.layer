@@ -1,0 +1,14 @@
+$grp GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_USSR_01.et" {
+ GoluboyGlazBunker {
+  coords 5443.04 442.083 5949.479
+  angles 1.721 68.274 -1.276
+ }
+ GoluboyGlazBunker2 {
+  coords 10791.509 112.108 10409.05
+  angles -0.438 -153.38 2.097
+ }
+ GoluboyGlazBunker3 {
+  coords 10858.615 110.054 10402.037
+  angles 2.133 99.454 -0.201
+ }
+}
