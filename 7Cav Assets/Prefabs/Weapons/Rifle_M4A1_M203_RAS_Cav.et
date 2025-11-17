@@ -21,6 +21,11 @@ GenericEntity : "{C834F1F810DDF0A1}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_R
       Prefab "{D0453107F44917CF}Prefabs/Weapons/Attachments/Optics/exps/Optic_su231A_black.et"
      }
     }
+    AttachmentSlotComponent "{5EA2BE953838E77C}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE95244FA719}" {
+      Prefab "{537C37F48351CE58}Prefabs/Weapons/UGL_RHS_M203_Cav.et"
+     }
+    }
     AttachmentSlotComponent "{5EA2BE95B630A07A}" {
      AttachmentSlot InventoryStorageSlot "{5EA2BE95B7F1B3D5}" {
       Prefab ""

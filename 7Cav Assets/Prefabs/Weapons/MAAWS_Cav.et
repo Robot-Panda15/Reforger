@@ -1,4 +1,4 @@
-GenericEntity : "{4D02E8D5E58AB005}Prefabs/Weapons/M4_MAAWS/M18_CarlyG.et" {
+GenericEntity : "{4D02E8D5E58AB005}Prefabs/Weapons/M4_MAAWS/M4_MAAWS.et" {
  ID "CFBAA4B725411E45"
  components {
   SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
@@ -13,7 +13,7 @@ GenericEntity : "{4D02E8D5E58AB005}Prefabs/Weapons/M4_MAAWS/M18_CarlyG.et" {
    components {
     AttachmentSlotComponent "{B502E4DC8A9E835E}" {
      AttachmentSlot InventoryStorageSlot optics {
-      Prefab "{1D363F51564D1CF7}Prefabs/Attachments/FCS600/MAAWS_FCS600_551.et"
+      Prefab "{D928BE3F7938F100}Prefabs/Attachments/FCS600/Optic_FLV_HEAT.et"
      }
     }
    }

@@ -1,4 +1,4 @@
-GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
+GameEntity : "{239CEF0C9AB5556E}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203.et" {
  ID "50D6D3D8D7C645EE"
  components {
   MuzzleInMagComponent "{B3A264F493CC5A18}" {
@@ -8,7 +8,7 @@ GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
       SightRangeInfo "{5EACC9CAE7E29DAA}" {
        WeaponPosition PointInfo "{5EACC9CAE7E29DA9}" {
         Offset 0 -0.1145 0
-        Angles 21.2 0 0
+        Angles 23 0 0
        }
       }
      }

@@ -86,7 +86,7 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
     ItemsInitConfigurationItem "{654F5A0395F62FF4}" {
      TargetStorage "Back/Backpack_511_rush12_MC.et"
      PrefabsToSpawn {
-      "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et" "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et"
+      "{5B9BCFE7BBB5B55C}Prefabs/Magazine/Magazine_84mm_HEAT551.et" "{5B9BCFE7BBB5B55C}Prefabs/Magazine/Magazine_84mm_HEAT551.et"
      }
     }
    }

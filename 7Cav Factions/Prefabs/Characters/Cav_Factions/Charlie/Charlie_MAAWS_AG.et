@@ -22,7 +22,7 @@ SCR_ChimeraCharacter : "{2E6A7178AF4D045F}Prefabs/Characters/Cav_Factions/Charli
     ItemsInitConfigurationItem "{66492B605B5B10B5}" {
      TargetStorage "Back/Backpack_511_rush12_MC.et"
      PrefabsToSpawn {
-      "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et" "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et" "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et" "{F894B9BEE64D759E}Prefabs/Magazine/HEAT_TEST_Magazine.et"
+      "{5B9BCFE7BBB5B55C}Prefabs/Magazine/Magazine_84mm_HEAT551.et" "{5B9BCFE7BBB5B55C}Prefabs/Magazine/Magazine_84mm_HEAT551.et" "{CBC9B8A5BCB628D2}Prefabs/Magazine/Magazine_84mm_HE441.et" "{CBC9B8A5BCB628D2}Prefabs/Magazine/Magazine_84mm_HE441.et" "{B47212073D91E28F}Prefabs/Attachments/FCS600/Optic_FLV_HE.et"
      }
     }
    }
