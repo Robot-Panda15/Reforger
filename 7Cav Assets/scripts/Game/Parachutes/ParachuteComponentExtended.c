@@ -4,19 +4,6 @@ class ParachuteComponentExtended : ParachuteComponent
 	[Attribute("3.0", UIWidgets.Slider, "Deploy invincibility duration (s)", "0.5 10 0.5", category : "Landing")]
 	protected float m_fDeployInvincibilityDuration;
 
-	protected static void DebugChuteLog(string msg)
-	{
-		Print(msg);
-		FileHandle f = FileIO.OpenFile("$logs:DEBUG_CHUTE_1c2333.txt", FileMode.APPEND);
-		if (f) { f.WriteLine(msg); f.Close(); }
-	}
-
-	override void EOnInit(IEntity owner)
-	{
-		super.EOnInit(owner);
-		DebugChuteLog("[DEBUG_CHUTE] ParachuteComponentExtended EOnInit - MOD LOADED");
-	}
-
 	protected void EnableDeployInvincibility(IEntity pilot)
 	{
 		if (!pilot)
@@ -37,7 +24,6 @@ class ParachuteComponentExtended : ParachuteComponent
 
 	override void RpcAskDeployParachute()
 	{
-		DebugChuteLog("[DEBUG_CHUTE] RpcAskDeployParachute called");
 		if (m_bParachuteDeployed)
 			return;
 
@@ -161,16 +147,8 @@ class ParachuteComponentExtended : ParachuteComponent
 
 		ParachuteDeployedEntityExtended chuteExt = ParachuteDeployedEntityExtended.Cast(m_DeployedParachute);
 		if (chuteExt && chuteExt.IsDeployInvincibilityActive())
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H5 OnControlledEntityChanged_skipped_invincibility");
-			// #endregion
 			return;
-		}
 
-		// #region agent log
-		DebugChuteLog("[DEBUG_CHUTE] H5 OnControlledEntityChanged_deleting_chute");
-		// #endregion
 		DeleteParachuteEntity(m_DeployedParachute);
 		m_DeployedParachute = null;
 		m_bParachuteDeployed = false;
@@ -180,34 +158,16 @@ class ParachuteComponentExtended : ParachuteComponent
 
 	void RespawnChuteForDisconnectedPilot(ParachuteDeployedEntity oldChute, IEntity pilot)
 	{
-		// #region agent log
-		DebugChuteLog("[DEBUG_CHUTE] H3 RespawnChuteForDisconnectedPilot_entry");
-		// #endregion
 		if (!oldChute || !pilot)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H3 Respawn_early reason=!oldChute_or_!pilot");
-			// #endregion
 			return;
-		}
 
 		ParachuteItemComponent item = ResolveParachuteItem_Server(pilot);
 		if (!item)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H3 Respawn_early reason=ResolveParachuteItem_Server_null");
-			// #endregion
 			return;
-		}
 
 		ResourceName prefab = item.GetParachutePrefab();
 		if (prefab == "")
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H3 Respawn_early reason=prefab_empty");
-			// #endregion
 			return;
-		}
 
 		EntitySpawnParams sp = new EntitySpawnParams;
 		sp.TransformMode = ETransformMode.WORLD;
@@ -216,21 +176,11 @@ class ParachuteComponentExtended : ParachuteComponent
 		IEntity spawned = GetGame().SpawnEntityPrefabEx(prefab, false, GetGame().GetWorld(), sp);
 		ParachuteDeployedEntity chute = ParachuteDeployedEntity.Cast(spawned);
 		if (!chute)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H4 Respawn_early reason=spawn_failed");
-			// #endregion
 			return;
-		}
 
 		BaseCompartmentManagerComponent bcm = BaseCompartmentManagerComponent.Cast(chute.FindComponent(BaseCompartmentManagerComponent));
 		if (!bcm)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H4 Respawn_early reason=!bcm");
-			// #endregion
 			return;
-		}
 
 		array<BaseCompartmentSlot> slots = {};
 		bcm.GetCompartments(slots);
@@ -247,22 +197,12 @@ class ParachuteComponentExtended : ParachuteComponent
 		}
 
 		if (!pilotSlot)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H4 Respawn_early reason=!pilotSlot");
-			// #endregion
 			return;
-		}
 
 		SCR_CompartmentAccessComponent access = SCR_CompartmentAccessComponent.Cast(
 			pilot.FindComponent(SCR_CompartmentAccessComponent));
 		if (!access)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H4 Respawn_early reason=!access");
-			// #endregion
 			return;
-		}
 
 		vector deployVel = pilot.GetPhysics().GetVelocity();
 		m_vDeployVelocity = deployVel;
@@ -275,9 +215,6 @@ class ParachuteComponentExtended : ParachuteComponent
 		chute.InitializePilot(pilot, access, deployVel);
 		access.GetInVehicle(chute, pilotSlot, true, 0, ECloseDoorAfterActions.INVALID, true);
 
-		// #region agent log
-		DebugChuteLog("[DEBUG_CHUTE] H4 RespawnChuteForDisconnectedPilot_success");
-		// #endregion
 		Replication.BumpMe();
 		GetGame().GetCallqueue().CallLater(Do_SetupDeployedChute_Owner, 50, false, m_DeployedChuteId, m_iChuteSlotId, deployVel);
 		GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100, false, oldChute);

@@ -5,13 +5,6 @@ class ParachuteDeployedEntityExtended : ParachuteDeployedEntity
 	protected PhysicsBlock m_InvincibilityPhysicsBlock;
 	protected float m_fEmptyCompartmentAccumulator = -1;
 
-	protected static void DebugChuteLog(string msg)
-	{
-		Print(msg);
-		FileHandle f = FileIO.OpenFile("$logs:DEBUG_CHUTE_1c2333.txt", FileMode.APPEND);
-		if (f) { f.WriteLine(msg); f.Close(); }
-	}
-
 	bool IsDeployInvincibilityActive()
 	{
 		return m_bDeployInvincibilityActive;
@@ -19,7 +12,6 @@ class ParachuteDeployedEntityExtended : ParachuteDeployedEntity
 
 	void StartDeployInvincibility(float durationSeconds)
 	{
-		DebugChuteLog("[DEBUG_CHUTE] StartDeployInvincibility - extended chute deployed");
 		m_bDeployInvincibilityActive = true;
 
 		DamageManagerComponent dmgChute = DamageManagerComponent.Cast(m_DamageManager);
@@ -36,9 +28,6 @@ class ParachuteDeployedEntityExtended : ParachuteDeployedEntity
 
 	protected void EndDeployInvincibility()
 	{
-		// #region agent log
-		DebugChuteLog("[DEBUG_CHUTE] H1 EndDeployInvincibility");
-		// #endregion
 		m_bDeployInvincibilityActive = false;
 
 		if (m_InvincibilityPhysicsBlock)
@@ -56,71 +45,31 @@ class ParachuteDeployedEntityExtended : ParachuteDeployedEntity
 
 	protected void ReattachPilotIfDisconnected()
 	{
-		// #region agent log
-		DebugChuteLog("[DEBUG_CHUTE] H2 ReattachPilotIfDisconnected_entry");
-		// #endregion
 		if (!IsAuthority())
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H2 Reattach_early reason=!IsAuthority");
-			// #endregion
 			return;
-		}
 
 		if (!m_Compartment || !m_Pilot)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H2 Reattach_early reason=!m_Compartment_or_!m_Pilot");
-			// #endregion
 			return;
-		}
 
 		if (m_Compartment.IsOccupied())
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H2 Reattach_early reason=compartment_occupied");
-			// #endregion
 			return;
-		}
 
 		if (m_bHasLanded)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H2 Reattach_early reason=m_bHasLanded");
-			// #endregion
 			return;
-		}
 
 		PlayerManager pm = GetGame().GetPlayerManager();
 		int playerId = pm.GetPlayerIdFromControlledEntity(m_Pilot);
 		if (playerId == 0)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H2 Reattach_early reason=playerId==0");
-			// #endregion
 			return;
-		}
 
 		SCR_PlayerController pc = SCR_PlayerController.Cast(pm.GetPlayerController(playerId));
 		if (!pc)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H2 Reattach_early reason=!pc");
-			// #endregion
 			return;
-		}
 
 		ParachuteComponentExtended parachuteComp = ParachuteComponentExtended.Cast(pc.FindComponent(ParachuteComponent));
 		if (!parachuteComp)
-		{
-			// #region agent log
-			DebugChuteLog("[DEBUG_CHUTE] H2 Reattach_early reason=!parachuteComp");
-			// #endregion
 			return;
-		}
-		// #region agent log
-		DebugChuteLog("[DEBUG_CHUTE] H2 Reattach_calling_RespawnChuteForDisconnectedPilot");
-		// #endregion
+
 		parachuteComp.RespawnChuteForDisconnectedPilot(this, m_Pilot);
 	}
 
