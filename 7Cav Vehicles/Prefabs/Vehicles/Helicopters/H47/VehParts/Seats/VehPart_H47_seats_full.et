@@ -5,77 +5,77 @@ GenericEntity : "{AE717361AD90B6EC}Prefabs/Vehicles/Helicopters/UH1H/VehParts/Se
    CompartmentSlots {
     CargoCompartmentSlot Passenger_l01 {
      OverrideExitPositionInfo PointInfo "{68A4749818DA2FFA}" {
-      Offset -0.1243 2.685 5.0752
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l02 {
      OverrideExitPositionInfo PointInfo "{68A474983990AEFE}" {
-      Offset -0.0509 2.626 4.1655
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l03 {
      OverrideExitPositionInfo PointInfo "{68A474982D2DB703}" {
-      Offset -0.1084 2.4075 3.3196
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l04 {
      OverrideExitPositionInfo PointInfo "{68A47498D148FF0F}" {
-      Offset -0.0826 2.3431 2.5293
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l05 {
      OverrideExitPositionInfo PointInfo "{68A47498F9289AA0}" {
-      Offset -0.0847 2.5125 1.7998
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l06 {
      OverrideExitPositionInfo PointInfo "{68A47498F5D6B50F}" {
-      Offset -0.0748 2.3563 0.9619
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l07 {
      OverrideExitPositionInfo PointInfo "{68A47498976A795B}" {
-      Offset -0.047 2.1186 0.1953
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l08 {
      OverrideExitPositionInfo PointInfo "{68A47498BDC15F93}" {
-      Offset -0.1075 2.0998 -0.5852
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l09 {
      OverrideExitPositionInfo PointInfo "{68A4749B5F07BEE0}" {
-      Offset -0.0957 2.0643 -1.4053
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l10 {
      OverrideExitPositionInfo PointInfo "{68A4749B42BD145A}" {
-      Offset -0.0906 2.0418 -2.1714
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l11 {
      OverrideExitPositionInfo PointInfo "{68A4749B9A944127}" {
-      Offset -0.1053 1.8747 -2.958
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l12 {
      OverrideExitPositionInfo PointInfo "{68A4749BB12C5AA0}" {
-      Offset -0.1149 1.8316 -3.7256
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l13 {
      OverrideExitPositionInfo PointInfo "{68A4749A6A606396}" {
-      Offset -0.2716 1.4094 -4.572
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l14 {
      OverrideExitPositionInfo PointInfo "{68A4749A1AF30BEF}" {
-      Offset -0.3473 1.3076 -5.4077
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l15 {
      OverrideExitPositionInfo PointInfo "{68A4749A232155EE}" {
-      Offset -0.4644 0.9838 -6.2439
+      Offset -0.8909 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_l16 {
@@ -84,92 +84,92 @@ GenericEntity : "{AE717361AD90B6EC}Prefabs/Vehicles/Helicopters/UH1H/VehParts/Se
       }
      }
      OverrideExitPositionInfo PointInfo "{68A4749D31EB2639}" {
-      Offset -0.7706 0.9035 -7.0161
-      Angles 0 90 0
+      Offset -0.8909 0.9225 -7.3455
+      Angles 0 0 0
      }
     }
     CargoCompartmentSlot Passenger_r01 {
      OverrideExitPositionInfo PointInfo "{68A474975CC44785}" {
-      Offset 0.2349 2.3629 4.584
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r02 {
      OverrideExitPositionInfo PointInfo "{68A474974FDB1643}" {
-      Offset 0.219 2.3873 3.7695
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r03 {
      OverrideExitPositionInfo PointInfo "{68A4749745736D75}" {
-      Offset 0.1987 2.2218 2.9431
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r04 {
      OverrideExitPositionInfo PointInfo "{68A474977169844B}" {
-      Offset 0.2013 2.2395 2.2136
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r05 {
      OverrideExitPositionInfo PointInfo "{68A474976161A860}" {
-      Offset 0.1976 2.2249 1.387
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r06 {
      OverrideExitPositionInfo PointInfo "{68A4749717C8EC3D}" {
-      Offset 0.2118 2.124 0.5762
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r07 {
      OverrideExitPositionInfo PointInfo "{68A474970157827C}" {
-      Offset 0.1908 2.1447 -0.1904
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r08 {
      OverrideExitPositionInfo PointInfo "{68A47497330F8532}" {
-      Offset 0.193 1.9436 -0.9805
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r09 {
      OverrideExitPositionInfo PointInfo "{68A474972885800C}" {
-      Offset 0.1818 1.909 -1.8022
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r10 {
      OverrideExitPositionInfo PointInfo "{68A47497244172BE}" {
-      Offset 0.2062 1.7598 -2.582
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r11 {
      OverrideExitPositionInfo PointInfo "{68A47497D2D92138}" {
-      Offset 0.2013 1.5972 -3.355
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r12 {
      OverrideExitPositionInfo PointInfo "{68A47497C2AC2DDA}" {
-      Offset 0.2349 1.4269 -4.2056
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r13 {
      OverrideExitPositionInfo PointInfo "{68A47497FC4F5EB7}" {
-      Offset 0.2189 1.029 -5.0342
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r14 {
      OverrideExitPositionInfo PointInfo "{68A47497ECADFFDE}" {
-      Offset 0.2122 0.9047 -5.8621
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r15 {
      OverrideExitPositionInfo PointInfo "{68A474979AA7ED2D}" {
-      Offset 0.2689 0.8079 -6.6406
+      Offset 0.8424 0.9225 -7.3455
      }
     }
     CargoCompartmentSlot Passenger_r16 {
      OverrideExitPositionInfo PointInfo "{68A4749789A54887}" {
-      Offset 0.3224 0.9015 -7.4365
+      Offset 0.8424 0.9225 -7.3455
      }
     }
    }
   }
  }
- coords 1151.879 39 2697.195
+ coords 1371.512 38 2877.417
 }
