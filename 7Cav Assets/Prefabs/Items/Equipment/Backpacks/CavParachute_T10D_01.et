@@ -18,7 +18,9 @@ GenericEntity : "{E0FBDCC3182A886F}Prefabs/Items/Equipment/Backpacks/ParachuteBa
   }
   BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
    ItemModel "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
+   OffsetShoulderLeft 0
+   OffsetShoulderRight 0
   }
  }
- coords 1466.98 38 2953.158
+ coords 1412.498 38 2906.367
 }
