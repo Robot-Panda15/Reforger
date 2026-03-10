@@ -1,0 +1,8 @@
+GenericEntity {
+ ID "627CE52CCB2692FE"
+ components {
+  DoorComponent "{221C667A9F7D4B69}" {
+   i_doorLockChance 0
+  }
+ }
+}
