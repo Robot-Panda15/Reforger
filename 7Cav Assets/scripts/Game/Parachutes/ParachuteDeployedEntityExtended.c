@@ -73,33 +73,6 @@ class ParachuteDeployedEntityExtended : ParachuteDeployedEntity
 		parachuteComp.RespawnChuteForDisconnectedPilot(this, m_Pilot);
 	}
 
-	protected bool IsPilotOrPilotChild(IEntity other)
-	{
-		if (!other)
-			return false;
-
-		IEntity pilot = null;
-		if (m_Compartment)
-			pilot = m_Compartment.GetOccupant();
-		if (!pilot)
-			pilot = m_Pilot;
-		if (!pilot)
-			return false;
-
-		if (other == pilot)
-			return true;
-
-		IEntity p = other.GetParent();
-		while (p)
-		{
-			if (p == pilot)
-				return true;
-			p = p.GetParent();
-		}
-
-		return false;
-	}
-
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFrame(owner, timeSlice);
