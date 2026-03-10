@@ -4,22 +4,51 @@ class ParachuteComponentExtended : ParachuteComponent
 	[Attribute("3.0", UIWidgets.Slider, "Deploy invincibility duration (s)", "0.5 10 0.5", category : "Landing")]
 	protected float m_fDeployInvincibilityDuration;
 
-	protected void EnableDeployInvincibility(IEntity pilot)
+	protected bool IsChuteCompartmentEmpty(IEntity chute)
 	{
-		if (!pilot)
-			return;
-		DamageManagerComponent dmg = DamageManagerComponent.Cast(pilot.FindComponent(DamageManagerComponent));
-		if (dmg)
-			dmg.EnableDamageHandling(false);
+		if (!chute)
+			return true;
+		BaseCompartmentManagerComponent bcm = BaseCompartmentManagerComponent.Cast(chute.FindComponent(BaseCompartmentManagerComponent));
+		if (!bcm)
+			return true;
+		array<BaseCompartmentSlot> slots = {};
+		bcm.GetCompartments(slots);
+		foreach (BaseCompartmentSlot s : slots)
+		{
+			if (s && s.GetType() == ECompartmentType.CARGO)
+				return !s.IsOccupied();
+		}
+		return true;
 	}
 
-	protected void RestoreDeployInvincibility(IEntity pilot)
+	void DeleteParachuteEntityWhenEmpty(IEntity chute, int retryCount)
 	{
-		if (!pilot)
+		if (!chute)
+		{
+			ClearExitState();
 			return;
-		DamageManagerComponent dmg = DamageManagerComponent.Cast(pilot.FindComponent(DamageManagerComponent));
-		if (dmg)
-			dmg.EnableDamageHandling(true);
+		}
+		if (retryCount >= 40)
+		{
+			DeleteParachuteEntity(chute);
+			ClearExitState();
+			return;
+		}
+		if (IsChuteCompartmentEmpty(chute))
+		{
+			DeleteParachuteEntity(chute);
+			ClearExitState();
+			return;
+		}
+		GetGame().GetCallqueue().CallLater(DeleteParachuteEntityWhenEmpty, 50, true, chute, retryCount + 1);
+	}
+
+	void ClearExitState()
+	{
+		m_DeployedParachute = null;
+		m_bParachuteDeployed = false;
+		m_DeployedChuteId = RplId.Invalid();
+		Replication.BumpMe();
 	}
 
 	override void RpcAskDeployParachute()
@@ -222,21 +251,38 @@ class ParachuteComponentExtended : ParachuteComponent
 
 	override void Rpc_ServerExitParachute(RplId chuteId, float velocityAtExit)
 	{
-		// If chute was destroyed during deploy invincibility (e.g. pilot collision), skip landing damage
-		ParachuteDeployedEntityExtended chuteExt = ParachuteDeployedEntityExtended.Cast(m_DeployedParachute);
-		if (chuteExt && chuteExt.IsDeployInvincibilityActive())
-		{
-			super.Rpc_ServerExitParachute(chuteId, 0.0);
+		if (!IsAuthority())
 			return;
-		}
 
-		if (velocityAtExit >= m_fHardLandingVelocity && m_PlayerController)
+		if (!m_bParachuteDeployed)
+			return;
+
+		if (chuteId != m_DeployedChuteId)
+			return;
+
+		ParachuteDeployedEntityExtended chuteExt = ParachuteDeployedEntityExtended.Cast(m_DeployedParachute);
+		bool skipDamage = chuteExt && chuteExt.IsDeployInvincibilityActive();
+
+		if (!skipDamage)
 		{
-			IEntity pilot = SCR_ChimeraCharacter.Cast(m_PlayerController.GetMainEntity());
-			if (pilot)
-				RestoreDeployInvincibility(pilot);
+			if (velocityAtExit >= m_fHardLandingVelocity && m_PlayerController)
+			{
+				IEntity pilot = SCR_ChimeraCharacter.Cast(m_PlayerController.GetMainEntity());
+				if (pilot)
+					RestoreDeployInvincibility(pilot);
+			}
+			if (velocityAtExit >= m_fHardLandingVelocity && velocityAtExit < m_fDeathLandingVelocity)
+				BreakLegs_Server();
+			else if (velocityAtExit >= m_fDeathLandingVelocity)
+				KillPlayer_Server();
 		}
 
-		super.Rpc_ServerExitParachute(chuteId, velocityAtExit);
+		if (m_CompartmentAccess)
+			m_CompartmentAccess.AskOwnerToGetOutFromVehicle(EGetOutType.TELEPORT, 0, ECloseDoorAfterActions.LEAVE_OPEN, true, true);
+
+		IEntity chuteToDelete = m_DeployedParachute;
+		ClearExitState();
+		Rpc(RpcDo_OnParachuteCleared);
+		GetGame().GetCallqueue().CallLater(DeleteParachuteEntityWhenEmpty, 50, true, chuteToDelete, 0);
 	}
 }
