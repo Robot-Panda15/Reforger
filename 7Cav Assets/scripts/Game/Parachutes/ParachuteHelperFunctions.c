@@ -81,6 +81,11 @@ class ParachuteHelperFunctions
 		return slot && slot.IsOccupied();
 	}
 
+	static bool IsChuteCompartmentEmpty(IEntity chute)
+	{
+		return !IsSlotOccupied(FindCargoSlotOnEntity(chute));
+	}
+
 	static bool IsWithinTerrainContactThreshold(vector contactPos, float thresholdM)
 	{
 		if (thresholdM < 0)
