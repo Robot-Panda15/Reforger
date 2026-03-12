@@ -8,10 +8,6 @@ class PreviousSlideUserAction: ScriptedUserAction
 {
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
 	{
-		string name = "null";
-		if (pOwnerEntity)
-			name = pOwnerEntity.GetName();
-		Print("[PreviousSlide] Init on " + name + " (if you see this, actions are registered)", LogLevel.NORMAL);
 	}
 
 	DecalMaterialSwitcherComponent FindSwitcher(IEntity entity)

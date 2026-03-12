@@ -39,15 +39,10 @@ class DecalMaterialSwitcherComponent: ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
-		Print("[DecalSwitcher] EOnInit: owner=" + owner.GetName(), LogLevel.NORMAL);
 		if (!m_aSlidePrefabs || m_aSlidePrefabs.Count() == 0)
-		{
-			Print("[DecalMaterialSwitcherComponent] No slide prefabs configured - add prefabs to m_aSlidePrefabs", LogLevel.ERROR);
 			return;
-		}
 		m_bInitialized = true;
 		SpawnSlideForCurrentIndex(owner);
-		Print("[DecalSwitcher] EOnInit: spawned slide prefab", LogLevel.NORMAL);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -67,12 +62,8 @@ class DecalMaterialSwitcherComponent: ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void CycleToNextSlide()
 	{
-		Print("[DecalSwitcher] CycleToNextSlide: called", LogLevel.NORMAL);
 		if (!m_bInitialized || !m_aSlidePrefabs || m_aSlidePrefabs.Count() == 0)
-		{
-			Print("[DecalSwitcher] CycleToNextSlide: early return (not initialized or no prefabs)", LogLevel.NORMAL);
 			return;
-		}
 		m_iCurrentDecalIndex = (m_iCurrentDecalIndex + 1) % m_aSlidePrefabs.Count();
 		Replication.BumpMe();
 		SpawnSlideForCurrentIndex(GetOwner());
@@ -81,12 +72,8 @@ class DecalMaterialSwitcherComponent: ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void CycleToPreviousSlide()
 	{
-		Print("[DecalSwitcher] CycleToPreviousSlide: called", LogLevel.NORMAL);
 		if (!m_bInitialized || !m_aSlidePrefabs || m_aSlidePrefabs.Count() == 0)
-		{
-			Print("[DecalSwitcher] CycleToPreviousSlide: early return", LogLevel.NORMAL);
 			return;
-		}
 		m_iCurrentDecalIndex--;
 		if (m_iCurrentDecalIndex < 0)
 			m_iCurrentDecalIndex = m_aSlidePrefabs.Count() - 1;
@@ -134,10 +121,7 @@ class DecalMaterialSwitcherComponent: ScriptComponent
 		int index = Math.Clamp(m_iCurrentDecalIndex, 0, m_aSlidePrefabs.Count() - 1);
 		ResourceName prefabName = m_aSlidePrefabs.Get(index);
 		if (prefabName.GetPath() == "")
-		{
-			Print("[DecalSwitcher] SpawnSlideForCurrentIndex: empty prefab at index " + index, LogLevel.ERROR);
 			return;
-		}
 
 		// Remove existing slide entity
 		if (m_DecalChildEntity)
@@ -151,10 +135,7 @@ class DecalMaterialSwitcherComponent: ScriptComponent
 
 		Resource res = Resource.Load(prefabName);
 		if (!res)
-		{
-			Print("[DecalSwitcher] SpawnSlideForCurrentIndex: Resource.Load failed for '" + prefabName.GetPath() + "'", LogLevel.ERROR);
 			return;
-		}
 
 		BaseWorld world = GetGame().GetWorld();
 		if (!world)
@@ -181,15 +162,7 @@ class DecalMaterialSwitcherComponent: ScriptComponent
 			worldTransform[2] = ourTransform[2];
 			worldTransform[3] = m_vDecalPosition.Multiply4(parentWorld);
 			newSlide.SetWorldTransform(worldTransform);
-			vector worldPos = newSlide.GetOrigin();
-			vector localMat[4];
-			newSlide.GetLocalTransform(localMat);
-			Print("[DecalSwitcher] SpawnSlideForCurrentIndex: spawned slide " + index + " prefab=" + prefabName.GetPath(), LogLevel.NORMAL);
-			Print("[DecalSwitcher] worldPos=(" + worldPos[0] + " " + worldPos[1] + " " + worldPos[2] + ")", LogLevel.NORMAL);
-			Print("[DecalSwitcher] localPos=(" + localMat[3][0] + " " + localMat[3][1] + " " + localMat[3][2] + ")", LogLevel.NORMAL);
 		}
-		else
-			Print("[DecalSwitcher] SpawnSlideForCurrentIndex: spawn failed", LogLevel.ERROR);
 	}
 
 	//------------------------------------------------------------------------------------------------
