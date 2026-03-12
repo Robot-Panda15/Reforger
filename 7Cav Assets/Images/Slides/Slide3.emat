@@ -1,0 +1,5 @@
+MatPBRBasic {
+ AlphaTest 3
+ BCRMap "{9D42F74D1FBBFF75}Images/Slides/ThirdSlide.edds"
+ OpacityMap "{B3B34F204163436B}Images/Slides/SlideBackground_A.edds"
+}
