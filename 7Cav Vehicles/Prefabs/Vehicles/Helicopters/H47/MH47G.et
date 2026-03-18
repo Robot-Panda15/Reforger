@@ -1,0 +1,67 @@
+Vehicle : "{7CF0A16FA3AED298}Prefabs/Vehicles/Helicopters/H47/H47_base.et" {
+ ID "57DA6675519A417B"
+ components {
+  BaseVehicleNodeComponent "{57DA667544C3090A}" {
+   components {
+    BaseHUDComponent "{50F09A38B4352300}" {
+     InfoDisplays {
+      SCR_InfoDisplay "{5E16CDD43EBA9D74}" {
+       InfoDisplays {
+        SCR_AnalogGauge "{5E12DE8116DE69BF}" {
+         m_sInfo2Text "#AR-VehicleInfo_KMHx10"
+         m_fLabelValueMultiplier 0.1
+         m_fValueMax 450
+         m_fSectionEveryNthValue 50
+        }
+        SCR_AnalogGauge360 "{5E12DE8115FE048B}" {
+         m_fSectionEveryNthValue 50
+        }
+        SCR_AnalogGaugeNonLinear "{5E12DE8113984306}" {
+        }
+        SCR_AnalogGauge "{5E12DE8111E23FB2}" {
+        }
+        SCR_AnalogGaugeMultiSignal "{5E12DE80EF903498}" {
+         m_fValueMax 1000
+         m_fSectionEveryNthValue 500
+         m_iNrOfSignals 2
+        }
+       }
+      }
+      AUS_UH60_FlightHUD "{68E46157DDEECB7D}" {
+       m_LayoutPath "{966910CE62B00C77}UI/layouts/AUS_UH60_FlightHUD.layout"
+       m_eShow 3
+      }
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{68E461573218B908}" {
+     ContextName "ToggleHUD_Pilot"
+     Position PointInfo "{68E4615702CBFDAB}" {
+      Offset 0.3096 2.7071 7.5248
+     }
+    }
+    UserActionContext "{68E4615733377EAE}" {
+     ContextName "ToggleHUD_CoPilot"
+     Position PointInfo "{68E461570D13BD15}" {
+      Offset -0.2549 2.7071 7.5249
+     }
+    }
+   }
+   additionalActions {
+    AUS_FlightHUD_ToggleAction "{68E461576646991E}" {
+     ParentContextList {
+      "ToggleHUD_Pilot" "ToggleHUD_CoPilot"
+     }
+     UIInfo SCR_ActionContextUIInfo "{68E46154EA965D3E}" {
+     }
+     ActionTitle "FlightHUD_ToggleAction"
+    }
+   }
+  }
+ }
+ coords 1440.095 38 2916.623
+ angles 0 -168 0
+}
