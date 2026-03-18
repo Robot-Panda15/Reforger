@@ -1,0 +1,97 @@
+SCR_DestructibleEntity : "{5DB6A23DB8504B81}Prefabs/Structures/Signs/SignsMilitary_base.et" {
+ ID "50D67C36F4200F97"
+ components {
+  DecalMaterialSwitcherComponent "{68D73875EAEBEB49}" {
+   Enabled 1
+   m_aSlidePrefabs {
+    "{F49A934B3DD01C95}Prefabs/Structures/Infrastructure/Pavements/AsphaltPavement_01/Slide1.et" "{98CEA7AB811493BB}Prefabs/Structures/Infrastructure/Pavements/AsphaltPavement_01/Slide2.et" "{7D52EB528DF104D0}Prefabs/Structures/Infrastructure/Pavements/AsphaltPavement_01/Slide3.et"
+   }
+   m_vDecalPosition 0.004 2.48 0.023
+   m_vDecalAngles 90 180 0
+   m_fDecalScale 2.258
+  }
+  MeshObject "{54969A6AAAADA251}" {
+   Object "{7467BB7011B40D81}Assets/Structures/Signs/SignLarge_02/SignLarge_02_345x240.xob"
+  }
+  SCR_DestructionMultiPhaseComponent "{5496C1EF00137501}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     "Explosive multiplier" 10
+    }
+   }
+   m_fBaseHealth 4000
+  }
+  SCR_EditableDecalComponent "{68D73872ECEB8C4D}" {
+   Enabled 0
+  }
+  ActionsManagerComponent "{68D73875C305CD3F}" {
+   Enabled 1
+   ActionContexts {
+    UserActionContext "{68D73875CC38D045}" {
+     ContextName "DecalSwitcherContext"
+     Position PointInfo "{68D73875C9F7007C}" {
+      Offset -1.7361 1.2358 0
+     }
+     Radius 1
+     "Display UI At Reference Point" 1
+     SkipCullingPlaneDetection 0
+    }
+   }
+   additionalActions {
+    NextSlideUserAction "{68D7387526FFF51C}" {
+     ParentContextList {
+      "DecalSwitcherContext"
+     }
+     ActionTitle "Next Slides"
+     VisibilityRange 1
+     Duration 2
+    }
+    PreviousSlideUserAction "{68D73875270C204C}" {
+     ParentContextList {
+      "DecalSwitcherContext"
+     }
+     ActionTitle "Previous Slides"
+     VisibilityRange 1
+     Duration 2
+    }
+   }
+  }
+  RplComponent "{566CB016AAC374C6}" {
+   Enabled 1
+  }
+  Hierarchy "{68D73875E0853ADC}" {
+  }
+ }
+ coords 1301.627 37.719 2864.34
+ Enabled 0
+ MaxHealth 800
+ "Collision multiplier" 0
+ "Melee multiplier" 0
+ "Kinetic multiplier" 0
+ "Fragmentation multiplier" 0
+ "Explosive multiplier" 0
+ "Incendiary multiplier" 0
+ DamageReduction 15
+ DamageThreshold 5
+ DestroyAtNoHealth 0
+ FirstDestructionPhase SCR_BaseDestructionPhase "{68D738762B91D924}" {
+  m_sPhaseModel "{7467BB7011B40D81}Assets/Structures/Signs/SignLarge_02/SignLarge_02_345x240.xob"
+  m_aPhaseDestroySpawnObjects {
+   SCR_DebrisSpawnable "{65F8FD8923C82BAB}" : "{5C13E450831D831D}Configs/Destruction/MultiphaseDestruction/FX_Debris/FX_Debris_Metal_Heavy.conf" {
+    m_ModelPrefabs {
+     "{2B36FC423EEDDE6F}Assets/Structures/Signs/SignLarge_02/Dst/SignLarge_02_345x240_dst_01_dbr_01.xob" "{B22845DB230AEFFF}Assets/Structures/Signs/SignLarge_02/Dst/SignLarge_02_345x240_dst_01_dbr_02.xob" "{C5222D53D7A8008F}Assets/Structures/Signs/SignLarge_02/Dst/SignLarge_02_345x240_dst_01_dbr_03.xob" "{C2E5D702B12EBA4C}Assets/Structures/Signs/SignLarge_02/Dst/SignLarge_02_345x240_dst_01_dbr_04.xob" "{B5EFBF8A458C553C}Assets/Structures/Signs/SignLarge_02/Dst/SignLarge_02_345x240_dst_01_dbr_05.xob" "{2CF10613586B64AC}Assets/Structures/Signs/SignLarge_02/Dst/SignLarge_02_345x240_dst_01_dbr_06.xob"
+    }
+    m_bUseMaterialsFromParent 1
+   }
+   SCR_ParticleSpawnable "{68D738762B91E993}" {
+    m_vOffsetPosition 0 2 0
+    m_Particle "{66DAEB775AA8CA4C}Particles/Props/Dest_Prop_Metal_Medium.ptc"
+   }
+  }
+ }
+ LastDestructionPhase SCR_BaseDestructionPhase "{68D738762B91E9E2}" {
+  Threshold 0
+  m_sPhaseModel "{5F91939F205ED769}Assets/Structures/Signs/SignLarge_02/Dst/SignLarge_02_345x240_dst_01.xob"
+ }
+ m_eMaterialSoundType BREAK_METAL
+}

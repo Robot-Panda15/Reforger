@@ -1,0 +1,16 @@
+StaticModelEntity : "{2817095F9D664A11}Prefabs/Structures/Infrastructure/Pavements/AsphaltPavement_01/AsphaltPavement_Decal_base.et" {
+ ID "568A6DAED8140A4A"
+ components {
+  MeshObject "{568A6DAED023D292}" {
+   Object "{C217691F0AEE4B28}Assets/Structures/Infrastructure/Pavements/AsphaltPavement_01/AsphaltPavement_Decal_01.xob"
+   Materials {
+    MaterialAssignClass "{68D81386F5B13114}" {
+     SourceMaterial "Broken_Pavement_Decal"
+     AssignedMaterial "{79421F6ADC2EEAE4}Cav Patches/Slide1.emat"
+    }
+   }
+   PixelSizeScale 0.5
+  }
+ }
+ coords 1291.593 37.882 2861.929
+}
