@@ -1,0 +1,13 @@
+SCR_DestructibleEntity : "{6F8F6982E95A2260}Prefabs/Structures/Signs/SignLarge_02/SignLarge_02_200x260_base.et" {
+ ID "50D67C36F4200F97"
+ coords 1297.998 39.724 2864.853
+ angles 0 0 90
+ scale 1.29
+ Enabled 0
+ "Collision multiplier" 0
+ "Melee multiplier" 0
+ "Kinetic multiplier" 0
+ "Fragmentation multiplier" 0
+ "Explosive multiplier" 0
+ "Incendiary multiplier" 0
+}

@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{F49A934B3DD01C95}Prefabs/Structures/Infrastructure/Pavements/AsphaltPavement_01/Slide1.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,12 @@
+GenericEntity : "{46FD263F0F368A92}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  SCR_ArsenalComponent "{5E3CC268A92CDE62}" {
+   Enabled 1
+  }
+  SCR_ArsenalInventoryStorageManagerComponent "{5E3CC268AFE7341C}" {
+   Enabled 1
+  }
+ }
+ coords 1499.443 38 2905.444
+}
