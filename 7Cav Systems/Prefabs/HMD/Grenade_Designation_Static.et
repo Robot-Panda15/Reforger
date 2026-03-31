@@ -1,0 +1,34 @@
+GenericEntity : "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et" {
+ ID "68E322210000B001"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   Enabled 0
+  }
+  HMD_IffBeaconComponent "{68FE720E500B74D4}" {
+   Enabled 0
+   m_sIrLightPrefab "{0BCD51DD36B82132}Prefabs/Items/Equipment/Nightvision/IFF_IR_Light.et"
+   m_fIrStrobeOnMs 150
+   m_fIrStrobeOffMs 1000
+   m_fIrLightSpawnDelayMs 5000
+   m_vIrLightWorldOffset 0 0.15 0
+  }
+  HMD_PlacedDesignationComponent "{68E322210000B002}" {
+   m_sLabel "MRKR"
+   m_MarkerColor 1 0 0 1
+   m_LabelColor 1 0 0 1
+   m_iVisualKind 2
+   m_fLifetimeSeconds 90
+  }
+  HitEffectComponent "{9D9BE68D6F65A10F}" {
+   Enabled 0
+  }
+  HMD_IffLifetimeComponent "{68FE7C70019DD2FF}" {
+   m_sIrLightPrefab "{0BCD51DD36B82132}Prefabs/Items/Equipment/Nightvision/IFF_IR_Light.et"
+   m_fIrStrobeOnMs 150
+   m_fIrStrobeOffMs 1000
+   m_fIrLightSpawnDelayMs 5000
+   m_vIrLightWorldOffset 0 0.1 0
+  }
+ }
+ coords 1121.561 38 2829.142
+}

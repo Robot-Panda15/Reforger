@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{B5ABE1250D142450}Prefabs/Items/Equipment/Accessories/GPSRadioBeacon/IFF_AttachableBeacon_7Cav.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

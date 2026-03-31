@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{55015E5D9B898D97}Assets/Items/Equipment/Binoculars/Rangefinder_Vector21/data/target_designator_g.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+ }
+}

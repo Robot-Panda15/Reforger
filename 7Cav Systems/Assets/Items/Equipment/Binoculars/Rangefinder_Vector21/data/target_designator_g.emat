@@ -1,0 +1,7 @@
+MatPBRBasic {
+ Color 0.022 0.022 0.022 1
+ RoughnessScale 1.1
+ CavityFromAO 0.5
+ BCRMap "{A8DBA7EEE403282C}Assets/Items/Equipment/Binoculars/Rangefinder_Vector21/data/Vector21_BCR.edds"
+ NMOMap "{90031C7C3D747AB2}Assets/Items/Equipment/Binoculars/Rangefinder_Vector21/data/Vector21_NMO.edds"
+}

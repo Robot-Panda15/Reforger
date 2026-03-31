@@ -1,0 +1,96 @@
+FrameWidgetClass {
+ Name "HMD_LaserDesignatorReadoutRoot"
+ Slot FrameWidgetSlot "{68E3221400010400}" {
+  Anchor 0 0 1 1
+  OffsetLeft 0
+  OffsetTop 0
+  OffsetRight 0
+  OffsetBottom 0
+ }
+ {
+  TextWidgetClass "{68E3221400010030}" {
+   Name "HMD_RangefinderRange"
+   Slot FrameWidgetSlot "{68E3221400010300}" {
+    Anchor 0.5 1 0.5 1
+    OffsetLeft -110
+    OffsetTop -168
+    SizeX 220
+    OffsetRight -110
+    SizeY 34
+    OffsetBottom 131
+   }
+   "Is Visible" 0
+   Color 0.502 0 0 1
+   Text "----"
+   "Font Size" 28
+   "Horizontal Alignment" Center
+   "No Localization" 1
+   FontProperties FontProperties "{68FC711FBB680DF0}" {
+    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+   }
+  }
+  TextWidgetClass "{68E3221400010031}" {
+   Name "HMD_RangefinderGrid"
+   Slot FrameWidgetSlot "{68E3221400010310}" {
+    Anchor 0.5 1 0.5 1
+    OffsetLeft -110
+    OffsetTop -128
+    SizeX 220
+    OffsetRight -110
+    SizeY 34
+    OffsetBottom 90
+   }
+   "Is Visible" 0
+   Color 0.502 0 0 1
+   Text "----"
+   "Font Size" 28
+   "Horizontal Alignment" Center
+   "No Localization" 1
+   FontProperties FontProperties "{68FC711FBDD83FBD}" {
+    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+   }
+  }
+  TextWidgetClass "{68E3221400010032}" {
+   Name "HMD_RangefinderBearing"
+   Slot FrameWidgetSlot "{68E3221400010320}" {
+    Anchor 0.5 1 0.5 1
+    OffsetLeft -110
+    OffsetTop -87
+    SizeX 220
+    OffsetRight -110
+    SizeY 34
+    OffsetBottom 50
+   }
+   "Is Visible" 0
+   Color 0.502 0 0 1
+   Text "----"
+   "Font Size" 28
+   "Horizontal Alignment" Center
+   "No Localization" 1
+   FontProperties FontProperties "{68FC711FA2666244}" {
+    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+   }
+  }
+  TextWidgetClass "{68E3221400010033}" {
+   Name "HMD_RangefinderCode"
+   Slot FrameWidgetSlot "{68E3221400010330}" {
+    Anchor 0.5 1 0.5 1
+    OffsetLeft -110
+    OffsetTop -47
+    SizeX 220
+    OffsetRight -110
+    SizeY 34
+    OffsetBottom 9
+   }
+   "Is Visible" 0
+   Color 0.502 0 0 1
+   Text "----"
+   "Font Size" 28
+   "Horizontal Alignment" Center
+   "No Localization" 1
+   FontProperties FontProperties "{68FC711FB0DFA97F}" {
+    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+   }
+  }
+ }
+}

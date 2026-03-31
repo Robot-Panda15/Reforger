@@ -1,0 +1,34 @@
+GenericEntity : "{03810BEF182ADA0B}Prefabs/Items/Equipment/Binoculars/Rangefinder_Vector21.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  HMD_LaserDesignatorGadgetComponent "{68FE021627AF655A}" {
+   m_eAnimVariable M22
+  }
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "Laser Designator"
+     Description "Cav Issued Laser Designator"
+    }
+   }
+  }
+  MeshObject "{5D0CB09DD1352E70}" {
+   Object "{590251D285990526}Assets/Items/Equipment/Binoculars/Rangefinder_Vector21/rhs_vector21.xob"
+   Materials {
+    MaterialAssignClass "{68FE0216DDCF57FC}" {
+     SourceMaterial "01__Default"
+     AssignedMaterial "{55015E5D9B898D97}Assets/Items/Equipment/Binoculars/Rangefinder_Vector21/data/target_designator_g.emat"
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5D0CB09DD1352E5B}" {
+   WornMaterialsOverride {
+    "{8796997CD8A3EDF1}Assets/Items/Equipment/Binoculars/Rangefinder_Vector21/data/rhs_vector21_t.emat"
+   }
+   ItemMaterialsOverride {
+    "{8796997CD8A3EDF1}Assets/Items/Equipment/Binoculars/Rangefinder_Vector21/data/rhs_vector21_t.emat"
+   }
+  }
+ }
+ coords 0 0 0
+}

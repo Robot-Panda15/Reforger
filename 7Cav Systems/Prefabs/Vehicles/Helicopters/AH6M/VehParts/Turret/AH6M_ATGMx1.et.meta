@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{4B88C832AC6DCD45}Prefabs/Vehicles/Helicopters/AH6M/VehParts/Turret/AH6M_ATGMx1.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
