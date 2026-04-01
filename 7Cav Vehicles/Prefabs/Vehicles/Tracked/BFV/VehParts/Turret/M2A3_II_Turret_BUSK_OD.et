@@ -36,6 +36,16 @@ Turret : "{FF41DAABA3DA9D3C}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_Tu
     }
    }
   }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   additionalActions {
+    SCR_ResupplyTurretBeltSupportStationAction "{64753A1F5F0122D3}" {
+     m_eShownInVehicleState NOT_IN_VEHICLE
+    }
+    SCR_ResupplyTurretBeltSupportStationAction "{64753A1FA69C2CA5}" {
+     m_eShownInVehicleState NOT_IN_VEHICLE
+    }
+   }
+  }
  }
- coords 1304.209 37.719 2858.797
+ coords 1132.742 38.009 2843.768
 }

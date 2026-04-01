@@ -57,6 +57,9 @@ Turret : "{4E3B9320FBE33B02}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_Tu
     }
    }
   }
+  WeaponSlotComponent "{630F5354D3C59586}" {
+   WeaponTemplate "{C23D4364F68661F5}Prefabs/Weapons/MachineGuns/M240/MG_M240_coax_M2A2.et"
+  }
  }
- coords 1300.172 37.719 2859.71
+ coords 1140.589 38.009 2841.823
 }
