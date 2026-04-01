@@ -1,0 +1,21 @@
+Turret : "{583F19F5752BA737}Prefabs/Vehicles/Wheeled/BTR70/VehParts/Turret/M2A3_Commander_Turret.et" {
+ ID "51ACD0965653D003"
+ components {
+  CAV_M2A3_HunterKillerComponent "{6620DEADBEDA583B}" {
+   m_sOpticPivotName "v_upgrade_optic"
+   m_bPreferCommanderTurretAim 1
+  }
+  TurretComponent "{64D523BB818CBE02}" {
+   components {
+    RHS_2DSightsComponentV2 "{65E01DD2D76854E4}" {
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65E01DD2D850DDF3}" {
+      m_aZooms + {
+       24
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1291.399 37.812 2851.534
+}

@@ -1,0 +1,13 @@
+Tank : "{B15B8D3E31D43639}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_OD.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{C00A245ADD86E92D}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_II_Turret_BUSK_OD.et"
+    }
+   }
+  }
+ }
+ coords 995.026 39 2638.75
+}

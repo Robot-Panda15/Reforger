@@ -1,0 +1,62 @@
+Turret : "{4E3B9320FBE33B02}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_Turret_BUSK_Desert.et" {
+ ID "51ACD0965653D003"
+ components {
+  TurretComponent "{5E4A2EC4E1DFBB79}" {
+   components {
+    RHS_2DSightsComponentV2 "{65DC32C2D9FB9557}" {
+     Enabled 1
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65DC32C2C11520EE}" {
+      m_aZooms {
+       1 4
+      }
+     }
+    }
+    RHS_2DSightsComponentV2 "{65DE67194BCE9BBC}" {
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65DE671931DC45F4}" {
+      m_aZooms {
+       1 4 12
+      }
+     }
+    }
+    RHS_2DSightsComponentV2 "{65DE67B23814BD86}" {
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65DE67B227E68E59}" {
+      m_aZooms +{
+      }
+     }
+    }
+    RHS_2DSightsComponentV2 "{690215D9E504DBB9}" {
+     Enabled 0
+     ADSTime 0
+     m_sReticleTexture "{56F9E68F9BAE6370}UI/layouts/Sights/empty_32.edds"
+     m_sReticleGlowTexture "{56F9E68F9BAE6370}UI/layouts/Sights/empty_32.edds"
+     m_fReticleTextureGlowAlpha 0
+     m_fVignetteScale 1
+     m_fMisalignmentDampingSpeed 60
+     m_fMovementScale 1
+     m_fMovementDampingSpeed 10
+     m_fMisalignmentScale 0
+     m_fVignetteMoveSpeed 60
+     m_fMotionBlurScale 0
+     m_fMotionBlurMax 0
+     m_bIsConfiguratedForRHSNVG 1
+     m_fObjectiveFov 2.7
+     m_fReticleAngularSize 2.7
+     m_fReticlePortion 0.5
+     m_fMagnification 12
+     m_sRHSLayoutOverlayResource "{C707E15AC9EF8197}UI/layouts/Sights/Optic_Widgets_Bradley_DVO.layout"
+    }
+    SCR_2DSightsComponent "{5E4A2EC4E1DFBB7B}" {
+     Enabled 0
+    }
+   }
+  }
+  SlotManagerComponent "{5E4A2EC25CB7BC2F}" {
+   Slots {
+    RegisteringComponentSlotInfo Commander_CITV {
+     Prefab "{D46D631970836BFD}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_II_Commander_Turret_Tan.et"
+    }
+   }
+  }
+ }
+ coords 1300.172 37.719 2859.71
+}

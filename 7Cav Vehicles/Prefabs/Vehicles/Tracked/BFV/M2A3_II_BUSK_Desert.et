@@ -1,0 +1,13 @@
+Tank : "{D0DD6DBF5E37476A}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_Desert.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{9EBEE15B9E88B091}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_II_Turret_BUSK_Desert.et"
+    }
+   }
+  }
+ }
+ coords 989.464 39 2638.576
+}

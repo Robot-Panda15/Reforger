@@ -1,0 +1,41 @@
+Turret : "{FF41DAABA3DA9D3C}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_Turret_BUSK_OD.et" {
+ ID "51ACD0965653D003"
+ components {
+  TurretComponent "{5E4A2EC4E1DFBB79}" {
+   components {
+    RHS_2DSightsComponentV2 "{65DC32C2D9FB9557}" {
+     Enabled 1
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65DC32C2C11520EE}" {
+      m_aZooms {
+       1 4
+      }
+     }
+    }
+    RHS_2DSightsComponentV2 "{65DE67194BCE9BBC}" {
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65DE671931DC45F4}" {
+      m_aZooms {
+       1 4 12
+      }
+     }
+    }
+    RHS_2DSightsComponentV2 "{65DE67B23814BD86}" {
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65DE67B227E68E59}" {
+      m_aZooms +{
+      }
+     }
+    }
+    SCR_2DSightsComponent "{5E4A2EC4E1DFBB7B}" {
+     Enabled 0
+    }
+   }
+  }
+  SlotManagerComponent "{5E4A2EC25CB7BC2F}" {
+   Slots {
+    RegisteringComponentSlotInfo Commander_CITV {
+     Prefab "{807D73DFC9C493D9}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_II_Commander_Turret.et"
+    }
+   }
+  }
+ }
+ coords 1304.209 37.719 2858.797
+}
