@@ -84,6 +84,7 @@ GenericEntity {
       Name "Dismantle Medical Tent"
      }
      ActionTitle "Dismantle Medical Tent"
+     VisibilityRange 3
      Duration 1
      "Sort Priority" 2
     }
@@ -95,6 +96,8 @@ GenericEntity {
   }
   Hierarchy "{663B097334D08A38}" {
   }
+  BlockDeployPickupComponent "{69068130E891561D}" {
+  }
  }
- coords 849.138 39 2772.538
+ coords 1152.142 38 2815.847
 }
