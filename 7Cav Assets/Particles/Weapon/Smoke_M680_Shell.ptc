@@ -11,7 +11,7 @@ EffectDef {
    LodMin 0
    LodMax 2
    Material "{DE170C6590E62CF7}Particles/_Materials/Fire_Loop_01.emat"
-   SizeMultiplier 0.7
+   SizeMultiplier 0.4
    SizeRND 0.5
    RandomRotDir 0
    VelAngle 0
@@ -52,6 +52,7 @@ EffectDef {
    Angles 180 0 0
    ParticleType Prefab
    Prefab "{F5F4BDE8D43A7B78}Prefabs/Particles/Blasts/Blast_big_Invisible_Trigger.et"
+   SizeMultiplier 0.5
    Velocity 100
    EnableCollisions 1
    Lifetime 2
@@ -61,11 +62,11 @@ EffectDef {
   EmitterDef Phosphor_Trails {
    ShapeSize 1 8 1
    ConeAngle 360 80 160
+   MaxNum 3
    BirthRate 20
    Offset 0 1 0
    ParticleType Prefab
    Prefab "{15BAFA81731FC155}Prefabs/Particles/Smoke_Trail_Phosphor.et"
-   SizeMultiplier 2
    Velocity 20
    VelocityRND 15
    AirResistance 2
@@ -79,7 +80,7 @@ EffectDef {
   }
   EmitterDef Phosphor_Near {
    ConeAngle 360 5 50
-   MaxNum 30
+   MaxNum 5
    BirthRate 5000
    Offset 0 -2 0
    LodMin 0
@@ -114,7 +115,7 @@ EffectDef {
   }
   EmitterDef Phosphor_Far {
    ConeAngle 360 70 150
-   MaxNum 50
+   MaxNum 3
    BirthRate 5000
    LodMin 0
    LodMax 1
@@ -148,10 +149,9 @@ EffectDef {
   }
   EmitterDef Smoke_instant {
    ShapeType Ellipse
-   ShapeSize 10 1 10
+   ShapeSize 5 1 5
    ConeAngle 360 0 360
-   MaxNum 20
-   BirthRate 70
+   BirthRate 80
    BirthRateRND 0
    BirthRateVel 7
    Offset 0 1 0
@@ -159,9 +159,10 @@ EffectDef {
    LodMax 2
    Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
    StretchMultiplier 0
-   SizeMultiplier 10
-   SizeRND 10
-   RotMultiplier 15
+   SizeMultiplier 4
+   SizeRND 5
+   RotMultiplier 5
+   RotRND 5
    RandomRotDir 1
    BillboardingType Full
    VelAngle 0
@@ -172,16 +173,15 @@ EffectDef {
    VelAffect 0.2
    AirResistance 0.555
    AirResistanceRND 0
-   WindInfluence 0.25
+   WindInfluence 0.01
    ParentVelRelToAir 0.05
-   GravityMultiply 0.02
    GravityMultiplyRND 0
    Spring 0
    AnimOnce 1
    AnimFPS 25
    LifetimeByAnim 0
    RandomFrame 1
-   Lifetime 10
+   Lifetime 30
    LifetimeRND 5
    LifetimeVelFactor 1
    Color {
@@ -224,7 +224,8 @@ EffectDef {
    ConeAngleMinDist 145.059
    ConeAngleRndRange 30
    Occlusion 12
-   BirthRate 50
+   MaxNum 3
+   BirthRate 80
    BirthRateRND 0
    BirthRateVel 1
    Offset 0 1 0
@@ -234,9 +235,10 @@ EffectDef {
    Material "{029D33C344E15DFB}Particles/_Materials/Gas/Smoke_loop_01.emat"
    StretchMultiplier 0
    StreakFullUV 0
-   SizeMultiplier 15
+   SizeMultiplier 0.5
    SizeRND 5
-   RotMultiplier 20
+   RotMultiplier 5
+   RotRND 5
    RandomRotDir 1
    BillboardingType Full
    VelAngle 0
@@ -255,8 +257,8 @@ EffectDef {
    AnimOnce 0
    AnimFPS 60
    LifetimeByAnim 0
-   Lifetime 60
-   LifetimeRND 4
+   Lifetime 25
+   LifetimeRND 2
    LifetimeVelFactor 0.15
    Color {
     0 1 0.982 0.982 1 1 0.982 0.982
@@ -308,7 +310,7 @@ EffectDef {
    Material "{5C751A80FB6CD3F4}Particles/_Materials/Gas/Smoke_loop_02.emat"
    StretchMultiplier 0
    StreakFullUV 0
-   SizeMultiplier 8
+   SizeMultiplier 4
    SizeRND 5
    RotMultiplier 20
    RandomRotDir 1
@@ -321,7 +323,7 @@ EffectDef {
    VelAffect 0.2
    AirResistance 0.7
    AirResistanceRND 0.1
-   WindInfluence 0.18
+   WindInfluence 0.01
    ParentVelRelToAir 0.05
    GravityMultiplyRND -0.005
    EnableCollisions 1
@@ -331,7 +333,7 @@ EffectDef {
    AnimFPS 25
    LifetimeByAnim 0
    Lifetime 20
-   LifetimeRND 4
+   LifetimeRND 5
    LifetimeVelFactor 0.15
    Color {
     0 1 0.982 0.982 1 1 0.982 0.982

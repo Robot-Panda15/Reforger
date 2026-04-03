@@ -1,0 +1,74 @@
+Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.et" {
+ ID "50C6F965BA00F9FA"
+ components {
+  CollisionTriggerComponent "{6906629DB9137617}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{6906629DB91376BB}" {
+     EffectPrefab "{A2F1B0E133B5DEB7}Prefabs/Weapons/Warheads/Warhead_Smoke_M680.et"
+     ParticleEffect "{AFBD2B20579ED0CD}Particles/Weapon/Smoke_M680_Shell.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+    HitSoundEffect "{6906629068C631FE}" {
+     TriggerOnce 0
+     Enabled 0
+     Filename "{F0D094B3E4F35FCA}Sounds/Weapons/Ammo/Smoke/Ammo_Smoke_3D17_Deployed.acp"
+    }
+   }
+   SafetyDistance 15
+  }
+  InventoryItemComponent "{52627A12350994B6}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1234AD20A4}" {
+    ItemDisplayName UIInfo "{6906629DB9137682}" {
+     Name "M680 Canopy Smoke"
+     Description "White Canopy 40mm Smoke Grenade"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6906629DB913768D}" {
+     Weight 0.23
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     ItemVolume 100
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{56E711941DDE376E}" {
+      PreviewPrefab ""
+     }
+    }
+    m_Size SLOT_1x1
+   }
+  }
+  MagazineComponent "{6906629DB9137689}" {
+   MagazineWell MagazineWellUS_UGL "{6906629DB913768B}" {
+   }
+   UIInfo MagazineUIInfo "{6906629DB9137694}" {
+    Name "M680 Smoke"
+    m_sAmmoCaliber "#AR-AmmunitionID_40x46mm"
+    m_sAmmoType "M680"
+    m_bShowAmmoTypeText 1
+    m_eAmmoTypeFlags SMOKE
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{5874FAA400FEDA3E}" : "{BE317699690AD7C3}Configs/WeaponInfo/MagazineIndicators/ugl_m406.conf" {
+    }
+   }
+   MaxAmmo 1
+  }
+  MeshObject "{851AA4A2AE0A56BF}" {
+   Object "{4F1AAAFBB4C0B3AF}Assets/Weapons/Ammo/M713/m713.xob"
+  }
+  ShellMoveComponent "{20FB66C5FA209A29}" {
+   BallisticTableConfig "{E21489D6FC1E47B9}Configs/Weapons/AIBallisticTables/AIBT_Grenade_HEDP_M433.conf"
+  }
+  ActionsManagerComponent "{51888D453FDEC72A}" {
+   additionalActions {
+    SCR_AttachItemFromInventoryAction "{5E5C9E5B492112AC}" {
+     UIInfo SCR_ActionUIInfo "{5E5C9E5B43D97B5F}" {
+      Name "Load: 40mm "
+     }
+    }
+   }
+  }
+  Hierarchy "{6906629DB9137690}" {
+  }
+ }
+ coords 1255.389 37.665 2841.41
+ ProjectileModel "{45C84D40678BC05D}Assets/Weapons/Ammo/M713/m713_projectile.xob"
+ CartridgeModel "{4F1AAAFBB4C0B3AF}Assets/Weapons/Ammo/M713/m713.xob"
+}
