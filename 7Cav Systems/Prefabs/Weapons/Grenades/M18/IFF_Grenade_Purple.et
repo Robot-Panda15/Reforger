@@ -1,0 +1,58 @@
+GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  TimerTriggerComponent "{5934C8C5C9FDF999}" {
+   PROJECTILE_EFFECTS {
+    SpawnParticleEffect "{5CAADB9AD0C61F3F}" {
+     ParticleEffect "{47CA9C7F1E75DBE3}Particles/Weapon/Smoke_grenade_M18_Purple.ptc"
+    }
+    SpawnPrefabEffect "{68FE33DFC752D58D}" {
+     AttachToParent 1
+     EffectPrefab "{5994156A1B642905}Prefabs/HMD/Grenade_IFF_Purple.et"
+    }
+   }
+  }
+  GrenadeMoveComponent "{1F80A73ADE35BFF1}" {
+   BallisticTableConfig "{4F8AAD383330D2B9}Configs/Weapons/AIBallisticTables/AIBT_Smoke_M18_Violet.conf"
+  }
+  InventoryItemComponent "{51FAA3E3CF6F087A}" {
+   Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
+    ItemDisplayName WeaponUIInfo "{68FE236E5B5106D2}" {
+     Name "Emergency IFF Beacon"
+     Description "Purple Smoke Grenade with 90 Second IR Marker"
+    }
+   }
+  }
+  MeshObject "{51EC93F29BA5F234}" {
+   Materials {
+    MaterialAssignClass "{68FE236E5B5106DB}" {
+     SourceMaterial "m18"
+     AssignedMaterial "{A7488D83404644CB}Assets/Weapons/Grenades/M18/Data/m18_violet.emat"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{5260C447D58750FE}" {
+   Attributes SCR_ItemAttributeCollection "{5260C447CBDC5D43}" {
+    ItemDisplayName WeaponUIInfo "{5270794ED1D0FAF9}" {
+     Name "#AR-Weapon_M18Purple_Name"
+     Description "#AR-Weapon_M18Purple_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{68FE236E5B510520}" {
+      CameraPreset Right
+      CameraDistanceToItem 0.5
+      FOV 20
+     }
+    }
+   }
+  }
+  WeaponComponent "{6D23670EA18BF513}" {
+   UIInfo GrenadeUIInfo "{172367262E10E042}" {
+    Name "Emergency IFF Beacon"
+    Description "IR Marker Smoke"
+    m_sAmmoType "Emergency IFF Beacon"
+   }
+  }
+ }
+ coords 1122.174 38.272 2830.223
+}

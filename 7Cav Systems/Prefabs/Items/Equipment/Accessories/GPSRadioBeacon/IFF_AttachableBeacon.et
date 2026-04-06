@@ -1,0 +1,85 @@
+GenericEntity : "{A22982E2E0C38EAC}Prefabs/Items/Core/RHS_PlaceableItem_base.et" {
+ ID "68FE33E100000000"
+ components {
+  HMD_IffBeaconComponent "{68FE33E100000001}" {
+   m_sIrLightPrefab "{0BCD51DD36B82132}Prefabs/Items/Equipment/Nightvision/IFF_IR_Light.et"
+   m_fIrStrobeOnMs 150
+   m_fIrStrobeOffMs 1000
+  }
+  HMD_IffBeaconExplosiveInventoryItemComponent "{64D330352FCCEC12}" {
+   Attributes SCR_ItemAttributeCollection "{64D330352FCCEFED}" {
+    ItemDisplayName WeaponUIInfo "{64D330352FCCEBF6}" {
+     Name "IFF Attachment Beacon"
+     Description "Configurable IFF marker"
+    }
+   }
+  }
+  SCR_PlaceableItemComponent "{64D330352FCCE31D}" {
+   m_fMaxAllowedTilt -1
+  }
+  ActionsManagerComponent "{64D330352FCC716A}" {
+   additionalActions {
+    HMD_IffBeaconBatteryReadoutAction "{68FE33E100000002}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{68FE33E100000003}" {
+      Name "IFF marker time remaining"
+     }
+     "Sort Priority" 0
+    }
+    HMD_IffBeaconScrollTextAction "{68FE33E100000004}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{68FE33E100000005}" {
+      Name "IFF text (hold + scroll)"
+     }
+     Duration -1
+     PerformPerFrame 1
+     "Sort Priority" 1
+     m_fAdjustmentStep 0.25
+     m_bManualAdjustment 1
+     m_bLoopAction 1
+     m_bOnlyInVehicle 0
+     m_bPilotOnly 0
+    }
+    HMD_IffBeaconScrollNumberAction "{68FE33E100000006}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{68FE33E100000007}" {
+      Name "IFF number (hold + scroll)"
+     }
+     Duration -1
+     PerformPerFrame 1
+     "Sort Priority" 2
+     m_fAdjustmentStep 0.25
+     m_bManualAdjustment 1
+     m_bLoopAction 1
+     m_bOnlyInVehicle 0
+     m_bPilotOnly 0
+    }
+    HMD_IffBeaconTurnOnAction "{68FE33E100000008}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{68FE33E100000009}" {
+      Name "Turn IFF beacon ON"
+     }
+     "Sort Priority" 3
+    }
+    HMD_IffBeaconTurnOffAction "{68FE33E10000000A}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{68FE33E10000000B}" {
+      Name "Turn IFF beacon OFF"
+     }
+     "Sort Priority" 4
+    }
+   }
+  }
+ }
+ coords 1122.252 38.27 2836.753
+}

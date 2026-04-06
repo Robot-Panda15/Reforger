@@ -1,0 +1,47 @@
+GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  TimerTriggerComponent "{5934C8C5C9FDF999}" {
+   PROJECTILE_EFFECTS {
+    SpawnParticleEffect "{5CAADB9AD0C61F3F}" {
+     ParticleEffect "{94CAB105E065775C}Particles/Weapon/Smoke_grenade_M18_Red.ptc"
+    }
+    SpawnPrefabEffect "{68FE33DF29834B1A}" {
+     AttachToParent 1
+     EffectPrefab "{D483CAE36C664A5C}Prefabs/HMD/Grenade_Designation_Static.et"
+    }
+   }
+  }
+  InventoryItemComponent "{51FAA3E3CF6F087A}" {
+   Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
+    ItemDisplayName WeaponUIInfo "{68FE2361B2C4674D}" {
+     Name "Throwable Marker"
+     Description "Red Smoke Grenade with 90 Second IR Marker"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{5260C447D58750FE}" {
+   Attributes SCR_ItemAttributeCollection "{5260C447CBDC5D43}" {
+    ItemDisplayName WeaponUIInfo "{5270794ED1D0FAF9}" {
+     Name "#AR-Weapon_M18Yellow_Name"
+     Description "#AR-Weapon_M18Yellow_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{68FE2361B2C4675D}" {
+      CameraPreset Right
+      CameraDistanceToItem 0.5
+      FOV 20
+     }
+    }
+   }
+  }
+  WeaponComponent "{6D23670EA18BF513}" {
+   UIInfo GrenadeUIInfo "{172367262E10E042}" {
+    Name "Throwable Marker"
+    Description "IR Marker Smoke"
+    m_sAmmoType "Throwable Marker"
+   }
+  }
+ }
+ coords 1121.803 38.188 2829.585
+}

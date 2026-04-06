@@ -1,0 +1,9 @@
+Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
+ ID "57DA6675519A417B"
+ components {
+  HUDLaserVisibilityComponent "{68FEFDDCE09E93BE}" {
+   m_sVisibilitySlotNames "pilot,gunner,copilot"
+  }
+ }
+ coords 1130.543 38.009 2843.291
+}

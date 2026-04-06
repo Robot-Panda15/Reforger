@@ -1,0 +1,55 @@
+GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  TimerTriggerComponent "{5934C8C5C9FDF999}" {
+   PROJECTILE_EFFECTS {
+    SpawnParticleEffect "{5CAADB9AD0C61F3F}" {
+     ParticleEffect "{E1E084593B8A05D2}Particles/Weapon/Smoke_grenade_M18_Yellow.ptc"
+    }
+    SpawnPrefabEffect "{68FE33DFDC87DA70}" {
+     AttachToParent 1
+     EffectPrefab "{F26D7120ABD60D1E}Prefabs/HMD/Grenade_IFF_Yellow.et"
+    }
+   }
+  }
+  InventoryItemComponent "{51FAA3E3CF6F087A}" {
+   Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
+    ItemDisplayName WeaponUIInfo "{68FE236E55F7DE1A}" {
+     Name "LZ/PZ IFF Beacon"
+     Description "Yellow Smoke Grenade with 90 Second IR Marker"
+    }
+   }
+  }
+  MeshObject "{51EC93F29BA5F234}" {
+   Materials {
+    MaterialAssignClass "{68FE236E55F7DE5C}" {
+     SourceMaterial "m18"
+     AssignedMaterial "{0BE5DD742A912D10}Assets/Weapons/Grenades/M18/Data/m18_yellow.emat"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{5260C447D58750FE}" {
+   Attributes SCR_ItemAttributeCollection "{5260C447CBDC5D43}" {
+    ItemDisplayName WeaponUIInfo "{5270794ED1D0FAF9}" {
+     Name "#AR-Weapon_M18Yellow_Name"
+     Description "#AR-Weapon_M18Yellow_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{68FE236E55F7DE5A}" {
+      CameraPreset Right
+      CameraDistanceToItem 0.5
+      FOV 20
+     }
+    }
+   }
+  }
+  WeaponComponent "{6D23670EA18BF513}" {
+   UIInfo GrenadeUIInfo "{172367262E10E042}" {
+    Name "LZ/PZ IFF Beacon"
+    Description "IR Marker Smoke"
+    m_sAmmoType "LZ/PZ IFF Beacon"
+   }
+  }
+ }
+ coords 1122.649 38.231 2829.204
+}

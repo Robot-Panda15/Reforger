@@ -1,0 +1,10 @@
+Turret : "{4D399F4C1D31F917}Prefabs/Vehicles/Helicopters/Core/VehParts/Turret/AKI_Helicopter_Turret_Base.et" {
+ ID "51ACD0965653D003"
+ components {
+  HUDLaserTurretMarkingComponent "{68FE236DDFAE3EE6}" {
+   m_sMarkingSlotNames "gunner"
+  }
+ }
+ coords 1116.291 38 2828.084
+ angles 0 88 0
+}

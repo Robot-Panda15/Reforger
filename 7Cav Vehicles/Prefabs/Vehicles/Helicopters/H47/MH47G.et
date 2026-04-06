@@ -1,6 +1,9 @@
 Vehicle : "{7CF0A16FA3AED298}Prefabs/Vehicles/Helicopters/H47/H47_base.et" {
  ID "57DA6675519A417B"
  components {
+  HUDLaserVisibilityComponent "{68FF24541F147441}" {
+   m_sVisibilitySlotNames "pilot,gunner,copilot"
+  }
   BaseVehicleNodeComponent "{57DA667544C3090A}" {
    components {
     BaseHUDComponent "{50F09A38B4352300}" {
