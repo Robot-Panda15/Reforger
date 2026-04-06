@@ -1,0 +1,30 @@
+Vehicle : "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et" {
+ ID "5DB688595BAB2FD7"
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{69081D49E8307A66}" {
+     ContextName "ADS_AirdropContext"
+     Position PointInfo "{690745523A82F055}" {
+      Offset -0.067 1.4366 2.5608
+     }
+     Radius 0.05
+    }
+   }
+   additionalActions {
+    ADS_AirdropSupplyUserAction "{69081D49271D77E6}" {
+     ParentContextList {
+      "ADS_AirdropContext"
+     }
+     UIInfo UIInfo "{69081D51435EB421}" {
+      Name "Airdrop"
+     }
+     ActionTitle "Airdrop"
+     Duration 2
+     m_vSpawnOffsetLocal 3.854 -0.304 -0.166
+    }
+   }
+  }
+ }
+ coords 1234.556 39 2740.492
+}

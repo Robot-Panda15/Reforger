@@ -61,13 +61,14 @@ EffectDef {
   EmitterDef Phosphor_Trails {
    ShapeSize 1 8 1
    ConeAngle 360 80 160
-   BirthRate 20
+   MaxNum 30
+   BirthRate 40
    Offset 0 1 0
    ParticleType Prefab
    Prefab "{15BAFA81731FC155}Prefabs/Particles/Smoke_Trail_Phosphor.et"
    SizeMultiplier 2
-   Velocity 20
-   VelocityRND 15
+   Velocity 30
+   VelocityRND 25
    AirResistance 2
    AirResistanceRND 2
    WindInfluence 0.2
@@ -151,7 +152,7 @@ EffectDef {
    ShapeSize 10 1 10
    ConeAngle 360 0 360
    MaxNum 20
-   BirthRate 70
+   BirthRate 1000
    BirthRateRND 0
    BirthRateVel 7
    Offset 0 1 0
@@ -159,16 +160,16 @@ EffectDef {
    LodMax 2
    Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
    StretchMultiplier 0
-   SizeMultiplier 10
-   SizeRND 10
+   SizeMultiplier 5
+   SizeRND 4
    RotMultiplier 15
    RandomRotDir 1
    BillboardingType Full
    VelAngle 0
    RandomAngle 1
    FlipU Random
-   Velocity 0
-   VelocityRND 0.1
+   Velocity 1
+   VelocityRND 2.5
    VelAffect 0.2
    AirResistance 0.555
    AirResistanceRND 0
@@ -178,11 +179,11 @@ EffectDef {
    GravityMultiplyRND 0
    Spring 0
    AnimOnce 1
-   AnimFPS 25
+   AnimFPS 5
    LifetimeByAnim 0
    RandomFrame 1
-   Lifetime 10
-   LifetimeRND 5
+   Lifetime 5
+   LifetimeRND 1
    LifetimeVelFactor 1
    Color {
     0 1 0.965 0.965 1 1 0.965 0.965
@@ -224,51 +225,54 @@ EffectDef {
    ConeAngleMinDist 145.059
    ConeAngleRndRange 30
    Occlusion 12
-   BirthRate 50
+   MaxNum 15
+   BirthRate 100
    BirthRateRND 0
-   BirthRateVel 1
    Offset 0 1 0
    LocalTransform 0
    LodMin 0
    LodMax 2
    Material "{029D33C344E15DFB}Particles/_Materials/Gas/Smoke_loop_01.emat"
-   StretchMultiplier 0
+   StretchMultiplier 1
    StreakFullUV 0
    SizeMultiplier 15
-   SizeRND 5
-   RotMultiplier 20
+   SizeRND 6
+   RotMultiplier 3
+   RotRND 2
    RandomRotDir 1
    BillboardingType Full
    VelAngle 0
    RandomAngle 1
    FlipU Random
    Velocity 0
-   VelocityRND 0.1
-   VelAffect 0.2
-   AirResistance 0.1
-   WindInfluence 0.01
+   VelocityRND 0.01
+   VelAffect 5
+   AirResistance 2
+   AirResistanceRND 0.1
+   WindInfluence 0.05
    ParentVelRelToAir 0.05
    GravityMultiplyRND -0.005
    EnableCollisions 1
    NormalRestitution 0.2
    TagentialRestitution 1
+   Friction 0.453
    AnimOnce 0
-   AnimFPS 60
+   AnimFPS 1
    LifetimeByAnim 0
    Lifetime 60
-   LifetimeRND 4
+   LifetimeRND 15
    LifetimeVelFactor 0.15
    Color {
     0 1 0.982 0.982 1 1 0.982 0.982
    }
    Alpha {
-    0 0 0.043 0.785 0.728 0.951 1 0
+    0 0 0.0145 0.9317 0.2628 0.8562 1 0
    }
    RotationSpeed {
     0 0.25 0.075 0.6 0.488 0.437 1 0.306
    }
    Size {
-    0 0.148 0.015 0.864 1 1
+    0 0 0.0001 0.971 1 0.5652
    }
    Repeat 0
    ColorMast {
@@ -297,7 +301,6 @@ EffectDef {
    ConeAngleMinDist 145.059
    ConeAngleRndRange 30
    Occlusion 12
-   MaxNum 5
    BirthRate 50
    BirthRateRND 0
    BirthRateVel 1
@@ -317,11 +320,11 @@ EffectDef {
    RandomAngle 1
    FlipU Random
    Velocity 0
-   VelocityRND 0.1
+   VelocityRND 0.01
    VelAffect 0.2
    AirResistance 0.7
    AirResistanceRND 0.1
-   WindInfluence 0.18
+   WindInfluence 0.05
    ParentVelRelToAir 0.05
    GravityMultiplyRND -0.005
    EnableCollisions 1
@@ -330,8 +333,8 @@ EffectDef {
    AnimOnce 0
    AnimFPS 25
    LifetimeByAnim 0
-   Lifetime 20
-   LifetimeRND 4
+   Lifetime 40
+   LifetimeRND 15
    LifetimeVelFactor 0.15
    Color {
     0 1 0.982 0.982 1 1 0.982 0.982
@@ -360,6 +363,75 @@ EffectDef {
    }
    BRateMast {
     0.254 0 0.334 1
+   }
+   VelocityMast {
+    0 1 0.15 1 0.324 1 0.65 1 1 1
+   }
+  }
+  EmitterDef smoke_0 {
+   ShapeType Point
+   ShapeSize 0 0 0.2
+   ConeAngle 180 0 120
+   MaxNum 50
+   BirthRateRND 1
+   BirthRateVel 7
+   Offset 0 0 0
+   LodMin 0
+   LodMax 0
+   Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
+   StretchMultiplier 0
+   SizeMultiplier 3
+   SizeRND 3
+   RotMultiplier 2
+   RandomRotDir 1
+   BillboardingType Full
+   VelAngle 0
+   RandomAngle 1
+   FlipU Random
+   Velocity 0.1
+   VelocityRND 0.1
+   AirResistance 0.8
+   AirResistanceRND 0
+   WindInfluence 0.2
+   ParentVelRelToAir 0.05
+   GravityMultiply 0
+   GravityMultiplyRND 0
+   Spring 0
+   AnimOnce 1
+   AnimFPS 15
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 20
+   LifetimeRND 0
+   LifetimeVelFactor 1
+   Color {
+    0 1 0.965 0.965 1 1 0.965 0.965
+   }
+   Alpha {
+    0 0.1364 0.0518 0.4926 1 0
+   }
+   RotationSpeed {
+    0 1 1 1
+   }
+   Size {
+    0 0 1 0.644
+   }
+   EmittingTime 45
+   Repeat 0
+   ColorMast {
+    0 1 1 1 0.431 1 1 1 1 1 1 1
+   }
+   AlphaMast {
+    0 0 0.055 1 0.821 1 1 0
+   }
+   RotationSpeedMast {
+    0 1 0.15 1 0.354 1 0.65 1 1 1
+   }
+   SizeMast {
+    0 1 1 1
+   }
+   BRateMast {
+    0 0 0.028 0.363 1 0
    }
    VelocityMast {
     0 1 0.15 1 0.324 1 0.65 1 1 1

@@ -1,0 +1,20 @@
+GenericEntity : "{A17D9DC539901321}Prefabs/Structures/Military/Camps/Foundations/Foundation_base.et" {
+ ID "5111E74D4E7A8DB6"
+ components {
+  MeshObject "{5111E74D5E891458}" {
+   Object "{B56A3191B96761B5}Assets/Structures/Military/Camps/Foundation_TentUSSR_01/Foundation_TentUSSR_01.xob"
+   Materials {
+    MaterialAssignClass "{69034389715A8176}" {
+     SourceMaterial "Foundation_TentUSSR_01"
+     AssignedMaterial "{32890820BD092BDF}Common/Materials/default_MatTerrainObj_TerrShadows_disabledclutter.emat"
+    }
+    MaterialAssignClass "{69034389715A8146}" {
+     SourceMaterial "Foundation_TentUSSR_01_MLOD"
+     AssignedMaterial "{32890820BD092BDF}Common/Materials/default_MatTerrainObj_TerrShadows_disabledclutter.emat"
+    }
+   }
+  }
+ }
+ coords 1525.897 37.307 2934.936
+ scale 0.3
+}

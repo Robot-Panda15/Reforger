@@ -1,0 +1,15 @@
+Turret : "{89BB7489D53FBB6C}Prefabs/Weapons/Core/Mortar_Base.et" {
+ ID "5CF87D15B3D0A976"
+ components {
+  SCR_MortarLevelStateComponent "{6903438CEFA69210}" {
+  }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   additionalActions {
+    SCR_LevelMortarUserAction "{6903438CEFA69203}" : "{6903438CEFA69201}Prefabs/Weapons/Mortars/M252/Configs/LevelMortarAction.conf" {
+     ActionTitle "Level Mortar"
+    }
+   }
+  }
+ }
+ coords 1711.507 39.301 2961.378
+}

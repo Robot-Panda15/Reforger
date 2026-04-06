@@ -37,6 +37,13 @@ Vehicle : "{7CF0A16FA3AED298}Prefabs/Vehicles/Helicopters/H47/H47_base.et" {
   }
   ActionsManagerComponent "{C97BE5489221AE18}" {
    ActionContexts {
+    UserActionContext "{62123070FCC9F65A}" {
+     Position PointInfo "{62123070DFE706F1}" {
+      Offset 1.2141 1.667 -4.431
+     }
+     Radius 0.1
+     Height 0
+    }
     UserActionContext "{68E461573218B908}" {
      ContextName "ToggleHUD_Pilot"
      Position PointInfo "{68E4615702CBFDAB}" {
@@ -49,6 +56,13 @@ Vehicle : "{7CF0A16FA3AED298}Prefabs/Vehicles/Helicopters/H47/H47_base.et" {
       Offset -0.2549 2.7071 7.5249
      }
     }
+    UserActionContext "{69081D5E7A40D7E7}" {
+     ContextName "ADS_AirdropContext"
+     Position PointInfo "{690745523A82F055}" {
+      Offset -0.0791 3.1036 6.2817
+     }
+     Radius 0.05
+    }
    }
    additionalActions {
     AUS_FlightHUD_ToggleAction "{68E461576646991E}" {
@@ -59,9 +73,19 @@ Vehicle : "{7CF0A16FA3AED298}Prefabs/Vehicles/Helicopters/H47/H47_base.et" {
      }
      ActionTitle "FlightHUD_ToggleAction"
     }
+    ADS_AirdropSupplyUserAction "{69081D51B010FEBE}" {
+     ParentContextList {
+      "ADS_AirdropContext"
+     }
+     UIInfo UIInfo "{69081D51435EB421}" {
+      Name "Airdrop"
+     }
+     ActionTitle "Airdrop"
+     Duration 2
+     m_vSpawnOffsetLocal -0.079 -1.405 -11.206
+    }
    }
   }
  }
- coords 1440.095 38 2916.623
- angles 0 -168 0
+ coords 1214.276 39 2736.872
 }

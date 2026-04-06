@@ -1,0 +1,75 @@
+GenericEntity : "{90F23D287E57E7CF}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/US/CallIn_SuppliesDrop_US_EquipmentBox_Covered.et" {
+ ID "59DA86E84966DC50"
+ components {
+  SCR_EditableEntityComponent "{612B57553B034BD0}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{612B5755112E37A2}" {
+    Name "#RHS-EditableEntity_SupplyDrop_USAF_Name"
+    Description "#RHS-EditableEntity_SupplyDrop_USAF_Description"
+    m_aAuthoredLabels {
+     ROLE_ANTITANK TRAIT_MEDICAL TRAIT_EXPLOSIVE
+    }
+   }
+  }
+ }
+ coords 1245.523 39 2748.046
+ {
+  GenericEntity {
+   ID "612AE13F0528702B"
+   components {
+    RHS_ReplaceDeployableEntityComponent "{612B06DBA7E4D35F}" {
+     Enabled 0
+    }
+    ADS_ReplaceDeployableEntityComponent "{69081D54D1441148}" {
+     m_sReplacementPrefab "{89FAE23A65BBB46E}Prefabs/Props/Military/CISS/SupplyDrop/Parts/US/EquipmentBoxResupply_US_Covered.et"
+     m_iDeployDelayMs 0
+    }
+   }
+   coords 0 0 0
+  }
+  GenericEntity : "{89FAE23A65BBB46E}Prefabs/Props/Military/CISS/SupplyDrop/Parts/US/EquipmentBoxResupply_US_Covered.et" {
+   ID "69081D5B48D424AB"
+   components {
+    MeshObject "{63032425024EBE2A}" {
+     PixelSizeScale 10
+     RainOccluder 0
+     WetnessOccluder 0
+    }
+    RHS_CISSSupplyCrateEditableEntityComponent "{624EA26EC03AE458}" {
+     Enabled 0
+    }
+    RHS_ReplaceDeployableEntityComponent "{69081D5B48D42486}" {
+     Enabled 0
+     m_sReplacementPrefab "{89FAE23A65BBB46E}Prefabs/Props/Military/CISS/SupplyDrop/Parts/US/EquipmentBoxResupply_US_Covered.et"
+    }
+    RigidBody "{612AE13966E14BD9}" {
+     Active Active
+     Static 0
+    }
+    SCR_UniversalInventoryStorageComponent "{612AE13AABBEE866}" {
+     Enabled 0
+    }
+    ActionsManagerComponent "{612AE13B25F68085}" {
+     Enabled 0
+    }
+    ADS_ReplaceDeployableEntityComponent "{69081D5422CAFCB2}" {
+     m_sReplacementPrefab "{89FAE23A65BBB46E}Prefabs/Props/Military/CISS/SupplyDrop/Parts/US/EquipmentBoxResupply_US_Covered.et"
+     m_iDeployDelayMs 0
+    }
+   }
+   coords 0 0 0
+   {
+    StaticModelEntity : "{339D30CC344E08CB}Prefabs/Props/Military/CISS/SupplyDrop/Parts/Parachute_base.et" {
+     ID "69081D5B48D424B4"
+     components {
+      MeshObject "{527A8AD68830D1F5}" {
+       PixelSizeFilter 0
+      }
+     }
+     coords 0 2.146 0
+     angles 0 21.007 0
+     scale 1.5
+    }
+   }
+  }
+ }
+}
