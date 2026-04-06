@@ -8,10 +8,17 @@ Turret : "{4462D57DD5C424C3}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/BFV_Tur
   }
   TurretComponent "{5E4A2EC4E1DFBB79}" {
    components {
+    RHS_2DSightsComponentV2 "{65DC32C2D9FB9557}" {
+     Enabled 0
+    }
     RHS_VehicleNightVisionComponent "{6231426A9494B3A7}" {
      m_bUseThermal 1
     }
    }
+   TurretAcceleration 180 180
+   TurretDeceleration 220 220
+   BaseAcceleration 180
+   BaseDeceleration 220
   }
  }
 }

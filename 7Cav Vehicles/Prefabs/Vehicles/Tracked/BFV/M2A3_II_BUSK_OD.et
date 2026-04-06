@@ -1,0 +1,23 @@
+Tank : "{B15B8D3E31D43639}Prefabs/Vehicles/Tracked/BFV/M2A3_BUSK_OD.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+   MultiSlots {
+    MultiSlotConfiguration "{66C3416CB88CAADD}" {
+     SlotTemplate InventoryStorageSlot UGLammo {
+      Enabled 1
+      Prefab "{72982D2F5D671EE3}Prefabs/Weapons/Magazines/Magazine_M240_Coax/Box_762x51_M240_coax_800rnd_4AP_1Tracer.et"
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{C00A245ADD86E92D}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_II_Turret_BUSK_OD.et"
+    }
+   }
+  }
+ }
+ coords 1144.121 38.009 2840.533
+}

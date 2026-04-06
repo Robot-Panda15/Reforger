@@ -1,0 +1,248 @@
+Turret : "{4462D57DD5C424C3}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/BFV_Turret_BASE.et" {
+ ID "51ACD0965653D003"
+ components {
+  RHS_StabilizedTurretControllerComponent "{51ACD09C61C183E4}" {
+   GetUpdateEventsWhenEmpty 1
+  }
+  RHS_TurretStabilizationComponent "{660B2C996A2D6D27}" {
+   Enabled 0
+   m_fHorizontalStabilizationSpeed 60
+   m_fVerticalStabilizationSpeed 60
+  }
+  RHS_TurretStabilizationComponent "{662F5E61C90EB51C}" {
+   Enabled 0
+  }
+  SCR_DamageManagerComponent "{51ACD09C524A7924}" {
+   "Additional hit zones" {
+    SCR_VehicleHitZone Ammo_01 {
+     MaxHealth 300
+    }
+   }
+  }
+  SPC_WeaponRecoilComponent "{60564925B2AF7544}" {
+   m_vRecoilPosition PointInfo "{60564925899FA7C3}" {
+    PivotID "v_gun_01"
+    Offset -0.0818 -0.0167 2.5894
+   }
+  }
+  SPC_WeaponRecoilComponent "{65DD1679D0EB8B41}" {
+   m_iWeaponIndex 1
+   m_fImpulse 1000
+   m_vRecoilPosition PointInfo "{65DD1679DC95758B}" {
+    PivotID "v_gun_01"
+    Offset -0.0818 -0.0167 2.5894
+   }
+  }
+  TurretComponent "{5E4A2EC4E1DFBB79}" {
+   components {
+    RHS_2DSightsComponentV2 "{6231426A9F87926A}" {
+     Enabled 0
+    }
+    RHS_2DSightsComponentV2 "{64F4F907B641AAA7}" {
+     Enabled 0
+    }
+    RHS_2DSightsComponentV2 "{65DC32C2D9FB9557}" {
+     SightsPosition PointInfo "{65DC32C2C462CFB3}" {
+      PivotID "v_gun_01"
+      Offset -0.45 0.45 -0.1
+      Angles 0.11 0.135 0
+     }
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65DC32C2C11520EE}" {
+      m_fZoomMax 0.1
+      m_fInterpolationSpeed 50
+      m_aZooms +{
+      }
+     }
+     SightsPointFront PointInfo "{65DC32C2C339BD66}" {
+      PivotID "v_gun_01"
+      Offset -0.45 0.45 -0.1
+     }
+     SightsPointRear PointInfo "{65DC32C2C218D8FD}" {
+      PivotID "v_gun_01"
+      Offset -0.45 0.45 -0.17
+     }
+     ADSTime 0
+     SightsPriority 1
+     m_sReticleTexture "{6D7E03FB5178088B}UI/Textures/Sights/bradley_gun_tow_reticle.edds"
+     m_sReticleGlowTexture "{6D7E03FB5178088B}UI/Textures/Sights/bradley_gun_tow_reticle.edds"
+     m_ReticleColor 1 0.89 0.216 1
+     m_ReticleOutlineColor 1 0.89 0.216 1
+     m_cReticleTextureIllumination 1 0.89 0.216 1
+     m_fReticleTextureGlowAlpha 0
+     m_fVignetteScale 1
+     m_fMisalignmentDampingSpeed 60
+     m_fMovementScale 1
+     m_fMovementDampingSpeed 10
+     m_fMisalignmentScale 0
+     m_fVignetteMoveSpeed 60
+     m_fMotionBlurScale 0
+     m_fMotionBlurMax 0
+     m_bIsConfiguratedForRHSNVG 1
+     m_fObjectiveFov 4
+     m_fReticleAngularSize 2.6
+     m_fReticlePortion 0.5
+     m_fMagnification 12
+     m_sRHSLayoutOverlayResource "{D39F85C7235F7CA0}UI/layouts/Sights/Optic_Widgets_Bradley_ISU_Optical.layout"
+    }
+    RHS_2DSightsComponentV2 "{65DE67194BCE9BBC}" {
+     SightsPosition PointInfo "{65DE6719346A1D7A}" {
+      PivotID "v_gun_01"
+      Offset -0.45 0.45 -0.1
+      Angles 0.11 0.135 0
+     }
+     SightsFOVInfo TPP_VariableSightsZoomInfo "{65DE671931DC45F4}" {
+      m_fZoomMax 0.1
+      m_fInterpolationSpeed 50
+      m_aZooms +{
+      }
+     }
+     SightsPointFront PointInfo "{65DE67193055B1BD}" {
+      PivotID "v_gun_01"
+      Offset -0.45 0.45 -0.1
+     }
+     SightsPointRear PointInfo "{65DE671932359B1D}" {
+      PivotID "v_gun_01"
+      Offset -0.45 0.45 -0.17
+     }
+     ADSTime 0
+     SightsPriority 1
+     m_sReticleTexture "{E5CBEC7733F87013}UI/Textures/Sights/bradley_gun_tow_reticle_white.edds"
+     m_sReticleGlowTexture "{1E80951E6E6BF3F9}UI/Textures/Sights/bradley_gun_tow_reticle_white_glow.edds"
+     m_bHasIllumination 1
+     m_ReticleColor 1 0 0 0.392
+     m_ReticleOutlineColor 0 0 0 0
+     m_cReticleTextureIllumination 1 0.502 0.05 1
+     m_fReticleTextureGlowAlpha 0.1
+     m_fVignetteScale 2
+     m_fMisalignmentDampingSpeed 60
+     m_fMovementScale 1
+     m_fMovementDampingSpeed 10
+     m_fMisalignmentScale 0
+     m_fVignetteMoveSpeed 60
+     m_fMotionBlurScale 0
+     m_fMotionBlurMax 0
+     m_fObjectiveFov 2.2
+     m_fObjectiveScale 2
+     m_fReticleAngularSize 2.6
+     m_fReticlePortion 0.5
+     m_fMagnification 12
+     m_sRHSLayoutOverlayResource "{FE4B74A2A11EDCB2}UI/layouts/Sights/Optic_Widgets_Bradley_ISU_Thermal.layout"
+     m_bTPPEnableThermal 1
+     m_rThermalOpticMaterial "{2A2A9E87695CD3D5}Assets/Thermal/Materials/ThermalMat_Vehicle_Gen1_RWH_RBH.emat"
+     m_rThermalDistortFilmgrainMaterial "{CF5B56ACA431AA49}Assets/Thermal/Materials/ThermalMat_FilmGrain_Distort.emat"
+     m_rThermalOverlayFilmgrainMaterial "{FC40E0EC48499232}Assets/Thermal/Materials/ThermalMat_FilmGrain_Gen1_Red.emat"
+     m_iThermalResolution 450
+     m_iThermalScreenHz 25
+     m_fScreenCoverage 0.57
+     m_iThermalRowsCount 2
+     m_iContrastLevels 5
+     m_iContrastDefaultIndex 2
+     m_fMaxFilmGrainIntensity 0.007
+     m_fMinFilmGrainIntensity 0.007
+     m_fCustomTempMaxLow 30
+     m_fCustomTempMaxHigh 25
+    }
+    RHS_VehicleNightVisionComponent "{6231426A9494B3A7}" {
+     Enabled 0
+    }
+    RHS_VehicleNightVisionComponent "{64F4F907B641AAD5}" {
+     Enabled 0
+    }
+    SCR_2DSightsComponent "{5E4A2EC4E1DFBB7B}" {
+     SightsPosition PointInfo "{5E4A2EC4E1DFBB68}" {
+      Angles 0.25 0.135 0
+     }
+     SightsFOVInfo SCR_SightsZoomFOVInfo "{5E4A2EC4E1DFBB6A}" {
+     }
+     SightsSwitchSkip 1
+     m_fVignetteScale 1
+     m_fMisalignmentDampingSpeed 60
+     m_fMovementScale 1
+     m_fMovementDampingSpeed 10
+     m_fMisalignmentScale 0
+     m_fVignetteMoveSpeed 60
+     m_fMotionBlurMax 0
+     m_bIsConfiguratedForRHSNVG 1
+     m_fMagnification 5
+    }
+    SCR_2DSightsComponent "{65712D242302E53F}" {
+     Enabled 0
+     SightsPosition PointInfo "{65712D2427392B12}" {
+      Angles 0.11 0.135 0
+     }
+     SightsFOVInfo SCR_SightsZoomFOVInfo "{65712D24599551C2}" {
+      m_fInterpolationSpeed 50
+     }
+     m_sReticleTexture "{6D7E03FB5178088B}UI/Textures/Sights/bradley_gun_tow_reticle.edds"
+     m_sReticleGlowTexture "{6D7E03FB5178088B}UI/Textures/Sights/bradley_gun_tow_reticle.edds"
+     m_bHasIllumination 0
+     m_ReticleOutlineColor 1 0.888 0.216 1
+     m_fReticleTextureGlowAlpha 0
+     m_fVignetteScale 1
+     m_fMisalignmentDampingSpeed 60
+     m_fMovementScale 1
+     m_fMovementDampingSpeed 10
+     m_fMisalignmentScale 0
+     m_fVignetteMoveSpeed 60
+     m_fMotionBlurMax 0
+     m_bIsConfiguratedForRHSNVG 1
+     m_fReticleOffsetY 0
+     m_fObjectiveFov 4
+     m_fReticleAngularSize 2.6
+     m_fReticlePortion 1
+    }
+    SCR_2DSightsComponent "{65712D245687FFA6}" {
+     Enabled 0
+     m_bIsConfiguratedForRHSNVG 1
+    }
+   }
+   TurretAcceleration 60 60
+   TurretDeceleration 120 120
+   BaseAcceleration 60
+   BaseDeceleration 120
+  }
+  WCS_Armament_LoadoutComponent "{62EF3AD14CD98BAA}" {
+   m_ArmamentGroups {
+    WCS_ArmamentWeaponGroup "{62EF3AD1A218B9F6}" {
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{62A10D8ED7DA8AA6}" {
+       Position PointInfo "{62A10D8EDAF6E15F}" {
+       }
+      }
+     }
+    }
+   }
+  }
+  WCS_Armament_TurretStabilizationComponent "{62EF3AD12B498A0C}" {
+   Enabled 0
+   m_fHorizontalStabilizationSpeed 60
+   m_fVerticalStabilizationSpeed 30
+   m_fHorizontalAngularAcceleration 90
+   m_fVerticalAngularAcceleration 60
+   m_fDriftRate 0.01
+   m_bStabilizationEnabled 0
+  }
+  WCS_Armament_TurretStabilizationComponent "{68B82334E0A1F31D}" {
+   m_fHorizontalStabilizationSpeed 60
+   m_fVerticalStabilizationSpeed 30
+   m_fDriftRate 0.01
+   m_fTrackingDistance 2000
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   AttachType InventoryStorageSlot "{0AACE7470E421D82}" {
+    Angles 0.25 0.135 0
+   }
+  }
+  WeaponSlotComponent "{62EF35330BA3910E}" {
+   AttachType InventoryStorageSlot gun2 {
+    Angles 0.25 0.135 0
+   }
+  }
+  WeaponSlotComponent "{630F5354D3C59586}" {
+   AttachType InventoryStorageSlot mg {
+    Angles 0.3 0.135 45
+   }
+   WeaponTemplate "{C23D4364F68661F5}Prefabs/Weapons/MachineGuns/M240/MG_M240_coax_M2A2.et"
+  }
+ }
+}
