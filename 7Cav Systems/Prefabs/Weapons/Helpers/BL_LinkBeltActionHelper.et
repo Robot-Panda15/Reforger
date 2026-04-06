@@ -1,0 +1,36 @@
+GenericEntity {
+ ID "7C4B4E4C13985C10"
+ components {
+  MeshObject "{7C4B4E4C13985C11}" {
+   Object "{C1BFD239F9A10AF5}Assets/Items/Equipment/Compass/Compass_SY183/Compass_SY183.xob"
+  }
+  RigidBody "{7C4B4E4C13985C12}" {
+   ModelGeometry 1
+   Static 1
+  }
+  ActionsManagerComponent "{7C4B4E4C13985C13}" {
+   Enabled 1
+   ActionContexts {
+    UserActionContext "{7C4B4E4C13985C14}" {
+     ContextName "default"
+     Position PointInfo "{7C4B4E4C13985C15}" {
+     }
+     Radius 2
+     "Display UI At Reference Point" 1
+    }
+   }
+   additionalActions {
+    BL_LinkBeltUserAction "{7C4B4E4C13985C16}" {
+     ParentContextList {
+      "default"
+     }
+     VisibilityRange 2
+     Duration 2
+    }
+   }
+  }
+  RplComponent "{7C4B4E4C13985C17}" {
+   Enabled 1
+  }
+ }
+}

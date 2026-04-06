@@ -1,0 +1,10 @@
+GenericEntity : "{F54F6C453A8CB478}Prefabs/Weapons/Core/MachineGun_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  BL_BeltLinkWeaponComponent "{68FF426D073EE747}" {
+   m_vActionPosition -0.018 -0.077 0
+  }
+ }
+ coords 1179.871 38.43 2823.042
+ angles 0 32 0
+}
