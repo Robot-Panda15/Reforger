@@ -97,7 +97,18 @@ class ADS_AirdropSupplyUserAction : ScriptedUserAction
 	{
 		if (!aircraft)
 			return null;
-		return SCR_ResourceComponent.FindResourceComponent(aircraft, false);
+		SCR_ResourceComponent res = SCR_ResourceComponent.FindResourceComponent(aircraft, false);
+		if (res)
+			return res;
+		//! Some vehicle prefabs attach resources under a child entity; proxies may need hierarchy search.
+		return SCR_ResourceComponent.FindResourceComponent(aircraft, true);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Dedicated clients often do not get authoritative SUPPLIES amounts on the vehicle proxy; server PerformAction re-checks.
+	protected bool ADS_IsDedicatedClient()
+	{
+		return Replication.IsRunning() && Replication.IsClient() && !Replication.IsServer();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -113,6 +124,8 @@ class ADS_AirdropSupplyUserAction : ScriptedUserAction
 			return false;
 
 		supplyContainer = ctr;
+		if (ADS_IsDedicatedClient())
+			return true;
 		return ctr.GetResourceValue() >= m_iSupplyCost;
 	}
 
@@ -319,5 +332,11 @@ class ADS_AirdropSupplyUserAction : ScriptedUserAction
 	override bool HasLocalEffectOnlyScript()
 	{
 		return false;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override bool CanBroadcastScript()
+	{
+		return true;
 	}
 }
