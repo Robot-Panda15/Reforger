@@ -1,5 +1,6 @@
 //------------------------------------------------------------------------------------------------
 //! Shared hold-interact + scroll (SCR_AdjustSignalAction) while beacon is OFF; subclasses supply number vs text cycling.
+//! Server applies IFF IDs from replicated action data (OnLoadActionData); optimistic m_fTargetValue must match the next discrete step so the signal lerp is not stale.
 class HMD_IffBeaconScrollActionBase : SCR_AdjustSignalAction
 {
 	protected HMD_IffBeaconComponent m_pBeacon;
@@ -52,6 +53,12 @@ class HMD_IffBeaconScrollActionBase : SCR_AdjustSignalAction
 	}
 
 	//------------------------------------------------------------------------------------------------
+	protected float GetScrollNormalized01AfterStep(int dir)
+	{
+		return 0;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	override protected void HandleAction(float value)
 	{
 		if (value == 0)
@@ -61,8 +68,9 @@ class HMD_IffBeaconScrollActionBase : SCR_AdjustSignalAction
 			dir = -1;
 		if (m_pBeacon)
 		{
+			float nextT = GetScrollNormalized01AfterStep(dir);
 			OnScrollDirection(dir);
-			m_fTargetValue = GetScrollNormalized01();
+			m_fTargetValue = nextT;
 		}
 	}
 
@@ -90,7 +98,14 @@ class HMD_IffBeaconScrollActionBase : SCR_AdjustSignalAction
 		reader.ReadFloat01(lerp);
 		m_fTargetValue = Math.InverseLerp(GetMinimumValue(), GetMaximumValue(), lerp);
 		PlayMovementAndStopSound(lerp);
+		if (Replication.IsRunning() && Replication.IsServer())
+			ApplyServerScrollFromNormalized(m_fTargetValue);
 		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void ApplyServerScrollFromNormalized(float normalized01)
+	{
 	}
 
 	//------------------------------------------------------------------------------------------------

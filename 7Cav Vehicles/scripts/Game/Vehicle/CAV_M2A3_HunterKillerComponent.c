@@ -396,7 +396,8 @@ class CAV_M2A3_HunterKillerComponent : ScriptComponent
 			return;
 		}
 
-		if (!m_RplComponent || !m_RplComponent.IsOwner())
+		//! Dedicated-server commander is often not Rpl owner of the CITV entity; Rpc still routes to server (same as RequestReleaseMainTurret / RpcAsk_ReleaseMainTurret).
+		if (!m_RplComponent)
 			return;
 
 		Rpc(RpcAsk_SlewToDirection, dirWorldNorm);
