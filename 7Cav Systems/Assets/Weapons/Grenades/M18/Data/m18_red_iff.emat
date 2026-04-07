@@ -1,0 +1,6 @@
+MatPBRBasic {
+ Color 0.413 0.413 0.413 1
+ RoughnessScale 5
+ BCRMap "{508C2E22021D4D13}Assets/Weapons/Grenades/M18/Data/M18_red_BCR.edds"
+ NMOMap "{685495B0DB6A1F8D}Assets/Weapons/Grenades/M18/Data/M18_red_NMO.edds"
+}

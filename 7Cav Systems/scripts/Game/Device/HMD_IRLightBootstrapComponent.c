@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-//! Requires RHS: RHS_LightDevice on this entity; RHS_LightEntity may be the parent prefab rootÃ¢â‚¬â€�parent chain + subtree both get SetEnabledWithIRCheck for IR lights.
+//! Requires RHS: RHS_LightDevice on this entity; RHS_LightEntity may be the parent prefab root. Parent chain + subtree both get SetEnabledWithIRCheck for IR lights.
 [ComponentEditorProps(category: "HMD", description: "Enables IR on RHS_LightDevice; SetEnabledWithIRCheck on IR RHS_LightEntity (ancestors and descendants of this entity).")]
 class HMD_IRLightBootstrapComponentClass : ScriptComponentClass
 {
@@ -28,7 +28,7 @@ class HMD_IRLightBootstrapComponent : ScriptComponent
 	protected RHS_LightDevice m_LightDevice;
 
 	//------------------------------------------------------------------------------------------------
-	//! Prefab root is often RHS_LightEntity while this component sits on a childâ€”walk GetParent() so the root light is included.
+	//! Prefab root is often RHS_LightEntity while this component sits on a child; walk GetParent() so the root light is included.
 	protected void ApplySetEnabledWithIRCheckOnIrLightsUpParents(IEntity start)
 	{
 		if (!start)

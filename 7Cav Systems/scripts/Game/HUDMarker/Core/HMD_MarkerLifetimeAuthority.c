@@ -1,9 +1,22 @@
 //------------------------------------------------------------------------------------------------
-//! Shared authority checks for timed entity delete (HUD markers, placed designations, etc.).
+//! Shared authority + ChimeraWorld.GetServerTimestamp elapsed for timed delete (HUD markers, placed designations, etc.).
 class HMD_MarkerLifetimeAuthority
 {
 	//------------------------------------------------------------------------------------------------
-	//! Offline / host / master: run timed delete. Pure network proxies must not delete replicated entities.
+	//! Seconds since start using server time (not mission time / not frame timeSlice). Clamps negative diffs to 0.
+	static float GetElapsedSecondsSinceServerTime(WorldTimestamp start, ChimeraWorld world)
+	{
+		if (!world)
+			return 0;
+		WorldTimestamp now = world.GetServerTimestamp();
+		float ms = now.DiffMilliseconds(start);
+		if (ms < 0)
+			ms = 0;
+		return ms * 0.001;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Offline: run timed delete. Online: server only for replicated entities; local non-replicated may delete on client.
 	static bool ShouldRunTimedEntityDeleteAuthority(IEntity owner)
 	{
 		if (!Replication.IsRunning())
@@ -14,10 +27,6 @@ class HMD_MarkerLifetimeAuthority
 			return false;
 		RplComponent rpl = RplComponent.Cast(owner.FindComponent(RplComponent));
 		if (!rpl)
-			return true;
-		if (rpl.IsMaster())
-			return true;
-		if (!rpl.IsProxy())
 			return true;
 		return false;
 	}

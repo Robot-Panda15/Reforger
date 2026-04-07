@@ -132,6 +132,16 @@ class HMD_LaserLockState
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! When a designator component entity is destroyed, clear lock UI state that still references it.
+	static void ClearIfLockedDesignator(WCS_Armament_HandheldLaserDesignatorComponent des)
+	{
+		if (!des)
+			return;
+		if (s_LockedDesignator == des)
+			SetLocked(false);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! Parse designation label (e.g. "1688") to laser code; non-numeric labels yield 0.
 	protected static int ParseHudLabelCode(string nm)
 	{

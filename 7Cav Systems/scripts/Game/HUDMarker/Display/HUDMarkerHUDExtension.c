@@ -7,6 +7,8 @@ modded class SCR_HUDManagerComponent
 	protected Widget m_wDesignatorReadoutRoot;
 	protected Widget m_wVehicleTurretLaserReadoutRoot;
 	protected bool m_bWasInVehicle = false;
+	//! Stable hull identity (GetRootParent) for applying default marker state once per vehicle board.
+	protected IEntity m_pHmdLastVehicleRootForMarkerDefaults;
 	protected ref array<ImageWidget> m_aLaserDesignationMarkerDots = {};
 	protected ref array<TextWidget> m_aLaserDesignationMarkerLabels = {};
 	protected ref array<ImageWidget> m_aIffMarkerDots = {};
@@ -19,6 +21,7 @@ modded class SCR_HUDManagerComponent
 	protected ref array<int> m_HMDMarkerVisualKinds = {};
 	protected const float MARKER_DOT_SIZE = 12.0;
 	protected const int MARKER_POOL_SIZE = 32;
+	protected float m_fHudMarkerPolicyAccum;
 
 	//------------------------------------------------------------------------------------------------
 	protected override void OnInit(IEntity owner)
@@ -113,6 +116,7 @@ modded class SCR_HUDManagerComponent
 			playerChar = SCR_ChimeraCharacter.Cast(pc.GetControlledEntity());
 		if (!pc || !playerChar)
 		{
+			m_pHmdLastVehicleRootForMarkerDefaults = null;
 			HMD_LocalHudMarkerSession.ClearClientSessionState();
 			if (m_wDesignatorReadoutRoot)
 				m_wDesignatorReadoutRoot.SetVisible(false);
@@ -135,7 +139,10 @@ modded class SCR_HUDManagerComponent
 		{
 			ECharacterLifeState lifeState = charController.GetLifeState();
 			if (lifeState == ECharacterLifeState.DEAD || lifeState == ECharacterLifeState.INCAPACITATED)
+			{
+				m_pHmdLastVehicleRootForMarkerDefaults = null;
 				HMD_LocalHudMarkerSession.ClearClientSessionState();
+			}
 		}
 		bool inVehicle = playerChar && playerChar.IsInVehicle();
 		if (m_bWasInVehicle && !inVehicle)
@@ -147,10 +154,14 @@ modded class SCR_HUDManagerComponent
 				SyncVehicleLaserComponents(playerChar);
 			}
 			else
+			{
+				m_pHmdLastVehicleRootForMarkerDefaults = null;
 				HMD_LocalHudMarkerSession.ClearClientSessionState();
+			}
 		}
 		else
 		{
+			m_pHmdLastVehicleRootForMarkerDefaults = null;
 			HUDMarkerVisibility.ClearVehicleLaserModes();
 		}
 		m_bWasInVehicle = inVehicle;
@@ -173,13 +184,33 @@ modded class SCR_HUDManagerComponent
 
 		if (!showWorldMarkers)
 		{
+			m_fHudMarkerPolicyAccum = 0;
 			HMD_HideAllMarkerDotsAndLabels();
 			return;
 		}
 		if (m_aLaserDesignationMarkerDots.IsEmpty() || m_aIffMarkerDots.IsEmpty())
 			return;
 
-		HUDMarkerDisplayHelper.FetchAndRenderWorldMarkersFromSystem(sys, m_HMDMarkerPositions, m_HMDMarkerNames, m_HMDMarkerDotColors, m_HMDMarkerLabelColors, m_HMDMarkerVisDist, m_HMDMarkerVisualKinds, world, workspace, m_aLaserDesignationMarkerDots, m_aLaserDesignationMarkerLabels, m_aIffMarkerDots, m_aIffMarkerLabels, MARKER_DOT_SIZE);
+		float rateHz = HMD_HudMarkerPolicyResolver.GetEffectiveHudMarkerUpdateRateHz();
+		bool doMarkerFetch = true;
+		if (rateHz > 0.001)
+		{
+			float ts = 0.016;
+			if (world)
+				ts = world.GetTimeSlice();
+			m_fHudMarkerPolicyAccum += ts;
+			if (m_fHudMarkerPolicyAccum < 1.0 / rateHz)
+				doMarkerFetch = false;
+			else
+				m_fHudMarkerPolicyAccum = 0;
+		}
+		else
+		{
+			m_fHudMarkerPolicyAccum = 0;
+		}
+
+		if (doMarkerFetch)
+			HUDMarkerDisplayHelper.FetchAndRenderWorldMarkersFromSystem(sys, m_HMDMarkerPositions, m_HMDMarkerNames, m_HMDMarkerDotColors, m_HMDMarkerLabelColors, m_HMDMarkerVisDist, m_HMDMarkerVisualKinds, world, workspace, m_aLaserDesignationMarkerDots, m_aLaserDesignationMarkerLabels, m_aIffMarkerDots, m_aIffMarkerLabels, MARKER_DOT_SIZE, HMD_HudMarkerPolicyResolver.GetEffectiveMaxViewDistanceM());
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -208,16 +239,32 @@ modded class SCR_HUDManagerComponent
 			HUDMarkerVisibility.ClearVehicleLaserModes();
 			return;
 		}
+		IEntity vehicleRoot = slotOwner.GetRootParent();
+		if (!vehicleRoot)
+			vehicleRoot = slotOwner;
+		GenericComponent vehEligGc = HMD_VehicleHUDLaserHelpers.FindComponentInHierarchy(vehicleRoot, HMD_HudMarkerEligibilityVehicleComponent);
+		if (HMD_HudMarkerEligibilityVehicleComponent.Cast(vehEligGc))
+		{
+			if (vehicleRoot != m_pHmdLastVehicleRootForMarkerDefaults)
+			{
+				HMD_VehicleHUDLaserHelpers.ApplyDefaultHudMarkersOnVehicleEnter(slotOwner, compartment);
+				m_pHmdLastVehicleRootForMarkerDefaults = vehicleRoot;
+			}
+		}
+		else
+		{
+			m_pHmdLastVehicleRootForMarkerDefaults = null;
+		}
 		if (HUDMarkerVisibility.IsVehicleBinocularViewActive())
 		{
 			HUDMarkerVisibility.ClearVehicleLaserModes();
 			return;
 		}
 
-		IEntity visRoot = HMD_VehicleHUDLaserHelpers.ResolveVehicleHUDVisibilityRoot(slotOwner);
-		HUDLaserVisibilityComponent vis = HUDLaserVisibilityComponent.Cast(visRoot.FindComponent(HUDLaserVisibilityComponent));
-		if (vis && HUDLaserVisibilityComponent.IsVisibilityEnabledForVehicleSlot(compartment))
-			HUDMarkerVisibility.SetVehicleLaserVisibilityEnabled(vis.GetLocalVisibilityEnabled());
+		IEntity eligRoot = HMD_VehicleHUDLaserHelpers.ResolveVehicleHudMarkerEligibilityVehicleRoot(slotOwner);
+		HMD_HudMarkerEligibilityVehicleComponent elig = HMD_HudMarkerEligibilityVehicleComponent.Cast(eligRoot.FindComponent(HMD_HudMarkerEligibilityVehicleComponent));
+		if (elig && HMD_HudMarkerEligibilityVehicleComponent.IsVisibilityEnabledForVehicleSlot(compartment))
+			HUDMarkerVisibility.SetVehicleLaserVisibilityEnabled(elig.GetLocalVisibilityEnabled());
 		else
 			HUDMarkerVisibility.SetVehicleLaserVisibilityEnabled(false);
 
