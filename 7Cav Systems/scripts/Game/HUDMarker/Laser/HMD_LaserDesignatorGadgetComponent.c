@@ -427,8 +427,26 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 		super.OnPostInit(owner);
 		if (m_iLaserCode < 1111 || m_iLaserCode > 1200)
 			m_iLaserCode = 1111;
+		HMD_ApplyBinocularDesignationConfigFromCharacter();
 		if (owner)
 			SetEventMask(owner, EntityEvent.FRAME | owner.GetEventMask());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void HMD_ApplyBinocularDesignationConfigFromCharacter()
+	{
+		IEntity ch = HMD_ResolveLocalCharacterEntity();
+		if (!ch)
+			return;
+		HMD_LaserDesignationBinocularComponent cfg = HMD_LaserDesignationBinocularComponent.Cast(ch.FindComponent(HMD_LaserDesignationBinocularComponent));
+		if (!cfg)
+			return;
+		m_fLaserMaxRange = cfg.GetOwnDesignationDistanceM();
+		m_fMarkerVisibilityDistance = cfg.GetOwnDesignationDistanceM();
+		m_fLaserUpdateRateHz = cfg.GetDesignationUpdateRateHz();
+		m_iLaserCode = HMD_LaserCodeRules.WrapHandheldRange(cfg.GetDefaultLaserCode());
+		if (m_iLaserCode < 1111 || m_iLaserCode > 1200)
+			m_iLaserCode = 1111;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -531,6 +549,25 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 			m_iDesignationId = sys.RegisterDesignation(hitPos, GetLaserCodeName(), red, white, m_fMarkerVisibilityDistance);
 		else
 			sys.UpdateDesignation(m_iDesignationId, hitPos);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override void OnDelete(IEntity owner)
+	{
+		if (GetGame().InPlayMode())
+		{
+			HMD_RangefinderHUDState.Clear();
+			ChimeraWorld world = GetGame().GetWorld();
+			if (world)
+			{
+				HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
+				if (sys && m_iDesignationId >= 0)
+					sys.UnregisterDesignation(m_iDesignationId);
+			}
+		}
+		m_iDesignationId = -1;
+		HMD_LaserLockState.ClearIfLockedDesignator(this);
+		super.OnDelete(owner);
 	}
 
 	//------------------------------------------------------------------------------------------------

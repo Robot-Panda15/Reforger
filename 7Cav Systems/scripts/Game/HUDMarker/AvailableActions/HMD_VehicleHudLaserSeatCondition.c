@@ -8,7 +8,7 @@ enum E_HMD_VehicleHudLaserSeatPolicy
 
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), BaseContainerCustomStringTitleField("Vehicle HUD laser seat policy")]
-//! Control-hint condition: same rules as HMD_VehicleHUDLaserInputPolicy for marking / visibility seats.
+//! Control-hint condition: same rules as HMD_HudMarkerEligibility (seat + global eligibility) for marking / visibility seats.
 class HMD_VehicleHudLaserSeatCondition : SCR_AvailableActionCondition
 {
 	[Attribute("0", UIWidgets.ComboBox, "Which vehicle HUD seat policy", "", ParamEnumArray.FromEnum(E_HMD_VehicleHudLaserSeatPolicy), category: "HMD")]
@@ -25,13 +25,13 @@ class HMD_VehicleHudLaserSeatCondition : SCR_AvailableActionCondition
 		switch (m_ePolicy)
 		{
 			case E_HMD_VehicleHudLaserSeatPolicy.MARKING:
-				return GetReturnResult(HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserMarking(localChar));
+				return GetReturnResult(HMD_HudMarkerEligibility.MayUseVehicleHUDLaserMarking(localChar));
 			case E_HMD_VehicleHudLaserSeatPolicy.VISIBILITY:
-				return GetReturnResult(HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserVisibility(localChar));
+				return GetReturnResult(HMD_HudMarkerEligibility.MayUseVehicleHUDLaserVisibility(localChar));
 			case E_HMD_VehicleHudLaserSeatPolicy.MARKING_OR_VISIBILITY:
 			{
-				bool vis = HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserVisibility(localChar);
-				bool mark = HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserMarking(localChar);
+				bool vis = HMD_HudMarkerEligibility.MayUseVehicleHUDLaserVisibility(localChar);
+				bool mark = HMD_HudMarkerEligibility.MayUseVehicleHUDLaserMarking(localChar);
 				return GetReturnResult(vis || mark);
 			}
 		}

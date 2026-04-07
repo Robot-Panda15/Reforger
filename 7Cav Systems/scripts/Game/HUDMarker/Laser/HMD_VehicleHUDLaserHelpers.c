@@ -3,14 +3,14 @@
 class HMD_VehicleHUDLaserHelpers
 {
 	//------------------------------------------------------------------------------------------------
-	//! Compartment owner may be a child (e.g. turret). Walk up until this entity type is found.
-	//! Visibility: usually hull/cockpit. Turret marking: HUDLaserTurretMarkingComponent on the turret; camera marking: HUDLaserCameraMarkingComponent on hull/seat entity.
-	static IEntity ResolveVehicleHUDVisibilityRoot(IEntity slotOwner)
+	//! Compartment owner may be a child (e.g. turret). Walk up until HMD_HudMarkerEligibilityVehicleComponent (hull) is found.
+	//! Turret marking: HUDLaserTurretMarkingComponent on the turret; camera marking: HUDLaserCameraMarkingComponent on hull/seat entity.
+	static IEntity ResolveVehicleHudMarkerEligibilityVehicleRoot(IEntity slotOwner)
 	{
 		IEntity ent = slotOwner;
 		while (ent)
 		{
-			if (ent.FindComponent(HUDLaserVisibilityComponent))
+			if (ent.FindComponent(HMD_HudMarkerEligibilityVehicleComponent))
 				return ent;
 			ent = ent.GetParent();
 		}
@@ -189,7 +189,7 @@ class HMD_VehicleHUDLaserHelpers
 		IEntity localChar = SCR_PlayerController.GetLocalControlledEntity();
 		if (!localChar)
 			return;
-		if (!HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserMarking(localChar))
+		if (!HMD_HudMarkerEligibility.MayUseVehicleHUDLaserMarking(localChar))
 			return;
 		SCR_CompartmentAccessComponent cac = SCR_CompartmentAccessComponent.Cast(localChar.FindComponent(SCR_CompartmentAccessComponent));
 		if (!cac)
@@ -285,6 +285,23 @@ class HMD_VehicleHUDLaserHelpers
 		if (!root)
 			root = slotOwner;
 		return WCS_Armament_VehicleWeaponStationComponent.Cast(FindComponentInHierarchy(root, WCS_Armament_VehicleWeaponStationComponent));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! When local player enters a vehicle that has HMD_HudMarkerEligibilityVehicleComponent (IFF off, Numpad * / marking defaults).
+	static void ApplyDefaultHudMarkersOnVehicleEnter(IEntity slotOwner, BaseCompartmentSlot compartment)
+	{
+		if (!slotOwner || !compartment)
+			return;
+		HUDMarkerVisibility.SetShowIffMarkers(false);
+		IEntity eligRoot = ResolveVehicleHudMarkerEligibilityVehicleRoot(slotOwner);
+		HMD_HudMarkerEligibilityVehicleComponent elig = HMD_HudMarkerEligibilityVehicleComponent.Cast(eligRoot.FindComponent(HMD_HudMarkerEligibilityVehicleComponent));
+		if (elig)
+			elig.ResetLocalVisibilityForNewOccupant();
+		IEntity markRoot = ResolveVehicleHUDMarkingRoot(slotOwner);
+		HUDLaserMarkingComponent mark = FindMarkingComponentOnEntity(markRoot);
+		if (mark)
+			mark.ForceDisableLocalMarking();
 	}
 }
 

@@ -103,7 +103,7 @@ class HMD_HUDLaserInput
 
 			return;
 
-		if (!HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserVisibility(localChar))
+		if (!HMD_HudMarkerEligibility.MayUseVehicleHUDLaserVisibility(localChar))
 
 			return;
 
@@ -119,19 +119,19 @@ class HMD_HUDLaserInput
 
 			return;
 
-		IEntity visRoot = HMD_VehicleHUDLaserHelpers.ResolveVehicleHUDVisibilityRoot(slot.GetOwner());
+		IEntity eligRoot = HMD_VehicleHUDLaserHelpers.ResolveVehicleHudMarkerEligibilityVehicleRoot(slot.GetOwner());
 
-		if (!visRoot)
-
-			return;
-
-		HUDLaserVisibilityComponent vis = HUDLaserVisibilityComponent.Cast(visRoot.FindComponent(HUDLaserVisibilityComponent));
-
-		if (!vis)
+		if (!eligRoot)
 
 			return;
 
-		vis.RequestToggleLocalVisibility(localChar, slot);
+		HMD_HudMarkerEligibilityVehicleComponent elig = HMD_HudMarkerEligibilityVehicleComponent.Cast(eligRoot.FindComponent(HMD_HudMarkerEligibilityVehicleComponent));
+
+		if (!elig)
+
+			return;
+
+		elig.RequestToggleLocalVisibility(localChar, slot);
 
 	}
 
@@ -153,7 +153,7 @@ class HMD_HUDLaserInput
 
 			return;
 
-		if (!HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserMarking(localChar))
+		if (!HMD_HudMarkerEligibility.MayUseVehicleHUDLaserMarking(localChar))
 
 			return;
 
@@ -193,13 +193,8 @@ class HMD_HUDLaserInput
 		IEntity localChar = SCR_PlayerController.GetLocalControlledEntity();
 		if (!localChar)
 			return;
-		SCR_CharacterControllerComponent ccc = SCR_CharacterControllerComponent.Cast(localChar.FindComponent(SCR_CharacterControllerComponent));
-		if (ccc)
-		{
-			ECharacterLifeState lifeState = ccc.GetLifeState();
-			if (lifeState == ECharacterLifeState.DEAD || lifeState == ECharacterLifeState.INCAPACITATED)
-				return;
-		}
+		if (!HMD_HudMarkerEligibility.MayUseVehicleHudIffMarkersToggle(localChar))
+			return;
 		HUDMarkerVisibility.ToggleIffMarkers();
 	}
 
@@ -252,7 +247,7 @@ class HMD_HUDLaserInput
 
 			return;
 
-		if (!HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserMarking(localChar))
+		if (!HMD_HudMarkerEligibility.MayUseVehicleHUDLaserMarking(localChar))
 
 			return;
 
@@ -308,7 +303,7 @@ class HMD_HUDLaserInput
 		IEntity localChar = SCR_PlayerController.GetLocalControlledEntity();
 		if (!localChar)
 			return;
-		if (!HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserMarking(localChar))
+		if (!HMD_HudMarkerEligibility.MayUseVehicleHUDLaserMarking(localChar))
 			return;
 		if (!HMD_LaserLockState.IsLocked())
 			return;
@@ -335,7 +330,7 @@ class HMD_HUDLaserInput
 
 			return;
 
-		if (!HMD_VehicleHUDLaserInputPolicy.MayUseVehicleHUDLaserMarking(localChar))
+		if (!HMD_HudMarkerEligibility.MayUseVehicleHUDLaserMarking(localChar))
 
 			return;
 

@@ -174,7 +174,7 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 					m_ServerTimeStart = now;
 					m_bServerTimeStartSet = true;
 				}
-				float elapsed = now.DiffMilliseconds(m_ServerTimeStart) * 0.001;
+				float elapsed = HMD_MarkerLifetimeAuthority.GetElapsedSecondsSinceServerTime(m_ServerTimeStart, wLife);
 				if (elapsed >= lifetimeSec)
 				{
 					SCR_EntityHelper.DeleteEntityAndChildren(owner);
@@ -227,9 +227,19 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 			{
 				HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
 				if (sys && m_iDesignationId >= 0)
+				{
+					vector pos;
+					if (sys.TryGetDesignationWorldPositionById(m_iDesignationId, pos))
+					{
+						string nm = "";
+						sys.TryGetDesignationNameById(m_iDesignationId, nm);
+						HMD_LaserLockState.MigrateHudLockBeforeUnregisterLocalDesignation(m_iDesignationId, pos, nm, 0);
+					}
 					sys.UnregisterDesignation(m_iDesignationId);
+				}
 			}
 		}
+		HMD_LaserLockState.ClearIfLockedDesignator(this);
 		m_iDesignationId = -1;
 		m_iLastRegisteredAttrKind = -999;
 		m_sLastRegisteredHudLabel = "";

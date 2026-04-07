@@ -27,11 +27,10 @@ class HUDMarkerComponent : ScriptComponent
 	protected float m_fVisibilityDistance;
 
 	//------------------------------------------------------------------------------------------------
-	//! World/layer overrides are merged into the component source container; runtime fields can stay at class defaults until read from `BaseContainer` (same pattern as HUDMarkerSystem + HMD_PlacedDesignationComponent).
-	float GetLifetimeSeconds()
+	//! Same resolution pattern as HMD_PlacedDesignationComponent.HMD_GetLifetimeSeconds (prefab / layer container).
+	protected float HMD_ResolveLifetimeSeconds(IEntity owner)
 	{
 		float outVal = m_fLifetimeSeconds;
-		IEntity owner = GetOwner();
 		if (owner)
 		{
 			BaseContainer src = GetComponentSource(owner);
@@ -43,6 +42,12 @@ class HUDMarkerComponent : ScriptComponent
 			}
 		}
 		return outVal;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	float GetLifetimeSeconds()
+	{
+		return HMD_ResolveLifetimeSeconds(GetOwner());
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -114,36 +119,58 @@ class HUDMarkerComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Finite lifetime: authority deletes owner entity after GetLifetimeSeconds() (HUD pool entry goes stale via existing Unregister path).
+	//! Match HMD_PlacedDesignationComponent.EOnFrame lifetime block (server time + same authority gate). ScriptComponent has no Update(); Placed uses WCS base empty Update.
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFrame(owner, timeSlice);
-		if (!GetGame().InPlayMode() || !owner)
+		if (!GetGame().InPlayMode())
 			return;
-		float lifetimeSec = GetLifetimeSeconds();
-		if (lifetimeSec <= 0)
+		if (!owner)
 			return;
-		if (!HMD_MarkerLifetimeAuthority.ShouldRunTimedEntityDeleteAuthority(owner))
-			return;
-		ChimeraWorld world = GetGame().GetWorld();
-		if (!world)
-			return;
-		WorldTimestamp now = world.GetServerTimestamp();
-		if (!m_bServerTimeStartSet)
+
+		float lifetimeSec = HMD_ResolveLifetimeSeconds(owner);
+		if (lifetimeSec > 0 && HMD_MarkerLifetimeAuthority.ShouldRunTimedEntityDeleteAuthority(owner))
 		{
-			m_ServerTimeStart = now;
-			m_bServerTimeStartSet = true;
+			ChimeraWorld wLife = GetGame().GetWorld();
+			if (wLife)
+			{
+				WorldTimestamp now = wLife.GetServerTimestamp();
+				if (!m_bServerTimeStartSet)
+				{
+					m_ServerTimeStart = now;
+					m_bServerTimeStartSet = true;
+				}
+				float elapsed = HMD_MarkerLifetimeAuthority.GetElapsedSecondsSinceServerTime(m_ServerTimeStart, wLife);
+				if (elapsed >= lifetimeSec)
+				{
+					SCR_EntityHelper.DeleteEntityAndChildren(owner);
+					return;
+				}
+			}
 		}
-		float elapsed = now.DiffMilliseconds(m_ServerTimeStart) * 0.001;
-		if (elapsed < lifetimeSec)
-			return;
-		SCR_EntityHelper.DeleteEntityAndChildren(owner);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Entity teardown: drop IFF row immediately. Unregister() is for stream-out (keeps cached dot); deletion needs RemoveMarkerEntry.
+	override void OnDelete(IEntity owner)
+	{
+		if (GetGame().InPlayMode() && owner)
+		{
+			ChimeraWorld world = GetGame().GetWorld();
+			if (world)
+			{
+				HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
+				if (sys)
+					sys.RemoveMarkerEntry(owner);
+			}
+		}
+		super.OnDelete(owner);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ~HUDMarkerComponent()
 	{
-		if (!GetGame().InPlayMode() || Replication.IsServer())
+		if (!GetGame().InPlayMode())
 			return;
 		IEntity owner = GetOwner();
 		if (!owner)
@@ -154,6 +181,6 @@ class HUDMarkerComponent : ScriptComponent
 			return;
 		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
 		if (sys)
-			sys.Unregister(owner);
+			sys.RemoveMarkerEntry(owner);
 	}
 }

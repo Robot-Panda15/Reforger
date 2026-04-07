@@ -7,7 +7,7 @@ class HMD_IffBeaconComponentClass : ScriptComponentClass
 //------------------------------------------------------------------------------------------------
 //! Server-authoritative state; clients refresh HUDMarkerSystem registration from RplProp callback.
 //! Text/number use SCR_AdjustSignalAction (hold interact + scroll) while beacon is OFF.
-//! Clients: IR settings are instance attributes (prefab/layer). Do not merge via BaseContainer.Get for ResourceName ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¿Ãƒâ€šÃ‚Â½ parent prefabs can supply empty m_sIrLightPrefab and wipe the RHS default. Spawn while placed + transmitting + battery; despawn when off or owner deleted.
+//! Clients: IR settings are instance attributes (prefab/layer). Do not merge via BaseContainer.Get for ResourceName; parent prefabs can supply empty m_sIrLightPrefab and wipe the RHS default. Spawn while placed + transmitting + battery; despawn when off or owner deleted.
 class HMD_IffBeaconComponent : ScriptComponent
 {
 	protected static const float BEACON_TOTAL_SECONDS = 1800;

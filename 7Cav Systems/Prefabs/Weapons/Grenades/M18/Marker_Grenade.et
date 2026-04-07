@@ -20,6 +20,14 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
     }
    }
   }
+  MeshObject "{51EC93F29BA5F234}" {
+   Materials {
+    MaterialAssignClass "{690D4349318ED522}" {
+     SourceMaterial "m18"
+     AssignedMaterial "{65872F20D143C70B}Assets/Weapons/Grenades/M18/Data/m18_red_iff.emat"
+    }
+   }
+  }
   SCR_WeaponAttachmentsStorageComponent "{5260C447D58750FE}" {
    Attributes SCR_ItemAttributeCollection "{5260C447CBDC5D43}" {
     ItemDisplayName WeaponUIInfo "{5270794ED1D0FAF9}" {
@@ -43,5 +51,5 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
    }
   }
  }
- coords 1121.803 38.188 2829.585
+ coords 1473.1 38.358 2892.139
 }

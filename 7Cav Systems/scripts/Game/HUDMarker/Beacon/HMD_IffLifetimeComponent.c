@@ -294,6 +294,16 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	override void OnDelete(IEntity owner)
 	{
 		DespawnIrLight();
+		if (GetGame().InPlayMode() && owner)
+		{
+			ChimeraWorld world = GetGame().GetWorld();
+			if (world)
+			{
+				HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
+				if (sys && !HasPlacedDesignationSibling(owner))
+					sys.RemoveMarkerEntry(owner);
+			}
+		}
 		super.OnDelete(owner);
 	}
 

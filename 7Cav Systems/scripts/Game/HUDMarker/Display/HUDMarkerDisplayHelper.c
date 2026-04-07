@@ -18,6 +18,13 @@ class HUDMarkerDisplayHelper
 
 	static const string MARKER_DOT_TEXTURE = "{73B3D8BBB785B5B9}UI/Textures/Common/circleFull.edds";
 
+	//! Bit flags for FetchRenderOrHideOneMarkerKind (Enforce limits method args to 16; pack local+foreign laser toggles).
+	protected static const int FETCH_LASER_LOCAL = 1;
+	protected static const int FETCH_LASER_FOREIGN = 2;
+
+	//! Set per FetchAndRenderWorldMarkersFromSystem call; clamps marker max view distance in RenderSortedMarkers.
+	protected static float s_fPolicyMaxViewDistanceM;
+
 
 
 	protected static ref array<string> s_aLastDotTexturesLaser;
@@ -142,11 +149,11 @@ class HUDMarkerDisplayHelper
 
 		HUDMarkerSystem sys,
 
-		bool include,
+		bool includeLayer,
 
-		bool laserDesignation,
+		int laserIncludeFlags,
 
-		bool iffMarkers,
+		bool includeIffMarkers,
 
 		array<vector> positions,
 
@@ -174,7 +181,7 @@ class HUDMarkerDisplayHelper
 
 	{
 
-		if (!include)
+		if (!includeLayer)
 
 		{
 
@@ -184,7 +191,11 @@ class HUDMarkerDisplayHelper
 
 		}
 
-		sys.GetMarkerData(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds, laserDesignation, iffMarkers);
+		bool includeLocalLaserDesignations = (laserIncludeFlags & FETCH_LASER_LOCAL) != 0;
+
+		bool includeForeignLaserDesignations = (laserIncludeFlags & FETCH_LASER_FOREIGN) != 0;
+
+		sys.GetMarkerData(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds, includeLocalLaserDesignations, includeForeignLaserDesignations, includeIffMarkers);
 
 		HMD_LaserLockState.ApplyLockedHighlightToMarkerArrays(positions, labelColors);
 
@@ -222,7 +233,9 @@ class HUDMarkerDisplayHelper
 
 		array<TextWidget> iffLabels,
 
-		float markerDotSize)
+		float markerDotSize,
+
+		float policyMaxViewDistanceM)
 
 	{
 
@@ -230,11 +243,15 @@ class HUDMarkerDisplayHelper
 
 			return;
 
-		bool incLaser = HUDMarkerVisibility.ShouldIncludeLaserDesignationDotsInHUD();
+		s_fPolicyMaxViewDistanceM = policyMaxViewDistanceM;
+
+		bool incLocalLaser = HUDMarkerVisibility.ShouldIncludeLocalLaserDesignationDotsInHUD();
+
+		bool incForeignLaser = HUDMarkerVisibility.ShouldIncludeForeignLaserDesignationDotsInHUD();
 
 		bool incIff = HUDMarkerVisibility.ShouldIncludeIffMarkersInHUD();
 
-		if (!incLaser && !incIff)
+		if (!incLocalLaser && !incForeignLaser && !incIff)
 
 		{
 
@@ -242,13 +259,27 @@ class HUDMarkerDisplayHelper
 
 			HideMarkerWidgetPool(iffDots, iffLabels);
 
+			s_fPolicyMaxViewDistanceM = 0;
+
 			return;
 
 		}
 
-		FetchRenderOrHideOneMarkerKind(sys, incLaser, true, false, positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds, world, workspace, laserDots, laserLabels, markerDotSize, false);
+		int laserFlags = 0;
 
-		FetchRenderOrHideOneMarkerKind(sys, incIff, false, true, positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds, world, workspace, iffDots, iffLabels, markerDotSize, true);
+		if (incLocalLaser)
+
+			laserFlags |= FETCH_LASER_LOCAL;
+
+		if (incForeignLaser)
+
+			laserFlags |= FETCH_LASER_FOREIGN;
+
+		FetchRenderOrHideOneMarkerKind(sys, incLocalLaser || incForeignLaser, laserFlags, false, positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds, world, workspace, laserDots, laserLabels, markerDotSize, false);
+
+		FetchRenderOrHideOneMarkerKind(sys, incIff, 0, true, positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds, world, workspace, iffDots, iffLabels, markerDotSize, true);
+
+		s_fPolicyMaxViewDistanceM = 0;
 
 	}
 
@@ -424,6 +455,20 @@ class HUDMarkerDisplayHelper
 
 				maxV = visibilityDistances[i];
 
+			if (s_fPolicyMaxViewDistanceM > 0)
+
+			{
+
+				if (maxV < 0)
+
+					maxV = s_fPolicyMaxViewDistanceM;
+
+				else if (maxV > s_fPolicyMaxViewDistanceM)
+
+					maxV = s_fPolicyMaxViewDistanceM;
+
+			}
+
 			float distSq = DistanceSq(camPos, positions[i]);
 
 			if (maxV > 0)
@@ -499,6 +544,20 @@ class HUDMarkerDisplayHelper
 			if (visibilityDistances && p < visibilityDistances.Count())
 
 				maxV = visibilityDistances[p];
+
+			if (s_fPolicyMaxViewDistanceM > 0)
+
+			{
+
+				if (maxV < 0)
+
+					maxV = s_fPolicyMaxViewDistanceM;
+
+				else if (maxV > s_fPolicyMaxViewDistanceM)
+
+					maxV = s_fPolicyMaxViewDistanceM;
+
+			}
 
 			float dist = Math.Sqrt(distSq);
 

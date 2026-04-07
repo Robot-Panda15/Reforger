@@ -24,7 +24,7 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
    Materials {
     MaterialAssignClass "{68FE236E55F7DE5C}" {
      SourceMaterial "m18"
-     AssignedMaterial "{0BE5DD742A912D10}Assets/Weapons/Grenades/M18/Data/m18_yellow.emat"
+     AssignedMaterial "{3DEE7FDCB2EB40DD}Assets/Weapons/Grenades/M18/Data/m18_yellow_iff.emat"
     }
    }
   }
@@ -51,5 +51,5 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
    }
   }
  }
- coords 1122.649 38.231 2829.204
+ coords 1473.396 38.358 2892.29
 }

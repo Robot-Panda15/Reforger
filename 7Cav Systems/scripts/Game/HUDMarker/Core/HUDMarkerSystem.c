@@ -5,8 +5,10 @@
 //! Designations (laser designator aim / pooled HUD dots) are listed first in GetMarkerData
 class HUDMarkerSystem : GameSystem
 {
-	[Attribute("", UIWidgets.ResourceNamePicker, "Helmet prefabs with HMD (full marker HUD in vehicle + free look). Empty = no camera-only restriction for crew without HMD.", "et", category: "HMD")]
+	[Attribute("", UIWidgets.ResourceNamePicker, "Helmet prefabs with HMD (full marker HUD in vehicle + free look). Empty = no camera-only restriction for crew without HMD (unless Enforce below).", "et", category: "HMD")]
 	protected ref array<ResourceName> m_aHmdHelmetPrefabs;
+	[Attribute("0", UIWidgets.CheckBox, "When set, require HMD helmet (capability tag or prefab list match) in vehicles even if the helmet prefab list above is empty.", category: "HMD")]
+	protected bool m_bEnforceHmdHelmetInVehicles;
 	protected ref array<IEntity> m_Markers = {};
 	protected ref array<vector> m_CachedPositions = {};
 	protected ref array<string> m_Names = {};
@@ -68,6 +70,12 @@ class HUDMarkerSystem : GameSystem
 	bool HasHmdHelmetPrefabConfig()
 	{
 		return m_aHmdHelmetPrefabs && m_aHmdHelmetPrefabs.Count() > 0;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	bool EnforceHmdHelmetInVehicles()
+	{
+		return m_bEnforceHmdHelmetInVehicles;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -294,6 +302,42 @@ class HUDMarkerSystem : GameSystem
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Streamed-out IFF pool entries: remove when finite lifetime elapsed (GetServerTimestamp). Runs every frame so expiry does not depend on GetMarkerData being called.
+	protected void ProcessStaleIffStreamedOutEntries()
+	{
+		ChimeraWorld world = GetWorld();
+		if (!world)
+			return;
+		WorldTimestamp nowServer = world.GetServerTimestamp();
+		for (int i = m_Markers.Count() - 1; i >= 0; i--)
+		{
+			IEntity e = m_Markers[i];
+			if (e)
+				continue;
+			if (!m_bStaleStartSet[i])
+			{
+				m_StaleStartServerTime[i] = nowServer;
+				m_bStaleStartSet[i] = true;
+			}
+			float lifetime = m_LifetimeSeconds[i];
+			if (lifetime <= 0)
+				continue;
+			float elapsed = HMD_MarkerLifetimeAuthority.GetElapsedSecondsSinceServerTime(m_StaleStartServerTime[i], world);
+			if (elapsed < lifetime)
+				continue;
+			m_Markers.RemoveOrdered(i);
+			m_CachedPositions.RemoveOrdered(i);
+			m_Names.RemoveOrdered(i);
+			m_MarkerColors.RemoveOrdered(i);
+			m_LabelColors.RemoveOrdered(i);
+			m_RplIds.RemoveOrdered(i);
+			m_LifetimeSeconds.RemoveOrdered(i);
+			m_bStaleStartSet.RemoveOrdered(i);
+			m_StaleStartServerTime.RemoveOrdered(i);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void AppendDesignationsToOutput(array<vector> positions, array<string> names, array<int> markerColors, array<int> labelColors, array<float> visibilityDistances, array<int> markerVisualKinds)
 	{
 		for (int v = 0; v < m_DesignationPositions.Count(); v++)
@@ -312,9 +356,11 @@ class HUDMarkerSystem : GameSystem
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Fills positions, names and color arrays - uses cached position when entity is streamed out; removes when lifetime expired
+	//! Fills positions, names and color arrays - uses cached position when entity is streamed out. Stale IFF removal uses server time in ProcessStaleIffStreamedOutEntries (OnUpdate).
 	//! @param markerVisualKinds When non-null, filled per dot: HMD_MarkerVisuals KIND_* (IFF / own designation / foreign designation).
-	void GetMarkerData(array<vector> positions, array<string> names, array<int> markerColors, array<int> labelColors, array<float> visibilityDistances, array<int> markerVisualKinds, bool includeLaserDesignations, bool includeIffMarkers)
+	//! @param includeLocalLaserDesignations Pooled designations (own turret, mission spots, etc.).
+	//! @param includeForeignLaserDesignations Other players' designators (WCS); gated by Numpad * separately from own laser.
+	void GetMarkerData(array<vector> positions, array<string> names, array<int> markerColors, array<int> labelColors, array<float> visibilityDistances, array<int> markerVisualKinds, bool includeLocalLaserDesignations, bool includeForeignLaserDesignations, bool includeIffMarkers)
 	{
 		if (!positions || !names)
 			return;
@@ -329,12 +375,10 @@ class HUDMarkerSystem : GameSystem
 		if (markerVisualKinds)
 			markerVisualKinds.Clear();
 
-		if (includeLaserDesignations)
-		{
+		if (includeLocalLaserDesignations)
 			AppendDesignationsToOutput(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds);
-			if (markerVisualKinds)
-				HMD_MarkerVisuals.AppendForeignDesignations(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds);
-		}
+		if (includeForeignLaserDesignations)
+			HMD_MarkerVisuals.AppendForeignDesignations(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds);
 
 		if (!includeIffMarkers)
 			return;
@@ -386,24 +430,6 @@ class HUDMarkerSystem : GameSystem
 					m_StaleStartServerTime[i] = nowServer;
 					m_bStaleStartSet[i] = true;
 				}
-				float lifetime = m_LifetimeSeconds[i];
-				if (lifetime >= 0)
-				{
-					float elapsed = nowServer.DiffMilliseconds(m_StaleStartServerTime[i]) * 0.001;
-					if (elapsed >= lifetime)
-					{
-						m_Markers.RemoveOrdered(i);
-						m_CachedPositions.RemoveOrdered(i);
-						m_Names.RemoveOrdered(i);
-						m_MarkerColors.RemoveOrdered(i);
-						m_LabelColors.RemoveOrdered(i);
-						m_RplIds.RemoveOrdered(i);
-						m_LifetimeSeconds.RemoveOrdered(i);
-						m_bStaleStartSet.RemoveOrdered(i);
-						m_StaleStartServerTime.RemoveOrdered(i);
-						continue;
-					}
-				}
 				pos = m_CachedPositions[i];
 				positions.Insert(pos);
 				names.Insert(m_Names[i]);
@@ -426,7 +452,7 @@ class HUDMarkerSystem : GameSystem
 		array<string> names = {};
 		array<int> markerColors = {};
 		array<int> labelColors = {};
-		GetMarkerData(positions, names, markerColors, labelColors, null, null, true, true);
+		GetMarkerData(positions, names, markerColors, labelColors, null, null, true, true, true);
 		return positions;
 	}
 
@@ -532,6 +558,7 @@ class HUDMarkerSystem : GameSystem
 		super.OnUpdate(point);
 		if (point != ESystemPoint.Frame)
 			return;
+		ProcessStaleIffStreamedOutEntries();
 		if (s_aPendingMarkers.IsEmpty())
 			return;
 		ChimeraWorld world = GetWorld();
