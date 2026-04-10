@@ -546,8 +546,19 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 		if (m_iLaserCode < 1111 || m_iLaserCode > 1200)
 			m_iLaserCode = 1111;
 		HMD_ApplyBinocularDesignationConfigFromCharacter();
+		HMD_SyncWcsUpdateIntervalFromLaserRate();
 		if (owner)
 			SetEventMask(owner, EntityEvent.FRAME | owner.GetEventMask());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! WCS `Update` gates `HMD_CameraPerformDesignation` with inherited `m_fUpdateInterval` (seconds). HMD exposes `m_fLaserUpdateRateHz` (0 = every tick). Without this, the WCS default interval (often 1 s) ignores the HMD slider and character config.
+	protected void HMD_SyncWcsUpdateIntervalFromLaserRate()
+	{
+		if (m_fLaserUpdateRateHz > 0)
+			m_fUpdateInterval = 1.0 / m_fLaserUpdateRateHz;
+		else
+			m_fUpdateInterval = 0;
 	}
 
 	//------------------------------------------------------------------------------------------------
