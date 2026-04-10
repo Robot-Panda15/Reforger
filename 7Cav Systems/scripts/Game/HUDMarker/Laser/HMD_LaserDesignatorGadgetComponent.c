@@ -18,8 +18,23 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 	[Attribute("0", UIWidgets.Slider, "Cap laser trace/HUD updates (Hz); 0 = every frame", "0 60 1", category: "Laser")]
 	protected float m_fLaserUpdateRateHz;
 
-	//! 1111-1199 targetable; 1200 non-target for weapon lock (still shown on HUD). Server-authoritative: client changes go through RpcAsk_AdjustLaserCode.
-	[RplProp(onRplName: "HMD_OnLaserCodeReplicated")]
+	[Attribute("1", UIWidgets.CheckBox, "While zoomed through this gadget: draw IFF world dots (not gated by Numpad 9 or character prefab).", category: "HUD")]
+	protected bool m_bHudIffWhileZoomed = true;
+
+	[Attribute("1", UIWidgets.CheckBox, "While zoomed: draw this designator's own HUD laser designation dot.", category: "HUD")]
+	protected bool m_bHudOwnLaserDesignationWhileZoomed = true;
+
+	[Attribute("1", UIWidgets.CheckBox, "While zoomed: draw other players' laser designation dots.", category: "HUD")]
+	protected bool m_bHudForeignLaserDesignationsWhileZoomed = true;
+
+	[Attribute("0", UIWidgets.Slider, "Optional max distance (m) for world IFF/laser dots while zoomed; 0 = use each marker's limit only.", "0 20000 100", category: "HUD")]
+	protected float m_fHudWorldMarkerDistanceClampM;
+
+	[Attribute("0.25", UIWidgets.Slider, "Replay full server IFF table to this client while designator viewport is active (s).", "0.05 2 0.05", category: "HUD")]
+	protected float m_fDesignatorViewportServerPollSec = 0.25;
+
+	//! 1111-1199 targetable; 1200 non-target for weapon lock (still shown on HUD)
+	[RplProp()]
 	protected int m_iLaserCode = 1111;
 
 	protected int m_iDesignationId = -1;
@@ -28,6 +43,9 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 	protected static bool s_bHMDLaserInputListenersRegistered;
 
 	protected static InputManager s_HMDGadgetInputManager;
+
+	protected bool m_bPrevDesignatorViewportFrame;
+	protected float m_fDesignatorViewportPollAccum;
 
 
 	//! Last value sent with RpcAsk_SetDesignating so WCS lock sees IsDesignating when lasing via fire hold (not only toggle).
@@ -62,6 +80,36 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 	int GetLaserCodeForWeaponSystems()
 	{
 		return m_iLaserCode;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	bool GetHudIffWhileZoomed()
+	{
+		return m_bHudIffWhileZoomed;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	bool GetHudOwnLaserDesignationWhileZoomed()
+	{
+		return m_bHudOwnLaserDesignationWhileZoomed;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	bool GetHudForeignLaserDesignationsWhileZoomed()
+	{
+		return m_bHudForeignLaserDesignationsWhileZoomed;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	float GetHudWorldMarkerDistanceClampM()
+	{
+		return m_fHudWorldMarkerDistanceClampM;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	float GetHudWorldMarkerUpdateRateHz()
+	{
+		return m_fLaserUpdateRateHz;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -295,6 +343,76 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! World-marker distance clamp while designator viewport is active (matches zoom policy intent).
+	protected float HMD_GetMarkerMaxDistanceMForViewport()
+	{
+		if (m_fHudWorldMarkerDistanceClampM > 0)
+			return m_fHudWorldMarkerDistanceClampM;
+		float a = m_fLaserMaxRange;
+		float b = m_fMarkerVisibilityDistance;
+		if (b > a)
+			return b;
+		return a;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Client: drive HMD_DesignatorViewportState + periodic server IFF replay while local player uses designator zoom with overlay eligibility.
+	protected void HMD_UpdateDesignatorViewportForClient(ChimeraWorld world, float timeSlice, HUDMarkerSystem sys, bool holdingGadget)
+	{
+		if (!world || !sys)
+			return;
+		if (Replication.IsRunning() && !Replication.IsClient())
+			return;
+
+		bool inViewport = false;
+		if (holdingGadget
+			&& HMD_HandheldOpticZoom.IsZoomedForHMD()
+			&& !HMD_HudMarkerEligibility.IsVehicleBinocularViewActive()
+			&& HMD_HudMarkerEligibility.PassesHudMarkerWorldOverlayEligibility()
+			&& HMD_HandheldOpticZoom.FindActiveLocalDesignatorComp() == this)
+		{
+			inViewport = true;
+		}
+
+		if (!inViewport)
+		{
+			if (HMD_DesignatorViewportState.IsActive())
+				HMD_DesignatorViewportState.Deactivate();
+			m_bPrevDesignatorViewportFrame = false;
+			m_fDesignatorViewportPollAccum = 0;
+			return;
+		}
+
+		float maxDist = HMD_GetMarkerMaxDistanceMForViewport();
+		HMD_DesignatorViewportState.Activate(maxDist);
+
+		float pollSec = m_fDesignatorViewportServerPollSec;
+		if (pollSec < 0.05)
+			pollSec = 0.05;
+
+		if (!m_bPrevDesignatorViewportFrame)
+		{
+			m_fDesignatorViewportPollAccum = 0;
+			HMD_HudMarkerIffClientSinkComponent sink = HMD_HudMarkerIffClientSinkComponent.GetLocalSink();
+			if (sink)
+				sink.ClientRequestDesignatorViewportSync();
+		}
+		else
+		{
+			m_fDesignatorViewportPollAccum += timeSlice;
+			if (m_fDesignatorViewportPollAccum >= pollSec)
+			{
+				m_fDesignatorViewportPollAccum = 0;
+				HMD_HudMarkerIffClientSinkComponent sink = HMD_HudMarkerIffClientSinkComponent.GetLocalSink();
+				if (sink)
+					sink.ClientRequestDesignatorViewportSync();
+			}
+		}
+
+		m_bPrevDesignatorViewportFrame = true;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected bool IsLasingActive()
 	{
 		if (m_bIsDesignating)
@@ -467,8 +585,19 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 		if (m_iLaserCode < 1111 || m_iLaserCode > 1200)
 			m_iLaserCode = 1111;
 		HMD_ApplyBinocularDesignationConfigFromCharacter();
+		HMD_SyncWcsUpdateIntervalFromLaserRate();
 		if (owner)
 			SetEventMask(owner, EntityEvent.FRAME | owner.GetEventMask());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! WCS `Update` gates `HMD_CameraPerformDesignation` with inherited `m_fUpdateInterval` (seconds). HMD exposes `m_fLaserUpdateRateHz` (0 = every tick). Without this, the WCS default interval (often 1 s) ignores the HMD slider and character config.
+	protected void HMD_SyncWcsUpdateIntervalFromLaserRate()
+	{
+		if (m_fLaserUpdateRateHz > 0)
+			m_fUpdateInterval = 1.0 / m_fLaserUpdateRateHz;
+		else
+			m_fUpdateInterval = 0;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -518,6 +647,8 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 		}
 
 		bool holdingGadget = IsLocalHoldingThisGadget(owner, localChar);
+
+		HMD_UpdateDesignatorViewportForClient(world, timeSlice, sys, holdingGadget);
 
 		if (!holdingGadget)
 		{
@@ -599,6 +730,7 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 	//------------------------------------------------------------------------------------------------
 	override void OnDelete(IEntity owner)
 	{
+		HMD_DesignatorViewportState.Deactivate();
 		if (GetGame().InPlayMode())
 		{
 			HMD_RangefinderHUDState.Clear();

@@ -1,31 +1,31 @@
 //------------------------------------------------------------------------------------------------
-[ComponentEditorProps(category: "HUD", description: "IFF IR + optional HUD dot: no battery, no placement/explosives. IR delay starts at creation. If HMD_PlacedDesignationComponent is on the same entity, HUDMarkerSystem is not used (designation owns the marker). Destroy parent to remove IR.")]
+[ComponentEditorProps(category: "HUD", description: "IFF IR + optional HUD dot: no battery, no placement/explosives. IR uses RHS_LightEntity under this entity; strobing starts after optional delay at creation. If HMD_PlacedDesignationComponent is on the same entity, HUDMarkerSystem IFF pool is not used (designation owns the marker). Destroy parent to remove IR.")]
 class HMD_IffLifetimeComponentClass : ScriptComponentClass
 {
 }
 
 //------------------------------------------------------------------------------------------------
+//! Grenade warheads use HMD_IffBeaconComponent (auto active on spawn). Placeables use HMD_IffBeaconComponentAttachable.
+//! This component remains for optional prefabs that need IR without full beacon placement semantics.
+//! Prefab must include an RHS_LightEntity child (or subtree) for IR strobing.
 //! No HMD_IffBeaconExplosiveInventoryItemComponent / NotifyPlacedInWorld / m_bPlacedInWorld.
 //! Authority sets m_bBeaconActive true on spawn so clients get IR + HUD; optional TrySetBeaconActive(false) to stop.
-//! Client IR: m_bBeaconActive; OnDelete despawn. HUD: Register only when no HMD_PlacedDesignationComponent; else designation supplies the marker.
+//! World IR uses m_bBeaconActive OR m_bOptimisticIrTransmit.
+//! Only clear m_bOptimisticIrTransmit when inactive AFTER Rpl has reported active at least once (m_bSeenRplBeaconActiveTrue).
+//! Otherwise the first callback can run with default false before the server snapshot, and IR never starts.
+//! HUD: RegisterIffMarker pool when no designation HUD sibling; co-located HUDMarkerComponent skips entity Register (see HUDMarkerSystem.GetMarkerData).
 class HMD_IffLifetimeComponent : ScriptComponent
 {
 	protected static const int TEXT_COUNT = 5;
 
-	[Attribute(defvalue: "{0BCD51DD36B82132}Prefabs/Items/Equipment/Nightvision/IFF_IR_Light.et", UIWidgets.ResourceNamePicker, "RHS_LightEntity prefab spawned locally while beacon transmits; empty = no IR light.", "et", category: "HMD")]
-	protected ResourceName m_sIrLightPrefab;
-
-	[Attribute("1500", UIWidgets.Auto, "IR strobe ON duration (ms)", category: "HMD")]
+	[Attribute("1500", UIWidgets.Auto, "IR glow time (ms)", category: "HMD")]
 	protected float m_fIrStrobeOnMs;
 
-	[Attribute("500", UIWidgets.Auto, "IR strobe OFF duration (ms)", category: "HMD")]
+	[Attribute("500", UIWidgets.Auto, "IR sleep time (ms)", category: "HMD")]
 	protected float m_fIrStrobeOffMs;
 
-	[Attribute("0", UIWidgets.Auto, "Delay before first IR light spawn (ms), counted from entity creation (OnPostInit); 0 = immediate.", category: "HMD")]
+	[Attribute("0", UIWidgets.Auto, "Delay before first IR strobing (ms), counted from entity creation (OnPostInit); 0 = immediate.", category: "HMD")]
 	protected float m_fIrLightSpawnDelayMs;
-
-	[Attribute("0 0 0", UIWidgets.EditBox, "World-space offset (m) from beacon origin for IR light position (e.g. 0 0.5 0 = half meter along world +Y).", category: "HMD")]
-	protected vector m_vIrLightWorldOffset;
 
 	[RplProp(onRplName: "OnBeaconStateReplicated")]
 	protected bool m_bBeaconActive;
@@ -36,21 +36,18 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	[RplProp(onRplName: "OnBeaconStateReplicated")]
 	protected int m_iNumber;
 
-	protected float m_fHudRegRetryAccum;
-	protected static const float HUD_REG_RETRY_INTERVAL = 0.25;
+	protected int m_iIffMarkerPoolId = -1;
 
-	protected IEntity m_pSpawnedIrLight;
+	protected IEntity m_pIrLightRoot;
 	protected bool m_bIrLightSpawnDelayPending;
 
-	//------------------------------------------------------------------------------------------------
-	protected static vector IrWorldOffsetToLocal(vector worldOff, vector parentWorld[4])
-	{
-		vector localOff;
-		localOff[0] = parentWorld[0][0] * worldOff[0] + parentWorld[1][0] * worldOff[1] + parentWorld[2][0] * worldOff[2];
-		localOff[1] = parentWorld[0][1] * worldOff[0] + parentWorld[1][1] * worldOff[1] + parentWorld[2][1] * worldOff[2];
-		localOff[2] = parentWorld[0][2] * worldOff[0] + parentWorld[1][2] * worldOff[1] + parentWorld[2][2] * worldOff[2];
-		return localOff;
-	}
+	//! Client: optional emissive on IR prefab (RHS_StrobeDeviceComponent parity).
+	protected ParametricMaterialInstanceComponent m_ParamMatInstComponent;
+
+	//! Not replicated: assume IR on at init (grenade / lifetime). Cleared only after Rpl has shown active once, then inactive.
+	protected bool m_bOptimisticIrTransmit = true;
+	//! Client: set when m_bBeaconActive replicated true at least once; avoids clearing optimism on default false before first snapshot.
+	protected bool m_bSeenRplBeaconActiveTrue;
 
 	//------------------------------------------------------------------------------------------------
 	static HMD_IffLifetimeComponent FindOnEntity(IEntity owner)
@@ -58,6 +55,16 @@ class HMD_IffLifetimeComponent : ScriptComponent
 		if (!owner)
 			return null;
 		return HMD_IffLifetimeComponent.Cast(owner.FindComponent(HMD_IffLifetimeComponent));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool ShouldProcessLocalIrAndHud()
+	{
+		if (!GetGame().InPlayMode())
+			return false;
+		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
+			return false;
+		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -92,8 +99,8 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Placed laser/designation already registers HUDMarkerSystem; avoid a second IFF dot/label on the same entity.
-	protected bool HasPlacedDesignationSibling(IEntity owner)
+	//! Designation HUD component already registers HUDMarkerSystem; avoid a second IFF dot/label on the same entity.
+	protected bool HasSiblingDesignationHud(IEntity owner)
 	{
 		if (!owner)
 			return false;
@@ -103,20 +110,81 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void OnBeaconStateReplicated()
 	{
+		if (m_bBeaconActive)
+			m_bSeenRplBeaconActiveTrue = true;
+		else if (m_bSeenRplBeaconActiveTrue)
+			m_bOptimisticIrTransmit = false;
 		RefreshHudRegistration();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected bool IsIrTransmitting()
 	{
-		return m_bBeaconActive;
+		return m_bBeaconActive || m_bOptimisticIrTransmit;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected IEntity FindAttachedIrLightRoot(IEntity node)
+	{
+		if (!node)
+			return null;
+		if (RHS_LightEntity.Cast(node))
+			return node;
+		IEntity ch = node.GetChildren();
+		while (ch)
+		{
+			IEntity found = FindAttachedIrLightRoot(ch);
+			if (found)
+				return found;
+			ch = ch.GetSibling();
+		}
+		return null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Prefab root may be GenericEntity with RHS_LightEntity on self or first-level children.
+	protected RHS_LightEntity ResolveRhsLightEntity(IEntity spawned)
+	{
+		if (!spawned)
+			return null;
+		RHS_LightEntity le = RHS_LightEntity.Cast(spawned);
+		if (le)
+			return le;
+		IEntity ch = spawned.GetChildren();
+		while (ch)
+		{
+			le = RHS_LightEntity.Cast(ch);
+			if (le)
+				return le;
+			ch = ch.GetSibling();
+		}
+		return null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected ParametricMaterialInstanceComponent ResolveParametricMaterialInstance(IEntity root)
+	{
+		if (!root)
+			return null;
+		ParametricMaterialInstanceComponent p = ParametricMaterialInstanceComponent.Cast(root.FindComponent(ParametricMaterialInstanceComponent));
+		if (p)
+			return p;
+		IEntity ch = root.GetChildren();
+		while (ch)
+		{
+			p = ParametricMaterialInstanceComponent.Cast(ch.FindComponent(ParametricMaterialInstanceComponent));
+			if (p)
+				return p;
+			ch = ch.GetSibling();
+		}
+		return null;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void StopIrStrobeLoop()
 	{
-		GetGame().GetCallqueue().Remove(IrStrobeOnPhaseEnd);
-		GetGame().GetCallqueue().Remove(IrStrobeOffPhaseEnd);
+		GetGame().GetCallqueue().Remove(IrStrobeEffectScheduleOff);
+		GetGame().GetCallqueue().Remove(IrStrobeEffectScheduleOn);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -131,60 +199,77 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	{
 		m_bIrLightSpawnDelayPending = false;
 		IEntity owner = GetOwner();
-		if (!owner || m_pSpawnedIrLight || !IsIrTransmitting())
+		if (!owner || m_pIrLightRoot || !IsIrTransmitting())
 			return;
-		SpawnIrLightIfNeeded(owner);
+		TryResolveAttachedIrLight(owner);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void IrStrobeOnPhaseEnd()
+	//! RHS_LightEntity.SetEnabledWithIRCheck only.
+	protected void IrStrobeEffect(bool pNewState)
 	{
-		IEntity owner = GetOwner();
-		if (!owner || !m_pSpawnedIrLight || !IsIrTransmitting())
+		if (!IsIrTransmitting() || !m_pIrLightRoot)
 		{
 			StopIrStrobeLoop();
 			return;
 		}
-		RHS_LightEntity le = RHS_LightEntity.Cast(m_pSpawnedIrLight);
+
+		GetGame().GetCallqueue().Remove(IrStrobeEffectScheduleOff);
+		GetGame().GetCallqueue().Remove(IrStrobeEffectScheduleOn);
+
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+
+		RHS_LightEntity le = ResolveRhsLightEntity(m_pIrLightRoot);
 		if (le)
-			le.SetEnabledWithIRCheck(false);
-		float offMs = m_fIrStrobeOffMs;
-		if (offMs < 1)
-			offMs = 1;
-		GetGame().GetCallqueue().CallLater(IrStrobeOffPhaseEnd, offMs, false);
+			le.SetEnabledWithIRCheck(pNewState);
+
+		float glowMs = m_fIrStrobeOnMs;
+		if (glowMs < 1)
+			glowMs = 1;
+		float sleepMs = m_fIrStrobeOffMs;
+		if (sleepMs < 1)
+			sleepMs = 1;
+
+		float timeDelay = sleepMs;
+		if (pNewState)
+			timeDelay = glowMs;
+
+		if (!m_ParamMatInstComponent)
+			m_ParamMatInstComponent = ResolveParametricMaterialInstance(m_pIrLightRoot);
+		if (m_ParamMatInstComponent)
+		{
+			bool nvCanSeeIr = pc && !pc.RHS_IsNVOff();
+			float em = 0;
+			if (pNewState && nvCanSeeIr)
+				em = 1000;
+			m_ParamMatInstComponent.SetEmissiveMultiplier(em);
+		}
+
+		if (pNewState)
+			GetGame().GetCallqueue().CallLater(IrStrobeEffectScheduleOff, timeDelay, false);
+		else
+			GetGame().GetCallqueue().CallLater(IrStrobeEffectScheduleOn, timeDelay, false);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void IrStrobeOffPhaseEnd()
+	protected void IrStrobeEffectScheduleOff()
 	{
-		IEntity owner = GetOwner();
-		if (!owner || !m_pSpawnedIrLight || !IsIrTransmitting())
-		{
-			StopIrStrobeLoop();
-			return;
-		}
-		RHS_LightEntity le = RHS_LightEntity.Cast(m_pSpawnedIrLight);
-		if (le)
-			le.SetEnabledWithIRCheck(true);
-		float onMs = m_fIrStrobeOnMs;
-		if (onMs < 1)
-			onMs = 1;
-		GetGame().GetCallqueue().CallLater(IrStrobeOnPhaseEnd, onMs, false);
+		IrStrobeEffect(false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void IrStrobeEffectScheduleOn()
+	{
+		IrStrobeEffect(true);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void StartIrStrobeLoop(IEntity owner)
 	{
 		StopIrStrobeLoop();
-		if (!m_pSpawnedIrLight || !owner)
+		if (!m_pIrLightRoot || !owner)
 			return;
-		RHS_LightEntity le = RHS_LightEntity.Cast(m_pSpawnedIrLight);
-		if (le)
-			le.SetEnabledWithIRCheck(true);
-		float onMs = m_fIrStrobeOnMs;
-		if (onMs < 1)
-			onMs = 1;
-		GetGame().GetCallqueue().CallLater(IrStrobeOnPhaseEnd, onMs, false);
+		IrStrobeEffect(true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -192,61 +277,45 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	{
 		CancelIrLightSpawnDelay();
 		StopIrStrobeLoop();
-		if (!m_pSpawnedIrLight)
-			return;
-		IEntity lightEnt = m_pSpawnedIrLight;
-		m_pSpawnedIrLight = null;
-		SCR_EntityHelper.DeleteEntityAndChildren(lightEnt);
+		if (m_pIrLightRoot)
+		{
+			if (m_ParamMatInstComponent)
+				m_ParamMatInstComponent.SetEmissiveMultiplier(0);
+			RHS_LightEntity le = ResolveRhsLightEntity(m_pIrLightRoot);
+			if (le)
+				le.SetEnabledWithIRCheck(false);
+		}
+		m_ParamMatInstComponent = null;
+		m_pIrLightRoot = null;
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void SpawnIrLightIfNeeded(IEntity owner)
+	protected bool TryResolveAttachedIrLight(IEntity owner)
 	{
-		if (m_pSpawnedIrLight)
-			return;
-		ResourceName prefabName = m_sIrLightPrefab;
-		if (!prefabName || prefabName == "")
-			return;
-		BaseWorld world = GetGame().GetWorld();
-		if (!world)
-			return;
-		vector worldOff = m_vIrLightWorldOffset;
-		vector parentWorld[4];
-		owner.GetWorldTransform(parentWorld);
-		vector localPos = Vector(0, 0, 0);
-		float offSq = worldOff[0] * worldOff[0] + worldOff[1] * worldOff[1] + worldOff[2] * worldOff[2];
-		if (offSq > 1e-12)
-			localPos = IrWorldOffsetToLocal(worldOff, parentWorld);
-		EntitySpawnParams sp = new EntitySpawnParams();
-		sp.TransformMode = ETransformMode.LOCAL;
-		sp.Parent = owner;
-		sp.Transform[0] = Vector(1, 0, 0);
-		sp.Transform[1] = Vector(0, 1, 0);
-		sp.Transform[2] = Vector(0, 0, 1);
-		sp.Transform[3] = localPos;
-		IEntity spawned = GetGame().SpawnEntityPrefabEx(prefabName, false, world, sp);
-		if (!spawned)
-			return;
-		m_pSpawnedIrLight = spawned;
+		if (m_pIrLightRoot)
+			return true;
+		IEntity found = FindAttachedIrLightRoot(owner);
+		if (!found || !ResolveRhsLightEntity(found))
+			return false;
+		m_pIrLightRoot = found;
 		StartIrStrobeLoop(owner);
+		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void RefreshIrLightState()
 	{
-		if (!GetGame().InPlayMode())
-			return;
-		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
+		if (!ShouldProcessLocalIrAndHud())
 			return;
 		IEntity owner = GetOwner();
 		if (!owner)
 			return;
-		if (!m_bBeaconActive)
+		if (!IsIrTransmitting())
 		{
 			DespawnIrLight();
 			return;
 		}
-		if (m_pSpawnedIrLight)
+		if (m_pIrLightRoot)
 			return;
 		if (m_bIrLightSpawnDelayPending)
 			return;
@@ -259,7 +328,58 @@ class HMD_IffLifetimeComponent : ScriptComponent
 			GetGame().GetCallqueue().CallLater(IrLightDelayedSpawn, delayMs, false);
 			return;
 		}
-		SpawnIrLightIfNeeded(owner);
+		TryResolveAttachedIrLight(owner);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void HMD_ClearIffMarkerPoolRow(HUDMarkerSystem sys)
+	{
+		if (!sys || m_iIffMarkerPoolId < 0)
+			return;
+		sys.UnregisterIffMarker(m_iIffMarkerPoolId);
+		m_iIffMarkerPoolId = -1;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Same pattern as HMD_PlacedDesignationComponent: every-frame RegisterIffMarker / Update* / clear on IFF pool (local rows from entity).
+	protected void RefreshLocalHudMarkerOnly()
+	{
+		if (!GetGame().InPlayMode())
+			return;
+		IEntity owner = GetOwner();
+		ChimeraWorld world = GetGame().GetWorld();
+		if (!owner || !world)
+			return;
+		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
+			return;
+		if (!ShouldProcessLocalIrAndHud())
+			return;
+		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
+		if (!sys)
+			return;
+		if (HasSiblingDesignationHud(owner))
+		{
+			HMD_ClearIffMarkerPoolRow(sys);
+			return;
+		}
+		if (IsIrTransmitting())
+		{
+			vector pos = owner.GetOrigin();
+			string label;
+			int dot;
+			int lblCol;
+			float visDist;
+			HUDMarkerComponent.HMD_ResolveIffPoolPresentation(owner, BuildMarkerLabel(), label, dot, lblCol, visDist);
+			float lifeSec = ResolveHudRegisterLifetime(owner);
+			if (m_iIffMarkerPoolId < 0)
+				m_iIffMarkerPoolId = sys.RegisterIffMarker(pos, label, dot, lblCol, visDist, lifeSec, RplId.Invalid());
+			else
+			{
+				sys.UpdateIffMarkerRow(m_iIffMarkerPoolId, pos, label, dot, lblCol, visDist, lifeSec);
+			}
+		}
+		else
+			HMD_ClearIffMarkerPoolRow(sys);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -267,27 +387,19 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	{
 		if (!GetGame().InPlayMode())
 			return;
-		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
-			return;
 		IEntity owner = GetOwner();
 		ChimeraWorld world = GetGame().GetWorld();
 		if (!owner || !world)
 			return;
-		RefreshIrLightState();
-		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
-		if (!sys)
+		if (ShouldProcessLocalIrAndHud())
+			RefreshIrLightState();
+		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
 			return;
-		if (HasPlacedDesignationSibling(owner))
+		if (!ShouldProcessLocalIrAndHud())
 			return;
-		if (m_bBeaconActive)
-		{
-			string label = BuildMarkerLabel();
-			sys.Register(owner, ResolveHudRegisterLifetime(owner), label, Color.FromRGBA(0, 255, 0, 255).PackToInt(), Color.FromRGBA(255, 255, 255, 255).PackToInt());
-		}
-		else
-		{
-			sys.RemoveMarkerEntry(owner);
-		}
+		if (!HUDMarkerSystem.GetInstance(world))
+			return;
+		RefreshLocalHudMarkerOnly();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -300,8 +412,8 @@ class HMD_IffLifetimeComponent : ScriptComponent
 			if (world)
 			{
 				HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
-				if (sys && !HasPlacedDesignationSibling(owner))
-					sys.RemoveMarkerEntry(owner);
+				if (sys)
+					HMD_ClearIffMarkerPoolRow(sys);
 			}
 		}
 		super.OnDelete(owner);
@@ -311,6 +423,7 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
+		m_bOptimisticIrTransmit = true;
 		if (!Replication.IsRunning() || Replication.IsServer())
 		{
 			if (m_iNumber < 1)
@@ -321,10 +434,23 @@ class HMD_IffLifetimeComponent : ScriptComponent
 				m_iTextIndex = 0;
 			//! Begin IR delay from creation: transmitting on so clients schedule m_fIrLightSpawnDelayMs at first Refresh.
 			m_bBeaconActive = true;
+			m_bSeenRplBeaconActiveTrue = true;
 			if (Replication.IsRunning())
 				Replication.BumpMe();
 		}
 		SetEventMask(owner, EntityEvent.FRAME | owner.GetEventMask());
+		RefreshHudRegistration();
+		//! After Rpl snapshot (remote client + listen host): onRplName may lag first frame.
+		if (Replication.IsRunning() && Replication.IsClient())
+		{
+			GetGame().GetCallqueue().CallLater(DeferredRefreshAfterReplication, 0, false);
+			GetGame().GetCallqueue().CallLater(DeferredRefreshAfterReplication, 100, false);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void DeferredRefreshAfterReplication()
+	{
 		RefreshHudRegistration();
 	}
 
@@ -335,23 +461,10 @@ class HMD_IffLifetimeComponent : ScriptComponent
 		if (!GetGame().InPlayMode() || !owner)
 			return;
 
-		bool runClientHudRetry = !Replication.IsRunning() || Replication.IsClient();
-		if (runClientHudRetry && m_bBeaconActive)
+		if (ShouldProcessLocalIrAndHud())
 		{
-			ChimeraWorld world = GetGame().GetWorld();
-			if (world && !HUDMarkerSystem.GetInstance(world))
-			{
-				m_fHudRegRetryAccum += timeSlice;
-				if (m_fHudRegRetryAccum >= HUD_REG_RETRY_INTERVAL)
-				{
-					m_fHudRegRetryAccum = 0;
-					RefreshHudRegistration();
-				}
-			}
-			else
-			{
-				m_fHudRegRetryAccum = 0;
-			}
+			RefreshIrLightState();
+			RefreshLocalHudMarkerOnly();
 		}
 	}
 
@@ -502,9 +615,18 @@ class HMD_IffLifetimeComponent : ScriptComponent
 	protected void ServerSetBeaconActive(bool active)
 	{
 		if (active)
+		{
 			m_bBeaconActive = true;
+			m_bSeenRplBeaconActiveTrue = true;
+		}
 		else
+		{
 			m_bBeaconActive = false;
+		}
+		if (!active)
+			m_bOptimisticIrTransmit = false;
+		else
+			m_bOptimisticIrTransmit = true;
 		if (Replication.IsRunning())
 			Replication.BumpMe();
 		if (!Replication.IsRunning() || Replication.IsClient())

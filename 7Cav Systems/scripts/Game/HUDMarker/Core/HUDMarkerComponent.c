@@ -26,6 +26,9 @@ class HUDMarkerComponent : ScriptComponent
 	[Attribute("-1", UIWidgets.Slider, "Max visibility distance (m) for HUD culling/fade. -1 = no limit.", "-1 10000 100", category: "HUD")]
 	protected float m_fVisibilityDistance;
 
+	//! Retries when GetGame() was missing at OnPostInit; otherwise registration uses EnqueuePending when not yet InPlayMode.
+	protected bool m_bPendingHudRegistration;
+
 	//------------------------------------------------------------------------------------------------
 	//! Same resolution pattern as HMD_PlacedDesignationComponent.HMD_GetLifetimeSeconds (prefab / layer container).
 	protected float HMD_ResolveLifetimeSeconds(IEntity owner)
@@ -88,34 +91,81 @@ class HUDMarkerComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Iff beacon/lifetime use RegisterIffMarker (not entity Register). When this component is on the same entity, pooled row uses its colors and visibility; non-empty marker name overrides the dynamic beacon label.
+	static void HMD_ResolveIffPoolPresentation(IEntity owner, string dynamicLabel, out string outLabel, out int outMarkerARGB, out int outLabelARGB, out float outVisibilityDistance)
+	{
+		outLabel = dynamicLabel;
+		outMarkerARGB = Color.FromRGBA(0, 255, 0, 255).PackToInt();
+		outLabelARGB = Color.FromRGBA(255, 255, 255, 255).PackToInt();
+		outVisibilityDistance = -1;
+		if (!owner)
+			return;
+		HUDMarkerComponent hud = HUDMarkerComponent.Cast(owner.FindComponent(HUDMarkerComponent));
+		if (!hud)
+			return;
+		string mn = hud.GetMarkerName();
+		if (mn && mn.Length() > 0)
+			outLabel = mn;
+		outMarkerARGB = hud.GetMarkerColor().PackToInt();
+		outLabelARGB = hud.GetLabelColor().PackToInt();
+		outVisibilityDistance = hud.GetVisibilityDistance();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Register with HUDMarkerSystem when possible; if not InPlayMode yet, enqueue for frame flush until play/world/system exist.
+	protected void HMD_TryRegisterWithHudMarkerSystem(IEntity ent)
+	{
+		if (!ent || !GetGame())
+			return;
+
+		m_bPendingHudRegistration = false;
+
+		if (HMD_IffBeaconComponent.Cast(ent.FindComponent(HMD_IffBeaconComponent)) != null
+			|| HMD_IffLifetimeComponent.Cast(ent.FindComponent(HMD_IffLifetimeComponent)) != null)
+			return;
+
+		if (!GetGame().InPlayMode())
+		{
+			HUDMarkerSystem.EnqueuePending(ent);
+			return;
+		}
+
+		ChimeraWorld world = GetGame().GetWorld();
+		if (!world)
+		{
+			HUDMarkerSystem.EnqueuePending(ent);
+			return;
+		}
+		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
+		if (!sys)
+		{
+			HUDMarkerSystem.EnqueuePending(ent);
+			return;
+		}
+		sys.Register(ent, GetLifetimeSeconds(), GetMarkerName(), GetMarkerColor().PackToInt(), GetLabelColor().PackToInt());
+	}
+
+	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
 		IEntity ent = GetOwner();
-		ChimeraWorld world = GetGame().GetWorld();
-		if (!GetGame().InPlayMode())
-			return;
 		if (!ent)
 			return;
-		if (world)
-		{
-			HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
-			if (sys)
-			{
-				sys.Register(ent, GetLifetimeSeconds(), GetMarkerName(), GetMarkerColor().PackToInt(), GetLabelColor().PackToInt());
-			}
-			else
-			{
-				HUDMarkerSystem.EnqueuePending(ent);
-			}
-		}
-		else
-		{
-			HUDMarkerSystem.EnqueuePending(ent);
-		}
-		//! Frame ticks for optional timed delete; EOnFrame returns immediately when GetLifetimeSeconds() <= 0.
-		//! Always enable so prefab/layer lifetime applies even if attributes resolve after OnPostInit.
+
+		//! Always enable FRAME: lifetime ticks + deferred HUD registration when spawn precedes InPlayMode or system init.
 		SetEventMask(ent, EntityEvent.FRAME | ent.GetEventMask());
+
+		if (HMD_IffBeaconComponent.Cast(ent.FindComponent(HMD_IffBeaconComponent)) != null
+			|| HMD_IffLifetimeComponent.Cast(ent.FindComponent(HMD_IffLifetimeComponent)) != null)
+			return;
+
+		if (!GetGame())
+		{
+			m_bPendingHudRegistration = true;
+			return;
+		}
+		HMD_TryRegisterWithHudMarkerSystem(ent);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -123,9 +173,13 @@ class HUDMarkerComponent : ScriptComponent
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFrame(owner, timeSlice);
-		if (!GetGame().InPlayMode())
-			return;
 		if (!owner)
+			return;
+
+		if (m_bPendingHudRegistration)
+			HMD_TryRegisterWithHudMarkerSystem(owner);
+
+		if (!GetGame().InPlayMode())
 			return;
 
 		float lifetimeSec = HMD_ResolveLifetimeSeconds(owner);
@@ -154,7 +208,7 @@ class HUDMarkerComponent : ScriptComponent
 	//! Entity teardown: drop IFF row immediately. Unregister() is for stream-out (keeps cached dot); deletion needs RemoveMarkerEntry.
 	override void OnDelete(IEntity owner)
 	{
-		if (GetGame().InPlayMode() && owner)
+		if (owner && GetGame())
 		{
 			ChimeraWorld world = GetGame().GetWorld();
 			if (world)
@@ -170,7 +224,7 @@ class HUDMarkerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void ~HUDMarkerComponent()
 	{
-		if (!GetGame().InPlayMode())
+		if (!GetGame())
 			return;
 		IEntity owner = GetOwner();
 		if (!owner)

@@ -2,7 +2,8 @@
 //! Client-side system holding registered HUD marker entities for display
 //! Caches positions so markers remain visible when entities are streamed out
 //! Lifetime: -1 = forever, 1-360 = seconds after stream-out before removal
-//! Designations (laser designator aim / pooled HUD dots) are listed first in GetMarkerData
+//! Designations (laser designator aim / pooled HUD dots) are listed first in GetMarkerData.
+//! IFF beacons (HMD_IffBeaconComponent / HMD_IffLifetimeComponent) use the IffMarker pool only (RegisterIffMarker), same pattern as RegisterDesignation. m_Markers holds HUDMarkerComponent-only IFF dots.
 class HUDMarkerSystem : GameSystem
 {
 	[Attribute("", UIWidgets.ResourceNamePicker, "Helmet prefabs with HMD (full marker HUD in vehicle + free look). Empty = no camera-only restriction for crew without HMD (unless Enforce below).", "et", category: "HMD")]
@@ -20,6 +21,19 @@ class HUDMarkerSystem : GameSystem
 	protected ref array<bool> m_bStaleStartSet = {};
 	protected ref array<WorldTimestamp> m_StaleStartServerTime = {};
 	protected static ref array<IEntity> s_aPendingMarkers = {};
+
+	//! Pooled IFF markers (HUD-only rows; same control pattern as designations). Each row stores: world position, label text, dot color (ARGB int), label text color (ARGB int), max visibility distance (m, -1 = none), optional lifetime, optional authority RplId for MP.
+	protected ref array<vector> m_IffMarkerPositions = {};
+	protected ref array<string> m_IffMarkerNames = {};
+	protected ref array<int> m_IffMarkerMarkerColors = {};
+	protected ref array<int> m_IffMarkerLabelColors = {};
+	protected ref array<float> m_IffMarkerVisibilityDistances = {};
+	protected ref array<float> m_IffMarkerLifeSec = {};
+	protected ref array<int> m_IffMarkerIds = {};
+	protected ref array<RplId> m_IffMarkerAuthorityRplIds = {};
+	protected int m_iNextIffMarkerId = 1;
+	protected ref map<int, int> m_IffMarkerIdToIndex = new map<int, int>();
+	protected ref map<RplId, int> m_IffMarkerAuthorityRplToPoolId = new map<RplId, int>();
 
 	protected ref array<vector> m_DesignationPositions = {};
 	protected ref array<string> m_DesignationNames = {};
@@ -186,6 +200,138 @@ class HUDMarkerSystem : GameSystem
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! IffMarker pool: same pattern as RegisterDesignation. @param name Label under the dot. @param markerColorARGB / labelColorARGB from Color.PackToInt() (dot tint + text color). Pass authorityRplId = Invalid for local-only rows.
+	int RegisterIffMarker(vector position, string name, int markerColorARGB, int labelColorARGB, float visibilityDistance = -1, float lifeSec = -1, RplId authorityRplId = RplId.Invalid())
+	{
+		int id = m_iNextIffMarkerId++;
+		int idx = m_IffMarkerPositions.Count();
+		m_IffMarkerPositions.Insert(position);
+		m_IffMarkerNames.Insert(name);
+		m_IffMarkerMarkerColors.Insert(markerColorARGB);
+		m_IffMarkerLabelColors.Insert(labelColorARGB);
+		m_IffMarkerVisibilityDistances.Insert(visibilityDistance);
+		m_IffMarkerLifeSec.Insert(lifeSec);
+		m_IffMarkerIds.Insert(id);
+		m_IffMarkerAuthorityRplIds.Insert(authorityRplId);
+		m_IffMarkerIdToIndex.Set(id, idx);
+		if (authorityRplId != RplId.Invalid())
+			m_IffMarkerAuthorityRplToPoolId.Set(authorityRplId, id);
+		return id;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UpdateIffMarker(int id, vector position)
+	{
+		int idx = -1;
+		if (!m_IffMarkerIdToIndex.Find(id, idx))
+			return;
+		if (idx < 0 || idx >= m_IffMarkerPositions.Count())
+			return;
+		m_IffMarkerPositions[idx] = position;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UpdateIffMarkerName(int id, string name)
+	{
+		int idx = -1;
+		if (!m_IffMarkerIdToIndex.Find(id, idx))
+			return;
+		if (idx < 0 || idx >= m_IffMarkerNames.Count())
+			return;
+		m_IffMarkerNames[idx] = name;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UpdateIffMarkerMarkerColors(int id, int markerColorARGB, int labelColorARGB)
+	{
+		int idx = -1;
+		if (!m_IffMarkerIdToIndex.Find(id, idx))
+			return;
+		if (idx < 0 || idx >= m_IffMarkerMarkerColors.Count())
+			return;
+		m_IffMarkerMarkerColors[idx] = markerColorARGB;
+		m_IffMarkerLabelColors[idx] = labelColorARGB;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UpdateIffMarkerVisibilityDistance(int id, float visibilityDistance)
+	{
+		int idx = -1;
+		if (!m_IffMarkerIdToIndex.Find(id, idx))
+			return;
+		if (idx < 0 || idx >= m_IffMarkerVisibilityDistances.Count())
+			return;
+		m_IffMarkerVisibilityDistances[idx] = visibilityDistance;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UpdateIffMarkerLifeSec(int id, float lifeSec)
+	{
+		int idx = -1;
+		if (!m_IffMarkerIdToIndex.Find(id, idx))
+			return;
+		if (idx < 0 || idx >= m_IffMarkerLifeSec.Count())
+			return;
+		m_IffMarkerLifeSec[idx] = lifeSec;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Single-tick refresh: position, label text, dot color, label color, visibility distance, and lifetime (GetMarkerData reads all of these for the IFF widget pool).
+	void UpdateIffMarkerRow(int id, vector position, string name, int markerColorARGB, int labelColorARGB, float visibilityDistance, float lifeSec)
+	{
+		int idx = -1;
+		if (!m_IffMarkerIdToIndex.Find(id, idx))
+			return;
+		if (idx < 0 || idx >= m_IffMarkerPositions.Count())
+			return;
+		m_IffMarkerPositions[idx] = position;
+		m_IffMarkerNames[idx] = name;
+		m_IffMarkerMarkerColors[idx] = markerColorARGB;
+		m_IffMarkerLabelColors[idx] = labelColorARGB;
+		m_IffMarkerVisibilityDistances[idx] = visibilityDistance;
+		m_IffMarkerLifeSec[idx] = lifeSec;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UnregisterIffMarker(int id)
+	{
+		int idx = -1;
+		if (!m_IffMarkerIdToIndex.Find(id, idx))
+			return;
+		m_IffMarkerIdToIndex.Remove(id);
+		RplId authAtIdx = m_IffMarkerAuthorityRplIds[idx];
+		if (authAtIdx != RplId.Invalid())
+			m_IffMarkerAuthorityRplToPoolId.Remove(authAtIdx);
+		int last = m_IffMarkerPositions.Count() - 1;
+		if (idx < 0 || idx > last)
+			return;
+		if (idx != last)
+		{
+			m_IffMarkerPositions[idx] = m_IffMarkerPositions[last];
+			m_IffMarkerNames[idx] = m_IffMarkerNames[last];
+			m_IffMarkerMarkerColors[idx] = m_IffMarkerMarkerColors[last];
+			m_IffMarkerLabelColors[idx] = m_IffMarkerLabelColors[last];
+			m_IffMarkerVisibilityDistances[idx] = m_IffMarkerVisibilityDistances[last];
+			m_IffMarkerLifeSec[idx] = m_IffMarkerLifeSec[last];
+			m_IffMarkerAuthorityRplIds[idx] = m_IffMarkerAuthorityRplIds[last];
+			int movedId = m_IffMarkerIds[last];
+			m_IffMarkerIds[idx] = movedId;
+			m_IffMarkerIdToIndex.Set(movedId, idx);
+			RplId movedAuth = m_IffMarkerAuthorityRplIds[idx];
+			if (movedAuth != RplId.Invalid())
+				m_IffMarkerAuthorityRplToPoolId.Set(movedAuth, movedId);
+		}
+		m_IffMarkerPositions.Remove(last);
+		m_IffMarkerNames.Remove(last);
+		m_IffMarkerMarkerColors.Remove(last);
+		m_IffMarkerLabelColors.Remove(last);
+		m_IffMarkerVisibilityDistances.Remove(last);
+		m_IffMarkerLifeSec.Remove(last);
+		m_IffMarkerIds.Remove(last);
+		m_IffMarkerAuthorityRplIds.Remove(last);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void Register(IEntity entity, float lifetimeSeconds = -1, string markerName = "", int markerColorARGB = -1, int labelColorARGB = -1)
 	{
 		if (!entity)
@@ -342,6 +488,9 @@ class HUDMarkerSystem : GameSystem
 	{
 		for (int v = 0; v < m_DesignationPositions.Count(); v++)
 		{
+			//! KIND_IFF_MARKER rows belong to IFF gating (Numpad 9 / designator), not foreign-laser visibility (Numpad *).
+			if (m_DesignationVisualKinds[v] == HMD_MarkerVisuals.KIND_IFF_MARKER)
+				continue;
 			positions.Insert(m_DesignationPositions[v]);
 			names.Insert(m_DesignationNames[v]);
 			if (markerColors)
@@ -356,7 +505,45 @@ class HUDMarkerSystem : GameSystem
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Fills positions, names and color arrays - uses cached position when entity is streamed out. Stale IFF removal uses server time in ProcessStaleIffStreamedOutEntries (OnUpdate).
+	protected void AppendDesignationPoolIffVisualKindsToOutput(array<vector> positions, array<string> names, array<int> markerColors, array<int> labelColors, array<float> visibilityDistances, array<int> markerVisualKinds)
+	{
+		for (int v = 0; v < m_DesignationPositions.Count(); v++)
+		{
+			if (m_DesignationVisualKinds[v] != HMD_MarkerVisuals.KIND_IFF_MARKER)
+				continue;
+			positions.Insert(m_DesignationPositions[v]);
+			names.Insert(m_DesignationNames[v]);
+			if (markerColors)
+				markerColors.Insert(m_DesignationMarkerColors[v]);
+			if (labelColors)
+				labelColors.Insert(m_DesignationLabelColors[v]);
+			if (visibilityDistances)
+				visibilityDistances.Insert(m_DesignationVisibilityDistances[v]);
+			if (markerVisualKinds)
+				markerVisualKinds.Insert(m_DesignationVisualKinds[v]);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AppendIffMarkerPoolToOutput(array<vector> positions, array<string> names, array<int> markerColors, array<int> labelColors, array<float> visibilityDistances, array<int> markerVisualKinds)
+	{
+		for (int v = 0; v < m_IffMarkerPositions.Count(); v++)
+		{
+			positions.Insert(m_IffMarkerPositions[v]);
+			names.Insert(m_IffMarkerNames[v]);
+			if (markerColors)
+				markerColors.Insert(m_IffMarkerMarkerColors[v]);
+			if (labelColors)
+				labelColors.Insert(m_IffMarkerLabelColors[v]);
+			if (visibilityDistances)
+				visibilityDistances.Insert(m_IffMarkerVisibilityDistances[v]);
+			if (markerVisualKinds)
+				markerVisualKinds.Insert(HMD_MarkerVisuals.KIND_IFF_MARKER);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Fills positions, names and color arrays - uses cached position when entity is streamed out. Stale entity-IFF removal uses server time in ProcessStaleIffStreamedOutEntries (OnUpdate); beacon IFF uses IffMarker pool only.
 	//! @param markerVisualKinds When non-null, filled per dot: HMD_MarkerVisuals KIND_* (IFF / own designation / foreign designation).
 	//! @param includeLocalLaserDesignations Pooled designations (own turret, mission spots, etc.).
 	//! @param includeForeignLaserDesignations Other players' designators (WCS); gated by Numpad * separately from own laser.
@@ -383,6 +570,8 @@ class HUDMarkerSystem : GameSystem
 		if (!includeIffMarkers)
 			return;
 
+		AppendDesignationPoolIffVisualKindsToOutput(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds);
+
 		ChimeraWorld world = GetWorld();
 		if (!world)
 			return;
@@ -394,6 +583,9 @@ class HUDMarkerSystem : GameSystem
 			float visDist = -1;
 			if (e)
 			{
+				if (HMD_IffBeaconComponent.Cast(e.FindComponent(HMD_IffBeaconComponent)) != null
+					|| HMD_IffLifetimeComponent.Cast(e.FindComponent(HMD_IffLifetimeComponent)) != null)
+					continue;
 				pos = e.GetOrigin();
 				m_CachedPositions[i] = pos;
 				m_bStaleStartSet[i] = false;
@@ -443,6 +635,23 @@ class HUDMarkerSystem : GameSystem
 					markerVisualKinds.Insert(HMD_MarkerVisuals.KIND_IFF_MARKER);
 			}
 		}
+		AppendIffMarkerPoolToOutput(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Legacy Rpc entry point; unused. IFF HUD uses RegisterIffMarker from components (designation-style).
+	void HMD_ApplyServerIffEntry(RplId id, vector pos, string label, float lifeSec, int markerColor, int labelColor, float visDist)
+	{
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void HMD_RemoveServerIffEntry(RplId id)
+	{
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void HMD_UpdateServerIffPosition(RplId id, vector pos)
+	{
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -561,6 +770,8 @@ class HUDMarkerSystem : GameSystem
 		ProcessStaleIffStreamedOutEntries();
 		if (s_aPendingMarkers.IsEmpty())
 			return;
+		if (!GetGame() || !GetGame().InPlayMode())
+			return;
 		ChimeraWorld world = GetWorld();
 		if (!world)
 			return;
@@ -574,6 +785,11 @@ class HUDMarkerSystem : GameSystem
 			}
 			HUDMarkerComponent comp = HUDMarkerComponent.Cast(ent.FindComponent(HUDMarkerComponent));
 			if (!comp)
+			{
+				s_aPendingMarkers.RemoveOrdered(i);
+				continue;
+			}
+			if (HMD_IffBeaconComponent.Cast(ent.FindComponent(HMD_IffBeaconComponent)) || HMD_IffLifetimeComponent.Cast(ent.FindComponent(HMD_IffLifetimeComponent)))
 			{
 				s_aPendingMarkers.RemoveOrdered(i);
 				continue;

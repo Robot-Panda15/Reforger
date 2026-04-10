@@ -1,12 +1,13 @@
 //------------------------------------------------------------------------------------------------
-[ComponentEditorProps(category: "HUD", description: "Test / mission: static laser spot at this entity. Registers WCS HandheldLaserDesignator (weapon lock) + HUDMarkerSystem dot.")]
+[ComponentEditorProps(category: "HUD", description: "Static spot: HUDMarkerSystem dot + optional WCS designator for lock. Visual kind 0 (IFF circle) = HUD only, no WCS lase spot.")]
 class HMD_PlacedDesignationComponentClass : WCS_Armament_HandheldLaserDesignatorComponentClass
 {
 }
 
 //------------------------------------------------------------------------------------------------
-//! Extends WCS handheld designator so ALL_DESIGNATORS / weapon lock see a valid lasing spot at this entity's origin.
-//! Also registers the same position in HUDMarkerSystem for dots / foreign visual kind.
+//! Extends WCS handheld designator when visual kind is not IFF (0): ALL_DESIGNATORS / weapon lock see a lasing spot at this origin.
+//! Visual kind 0 registers only in HUDMarkerSystem (IFF circle); WCS designating flags stay false.
+//! Same entity + HMD_IffBeaconComponent: HUD row and (non-IFF kinds) WCS spot follow ShouldShowIffOnHud(); attachable uses dynamic label from beacon.
 class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorComponent
 {
 	[Attribute("1688", UIWidgets.EditBox, "Label under dot (laser code style).", category: "HUD")]
@@ -37,6 +38,9 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 
 	//! Last label string passed to HUDMarkerSystem (UpdateDesignationName when prefab/runtime label changes).
 	protected string m_sLastRegisteredHudLabel = "";
+
+	//! Editor-child HUD proxy: HMD_IffBeaconComponent drives HUD on/off (no SetEnabled on script components in Enforce).
+	protected bool m_bIffBeaconParentHudSuppressed;
 
 	//------------------------------------------------------------------------------------------------
 	protected Color HMD_GetMarkerColor()
@@ -130,8 +134,16 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 		if (owner)
 		{
 			m_vDesignatedLocation = owner.GetOrigin();
-			m_bIsDesignating = true;
-			m_bHasValidDesignation = true;
+			if (HMD_ShouldExposeWcsSpot(owner))
+			{
+				m_bIsDesignating = true;
+				m_bHasValidDesignation = true;
+			}
+			else
+			{
+				m_bIsDesignating = false;
+				m_bHasValidDesignation = false;
+			}
 		}
 	}
 
@@ -144,13 +156,132 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Proxy designation entities (child of attachable beacon) may need several parent hops; warheads match on self first.
+	static HMD_IffBeaconComponent HMD_ResolveDrivingIffBeaconForDesignationHud(IEntity owner, out int outHopDepth)
+	{
+		outHopDepth = -1;
+		if (!owner)
+			return null;
+		IEntity n = owner;
+		for (int d = 0; d < 24 && n; d++)
+		{
+			HMD_IffBeaconComponent b = HMD_IffBeaconComponent.FindOnEntity(n);
+			if (b)
+			{
+				outHopDepth = d;
+				return b;
+			}
+			n = n.GetParent();
+		}
+		return null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Clears HUD row immediately (used when parent beacon suppresses this child proxy).
+	void HMD_ForceHudUnregisterBeforeDisable()
+	{
+		if (!GetGame() || !GetGame().InPlayMode())
+			return;
+		ChimeraWorld world = GetGame().GetWorld();
+		if (!world)
+			return;
+		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
+		HMD_UnregisterDesignationHudSlot(sys);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Parent IFF beacon: suppress HUD registration while OFF / unplaced / no battery (replaces engine SetEnabled, which is unavailable on script components).
+	void HMD_SetIffBeaconParentHudSuppressed(bool suppressed)
+	{
+		if (m_bIffBeaconParentHudSuppressed == suppressed)
+			return;
+		m_bIffBeaconParentHudSuppressed = suppressed;
+		if (suppressed)
+			HMD_ForceHudUnregisterBeforeDisable();
+		else
+			HMD_InvalidateCachedHudLabel();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Forces next EOnFrame to push UpdateDesignationName (e.g. after beacon text/number Rpl or authority change).
+	void HMD_InvalidateCachedHudLabel()
+	{
+		m_sLastRegisteredHudLabel = "";
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Visual kind 0 (IFF HUD dot) never exposes WCS. Co-located HMD_IffBeaconComponent gates HUD + WCS for other kinds.
+	protected bool HMD_ShouldExposeWcsSpot(IEntity owner)
+	{
+		if (HMD_ResolveVisualKindAttr(owner) == HMD_MarkerVisuals.KIND_IFF_MARKER)
+			return false;
+		HMD_IffBeaconComponent iff = HMD_IffBeaconComponent.FindOnEntity(owner);
+		if (iff)
+			return iff.ShouldShowIffOnHud();
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool HMD_ShouldShowHudDesignation(IEntity owner)
+	{
+		int hopIgnored;
+		HMD_IffBeaconComponent drive = HMD_ResolveDrivingIffBeaconForDesignationHud(owner, hopIgnored);
+		if (drive)
+			return drive.ShouldShowIffOnHud();
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected string HMD_GetDesignationHudLabel(IEntity owner)
+	{
+		int hopIgnored;
+		HMD_IffBeaconComponent drive = HMD_ResolveDrivingIffBeaconForDesignationHud(owner, hopIgnored);
+		if (!drive)
+			return HMD_ResolveLabelForHud(owner);
+		if (HMD_IffBeaconComponentAttachable.Cast(drive))
+			return drive.GetMarkerLabelForHud();
+		if (drive.GetOwner() && owner != drive.GetOwner())
+			return drive.GetMarkerLabelForHud();
+		return HMD_ResolveLabelForHud(owner);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void HMD_SyncWcsDesignationFromOwner(IEntity owner)
 	{
 		if (!owner)
 			return;
-		m_vDesignatedLocation = owner.GetOrigin();
-		m_bIsDesignating = true;
-		m_bHasValidDesignation = true;
+		if (HMD_ShouldExposeWcsSpot(owner))
+		{
+			m_vDesignatedLocation = owner.GetOrigin();
+			m_bIsDesignating = true;
+			m_bHasValidDesignation = true;
+		}
+		else
+		{
+			m_bIsDesignating = false;
+			m_bHasValidDesignation = false;
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void HMD_UnregisterDesignationHudSlot(HUDMarkerSystem sys)
+	{
+		if (m_iDesignationId < 0)
+			return;
+		if (sys && GetGame() && GetGame().InPlayMode())
+		{
+			vector pos;
+			if (sys.TryGetDesignationWorldPositionById(m_iDesignationId, pos))
+			{
+				string nm = "";
+				sys.TryGetDesignationNameById(m_iDesignationId, nm);
+				HMD_LaserLockState.MigrateHudLockBeforeUnregisterLocalDesignation(m_iDesignationId, pos, nm, 0);
+			}
+			sys.UnregisterDesignation(m_iDesignationId);
+		}
+		m_iDesignationId = -1;
+		m_iLastRegisteredAttrKind = -999;
+		m_sLastRegisteredHudLabel = "";
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -161,6 +292,13 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 			return;
 		if (!owner)
 			return;
+
+		int hopIff;
+		HMD_IffBeaconComponent drvIff = HMD_ResolveDrivingIffBeaconForDesignationHud(owner, hopIff);
+		if (drvIff && hopIff > 0)
+			HMD_SetIffBeaconParentHudSuppressed(!drvIff.ShouldShowIffOnHud());
+		else
+			HMD_SetIffBeaconParentHudSuppressed(false);
 
 		float lifetimeSec = HMD_GetLifetimeSeconds(owner);
 		if (lifetimeSec > 0 && HMD_MarkerLifetimeAuthority.ShouldRunTimedEntityDeleteAuthority(owner))
@@ -183,6 +321,20 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 			}
 		}
 
+		if (m_bIffBeaconParentHudSuppressed)
+		{
+			m_bIsDesignating = false;
+			m_bHasValidDesignation = false;
+			ChimeraWorld wSup = GetGame().GetWorld();
+			if (wSup)
+			{
+				HUDMarkerSystem sysSup = HUDMarkerSystem.GetInstance(wSup);
+				if (sysSup)
+					HMD_UnregisterDesignationHudSlot(sysSup);
+			}
+			return;
+		}
+
 		HMD_SyncWcsDesignationFromOwner(owner);
 		ChimeraWorld world = GetGame().GetWorld();
 		if (!world)
@@ -190,9 +342,15 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
 		if (!sys)
 			return;
+		if (!HMD_ShouldShowHudDesignation(owner))
+		{
+			HMD_UnregisterDesignationHudSlot(sys);
+			return;
+		}
 		vector pos = owner.GetOrigin();
 		int attrKind = HMD_ResolveVisualKindAttr(owner);
-		string hudLabel = HMD_ResolveLabelForHud(owner);
+		string hudLabel = HMD_GetDesignationHudLabel(owner);
+
 		if (m_iDesignationId < 0)
 		{
 			int m = HMD_GetMarkerColor().PackToInt();
@@ -220,29 +378,28 @@ class HMD_PlacedDesignationComponent : WCS_Armament_HandheldLaserDesignatorCompo
 	//------------------------------------------------------------------------------------------------
 	override void OnDelete(IEntity owner)
 	{
-		if (GetGame().InPlayMode())
+		if (GetGame() && GetGame().InPlayMode())
 		{
 			ChimeraWorld world = GetGame().GetWorld();
 			if (world)
 			{
 				HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
-				if (sys && m_iDesignationId >= 0)
-				{
-					vector pos;
-					if (sys.TryGetDesignationWorldPositionById(m_iDesignationId, pos))
-					{
-						string nm = "";
-						sys.TryGetDesignationNameById(m_iDesignationId, nm);
-						HMD_LaserLockState.MigrateHudLockBeforeUnregisterLocalDesignation(m_iDesignationId, pos, nm, 0);
-					}
-					sys.UnregisterDesignation(m_iDesignationId);
-				}
+				HMD_UnregisterDesignationHudSlot(sys);
+			}
+			else
+			{
+				m_iDesignationId = -1;
+				m_iLastRegisteredAttrKind = -999;
+				m_sLastRegisteredHudLabel = "";
 			}
 		}
+		else
+		{
+			m_iDesignationId = -1;
+			m_iLastRegisteredAttrKind = -999;
+			m_sLastRegisteredHudLabel = "";
+		}
 		HMD_LaserLockState.ClearIfLockedDesignator(this);
-		m_iDesignationId = -1;
-		m_iLastRegisteredAttrKind = -999;
-		m_sLastRegisteredHudLabel = "";
 		super.OnDelete(owner);
 	}
 }

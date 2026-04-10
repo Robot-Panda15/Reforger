@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B5ABE1250D142450}Prefabs/Items/Equipment/Accessories/GPSRadioBeacon/IFF_AttachableBeacon.et"
+ Name "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerControllerMP.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

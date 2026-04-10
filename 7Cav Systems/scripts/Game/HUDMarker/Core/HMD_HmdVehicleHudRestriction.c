@@ -109,15 +109,17 @@ class HMD_HmdVehicleHudRestriction
 		if (!handler)
 			return false;
 		ScriptedCameraItem cur = handler.GetCurrentCamera();
-		if (!cur)
-			return false;
-		if (CharacterCamera1stPersonTurret.Cast(cur))
-			return true;
-		if (CharacterCamera1stPersonTurretTransition.Cast(cur))
-			return true;
-		if (CharacterCameraADSVehicle.Cast(cur))
-			return true;
-		return false;
+		if (cur)
+		{
+			if (CharacterCamera1stPersonTurret.Cast(cur))
+				return true;
+			if (CharacterCamera1stPersonTurretTransition.Cast(cur))
+				return true;
+			if (CharacterCameraADSVehicle.Cast(cur))
+				return true;
+		}
+		//! Gunner ADS can use a scripted camera type not listed above; still treat as weapon/optic for helmet HUD gating and toggles.
+		return IsLocalPlayerInGunnerWeaponOpticCamera();
 	}
 
 	//------------------------------------------------------------------------------------------------

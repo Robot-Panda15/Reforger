@@ -6,7 +6,7 @@ class HMD_MarkerVisuals
 	static const string TEX_LOCK = "{9C736E10B379FBB3}Assets/Radar/Lock_Element.edds";
 	static const string TEX_LASE = "{59E06B62680B6CB3}Assets/Radar/Lase_Element1.edds";
 
-	//! IFF markers (HUDMarkerComponent): visibility-only world dots; green circle texture + component tint.
+	//! Visual kind 0: IFF circle dot (legacy HUDMarkerComponent pool or RegisterDesignation with kind 0).
 	static const int KIND_IFF_MARKER = 0;
 	//! Local player designation (gadget / vehicle gunner aim): red circle texture + red tint.
 	static const int KIND_OWN_DESIGNATION = 1;

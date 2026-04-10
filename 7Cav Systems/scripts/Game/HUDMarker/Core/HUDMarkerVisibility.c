@@ -1,17 +1,15 @@
 //------------------------------------------------------------------------------------------------
 //! Eligibility: HMD_HudMarkerEligibility (player, vehicle + HMD_HudMarkerEligibilityVehicleComponent, helmet camera, seat toggles).
-//! View distance / IFF & laser checkboxes / HUD refresh: HMD_HudMarkerPolicyResolver + HMD_HudMarkerEligibility* components.
-//! Content toggles (see ShouldIncludeLocal/ForeignLaserDesignationDotsInHUD vs ShouldIncludeIffMarkersInHUD):
-//! - Foreign laser dots: Numpad * (s_bVehicleLaserVisibility), or dismounted handheld optics zoom (not vehicle binos); hull policy PolicyAllowsForeignLaserDesignationMarkers.
-//! - Own laser dots (HUD pool / local marking, lock readout, etc.): hull HMD_HudMarkerEligibilityVehicleComponent own-laser checkbox; independent of Numpad *.
-//! - IFF markers: Numpad 9 (s_bShowIffMarkers) only.
-//! ShouldRenderWorldMarkers(): vehicle handheld binoculars / designator zoom disable all world-marker dots (IFF + laser); dismounted optics zoom may still show them.
+//! View distance / policy: HMD_HudMarkerPolicyResolver (vehicle hull) or HMD_LaserDesignatorGadgetComponent while dismounted designator zoom.
+//! Dismounted laser designator zoom: IFF + laser world dots follow the designator gadget prefab (HUD category), not Numpad 9 / character binocular component.
+//! Dismounted IFF: only designator viewport or zoomed designator + GetHudIffWhileZoomed. Vehicle IFF: hull PolicyAllowsIffMarkers + vehicle laser / marking / lock + Numpad 9 (s_bShowIffMarkers).
+//! ShouldRenderWorldMarkers(): true while designator zoomed; vehicle handheld binoculars disable overlay.
 //! Rangefinder/code readout: HUDLaserMarkingComponent path (see ShouldShowLaserDesignatorReadout).
 class HUDMarkerVisibility
 {
 	protected static bool s_bVehicleLaserVisibility;
 	protected static bool s_bVehicleLaserMarkingMode;
-	//! Numpad 9: IFF pool on/off (independent of vehicle laser visibility/marking).
+	//! Numpad 9: drives pooled IFF in vehicle when hull policy and other gates pass; on foot, IFF is designator-only (this toggle does not bypass that).
 	protected static bool s_bShowIffMarkers = true;
 
 	//------------------------------------------------------------------------------------------------
@@ -35,10 +33,15 @@ class HUDMarkerVisibility
 			return false;
 		if (!HMD_HudMarkerEligibility.PassesHudMarkerWorldOverlayEligibility())
 			return false;
+		if (HMD_DesignatorViewportState.IsActive())
+			return true;
+		if (HMD_HandheldOpticZoom.IsZoomedForHMD())
+		{
+			HMD_LaserDesignatorGadgetComponent des = HMD_HandheldOpticZoom.FindActiveLocalDesignatorComp();
+			return des && des.GetHudOwnLaserDesignationWhileZoomed();
+		}
 		if (!HMD_HudMarkerPolicyResolver.PolicyAllowsOwnLaserDesignationMarkers())
 			return false;
-		if (HMD_HandheldOpticZoom.IsZoomedForHMD())
-			return true;
 		if (s_bVehicleLaserVisibility)
 			return true;
 		if (s_bVehicleLaserMarkingMode)
@@ -49,27 +52,51 @@ class HUDMarkerVisibility
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Other players' laser designations (WCS). Numpad * (s_bVehicleLaserVisibility) when in vehicle HUD context.
+	//! Other players' laser designations (WCS). Numpad * when in vehicle HUD context; designator gadget when zoomed dismounted.
 	static bool ShouldIncludeForeignLaserDesignationDotsInHUD()
 	{
 		if (HMD_HudMarkerEligibility.IsVehicleBinocularViewActive())
 			return false;
 		if (!HMD_HudMarkerEligibility.PassesHudMarkerWorldOverlayEligibility())
 			return false;
+		if (HMD_DesignatorViewportState.IsActive())
+			return true;
+		if (HMD_HandheldOpticZoom.IsZoomedForHMD())
+		{
+			HMD_LaserDesignatorGadgetComponent des = HMD_HandheldOpticZoom.FindActiveLocalDesignatorComp();
+			return des && des.GetHudForeignLaserDesignationsWhileZoomed();
+		}
 		if (!HMD_HudMarkerPolicyResolver.PolicyAllowsForeignLaserDesignationMarkers())
 			return false;
-		if (HMD_HandheldOpticZoom.IsZoomedForHMD())
-			return true;
 		return s_bVehicleLaserVisibility;
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Dismounted: designator viewport or zoom + gadget IFF pref only. Vehicle: hull policy + Numpad 9 (s_bShowIffMarkers) only, not Numpad * or marking.
 	static bool ShouldIncludeIffMarkersInHUD()
 	{
 		if (HMD_HudMarkerEligibility.IsVehicleBinocularViewActive())
 			return false;
 		if (!HMD_HudMarkerEligibility.PassesHudMarkerWorldOverlayEligibility())
 			return false;
+		if (HMD_DesignatorViewportState.IsActive())
+		{
+			HMD_LaserDesignatorGadgetComponent des = HMD_HandheldOpticZoom.FindActiveLocalDesignatorComp();
+			return des && des.GetHudIffWhileZoomed();
+		}
+		if (HMD_HandheldOpticZoom.IsZoomedForHMD())
+		{
+			HMD_LaserDesignatorGadgetComponent des = HMD_HandheldOpticZoom.FindActiveLocalDesignatorComp();
+			return des && des.GetHudIffWhileZoomed();
+		}
+
+		PlayerController pc = GetGame().GetPlayerController();
+		IEntity controlled = pc.GetControlledEntity();
+		SCR_ChimeraCharacter ch = SCR_ChimeraCharacter.Cast(controlled);
+		const bool inVehicle = ch && ch.IsInVehicle();
+		if (!inVehicle)
+			return false;
+
 		if (!HMD_HudMarkerPolicyResolver.PolicyAllowsIffMarkers())
 			return false;
 		return s_bShowIffMarkers;
@@ -88,31 +115,32 @@ class HUDMarkerVisibility
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! World marker dots: vehicle toggles, or dismounted optics zoom. Vehicle handheld binoculars: no overlay.
+	static bool IsIffMarkerUserToggleOn()
+	{
+		return s_bShowIffMarkers;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! World marker overlay roots: designator zoom / handheld ADS, then any of local laser, foreign laser, or IFF inclusion (same drivers as per-kind fetches).
 	static bool ShouldRenderWorldMarkers()
 	{
 		if (!HMD_HudMarkerEligibility.IsLocalPlayerConsciousForHud())
 			return false;
-		PlayerController pc = GetGame().GetPlayerController();
-		IEntity controlled = null;
-		if (pc)
-			controlled = pc.GetControlledEntity();
 		if (HMD_HudMarkerEligibility.IsVehicleBinocularViewActive())
 			return false;
+		if (HMD_DesignatorViewportState.IsActive())
+			return true;
 		if (HMD_HandheldOpticZoom.IsZoomedForHMD())
 			return true;
 		if (!HMD_HudMarkerEligibility.PassesHudMarkerWorldOverlayEligibility())
 			return false;
 		if (s_bVehicleLaserVisibility)
 			return true;
-		SCR_ChimeraCharacter chV = SCR_ChimeraCharacter.Cast(controlled);
-		if (chV && chV.IsInVehicle() && s_bShowIffMarkers)
-			return true;
 		if (s_bVehicleLaserMarkingMode)
 			return true;
 		if (HMD_RangefinderHUDState.IsLockTargetReadout())
 			return true;
-		return false;
+		return ShouldIncludeIffMarkersInHUD();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -136,7 +164,6 @@ class HUDMarkerVisibility
 				return true;
 			return s_bVehicleLaserMarkingMode;
 		}
-		//! Dismounted: only while looking through handheld optics (zoom/ADS). No readout from stored code/lasing alone.
 		return HMD_HandheldOpticZoom.IsZoomedForHMD();
 	}
 
@@ -205,3 +232,4 @@ class HUDMarkerVisibility
 		s_bShowIffMarkers = true;
 	}
 }
+

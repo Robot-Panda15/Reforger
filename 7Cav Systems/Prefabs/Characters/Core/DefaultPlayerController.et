@@ -1,3 +1,7 @@
-SCR_PlayerController : "{6E2BB64764E3BE9B}Prefabs/Characters/Core/DefaultPlayerController.et" {
+SCR_PlayerController {
  ID "1A9BA6BEFA06E3B1"
+ components {
+  HMD_HudMarkerIffClientSinkComponent "{68FE02180000F011}" {
+  }
+ }
 }

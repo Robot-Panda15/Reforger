@@ -12,6 +12,13 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
     }
    }
   }
+  GrenadeMoveComponent "{1F80A73ADE35BFF1}" {
+   ProjectileEffects {
+    ExplosionEffect "{65ED0010C8BA00FE}" {
+     AttachToParent 1
+    }
+   }
+  }
   InventoryItemComponent "{51FAA3E3CF6F087A}" {
    Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
     ItemDisplayName WeaponUIInfo "{68FE2361B2C4674D}" {
@@ -51,5 +58,5 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
    }
   }
  }
- coords 1473.1 38.358 2892.139
+ coords 1158.979 38.01 2799.304
 }

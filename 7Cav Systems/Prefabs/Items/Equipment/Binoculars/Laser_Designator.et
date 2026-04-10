@@ -3,6 +3,9 @@ GenericEntity : "{03810BEF182ADA0B}Prefabs/Items/Equipment/Binoculars/Rangefinde
  components {
   HMD_LaserDesignatorGadgetComponent "{68FE021627AF655A}" {
    m_eAnimVariable M22
+   m_fLaserMaxRange 2000
+   m_fMarkerVisibilityDistance 2000
+   m_fHudWorldMarkerDistanceClampM 2000
   }
   InventoryItemComponent "{5222EB4D0C73006B}" {
    Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
@@ -30,5 +33,5 @@ GenericEntity : "{03810BEF182ADA0B}Prefabs/Items/Equipment/Binoculars/Rangefinde
    }
   }
  }
- coords 0 0 0
+ coords 1159.347 38.01 2799.777
 }

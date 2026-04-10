@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-//! Hold interact + scroll (SCR_AdjustSignalAction) to cycle IFF number while beacon is OFF. No entity signal â€” state syncs via HMD_IffBeaconComponent.
+//! Hold interact + scroll (SCR_AdjustSignalAction) to cycle IFF number while beacon is OFF. No entity signal — state syncs via HMD_IffBeaconComponent.
 class HMD_IffBeaconScrollNumberAction : HMD_IffBeaconScrollActionBase
 {
 	//------------------------------------------------------------------------------------------------

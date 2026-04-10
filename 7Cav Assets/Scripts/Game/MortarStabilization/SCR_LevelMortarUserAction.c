@@ -51,6 +51,7 @@ class SCR_LevelMortarUserAction : ScriptedUserAction
 	//------------------------------------------------------------------------------------------------
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
+		super.PerformAction(pOwnerEntity, pUserEntity);
 		CancelPlayerGadgetAnimation(pUserEntity);
 
 		if (!Replication.IsServer())
@@ -75,18 +76,12 @@ class SCR_LevelMortarUserAction : ScriptedUserAction
 		Math3D.AnglesToMatrix(Vector(yaw, 0, 0), mat);
 		mat[3] = pos;
 		mat[3][1] = mat[3][1] + LEVEL_VERTICAL_OFFSET_M;
-		pOwnerEntity.SetWorldTransform(mat);
-		pOwnerEntity.Update();
 
 		IEntity foundation = SpawnLevelFoundation(pOwnerEntity, mat);
 
 		SCR_MortarLevelStateComponent levelState = SCR_MortarLevelStateComponent.Cast(pOwnerEntity.FindComponent(SCR_MortarLevelStateComponent));
 		if (levelState)
-		{
-			if (foundation)
-				levelState.ServerRegisterLevelFoundation(foundation);
-			levelState.ServerSetMortarLeveled();
-		}
+			levelState.ServerCompleteLeveling(mat, foundation);
 	}
 
 	//------------------------------------------------------------------------------------------------

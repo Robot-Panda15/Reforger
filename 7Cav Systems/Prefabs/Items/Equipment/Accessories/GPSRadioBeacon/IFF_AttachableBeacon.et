@@ -1,10 +1,10 @@
 GenericEntity : "{A22982E2E0C38EAC}Prefabs/Items/Core/RHS_PlaceableItem_base.et" {
  ID "68FE33E100000000"
  components {
-  HMD_IffBeaconComponent "{68FE33E100000001}" {
-   m_sIrLightPrefab "{0BCD51DD36B82132}Prefabs/Items/Equipment/Nightvision/IFF_IR_Light.et"
+  HMD_IffBeaconComponentAttachable "{68FE33E100000001}" {
    m_fIrStrobeOnMs 150
    m_fIrStrobeOffMs 1000
+   m_fBatteryLifeSeconds 1800
   }
   HMD_IffBeaconExplosiveInventoryItemComponent "{64D330352FCCEC12}" {
    Attributes SCR_ItemAttributeCollection "{64D330352FCCEFED}" {
@@ -80,6 +80,25 @@ GenericEntity : "{A22982E2E0C38EAC}Prefabs/Items/Core/RHS_PlaceableItem_base.et"
     }
    }
   }
+  Hierarchy "{64D330352FCC7FF1}" {
+   Enabled 0
+  }
+  Hierarchy "{68FE33E1000000C0}" {
+  }
  }
- coords 1122.252 38.27 2836.753
+ coords 1159.988 38.01 2799.897
+ {
+  GenericEntity : "{1C5DBE96910C0C06}Prefabs/HMD/Grenade_IFF_Green_HudProxy.et" {
+   ID "68FE33E1000000D0"
+   components {
+    RplComponent "{691326470000C003}" {
+     "Parent Node From Parent Entity" 0
+    }
+    Hierarchy "{68FE33E1000000D1}" {
+     Enabled 1
+    }
+   }
+   coords 0 0 0
+  }
+ }
 }

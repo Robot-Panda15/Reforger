@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{B5ABE1250D142450}Prefabs/Items/Equipment/Accessories/GPSRadioBeacon/IFF_AttachableBeacon.et"
+ Name "{51409F997201EE87}Prefabs/Items/Equipment/Nightvision/MS2000/MS2000_Point_IR_LightEntity.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

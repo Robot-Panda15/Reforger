@@ -1,13 +1,13 @@
 //------------------------------------------------------------------------------------------------
 
-//! Laser code ranges: handheld gadget 1111â€“1200; vehicle ground band 1211â€“1299; vehicle air band 1311â€“1399.
+//! Laser code ranges: handheld gadget 1111–1200; vehicle ground band 1211–1299; vehicle air band 1311–1399.
 
 class HMD_LaserCodeRules
 {
 
 	//------------------------------------------------------------------------------------------------
 
-	//! Same wrap as handheld designator gadget (1111â€“1200; 1200 non-target).
+	//! Same wrap as handheld designator gadget (1111–1200; 1200 non-target).
 
 	static int WrapHandheldRange(int code)
 	{
@@ -63,7 +63,7 @@ class HMD_LaserCodeRules
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Handheld 1111â€“1200: air vehicle 1311â€“1399 matches Nâˆ’200; ground vehicle 1211â€“1299 matches Nâˆ’100.
+	//! Handheld 1111–1200: air vehicle 1311–1399 matches N?200; ground vehicle 1211–1299 matches N?100.
 	static bool CodesMatchForWeaponLock(int vehicleGunnerDisplayCode, int handheldLaserCode)
 	{
 		if (vehicleGunnerDisplayCode == handheldLaserCode)

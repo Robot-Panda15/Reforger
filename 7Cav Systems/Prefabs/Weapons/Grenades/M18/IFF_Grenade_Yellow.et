@@ -7,6 +7,15 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
      ParticleEffect "{E1E084593B8A05D2}Particles/Weapon/Smoke_grenade_M18_Yellow.ptc"
     }
     SpawnPrefabEffect "{68FE33DFDC87DA70}" {
+     TriggerOnce 0
+     AttachToParent 1
+     EffectPrefab "{F26D7120ABD60D1E}Prefabs/HMD/Grenade_IFF_Yellow.et"
+    }
+   }
+  }
+  GrenadeMoveComponent "{1F80A73ADE35BFF1}" {
+   ProjectileEffects {
+    ExplosionEffect "{65ED0010C8BA00FE}" {
      AttachToParent 1
      EffectPrefab "{F26D7120ABD60D1E}Prefabs/HMD/Grenade_IFF_Yellow.et"
     }
@@ -51,5 +60,5 @@ GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.e
    }
   }
  }
- coords 1473.396 38.358 2892.29
+ coords 1159.197 38.01 2800.408
 }
