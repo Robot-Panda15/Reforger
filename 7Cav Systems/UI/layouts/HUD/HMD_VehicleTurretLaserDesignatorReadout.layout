@@ -27,7 +27,8 @@ FrameWidgetClass {
    "Vertical Alignment" Center
    "No Localization" 1
    FontProperties FontProperties "{68FC711FBB680DF1}" {
-    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+    Font "{463C1AEDCDFC1153}Fonts/viperdisplay-bold.fnt"
+    ForceFont 1
    }
   }
   TextWidgetClass "{68E3221400010512}" {
@@ -50,7 +51,7 @@ FrameWidgetClass {
    "Vertical Alignment" Center
    "No Localization" 1
    FontProperties FontProperties "{68FC711FBDD83FBE}" {
-    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+    ForceFont 1
    }
   }
   TextWidgetClass "{68E3221400010514}" {
@@ -72,7 +73,8 @@ FrameWidgetClass {
    "Vertical Alignment" Center
    "No Localization" 1
    FontProperties FontProperties "{68FC711FA2666245}" {
-    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+    Font "{463C1AEDCDFC1153}Fonts/viperdisplay-bold.fnt"
+    ForceFont 1
    }
   }
   TextWidgetClass "{68E3221400010516}" {
@@ -97,7 +99,6 @@ FrameWidgetClass {
    FontProperties FontProperties "{68FC711FB0DFA980}" {
     Font "{463C1AEDCDFC1153}Fonts/viperdisplay-bold.fnt"
     ForceFont 1
-    Bold 1
    }
   }
  }
