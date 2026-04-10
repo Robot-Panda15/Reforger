@@ -705,6 +705,31 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Next discrete text index as 0..1 after one scroll step (matches ServerCycleTextDir); for optimistic action sync before RplProp catches up.
+	float PredictTextIndexNormalized01AfterDir(int dir)
+	{
+		if (m_bBeaconActive || m_fBatterySecondsRemaining <= 0)
+			return GetTextIndexNormalized01();
+		int idx = m_iTextIndex;
+		if (dir > 0)
+		{
+			idx++;
+			if (idx >= TEXT_COUNT)
+				idx = 0;
+		}
+		else
+		{
+			idx--;
+			if (idx < 0)
+				idx = TEXT_COUNT - 1;
+		}
+		float denom = TEXT_COUNT - 1;
+		if (denom <= 0)
+			return 0;
+		return idx / denom;
+	}
+
+	//------------------------------------------------------------------------------------------------
 	float GetNumberNormalized01()
 	{
 		int n = m_iNumber;
@@ -713,6 +738,77 @@ class HMD_IffBeaconComponent : ScriptComponent
 		if (n > 7)
 			n = 7;
 		return (n - 1) / 6.0;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	float PredictNumberNormalized01AfterDir(int dir)
+	{
+		if (m_bBeaconActive || m_fBatterySecondsRemaining <= 0)
+			return GetNumberNormalized01();
+		int n = m_iNumber;
+		if (dir > 0)
+		{
+			n++;
+			if (n > 7)
+				n = 1;
+		}
+		else
+		{
+			n--;
+			if (n < 1)
+				n = 7;
+		}
+		return (n - 1) / 6.0;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Authoritative apply from SCR_AdjustSignalAction replicated lerp (server / listen host from OnLoadActionData).
+	void ServerApplyTextIndexFromNormalized01(float t)
+	{
+		if (Replication.IsRunning() && !Replication.IsServer())
+			return;
+		if (m_bBeaconActive || m_fBatterySecondsRemaining <= 0)
+			return;
+		if (t < 0)
+			t = 0;
+		if (t > 1)
+			t = 1;
+		float denom = TEXT_COUNT - 1;
+		int idx = 0;
+		if (denom > 0)
+			idx = Math.Round(t * denom);
+		if (idx < 0)
+			idx = 0;
+		if (idx >= TEXT_COUNT)
+			idx = TEXT_COUNT - 1;
+		if (m_iTextIndex == idx)
+			return;
+		m_iTextIndex = idx;
+		if (Replication.IsRunning())
+			Replication.BumpMe();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void ServerApplyNumberFromNormalized01(float t)
+	{
+		if (Replication.IsRunning() && !Replication.IsServer())
+			return;
+		if (m_bBeaconActive || m_fBatterySecondsRemaining <= 0)
+			return;
+		if (t < 0)
+			t = 0;
+		if (t > 1)
+			t = 1;
+		int n = Math.Round(t * 6.0) + 1;
+		if (n < 1)
+			n = 1;
+		if (n > 7)
+			n = 7;
+		if (m_iNumber == n)
+			return;
+		m_iNumber = n;
+		if (Replication.IsRunning())
+			Replication.BumpMe();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -832,12 +928,11 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Inventory / placeable beacons: scroll sync uses replicated SCR_AdjustSignalAction data (OnLoadActionData on server), not RplRpc.
 	void TryCycleTextDirection(int dir)
 	{
 		if (!Replication.IsRunning() || Replication.IsServer())
 			ServerCycleTextDir(dir);
-		else
-			Rpc(RpcAsk_CycleTextDir, dir);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -845,22 +940,6 @@ class HMD_IffBeaconComponent : ScriptComponent
 	{
 		if (!Replication.IsRunning() || Replication.IsServer())
 			ServerCycleNumberDir(dir);
-		else
-			Rpc(RpcAsk_CycleNumberDir, dir);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_CycleTextDir(int dir)
-	{
-		ServerCycleTextDir(dir);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_CycleNumberDir(int dir)
-	{
-		ServerCycleNumberDir(dir);
 	}
 
 	//------------------------------------------------------------------------------------------------

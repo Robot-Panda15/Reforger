@@ -3,6 +3,6 @@ GameProject {
  GUID "6620FAA839E75CC6"
  TITLE "7Cav Assets"
  Dependencies {
-    "58D0FB3206B6F859" 
+    "58D0FB3206B6F859"
  }
 }
