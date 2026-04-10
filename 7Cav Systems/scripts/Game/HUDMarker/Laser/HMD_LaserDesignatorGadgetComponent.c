@@ -180,13 +180,9 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void AdjustLaserCode(int delta)
+	//------------------------------------------------------------------------------------------------
+	protected void HMD_OnLaserCodeReplicated()
 	{
-		int next = HMD_WrapLaserCode(m_iLaserCode + delta);
-		if (next == m_iLaserCode)
-			return;
-		m_iLaserCode = next;
-		Replication.BumpMe();
 		if (m_iDesignationId < 0)
 			return;
 		ChimeraWorld world = GetGame().GetWorld();
@@ -196,6 +192,49 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 		if (!sys)
 			return;
 		sys.UpdateDesignationName(m_iDesignationId, GetLaserCodeName());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void HMD_ApplyLaserCodeDeltaAuthority(int delta)
+	{
+		int next = HMD_WrapLaserCode(m_iLaserCode + delta);
+		if (next == m_iLaserCode)
+			return;
+		m_iLaserCode = next;
+		if (Replication.IsRunning())
+			Replication.BumpMe();
+		if (m_iDesignationId < 0)
+			return;
+		ChimeraWorld world = GetGame().GetWorld();
+		if (!world)
+			return;
+		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
+		if (!sys)
+			return;
+		sys.UpdateDesignationName(m_iDesignationId, GetLaserCodeName());
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void AdjustLaserCode(int delta)
+	{
+		if (!Replication.IsRunning())
+		{
+			HMD_ApplyLaserCodeDeltaAuthority(delta);
+			return;
+		}
+		if (Replication.IsServer())
+		{
+			HMD_ApplyLaserCodeDeltaAuthority(delta);
+			return;
+		}
+		Rpc(RpcAsk_AdjustLaserCode, delta);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_AdjustLaserCode(int delta)
+	{
+		HMD_ApplyLaserCodeDeltaAuthority(delta);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -573,9 +612,15 @@ class HMD_LaserDesignatorGadgetComponent : WCS_Armament_HandheldLaserDesignatorC
 		m_fLaserMaxRange = cfg.GetOwnDesignationDistanceM();
 		m_fMarkerVisibilityDistance = cfg.GetOwnDesignationDistanceM();
 		m_fLaserUpdateRateHz = cfg.GetDesignationUpdateRateHz();
-		m_iLaserCode = HMD_LaserCodeRules.WrapHandheldRange(cfg.GetDefaultLaserCode());
-		if (m_iLaserCode < 1111 || m_iLaserCode > 1200)
-			m_iLaserCode = 1111;
+		//! Default code is replicated (RplProp); only authority sets it here so clients are not reset by local cfg apply each init.
+		if (!Replication.IsRunning() || Replication.IsServer())
+		{
+			m_iLaserCode = HMD_LaserCodeRules.WrapHandheldRange(cfg.GetDefaultLaserCode());
+			if (m_iLaserCode < 1111 || m_iLaserCode > 1200)
+				m_iLaserCode = 1111;
+			if (Replication.IsRunning())
+				Replication.BumpMe();
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------

@@ -11,6 +11,22 @@ class HMD_IffBeaconScrollTextAction : HMD_IffBeaconScrollActionBase
 	}
 
 	//------------------------------------------------------------------------------------------------
+	override protected float GetScrollNormalized01AfterStep(int dir)
+	{
+		if (!m_pBeacon)
+			return 0;
+		return m_pBeacon.PredictTextIndexNormalized01AfterDir(dir);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override protected void ApplyServerScrollFromNormalized(float normalized01)
+	{
+		HMD_IffBeaconComponent b = ResolveBeaconForName();
+		if (b)
+			b.ServerApplyTextIndexFromNormalized01(normalized01);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	override protected void OnScrollDirection(int dir)
 	{
 		m_pBeacon.TryCycleTextDirection(dir);
