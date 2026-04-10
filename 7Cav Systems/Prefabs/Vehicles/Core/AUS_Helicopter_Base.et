@@ -6,5 +6,5 @@ Vehicle : "{CBD8C2393BE87581}Prefabs/Vehicles/Core/Helicopter_Base.et" {
    m_sVisibilitySlotNames "pilot,gunner,copilot"
   }
  }
- coords 1453.864 38.449 2854.635
+ coords 1481.6 38 2943.492
 }

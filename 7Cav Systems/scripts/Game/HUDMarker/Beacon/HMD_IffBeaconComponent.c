@@ -1,13 +1,17 @@
 //------------------------------------------------------------------------------------------------
-[ComponentEditorProps(category: "HUD", description: "Placeable IFF beacon: configurable label (text+number), 30 min battery while transmitting, HUD marker when active.")]
+[ComponentEditorProps(category: "HUD", description: "IFF beacon: IR + dynamic label. HUD dot via HMD_PlacedDesignationComponent (visual kind 0) on same entity, or RegisterIffMarker when no designation sibling. Warheads: live on spawn. Attachable: placement + pickup gates.")]
 class HMD_IffBeaconComponentClass : ScriptComponentClass
 {
 }
 
 //------------------------------------------------------------------------------------------------
-//! Server-authoritative state; clients refresh HUDMarkerSystem registration from RplProp callback.
+//! Server-authoritative beacon state; clients refresh IFF pool from RplProp callbacks (RegisterIffMarker path).
+//! Base: no deployment gate; attachable overrides DeploymentGateAllowsIff and AuthorityTickDeploymentGates.
 //! Text/number use SCR_AdjustSignalAction (hold interact + scroll) while beacon is OFF.
-//! Clients: IR settings are instance attributes (prefab/layer). Do not merge via BaseContainer.Get for ResourceName; parent prefabs can supply empty m_sIrLightPrefab and wipe the RHS default. Spawn while placed + transmitting + battery; despawn when off or owner deleted.
+//! IR: local SpawnEntityPrefabEx(..., false) per machine; prefab from m_sIrLightPrefab (empty = no IR).
+//! Dynamic spawn may run OnPostInit before InPlayMode; m_bPendingPlayModeRefresh + CallLater/EOnFrame redo refresh.
+//! Attachable subclass sets m_bUnplaceWhenInInventorySlot before super.OnPostInit.
+//! With HMD_PlacedDesignationComponent on self or a child: designation owns the HUD row (RegisterDesignation); IFF pool is not used. Child HUD proxy under attachable prefab gates from ShouldShowIffOnHud() in HMD_PlacedDesignationComponent. Legacy: HUDMarkerComponent + RegisterIffMarker + HMD_ResolveIffPoolPresentation.
 class HMD_IffBeaconComponent : ScriptComponent
 {
 	protected static const float BEACON_TOTAL_SECONDS = 1800;
@@ -43,22 +47,29 @@ class HMD_IffBeaconComponent : ScriptComponent
 	[RplProp(onRplName: "OnPlacedStateReplicated")]
 	protected bool m_bPlacedInWorld;
 
+	//! HMD_IffBeaconComponentAttachable sets true before super.OnPostInit.
+	protected bool m_bUnplaceWhenInInventorySlot;
+
+	//! True after authority init or any RplProp callback for this beacon. Until then, warheads mirror HMD_PlacedDesignationComponent (pool row from world, no wait for m_bBeaconActive).
+	protected bool m_bSeenAnyBeaconRplSnapshot;
+
 	protected float m_fBatteryBumpAccum;
-	protected float m_fHudRegRetryAccum;
-	protected static const float HUD_REG_RETRY_INTERVAL = 0.25;
-	//! Server-only: battery drain uses ChimeraWorld.GetServerTimestamp deltas (not mission/world time scale).
 	protected bool m_bBatteryDrainServerTimeSet;
 	protected WorldTimestamp m_ServerTimeLastBatteryDrain;
 	protected static const float BATTERY_DRAIN_DT_CAP = 5.0;
 
-	//! Client-local spawned IR light (not replicated as network entity; each client spawns their own).
 	protected IEntity m_pSpawnedIrLight;
-
-	//! CallQueue has a pending IrLightDelayedSpawn (cleared on spawn or despawn).
 	protected bool m_bIrLightSpawnDelayPending;
 
+	//! Pooled IFF row id (RegisterIffMarker / UnregisterIffMarker), same pattern as HMD_PlacedDesignationComponent.m_iDesignationId.
+	protected int m_iIffMarkerPoolId = -1;
+
+	//! OnPostInit ran before InPlayMode (dynamic spawn / load); run RefreshHudRegistration once play is active.
+	protected bool m_bPendingPlayModeRefresh;
+	protected int m_iPlayModeRefreshPolls;
+	protected static const int PLAY_MODE_REFRESH_POLL_MAX = 400;
+
 	//------------------------------------------------------------------------------------------------
-	//! World-axis offset (m) expressed as parent-local translation: local = R^T * worldOff (R = owner world rotation 3x3).
 	protected static vector IrWorldOffsetToLocal(vector worldOff, vector parentWorld[4])
 	{
 		vector localOff;
@@ -69,12 +80,98 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! User actions / inventory helpers.
 	static HMD_IffBeaconComponent FindOnEntity(IEntity owner)
 	{
 		if (!owner)
 			return null;
+		//! Attachable subclass is returned by base-type lookup (no forward decl to deprecated subclass type).
 		return HMD_IffBeaconComponent.Cast(owner.FindComponent(HMD_IffBeaconComponent));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool ShouldUnplaceWhenInInventorySlot()
+	{
+		return m_bUnplaceWhenInInventorySlot;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Attachable subclass overrides to require world placement; base warheads always allow IFF/IR/HUD once active + battery.
+	protected bool DeploymentGateAllowsIff()
+	{
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Attachable override: clear `m_bPlacedInWorld` when the item returns to an inventory slot.
+	protected void AuthorityTickDeploymentGates(IEntity owner)
+	{
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! First HMD_PlacedDesignationComponent under `root` (children only; not `root` itself).
+	protected static HMD_PlacedDesignationComponent HMD_FindFirstPlacedDesignationInDescendants(IEntity root)
+	{
+		if (!root)
+			return null;
+		IEntity ch = root.GetChildren();
+		while (ch)
+		{
+			HMD_PlacedDesignationComponent pd = HMD_PlacedDesignationComponent.Cast(ch.FindComponent(HMD_PlacedDesignationComponent));
+			if (pd)
+				return pd;
+			pd = HMD_FindFirstPlacedDesignationInDescendants(ch);
+			if (pd)
+				return pd;
+			ch = ch.GetSibling();
+		}
+		return null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool HasSiblingDesignationHud(IEntity owner)
+	{
+		if (!owner)
+			return false;
+		if (HMD_PlacedDesignationComponent.Cast(owner.FindComponent(HMD_PlacedDesignationComponent)))
+			return true;
+		return HMD_FindFirstPlacedDesignationInDescendants(owner) != null;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected float GetEffectiveBatteryForTransmitGate()
+	{
+		float b = m_fBatterySecondsRemaining;
+		if (!ShouldUnplaceWhenInInventorySlot() && b <= 0)
+			return 1;
+		return b;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Whether the IffMarker pool row should exist: attachables use Rpl active; warheads show until first Rpl snapshot then follow m_bBeaconActive.
+	protected bool IffPooledRowShouldShow()
+	{
+		if (ShouldUnplaceWhenInInventorySlot())
+			return m_bBeaconActive;
+		if (!m_bSeenAnyBeaconRplSnapshot)
+			return true;
+		return m_bBeaconActive;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsIrTransmitting()
+	{
+		float bat = GetEffectiveBatteryForTransmitGate();
+		if (bat <= 0)
+			return false;
+		if (!DeploymentGateAllowsIff())
+			return false;
+		return IffPooledRowShouldShow();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected bool IsAuthorityTransmitting()
+	{
+		return DeploymentGateAllowsIff() && m_bBeaconActive && GetEffectiveBatteryForTransmitGate() > 0;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -98,40 +195,144 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! True when the IFF HUD dot should show: placed (if attachable), pooled visibility rules, and battery.
+	bool ShouldShowIffOnHud()
+	{
+		return DeploymentGateAllowsIff() && IffPooledRowShouldShow() && GetEffectiveBatteryForTransmitGate() > 0;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Label under the IFF HUD dot (text index + number).
+	string GetMarkerLabelForHud()
+	{
+		return BuildMarkerLabel();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected int HMD_BumpPlacedDesignationHudCachesInHierarchy(IEntity node)
+	{
+		int n = 0;
+		if (!node)
+			return 0;
+		HMD_PlacedDesignationComponent pd = HMD_PlacedDesignationComponent.Cast(node.FindComponent(HMD_PlacedDesignationComponent));
+		if (pd)
+		{
+			pd.HMD_InvalidateCachedHudLabel();
+			n++;
+		}
+		IEntity ch = node.GetChildren();
+		while (ch)
+		{
+			n += HMD_BumpPlacedDesignationHudCachesInHierarchy(ch);
+			ch = ch.GetSibling();
+		}
+		return n;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Child proxy prefabs (HMD_PlacedDesignation under this entity) must refresh HUD name when text/number replicate.
+	protected void HMD_BumpDesignationProxyChildPlacedCaches()
+	{
+		IEntity o = GetOwner();
+		if (!o)
+			return;
+		IEntity ch = o.GetChildren();
+		while (ch)
+		{
+			HMD_BumpPlacedDesignationHudCachesInHierarchy(ch);
+			ch = ch.GetSibling();
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
 	void OnBeaconStateReplicated()
 	{
+		m_bSeenAnyBeaconRplSnapshot = true;
+		HMD_BumpDesignationProxyChildPlacedCaches();
 		RefreshHudRegistration();
+		ScheduleDeferredClientBeaconVisualRefresh();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void OnPlacedStateReplicated()
 	{
+		m_bSeenAnyBeaconRplSnapshot = true;
+		RefreshHudRegistration();
+		ScheduleDeferredClientBeaconVisualRefresh();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void ScheduleDeferredClientBeaconVisualRefresh()
+	{
+		if (!GetGame())
+			return;
+		if (!Replication.IsRunning() || !Replication.IsClient())
+			return;
+		GetGame().GetCallqueue().CallLater(DeferredClientBeaconVisualRefresh, 0, false);
+		GetGame().GetCallqueue().CallLater(DeferredClientBeaconVisualRefresh, 75, false);
+		GetGame().GetCallqueue().CallLater(DeferredClientBeaconVisualRefresh, 250, false);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void DeferredClientBeaconVisualRefresh()
+	{
 		RefreshHudRegistration();
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Called from HMD_IffBeaconExplosiveInventoryItemComponent when placement mode finishes (authoritative).
+	//! CallQueue fallback when EOnFrame does not run until play (or runs late).
+	protected void DeferredRefreshWhenPlayMode()
+	{
+		if (!GetOwner() || !GetGame())
+			return;
+		if (!GetGame().InPlayMode())
+		{
+			if (m_iPlayModeRefreshPolls < PLAY_MODE_REFRESH_POLL_MAX)
+			{
+				m_iPlayModeRefreshPolls++;
+				GetGame().GetCallqueue().CallLater(DeferredRefreshWhenPlayMode, 25, false);
+			}
+			return;
+		}
+		m_iPlayModeRefreshPolls = 0;
+		if (!m_bPendingPlayModeRefresh)
+			return;
+		m_bPendingPlayModeRefresh = false;
+		RefreshHudRegistration();
+		ScheduleDeferredClientBeaconVisualRefresh();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Placement callbacks may run on the placing client; RplProps only replicate from authority. Mirror TrySetBeaconActive routing.
 	void NotifyPlacedInWorld()
+	{
+		if (!Replication.IsRunning() || Replication.IsServer())
+			ApplyPlacedInWorldOnAuthority();
+		else
+			Rpc(RpcAsk_NotifyPlacedInWorld);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_NotifyPlacedInWorld()
+	{
+		ApplyPlacedInWorldOnAuthority();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void ApplyPlacedInWorldOnAuthority()
 	{
 		m_bPlacedInWorld = true;
 		if (Replication.IsRunning())
 			Replication.BumpMe();
-		//! Authority / listen host: onRplName may not run for local RplProp writes. Skip on headless dedicated (no client HUD).
-		if (!Replication.IsRunning() || Replication.IsClient())
-			RefreshHudRegistration();
+		RefreshHudRegistration();
+		ScheduleDeferredClientBeaconVisualRefresh();
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Hide pick-up / equip only while placed **and** transmitting; when beacon is off, player can pick up again.
 	bool ShouldHideInventoryActions()
 	{
-		return m_bPlacedInWorld && m_bBeaconActive;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected bool IsIrTransmitting()
-	{
-		return m_bPlacedInWorld && m_bBeaconActive && m_fBatterySecondsRemaining > 0;
+		return IsAuthorityTransmitting();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -149,10 +350,11 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Fired after optional initial spawn delay; no-op if state changed.
 	protected void IrLightDelayedSpawn()
 	{
 		m_bIrLightSpawnDelayPending = false;
+		if (m_pSpawnedIrLight && !m_pSpawnedIrLight.GetWorld())
+			m_pSpawnedIrLight = null;
 		IEntity owner = GetOwner();
 		if (!owner || m_pSpawnedIrLight || !IsIrTransmitting())
 			return;
@@ -160,7 +362,6 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! End of ON phase (after m_fIrStrobeOnMs): turn IR off, schedule OFF phase.
 	protected void IrStrobeOnPhaseEnd()
 	{
 		IEntity owner = GetOwner();
@@ -179,7 +380,6 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! End of OFF phase (after m_fIrStrobeOffMs): turn IR on, schedule ON phase.
 	protected void IrStrobeOffPhaseEnd()
 	{
 		IEntity owner = GetOwner();
@@ -227,6 +427,8 @@ class HMD_IffBeaconComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void SpawnIrLightIfNeeded(IEntity owner)
 	{
+		if (m_pSpawnedIrLight && !m_pSpawnedIrLight.GetWorld())
+			m_pSpawnedIrLight = null;
 		if (m_pSpawnedIrLight)
 			return;
 		ResourceName prefabName = m_sIrLightPrefab;
@@ -259,18 +461,20 @@ class HMD_IffBeaconComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void RefreshIrLightState()
 	{
-		if (!GetGame().InPlayMode())
-			return;
-		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
+		if (!GetGame() || !GetGame().InPlayMode())
 			return;
 		IEntity owner = GetOwner();
 		if (!owner)
 			return;
-		bool irOn = m_bPlacedInWorld && m_bBeaconActive && m_fBatterySecondsRemaining > 0;
-		if (!irOn)
+		if (!IsIrTransmitting())
 		{
 			DespawnIrLight();
 			return;
+		}
+		if (m_pSpawnedIrLight && !m_pSpawnedIrLight.GetWorld())
+		{
+			m_pSpawnedIrLight = null;
+			CancelIrLightSpawnDelay();
 		}
 		if (m_pSpawnedIrLight)
 			return;
@@ -289,36 +493,91 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	protected void HMD_ClearIffMarkerPoolRow(HUDMarkerSystem sys)
+	{
+		if (!sys || m_iIffMarkerPoolId < 0)
+			return;
+		sys.UnregisterIffMarker(m_iIffMarkerPoolId);
+		m_iIffMarkerPoolId = -1;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Same pattern as HMD_PlacedDesignationComponent: RegisterIffMarker / Update* / UnregisterIffMarker every EOnFrame on gameplay clients (local pool from entity origin + presentation).
+	protected void RefreshLocalHudMarkerOnly()
+	{
+		if (!GetGame() || !GetGame().InPlayMode())
+			return;
+		IEntity owner = GetOwner();
+		ChimeraWorld world = GetGame().GetWorld();
+		if (!owner || !world)
+			return;
+
+		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
+			return;
+		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
+		if (!sys)
+			return;
+		if (HasSiblingDesignationHud(owner))
+		{
+			HMD_ClearIffMarkerPoolRow(sys);
+			return;
+		}
+		if (DeploymentGateAllowsIff() && IffPooledRowShouldShow() && GetEffectiveBatteryForTransmitGate() > 0)
+		{
+			vector pos = owner.GetOrigin();
+			string label;
+			int dot;
+			int lblCol;
+			float visDist;
+			HUDMarkerComponent.HMD_ResolveIffPoolPresentation(owner, BuildMarkerLabel(), label, dot, lblCol, visDist);
+			float lifeSec = m_fBatterySecondsRemaining;
+			if (lifeSec <= 0)
+				lifeSec = GetEffectiveBatteryForTransmitGate();
+			if (m_iIffMarkerPoolId < 0)
+				m_iIffMarkerPoolId = sys.RegisterIffMarker(pos, label, dot, lblCol, visDist, lifeSec, RplId.Invalid());
+			else
+			{
+				sys.UpdateIffMarkerRow(m_iIffMarkerPoolId, pos, label, dot, lblCol, visDist, lifeSec);
+			}
+		}
+		else
+			HMD_ClearIffMarkerPoolRow(sys);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	protected void RefreshHudRegistration()
 	{
-		if (!GetGame().InPlayMode())
+		if (!GetGame())
 			return;
-		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
+		if (!GetGame().InPlayMode())
 			return;
 		IEntity owner = GetOwner();
 		ChimeraWorld world = GetGame().GetWorld();
 		if (!owner || !world)
 			return;
 		RefreshIrLightState();
-		HUDMarkerSystem sys = HUDMarkerSystem.GetInstance(world);
-		if (!sys)
+		//! Headless dedicated has no local player HUD; gameplay clients use RegisterIffMarker pool (designation-style).
+		if (Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient())
 			return;
-		//! HUD dot while placed, transmitting, and still has time; prefab + server init set m_fBatterySecondsRemaining to BEACON_TOTAL_SECONDS so clients match.
-		if (m_bPlacedInWorld && m_bBeaconActive && m_fBatterySecondsRemaining > 0)
-		{
-			string label = BuildMarkerLabel();
-			sys.Register(owner, m_fBatterySecondsRemaining, label, Color.FromRGBA(0, 255, 0, 255).PackToInt(), Color.FromRGBA(255, 255, 255, 255).PackToInt());
-		}
-		else
-		{
-			sys.RemoveMarkerEntry(owner);
-		}
+		if (!HUDMarkerSystem.GetInstance(world))
+			return;
+		RefreshLocalHudMarkerOnly();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	override void OnDelete(IEntity owner)
 	{
 		DespawnIrLight();
+		if (GetGame() && GetGame().InPlayMode() && owner)
+		{
+			ChimeraWorld world = GetGame().GetWorld();
+			if (world)
+			{
+				HUDMarkerSystem sysDel = HUDMarkerSystem.GetInstance(world);
+				if (sysDel)
+					HMD_ClearIffMarkerPoolRow(sysDel);
+			}
+		}
 		super.OnDelete(owner);
 	}
 
@@ -336,33 +595,50 @@ class HMD_IffBeaconComponent : ScriptComponent
 				m_iNumber = 7;
 			if (m_iTextIndex < 0 || m_iTextIndex >= TEXT_COUNT)
 				m_iTextIndex = 0;
+			if (!ShouldUnplaceWhenInInventorySlot())
+			{
+				m_bPlacedInWorld = true;
+				m_bBeaconActive = true;
+			}
+			m_bSeenAnyBeaconRplSnapshot = true;
 			if (Replication.IsRunning())
 				Replication.BumpMe();
 		}
 		SetEventMask(owner, EntityEvent.FRAME | owner.GetEventMask());
+		if (!GetGame() || !GetGame().InPlayMode())
+		{
+			m_bPendingPlayModeRefresh = true;
+			m_iPlayModeRefreshPolls = 0;
+			if (GetGame())
+				GetGame().GetCallqueue().CallLater(DeferredRefreshWhenPlayMode, 0, false);
+		}
 		RefreshHudRegistration();
+		ScheduleDeferredClientBeaconVisualRefresh();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFrame(owner, timeSlice);
-		if (!GetGame().InPlayMode() || !owner)
+		if (!owner)
+			return;
+
+		if (m_bPendingPlayModeRefresh && GetGame() && GetGame().InPlayMode())
+		{
+			m_bPendingPlayModeRefresh = false;
+			m_iPlayModeRefreshPolls = 0;
+			RefreshHudRegistration();
+			ScheduleDeferredClientBeaconVisualRefresh();
+		}
+
+		if (!GetGame() || !GetGame().InPlayMode())
 			return;
 
 		if (!Replication.IsRunning() || Replication.IsServer())
 		{
-			InventoryItemComponent inv = InventoryItemComponent.Cast(owner.FindComponent(InventoryItemComponent));
-			if (inv && inv.GetParentSlot() && m_bPlacedInWorld)
-			{
-				m_bPlacedInWorld = false;
-				if (Replication.IsRunning())
-					Replication.BumpMe();
-				if (!Replication.IsRunning() || Replication.IsClient())
-					RefreshHudRegistration();
-			}
+			AuthorityTickDeploymentGates(owner);
 
-			if (m_bPlacedInWorld && m_bBeaconActive && m_fBatterySecondsRemaining > 0)
+			if (DeploymentGateAllowsIff() && m_bBeaconActive && m_fBatterySecondsRemaining > 0)
 			{
 				ChimeraWorld w = GetGame().GetWorld();
 				if (w)
@@ -388,8 +664,7 @@ class HMD_IffBeaconComponent : ScriptComponent
 						m_fBatteryBumpAccum = 0;
 						if (Replication.IsRunning())
 							Replication.BumpMe();
-						if (!Replication.IsRunning() || Replication.IsClient())
-							RefreshHudRegistration();
+						RefreshHudRegistration();
 					}
 					else if (Replication.IsRunning())
 					{
@@ -408,24 +683,11 @@ class HMD_IffBeaconComponent : ScriptComponent
 			}
 		}
 
-		bool runClientHudRetry = !Replication.IsRunning() || Replication.IsClient();
-		if (runClientHudRetry && m_bPlacedInWorld && m_bBeaconActive && m_fBatterySecondsRemaining > 0)
-		{
-			ChimeraWorld world = GetGame().GetWorld();
-			if (world && !HUDMarkerSystem.GetInstance(world))
-			{
-				m_fHudRegRetryAccum += timeSlice;
-				if (m_fHudRegRetryAccum >= HUD_REG_RETRY_INTERVAL)
-				{
-					m_fHudRegRetryAccum = 0;
-					RefreshHudRegistration();
-				}
-			}
-			else
-			{
-				m_fHudRegRetryAccum = 0;
-			}
-		}
+		//! IR: evaluate every frame (spawn/despawn follows IsIrTransmitting); pool was previously tied to the same flag and lagged dynamic spawns.
+		RefreshIrLightState();
+
+		if (!(Replication.IsRunning() && Replication.IsServer() && !Replication.IsClient()))
+			RefreshLocalHudMarkerOnly();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -473,7 +735,6 @@ class HMD_IffBeaconComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Remaining transmission time in minutes (fractional).
 	float GetBatteryMinutesRemaining()
 	{
 		float sec = m_fBatterySecondsRemaining;
@@ -545,6 +806,7 @@ class HMD_IffBeaconComponent : ScriptComponent
 		}
 		if (Replication.IsRunning())
 			Replication.BumpMe();
+		HMD_BumpDesignationProxyChildPlacedCaches();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -566,6 +828,7 @@ class HMD_IffBeaconComponent : ScriptComponent
 		}
 		if (Replication.IsRunning())
 			Replication.BumpMe();
+		HMD_BumpDesignationProxyChildPlacedCaches();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -607,17 +870,15 @@ class HMD_IffBeaconComponent : ScriptComponent
 		{
 			if (m_fBatterySecondsRemaining <= 0)
 				return;
+			if (!DeploymentGateAllowsIff())
+				return;
 			m_bBeaconActive = true;
 		}
 		else
-		{
 			m_bBeaconActive = false;
-		}
 		if (Replication.IsRunning())
 			Replication.BumpMe();
-		//! Authority / listen host: onRplName may not fire for local RplProp writes. Skip on headless dedicated.
-		if (!Replication.IsRunning() || Replication.IsClient())
-			RefreshHudRegistration();
+		RefreshHudRegistration();
 	}
 
 	//------------------------------------------------------------------------------------------------

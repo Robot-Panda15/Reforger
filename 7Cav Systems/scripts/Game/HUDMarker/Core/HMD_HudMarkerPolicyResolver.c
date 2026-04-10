@@ -62,6 +62,16 @@ class HMD_HudMarkerPolicyResolver
 			DenyMarkerPolicy(outMaxViewDistanceM, outAllowIffMarkers, outAllowForeignLaserDesignations, outAllowOwnLaserDesignations, outHudMarkerUpdateRateHz);
 			return;
 		}
+		//! Dismounted designator viewport: show all world marker kinds; range clamp from gadget (see HMD_DesignatorViewportState).
+		if (HMD_DesignatorViewportState.IsActive())
+		{
+			outMaxViewDistanceM = HMD_DesignatorViewportState.GetMarkerMaxDistanceM();
+			outAllowIffMarkers = true;
+			outAllowForeignLaserDesignations = true;
+			outAllowOwnLaserDesignations = true;
+			outHudMarkerUpdateRateHz = DEFAULT_UPDATE_HZ;
+			return;
+		}
 		//! Vehicle handheld binoculars: no marker policy (all dots off in HUDMarkerVisibility).
 		if (HMD_HudMarkerEligibility.IsVehicleBinocularViewActive())
 			return;
@@ -83,18 +93,25 @@ class HMD_HudMarkerPolicyResolver
 			return;
 		}
 
+		//! Dismounted laser designator zoom: policy comes from HMD_LaserDesignatorGadgetComponent on the held gadget prefab, not the character.
 		if (HMD_HandheldOpticZoom.IsZoomedForHMD())
 		{
-			HMD_HudMarkerEligibilityBinocularComponent bin = HMD_HudMarkerEligibilityBinocularComponent.Cast(localChar.FindComponent(HMD_HudMarkerEligibilityBinocularComponent));
-			if (bin)
+			HMD_LaserDesignatorGadgetComponent des = HMD_HandheldOpticZoom.FindActiveLocalDesignatorComp();
+			if (des)
 			{
-				outMaxViewDistanceM = bin.GetMaxMarkerViewDistanceM();
-				outAllowIffMarkers = bin.GetPolicyAllowIffMarkers();
-				bool binLaser = bin.GetPolicyAllowLaserDesignations();
-				outAllowForeignLaserDesignations = binLaser;
-				outAllowOwnLaserDesignations = binLaser;
-				outHudMarkerUpdateRateHz = bin.GetHudMarkerUpdateRateHz();
+				outMaxViewDistanceM = des.GetHudWorldMarkerDistanceClampM();
+				outAllowIffMarkers = des.GetHudIffWhileZoomed();
+				outAllowForeignLaserDesignations = des.GetHudForeignLaserDesignationsWhileZoomed();
+				outAllowOwnLaserDesignations = des.GetHudOwnLaserDesignationWhileZoomed();
+				outHudMarkerUpdateRateHz = des.GetHudWorldMarkerUpdateRateHz();
 			}
+			return;
+		}
+
+		//! On foot without designator zoom/viewport: hull policy never runs; do not leave IFF allowed by ctor defaults (vehicle laser toggle would show pooled IFF while idle).
+		if (!vehicleRoot)
+		{
+			outAllowIffMarkers = false;
 			return;
 		}
 

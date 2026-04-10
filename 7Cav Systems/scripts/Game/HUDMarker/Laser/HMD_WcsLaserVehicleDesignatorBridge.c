@@ -286,19 +286,11 @@ class HMD_WcsLaserVehicleDesignatorBridge
 
 				continue;
 
-			WCS_Armament_HandheldLaserDesignatorComponent wcsSelf = WCS_Armament_HandheldLaserDesignatorComponent.Cast(lmSelf);
+			outDes = lmSelf;
 
-			if (wcsSelf)
+			outFailReason = "";
 
-			{
-
-				outDes = wcsSelf;
-
-				outFailReason = "";
-
-				return true;
-
-			}
+			return true;
 
 		}
 

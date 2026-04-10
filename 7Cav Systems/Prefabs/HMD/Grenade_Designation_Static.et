@@ -5,12 +5,9 @@ GenericEntity : "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.
    Enabled 0
   }
   HMD_IffBeaconComponent "{68FE720E500B74D4}" {
-   Enabled 0
-   m_sIrLightPrefab "{0BCD51DD36B82132}Prefabs/Items/Equipment/Nightvision/IFF_IR_Light.et"
    m_fIrStrobeOnMs 150
    m_fIrStrobeOffMs 1000
    m_fIrLightSpawnDelayMs 5000
-   m_vIrLightWorldOffset 0 0.15 0
   }
   HMD_PlacedDesignationComponent "{68E322210000B002}" {
    m_sLabel "MRKR"
@@ -22,13 +19,8 @@ GenericEntity : "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.
   HitEffectComponent "{9D9BE68D6F65A10F}" {
    Enabled 0
   }
-  HMD_IffLifetimeComponent "{68FE7C70019DD2FF}" {
-   m_sIrLightPrefab "{0BCD51DD36B82132}Prefabs/Items/Equipment/Nightvision/IFF_IR_Light.et"
-   m_fIrStrobeOnMs 150
-   m_fIrStrobeOffMs 1000
-   m_fIrLightSpawnDelayMs 5000
-   m_vIrLightWorldOffset 0 0.1 0
+  RplComponent "{68E322210000B011}" {
   }
  }
- coords 1121.561 38 2829.142
+ coords 1160.935 38.01 2800.365
 }

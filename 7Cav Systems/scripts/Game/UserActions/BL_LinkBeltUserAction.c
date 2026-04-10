@@ -199,7 +199,7 @@ class BL_LinkBeltUserAction: ScriptedUserAction
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//! Magazine to use for linking: if requiredPrefab is set, must match weapon's loaded mag prefab; otherwise compatible mag with ammo â€” picks highest ammo count.
+	//! Magazine to use for linking: if requiredPrefab is set, must match weapon's loaded mag prefab; otherwise compatible mag with ammo — picks highest ammo count.
 	protected IEntity FindMagazineForLinking(InventoryStorageManagerComponent invManager, BaseMagazineWell magazineWell, ResourceName requiredPrefab, out BaseInventoryStorageComponent outStorage)
 	{
 		outStorage = null;

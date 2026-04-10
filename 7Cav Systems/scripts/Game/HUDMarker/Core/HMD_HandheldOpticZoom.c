@@ -90,6 +90,22 @@ class HMD_HandheldOpticZoom
 	}
 
 	//------------------------------------------------------------------------------------------------
+	//! Local player's held gadget that has HMD_LaserDesignatorGadgetComponent (same entity tree IsZoomedForHMD uses).
+	static HMD_LaserDesignatorGadgetComponent FindActiveLocalDesignatorComp()
+	{
+		IEntity localChar = ResolveLocalCharacterEntity();
+		if (!localChar)
+			return null;
+		SCR_GadgetManagerComponent gm = SCR_GadgetManagerComponent.GetGadgetManager(localChar);
+		if (!gm)
+			return null;
+		IEntity held = gm.GetHeldGadget();
+		if (!held)
+			return null;
+		return FindHmdDesignatorOnGadget(held);
+	}
+
+	//------------------------------------------------------------------------------------------------
 	//! True when looking through handheld optics relevant to HMD (designator gadget + zoom, or ADS on optic-only gadgets).
 	static bool IsZoomedForHMD()
 	{

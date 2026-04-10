@@ -153,7 +153,7 @@ class HUDMarkerDisplayHelper
 
 		int laserIncludeFlags,
 
-		bool includeIffMarkers,
+		bool includeEntityIffMarkers,
 
 		array<vector> positions,
 
@@ -195,7 +195,7 @@ class HUDMarkerDisplayHelper
 
 		bool includeForeignLaserDesignations = (laserIncludeFlags & FETCH_LASER_FOREIGN) != 0;
 
-		sys.GetMarkerData(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds, includeLocalLaserDesignations, includeForeignLaserDesignations, includeIffMarkers);
+		sys.GetMarkerData(positions, names, markerColors, labelColors, visibilityDistances, markerVisualKinds, includeLocalLaserDesignations, includeForeignLaserDesignations, includeEntityIffMarkers);
 
 		HMD_LaserLockState.ApplyLockedHighlightToMarkerArrays(positions, labelColors);
 
@@ -658,6 +658,11 @@ class HUDMarkerDisplayHelper
 				if (markerVisualKinds && p < markerVisualKinds.Count())
 
 					kind = markerVisualKinds[p];
+
+				//! Laser overlay must not use pooled IFF kind (0); coerce stray rows to own-designation styling.
+				if (!useIffTextureCache && kind == HMD_MarkerVisuals.KIND_IFF_MARKER)
+
+					kind = HMD_MarkerVisuals.KIND_OWN_DESIGNATION;
 
 				bool lockedMatch = false;
 
