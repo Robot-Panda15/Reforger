@@ -2,7 +2,7 @@ FrameWidgetClass {
  Name "HMD_VehicleTurretLaserDesignatorReadoutRoot"
  Slot FrameWidgetSlot "{68E3221400010500}" {
   Anchor 0 0 1 1
-  OffsetLeft 0
+  OffsetLeft 100
   OffsetTop 0
   OffsetRight 0
   OffsetBottom 0
@@ -18,15 +18,17 @@ FrameWidgetClass {
     OffsetRight -110
     SizeY 34
     OffsetBottom 131
+    Alignment -1.1 -2.5
    }
-   "Is Visible" 0
-   Color 1 1 1 1
+   Opacity 0.5
    Text "----"
-   "Font Size" 28
-   "Horizontal Alignment" Center
+   "Font Size" 25
+   "Min Font Size" 25
+   "Vertical Alignment" Center
    "No Localization" 1
    FontProperties FontProperties "{68FC711FBB680DF1}" {
-    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+    Font "{463C1AEDCDFC1153}Fonts/viperdisplay-bold.fnt"
+    ForceFont 1
    }
   }
   TextWidgetClass "{68E3221400010512}" {
@@ -39,15 +41,17 @@ FrameWidgetClass {
     OffsetRight -110
     SizeY 34
     OffsetBottom 90
+    Alignment 1.1 -1.4
    }
-   "Is Visible" 0
-   Color 1 1 1 1
-   Text "----"
-   "Font Size" 28
-   "Horizontal Alignment" Center
+   Opacity 0.5
+   Text "----/----"
+   "Font Size" 25
+   "Min Font Size" 25
+   "Horizontal Alignment" Right
+   "Vertical Alignment" Center
    "No Localization" 1
    FontProperties FontProperties "{68FC711FBDD83FBE}" {
-    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+    ForceFont 1
    }
   }
   TextWidgetClass "{68E3221400010514}" {
@@ -60,15 +64,17 @@ FrameWidgetClass {
     OffsetRight -110
     SizeY 34
     OffsetBottom 50
+    Alignment -1.1 -1
    }
-   "Is Visible" 0
-   Color 1 1 1 1
-   Text "----"
-   "Font Size" 28
-   "Horizontal Alignment" Center
+   Opacity 0.5
+   Text "---"
+   "Font Size" 25
+   "Min Font Size" 25
+   "Vertical Alignment" Center
    "No Localization" 1
    FontProperties FontProperties "{68FC711FA2666245}" {
-    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+    Font "{463C1AEDCDFC1153}Fonts/viperdisplay-bold.fnt"
+    ForceFont 1
    }
   }
   TextWidgetClass "{68E3221400010516}" {
@@ -81,15 +87,18 @@ FrameWidgetClass {
     OffsetRight -110
     SizeY 34
     OffsetBottom 9
+    Alignment 1.1 0
    }
-   "Is Visible" 0
-   Color 1 1 1 1
+   Opacity 0.5
    Text "----"
-   "Font Size" 28
-   "Horizontal Alignment" Center
+   "Font Size" 25
+   "Min Font Size" 25
+   "Horizontal Alignment" Right
+   "Vertical Alignment" Center
    "No Localization" 1
    FontProperties FontProperties "{68FC711FB0DFA980}" {
-    Font "{DE4B66C39B62E39B}UI/Fonts/Purista/Purista Medium.fnt"
+    Font "{463C1AEDCDFC1153}Fonts/viperdisplay-bold.fnt"
+    ForceFont 1
    }
   }
  }
