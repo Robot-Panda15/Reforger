@@ -2,6 +2,7 @@ Turret : "{4442C7C3C03A9EC8}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_Co
  ID "51ACD0965653D003"
  components {
   CAV_M2A3_HunterKillerComponent "{6620DEADBEDA583C}" {
+   Enabled 0
    m_sOpticPivotName "v_upgrade_optic"
    m_bPreferCommanderTurretAim 1
    m_iCommanderLockDurationMs -1
@@ -10,21 +11,11 @@ Turret : "{4442C7C3C03A9EC8}Prefabs/Vehicles/Tracked/BFV/VehParts/Turret/M2A3_Co
   TurretComponent "{64D523BB818CBE02}" {
    components {
     RHS_2DSightsComponentV2 "{65E01DD2D76854E4}" {
-     SightsFOVInfo TPP_VariableSightsZoomInfo "{65E01DD2D850DDF3}" {
-      m_aZooms {
-       1 4 12 24
-      }
-     }
     }
     RHS_2DSightsComponentV2 "{65E01DD76D306137}" {
-     SightsFOVInfo TPP_VariableSightsZoomInfo "{65E01DD76AA1E5F7}" {
-      m_aZooms {
-       1 4 12
-      }
-     }
     }
    }
   }
  }
- coords 1338.066 38.016 2856.112
+ coords 1479.843 38 2887.613
 }
