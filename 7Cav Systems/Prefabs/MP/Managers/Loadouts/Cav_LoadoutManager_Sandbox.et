@@ -6,12 +6,12 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sLoadoutResource "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
    m_sAffiliatedFaction "Misfit"
   }
-  SCR_FactionPlayerLoadout "{664AFC675DC68D0A}" {
+  SCR_PlayerArsenalLoadout "{664AFC675DC68D0A}" {
    m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
    m_sLoadoutResource "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
    m_sAffiliatedFaction "Archangel"
   }
-  SCR_FactionPlayerLoadout "{664AFC675DC68D08}" {
+  SCR_PlayerArsenalLoadout "{664AFC675DC68D08}" {
    m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
    m_sLoadoutResource "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
    m_sAffiliatedFaction "Helios"
