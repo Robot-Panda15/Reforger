@@ -1,0 +1,106 @@
+GenericEntity : "{9B40415563B9F280}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_CAV_BLOCK_II_Black.et" {
+ ID "0000000000000001"
+ components {
+  RHS_SGC_RadialMenuComponent "{5E0ED058CD731BC8}" {
+   m_sDisplayName "M4A1 BLOCK 2 CAV ISSUE"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "M4A1 BLOCK 2 CAV ISSUE TAN"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5E0ED05F322AB08B}" {
+     AttachmentSlot InventoryStorageSlot PistolGrip {
+      Prefab "{C0F60692C8ECD7F5}Prefabs/Weapons/Attachments/Grips/PistolGrip_AR15_A2/RHS_M4A1_Grip_DDC.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDA2E5FAA2B6}" {
+     AttachmentSlot InventoryStorageSlot Buttstock {
+      Prefab "{16238C369C1342AB}Prefabs/Weapons/Attachments/Stocks/Stock_AR15_SOPMOD/RHS_M4_SOPMOD_DDC.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDA47E3F452D}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{1BCF0AD736FC3A1B}Prefabs/Weapons/Attachments/Handguards/Handguard_AR15_DD/FDE/RHS_M4A1_DD12_5_Upper_TAN.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDA5B623AB37}" {
+     AttachmentSlot InventoryStorageSlot Handguard_lower {
+      Prefab "{3F9C076E34E47B72}Prefabs/Weapons/Attachments/Handguards/Handguard_AR15_DD/FDE/RHS_M4A1_DD12_5_Lower_TAN.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDA8BD59EE7D}" {
+     AttachmentSlot InventoryStorageSlot ChargingHandle {
+      Prefab "{90065DF56F48CE3A}Prefabs/Weapons/Attachments/Misc/M4ChargingHandles/GA_GCH.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDB0BD59EE7D}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optics {
+      Offset 0 0 0.04
+      Prefab "{A4028669C4F516F6}Prefabs/5ABD0CB57F7E9EB1/Optics/Optic_XPS3_Tan.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{5EA2BE9573F14F0C}" {
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE953838E77C}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{5EA2BE95244FA719}" {
+      PivotID "w_charging_handle"
+      Offset 0 -0.048 0.3139
+      Angles 0 0 0
+      Prefab "{6FBFAD156ABC67D9}Prefabs/Weapons/Attachments/Grips/Grip_GPS2/RHS_GPS2_TAN.et"
+     }
+     AttachmentType AttachmentUnderbarrelRIS1913Short "{5EA2BE9520A33E05}" {
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE95B630A07A}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE95B7F1B3D5}" {
+     }
+    }
+    AttachmentSlotComponent "{609EE5047488AAA1}" {
+     AttachmentSlot InventoryStorageSlot REAR_IRONSIGHT {
+      Prefab "{9ECBF331E7F6EED3}Prefabs/Weapons/Attachments/Optics/mbus/mbus_tan_folding_sight_rear.et"
+     }
+    }
+    AttachmentSlotComponent "{609EE504E194D66F}" {
+     AttachmentSlot InventoryStorageSlot FRONT_IRONSIGHT {
+      Prefab "{CEF0704C814E32C5}Prefabs/Weapons/Attachments/Optics/mbus/mbus_tan_folding_sight_front.et"
+     }
+    }
+    AttachmentSlotComponent "{61749A66C4BA094E}" {
+     AttachmentSlot InventoryStorageSlot bayonet {
+     }
+    }
+    AttachmentSlotComponent "{629ADD50107BFFEA}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD500DE777C8}" {
+     }
+    }
+    AttachmentSlotComponent "{629ADD528EE856C1}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD52ACAC8DC6}" {
+     }
+    }
+    AttachmentSlotComponent "{647D57A4E99CBFA3}" {
+     AttachmentSlot InventoryStorageSlot "{647D57BB184D5F9B}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{626713EF43D3CC9E}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+       }
+      }
+     }
+     MagazineTemplate "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ angles -4.911 81.916 19.189
+}

@@ -1,0 +1,86 @@
+GenericEntity : "{14BAB2D9F6F782D8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_II.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  RHS_SGC_RadialMenuComponent "{5E0ED058CD731BC8}" {
+   m_sDisplayName "M4A1 BLOCK 2 CAV ISSUE"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "M4A1 BLOCK 2 M203 CAV ISSUE "
+     Description "#RHS-Weapon_M4A1_BLOCK_II_Description #RHS-Weapon_M203_UGL_Description"
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{5E0ED058CD731B24}" {
+        "Point info" DeploymentPointInfo dp {
+         Offset 0 -0.0067 0.4384
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5E0EEDA47E3F452D}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{E212EC1E74B86D73}Prefabs/Weapons/Attachments/Handguards/Handguard_AR15_DD/BLK/RHS_M4A1_DD12_5_Upper_BLK.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDA5B623AB37}" {
+     AttachmentSlot InventoryStorageSlot Handguard_lower {
+      Enabled 0
+      Prefab "{BE5A55D33E115AD8}Prefabs/Weapons/Attachments/Handguards/Handguard_AR15_DD/BLK/RHS_M4A1_DD12_5_Lower_BLK.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDB0BD59EE7D}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optics {
+      Offset 0 0 0.053
+      Prefab "{311393C82B783721}Prefabs/5ABD0CB57F7E9EB1/Optics/Optic_XPS3.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{5EA2BE9573F14F0C}" {
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE953838E77C}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE95244FA719}" {
+      PivotID "barrel_chamber"
+      Offset 0 0 0
+      Angles 0 0 0
+      Prefab "{AAD55E46E75D3E1E}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_SU253.et"
+     }
+     AttachmentType AttachmentUnderBarrelM203 "{5EA2BE9520A33E05}" {
+     }
+     ShowInInspection 0
+    }
+    AttachmentSlotComponent "{629ADD50107BFFEA}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD500DE777C8}" {
+     }
+    }
+    AttachmentSlotComponent "{629ADD528EE856C1}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{629ADD52ACAC8DC6}" {
+      Prefab "{5AE8F3A22BDB534F}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_black.et"
+     }
+    }
+    AttachmentSlotComponent "{647D57A4E99CBFA3}" {
+     Enabled 0
+     AttachmentSlot InventoryStorageSlot "{647D57BB184D5F9B}" {
+      Enabled 0
+     }
+    }
+    AttachmentSlotComponent "{691E0773CF0ADE3B}" {
+     AttachmentSlot InventoryStorageSlot "{5EB2C96A8030BC9E}" {
+      Enabled 0
+     }
+     ShowInInspection 0
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ angles 2.868 40.037 16.767
+}
