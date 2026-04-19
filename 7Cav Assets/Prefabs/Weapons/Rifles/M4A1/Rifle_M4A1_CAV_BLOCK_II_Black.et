@@ -9,6 +9,9 @@ GenericEntity : "{14BAB2D9F6F782D8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_
     ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
      Name "M4A1 BLOCK 2 CAV ISSUE "
     }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     AnimationIKPose "{F37B65F7950F82F0}Assets/Weapons/Rifles/m27iar/anims/anm/p_m27_kacvertical_ik.anm"
+    }
    }
   }
   WeaponComponent "{CFBAA4B706BA66E8}" {
@@ -26,12 +29,11 @@ GenericEntity : "{14BAB2D9F6F782D8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_
     }
     AttachmentSlotComponent "{5EA2BE953838E77C}" {
      AttachmentSlot RHS_SlidingInventoryStorageSlot "{5EA2BE95244FA719}" {
-      PivotID "w_charging_handle"
-      Offset 0 -0.048 0.3139
+      Offset 0 0.0522 0.1827
       Angles 0 0 0
       Prefab "{0F46DA93CB81F141}Prefabs/Weapons/Attachments/Grips/Grip_KAC_Vertical/RHS_KacVertical_base.et"
      }
-     AttachmentType AttachmentUnderbarrelRIS1913Short "{5EA2BE9520A33E05}" {
+     AttachmentType AttachmentM27RailCover "{5EA2BE9520A33E05}" {
      }
     }
     AttachmentSlotComponent "{5EA2BE95B630A07A}" {
@@ -67,5 +69,5 @@ GenericEntity : "{14BAB2D9F6F782D8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_
   }
  }
  coords 0 0 0
- angles -4.911 81.916 19.189
+ angles 9.495 40.388 17.438
 }

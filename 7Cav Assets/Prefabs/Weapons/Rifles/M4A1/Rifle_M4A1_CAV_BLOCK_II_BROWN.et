@@ -51,8 +51,6 @@ GenericEntity : "{9B40415563B9F280}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_CAV_BL
     }
     AttachmentSlotComponent "{5EA2BE953838E77C}" {
      AttachmentSlot RHS_SlidingInventoryStorageSlot "{5EA2BE95244FA719}" {
-      PivotID "w_charging_handle"
-      Offset 0 -0.048 0.3139
       Angles 0 0 0
       Prefab "{6FBFAD156ABC67D9}Prefabs/Weapons/Attachments/Grips/Grip_GPS2/RHS_GPS2_TAN.et"
      }
@@ -102,5 +100,5 @@ GenericEntity : "{9B40415563B9F280}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_CAV_BL
   }
  }
  coords 0 0 0
- angles -4.911 81.916 19.189
+ angles -1.516 72.314 19.729
 }
