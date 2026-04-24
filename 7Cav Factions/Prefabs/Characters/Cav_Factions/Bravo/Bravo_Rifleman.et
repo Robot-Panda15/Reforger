@@ -25,7 +25,7 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
    }
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{67F95B374867C366}Prefabs/Weapons/Rifle_M4A1_RAS_Cav.et"
+   WeaponTemplate "{9B40415563B9F280}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_II_Black.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
@@ -102,7 +102,7 @@ SCR_ChimeraCharacter : "{E4FAEAC30E96E487}Prefabs/Characters/Cav_Factions/Bravo/
     ItemsInitConfigurationItem "{66260B3A958FB2C3}" {
      TargetStorage "Vest/Vest_JPC_okinawa_MC.et/saw/Pouch_PCGEN3_util.et"
      PrefabsToSpawn {
-      "{8554ED3F088BADA6}Prefabs/Items/Core/Wirecutters/wirecutters.et"
+      "{42232FFE6E7AC415}Prefabs/Items/Core/Wirecutters/wirecutters.et"
      }
     }
    }

@@ -63,7 +63,6 @@ GameEntity : "{8A2B2A544F3ED831}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helm
      }
     }
     RHS_LoadoutSlotInfo Masks {
-     Prefab "{B370D7A2DDBB73B7}Prefabs/Characters/HeadGear/Balaclavas/Balaclava_v1/Balaclava_v1_Coyote_brown.et"
     }
     RHS_LoadoutSlotInfo BackVelcro {
      Offset 0 0.0952 0.1119

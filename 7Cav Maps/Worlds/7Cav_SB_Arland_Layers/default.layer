@@ -46,8 +46,6 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
 }
 SCR_GameModeEditor _Cav_GameMode_Editor_Sandbox1 : "{285363A3C06DC821}Prefabs/MP/Modes/Editor/7Cav_GameMode_Editor_Sandbox.et" {
  components {
-  CustomMapMarkerManager "{5D32E876D3886A72}" {
-  }
   SCR_FactionAliasComponent "{664AFC662D8B1CB6}" {
    m_aFactionAliases {
     SCR_ScenarioFrameworkFactionAliasConfig "{664AFC6621BEBCEB}" {
